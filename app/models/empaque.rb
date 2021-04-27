@@ -1,0 +1,2 @@
+class Empaque < ApplicationRecord
+end

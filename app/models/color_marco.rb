@@ -1,0 +1,2 @@
+class ColorMarco < ApplicationRecord
+end

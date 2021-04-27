@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  bio: MyText
+  facebook: MyString
+  instagram: MyString
+  pinterest: MyString
+  linkedin: MyString
+  destacado: false
+
+two:
+  nombre: MyString
+  bio: MyText
+  facebook: MyString
+  instagram: MyString
+  pinterest: MyString
+  linkedin: MyString
+  destacado: false

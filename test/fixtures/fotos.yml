@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  referencia: MyString
+  artista: one
+  nombre: MyString
+  descripcion: MyText
+  precio_base: 1
+  prioridad: 1
+  activo: false
+  destacado: false
+  destacado_temporada: false
+  linea: false
+  color: MyString
+  numero_actual: 1
+  stock: 1
+  pineado: false
+  sala: one
+
+two:
+  referencia: MyString
+  artista: two
+  nombre: MyString
+  descripcion: MyText
+  precio_base: 1
+  prioridad: 1
+  activo: false
+  destacado: false
+  destacado_temporada: false
+  linea: false
+  color: MyString
+  numero_actual: 1
+  stock: 1
+  pineado: false
+  sala: two
