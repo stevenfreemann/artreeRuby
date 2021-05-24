@@ -1,0 +1,49 @@
+
+  .subtitleInfo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+    font-size: 18px;
+  }
+  .subtitleInfo span{
+    width: 50%;
+  }
+  .App--HeaderPadding{
+    padding-top: 13.8rem;
+    width: 100%;
+  }
+  
+  *, *:before, *:after{
+    box-sizing: inherit;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: none;
+  }
+  
+  * {
+    -ms-overflow-style: none;
+  }
+
+  @media (max-width: 720px) {
+    .App--HeaderPadding{
+      padding-top: 6rem;
+    }
+    .subtitleInfo{
+      font-size: 14px;
+    }
+    .subtitleInfo span{
+      width: 77%;
+    }
+  }
+  

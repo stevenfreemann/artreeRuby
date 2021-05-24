@@ -1,0 +1,2 @@
+class LikeProController < ApplicationController
+end

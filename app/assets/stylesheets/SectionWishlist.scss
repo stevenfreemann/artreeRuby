@@ -1,0 +1,47 @@
+.sectionWishlist__cont{
+    width: 120rem;
+    margin: 2% auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5rem;
+}
+
+.sectionWishlist__next-prev{
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sectionWishlist__next-prev img{
+    width: 4.4rem;
+    height: 4.4rem;
+    margin: 0 2%;
+    transition: opacity .2;
+}
+
+.sectionWishlist__next-prev img:hover{
+    cursor: pointer;
+    opacity: .5;
+}
+
+@media (max-width: 1200px) {
+    .sectionWishlist__cont{
+        width: 72rem;
+        grid-template-columns: repeat(2,1fr);
+        margin-bottom: 5%;
+    }
+}
+@media (max-width: 720px) {
+    .sectionWishlist__cont{
+        width: 60%;
+        grid-template-columns: 1fr;
+
+    }
+    .sectionWishlist__next-prev img{
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+}
+

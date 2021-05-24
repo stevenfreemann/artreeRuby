@@ -1,0 +1,140 @@
+.header{
+  width: 100%;
+  height: 13.2rem;
+  background-color:white;
+  display: flex;
+  position: fixed;
+  z-index: 4;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 3px #00000026;
+}
+
+.header__cont{
+  width: 120rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header__logo{
+  height: 100%;
+  margin: 0 3%;
+  // transition: transform .2s;
+}
+
+.header__logo:hover{
+  // transform: scale(1.5);
+  cursor: pointer;
+}
+
+.header__iconsCont{
+  width: 37.4rem;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 3%;
+}
+
+.header__icon, .icons__notification{
+  width: 4.8rem;
+  margin-right: 8%;
+  transition: transform .2s;
+  position: relative;
+}
+
+.icons__notification img{
+  width: 100%;
+}
+
+.icons__notification div{
+  position: absolute;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #cbbdcb;
+  right: -10px;
+  top: -12px;
+  font-size: 1.5rem;
+}
+
+.header__icon:hover, .menu__img:hover, .icons__notification:hover{
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.menu__img {
+  width: 3.6rem;
+  height: 2.4rem;
+  margin-left: 5%;
+  transition: transform .2s;
+}
+
+.menu__content{
+  position: absolute;
+  top: 133%;
+  right: 0;
+  text-align: right;
+  overflow-y: auto;
+}
+
+.menu__item{
+  width: 24.2rem;
+  height: 4.8rem;
+  background-color: white;
+  box-shadow: inset 0px 5px 6px #00000033;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu__item:hover{
+  background-color: #7B7B7B;
+  color: white;
+  cursor: pointer;
+}
+
+.menu__item h3{
+  font-size: 2.1rem;
+  font-weight: bold;
+  margin-right: 10%; 
+}
+
+@media (max-width: 1200px) {
+  .header__cont{
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .header{
+    width: 100%;
+    height: 6rem;
+  }
+  .header__iconsCont{
+    width: 18.7rem;
+  }
+  .header__logo{
+    height: 4rem;
+  }
+  .header__icon{
+    width: 2.4rem;
+  }
+  .menu__img{
+    width: 2.4rem;
+    height: 1.5rem;
+    margin-left: 5%;
+  }
+  .icons__notification div{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: .8rem;
+    right: -6px;
+    top: -7px;
+  }
+}

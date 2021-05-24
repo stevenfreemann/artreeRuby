@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
   get 'home/index'
+  get 'contacto' => 'home#contacto'
+  get 'infoMaterials' => 'home#infoMaterials'
+  get 'infoExclusive' => 'home#infoExclusive'
+  get 'subInfoMaterial' => 'home#subInfoMaterials'
+  get 'cart' =>'shoppin_cart#shoppingCart'
+  get 'register' => 'register#register'
+  get 'exclusiveMarket' => 'exclusive#exclusiveMarket'
+  get 'proMarket' => 'pro#proMarket'
+  get 'likeProMarket' => 'like_pro#likeProMarket'
+  get 'infoFrames' => 'home#infoFrame'
+  get 'infoCanvas' => 'home#infoCanvas'
+  get 'infoPapers' => 'home#infoPappers'
+  get 'infoAcrilics' => 'home#infoAcrilics'
+  get 'artist' => 'home#artist'
+  get 'infoArtist' => 'home#infoArtist'
+  get 'infoPrint' => 'home#infoPrintPhotos'
+  get 'infoPurchase' => 'home#infoPurchase'
+  get 'profile' => 'profile#profile'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

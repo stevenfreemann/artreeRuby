@@ -1,0 +1,75 @@
+.userAcountPurshase{
+    width: 72rem;
+    margin: 0 auto;
+    display: flex;
+}
+
+.userAcountPurshase__img{
+    width: 20.1rem;
+    height: 13.3rem;
+    margin-right: 3%;
+    box-shadow: 3px 3px 6px #00000033;
+}
+
+.userAcountPurshase__info{
+    display: flex;
+    flex-direction: column;
+    display: inline;
+    font-size: 1.8rem;
+}
+
+.userAcountPurshase__info h3{
+    font-size: 2.1rem;
+    font-weight: bold;
+    margin: 2% 0;
+}
+
+.userAcountPurshase__payment{
+    display: flex;
+    margin-top: 5%;
+}
+
+.userAcountPurshase__payment img{
+    width: 2.1rem;
+    height: 2.1rem;
+    margin-right: 2%;
+}
+
+.userAcountPurshase__payment div{
+    display: flex;
+    flex-direction: column;
+}
+
+.userAcountPurshase__payment h3{
+    font-weight: normal;
+    font-size: 1.8rem;
+    margin:0;
+    margin-bottom: 5%;
+}
+
+@media (max-width: 1200px) {
+    .userAcountPurshase{
+        width: 60%;
+    }
+}
+
+@media (max-width: 720px) {
+    .userAcountPurshase{
+        flex-direction: column;
+        align-items: center;
+        margin: 5% auto;
+    }
+    .userAcountPurshase__img{
+        width: 100%;
+        height: auto;
+    }
+    .userAcountPurshase__info{
+        font-size: 1.4rem;
+    }
+    .userAcountPurshase__info h3{
+        font-size: 1.8rem;
+    }
+    .userAcountPurshase__payment h3{
+        font-size: 1.4rem;
+    }
+}

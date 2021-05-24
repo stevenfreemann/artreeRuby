@@ -2,30 +2,26 @@
 <html>
   <head>
     <title>Artree</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'app'%>
+    <%= stylesheet_link_tag 'header'%>
+    <%= stylesheet_link_tag 'Carousel'%>
+    <%= stylesheet_link_tag 'Contactanos'%>
+    <%= stylesheet_link_tag 'Footer'%>
+    <%= stylesheet_link_tag 'MainSectionMaterials'%>
+    <%= stylesheet_link_tag 'MaterialCards'%>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <%= react_component("Header", { greeting: "Hello from react-rails." },)%>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="head">
-      <div>Logo</div>
-      <div>iconos</div>
-      <div>Menu</div>
-    </div>
-    <%= yield %>
-
-    <footer>
-      <div>
-        <div>Logo</div>
-        <div>menus</div>
-        <div>Redes</div>
+    <div class="App">
+      <div class="App--HeaderPadding">
+        <%= yield %>
       </div>
-      <div>Copyright</div>
-    </footer>
+    </div>
   </body>
+  <%= react_component("Footer", { greeting: "Hello from react-rails." },)%>
 </html>

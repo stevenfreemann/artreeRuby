@@ -1,0 +1,138 @@
+.sec-materials{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.materials__pres{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.materials__background{
+    background-color: #ECD254;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50.6rem;
+}
+
+.materials__img--pos{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-width:120rem;
+    height: 100%;
+}
+
+.materials__img--pos span{
+    position: absolute;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 2;
+    display: none;
+}
+
+.materials__img--pos div{
+    position: absolute;
+}
+
+.materials__img--pos div:nth-child(1){
+    top: 15%;
+    left: 5%;
+    width: 25%;
+}
+
+.materials__img--pos div:nth-child(1) > span{
+    top: 42%;
+    left: 30%;
+}
+
+
+.materials__img--pos div:nth-child(2){
+    top: 10%;
+    left: 34%;
+    width: 32%;
+}
+
+.materials__img--pos div:nth-child(2) > span{
+    top: 40%;
+    left: 37%;
+}
+
+.materials__img--pos div:nth-child(3){
+    top: 49%;
+    left: 65%;
+    width: 17%;
+}
+
+.materials__img--pos div:nth-child(3) > span{
+    top: 40%;
+    left: 13%;
+}
+
+.materials__img--pos div:nth-child(4){
+    top: 17%;
+    left: 78%;
+    width: 21%;
+}
+
+.materials__img--pos div:nth-child(4) > span{
+    top: 32%;
+    left: 16%;
+}
+
+.materials__img--pos img{
+    width: 100%;
+}
+
+.materials__img--pos img:hover{
+    opacity: .5;
+}
+
+.materials__img--pos div:hover > span{
+    display: block;
+}
+
+.materials__img--pos span:hover ~ img{
+    opacity: .5;
+}
+
+@media (max-width: 1200px) {
+    .materials__img-cont{
+        height: 32.6rem;
+    }
+
+    .materials__img--pos{
+        min-width: 72rem;
+    }
+
+    .materials__img--pos span{
+        font-size: 2.1rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .materials__background{
+        height: 19.5rem;
+    }
+    
+    .materials__img--pos{
+        min-width: 43.2rem;
+    }
+    
+    .materials__img--pos span{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 432px) {
+    .materials__img--pos{
+        min-width: 100%;
+    }
+}

@@ -1,0 +1,40 @@
+.featured{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 3%;
+    width: 120rem;
+    margin: 0 auto;
+}
+
+.featured__content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content__img img{
+    width: 85%;
+    transition: opacity .5s;
+}
+.content__img img:hover{
+    opacity: .5;
+}
+
+.label{
+    margin-bottom: 5rem;
+}
+
+@media (max-width: 1200px) {
+    .featured{
+        width: 100%;
+    }
+    .content__img img{
+        width: 65%
+    }
+    .featured__content{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}

@@ -1,0 +1,36 @@
+.sectionExclusive__carousel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+.sectionExclusive__carousel div{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    margin: 0 2%;
+}
+
+.sectionExclusive__carousel--selected {
+    border-style: solid;
+    border-color: #fff4dc;
+    border-width: 2px;
+    transform: scale(1.2);
+}
+
+.sectionExclusive__carousel img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+
+.direction{
+    width: 20px!important;
+    height: 35px!important;
+}
+
+@media (max-width: 720px) {
+    .sectionExclusive__carousel div{
+        grid-template-columns: repeat(3,1fr);
+    }
+}

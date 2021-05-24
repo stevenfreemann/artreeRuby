@@ -5,15 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-if !AdminUser.first
-	AdminUser.create!(email: 'lalalopezv@me.com', password: 'password', password_confirmation: 'password')
-	AdminUser.create!(email: 'ecoelloc@hotmail.com', password: 'password', password_confirmation: 'password')
-	AdminUser.create!(email: 'bi777@hotmail.com', password: 'password', password_confirmation: 'password')
-	AdminUser.create!(email: 'javier@f2p.co', password: 'password', password_confirmation: 'password')
+
+40.times do |i|
+	Artistum.create(nombre: "nombre_#{i}", bio: "Description #{i}", facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", destacado:false)
 end
 
-if !Linea.first
-	Linea.create!(nombre: "Exclusive", descripcion: "Exclusiva Lorem")
-	Linea.create!(nombre: "Pro", descripcion: "Pro Lorem")
-	Linea.create!(nombre: "Like a Pro", descripcion: "Like a Pro Lorem")
-end
+#if !AdminUser.first
+#	AdminUser.create!(email: 'lalalopezv@me.com', password: 'password', password_confirmation: 'password')
+#	AdminUser.create!(email: 'ecoelloc@hotmail.com', password: 'password', password_confirmation: 'password')
+#	AdminUser.create!(email: 'bi777@hotmail.com', password: 'password', password_confirmation: 'password')
+#	AdminUser.create!(email: 'javier@f2p.co', password: 'password', password_confirmation: 'password')
+#end
+#
+#if !Linea.first
+#	Linea.create!(nombre: "Exclusive", descripcion: "Exclusiva Lorem")
+#	Linea.create!(nombre: "Pro", descripcion: "Pro Lorem")
+#	Linea.create!(nombre: "Like a Pro", descripcion: "Like a Pro Lorem")
+#end

@@ -1,0 +1,232 @@
+.userAcountData{
+    width: 110rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userAcountData legend{
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin: 2%;
+}
+
+.userAcountData__main, .userAcountData__address{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2%;
+    row-gap: 10%;
+    margin-bottom: 3%;
+}
+
+.userAcountData__input, .userAcountData__address-input{
+    width: 100%;
+    height: 5.6rem;
+    background-color: white;
+    font-size: 2.1rem;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+.userAcountData__input:nth-child(3){
+    position: relative;
+    width: 120%;
+}
+
+.userAcountData__input:nth-child(4){
+    position: relative;
+    width: 80%;
+    justify-self: end;
+}
+
+.userAcountData__input label{
+    font-weight: bold;
+    color: #7b7b7b;
+}
+
+.userAcountData__input input{
+    width: 60%;
+    border: none;
+    text-align: center;
+}
+
+.userAcountData__input img{
+    height: 50%;
+}
+
+.userAcountData__input img:hover{
+    cursor:pointer;
+}
+
+.userAcountData__address-input{
+    height: 15.1rem;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+}
+
+.userAcountData__address-input img{
+    height: 30%;
+    position: absolute;
+    top: 15%;
+    right: 4%;
+    
+}
+
+.userAcountData__address-input img:hover{
+    cursor: pointer;
+}
+
+.userAcountData__address-input input{
+    width: 70%;
+    border: none;
+}
+
+.userAcountData__address-input input:nth-child(1){
+    font-weight: bold;
+}
+
+.userAcountData__address a {
+    grid-column: 2 / 3;
+    justify-self: flex-end;
+    font-size: 2.6rem;
+    color: black;
+}
+
+.userAcountData__address a:hover{
+    color: black;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.userAcountData__pass {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    font-size: 2.1rem;
+    margin-top: 2%;
+}
+
+.userAcountData__pass div{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3%;
+}
+
+.userAcountData__pass label{
+    font-weight: bold;
+}
+
+.userAcountData__pass input{
+    padding: 1% 5%;
+    border-radius: 30px;
+    border-style: none;
+}
+
+.userAcountData__pass button{
+    width: auto;
+    height: auto;
+    padding: 1.7% 10%;
+    margin-top: 15%;
+    background-color: black;
+    color:white;
+    font-weight: bold;
+    border-radius: 1.5rem;
+    font-size: 2.6rem;
+    align-self: center;
+    border-style: none;
+    text-transform: uppercase;
+}
+
+.userAcountData__pass button:hover{
+    background-color: white;
+    color: black;
+}
+
+@media (max-width: 1200px) {
+    .userAcountData{
+        width: 70rem;
+    }
+    .userAcountData legend {
+        margin: 5%;
+    }
+    .userAcountData__main, .userAcountData__address{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    .userAcountData__input, .userAcountData__address-input{
+        margin-bottom: 3%;
+    }
+    .userAcountData__pass {
+        width: 75%;
+    }
+    .userAcountData__input:nth-child(3){
+        position: relative;
+        width: 100%;
+    }
+    
+    .userAcountData__input:nth-child(4){
+        position: relative;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .userAcountData__input:nth-child(4) input{
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 720px) {
+    .userAcountData{
+        width: 90%;
+    }
+    .userAcountData legend {
+        font-size: 1.4rem;
+    }
+    .userAcountData__input{
+        font-size: 1.4rem;
+        height: 3.2rem;
+    }
+    .userAcountData__input:nth-child(3) label{
+        width: 20%;
+        height: 3rem;
+        font-size: 1rem;
+        overflow-y: auto;
+    }
+    .userAcountData__input:nth-child(3) input{
+        width: 85%;
+    }
+    .userAcountData__address{
+        width: 100%;
+    }
+    .userAcountData__address a{
+        font-size: 1.4rem;
+    }
+    .userAcountData__address-input{
+        font-size: 1.4rem;
+        height: 11.1rem;
+    }
+    .userAcountData__address-input input{
+        width: 90%;
+    }
+    .userAcountData__address-input img {
+        width: 1.9rem;
+        height: 1.9rem;
+    }
+    .userAcountData__pass {
+        font-size: 1rem;
+    }
+    .userAcountData__pass button{
+        font-size: 1.2rem;
+        margin-top: 5%;
+
+    }
+
+}

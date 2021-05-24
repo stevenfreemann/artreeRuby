@@ -11,7 +11,9 @@ default: &default
   pool: 5
   port: 5432 
   #To connect locally
-  #host: 127.0.0.1
+  host: localhost
+  user: engine
+  password: 1234
 
 development:
   <<: *default

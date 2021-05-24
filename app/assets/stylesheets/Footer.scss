@@ -1,0 +1,184 @@
+.footer{
+    background-color: #464646;
+    display: flex;
+    justify-content: center;
+    height: 38.7rem;
+}
+
+.footer-cont{
+    min-width: 115rem;
+    display: grid;
+    margin: 4rem;
+}
+
+.top-cont{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row: 1 / 3;
+}
+
+.logo-cont{
+    display: grid;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.logo1, .logo2{
+    margin-bottom: 4rem;
+}
+
+.logo1{
+    height: 6.8rem;
+}
+.logo2{
+    height: 4.1rem;
+}
+
+.logo1 img, .logo2 img{
+    height: 100%;    
+}
+
+.link-cont, .info-cont{
+    display: grid;
+    font-size: 2.4rem;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.link-cont li {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.link-cont a{
+    color: #D1D2D7;
+    font-weight: 500;
+}
+
+.link-cont a:hover,
+.info-cont a:hover{
+    text-decoration: none;
+    color: grey;
+}
+
+.info-cont{
+    color: #D1D2D7;
+    font-size: 2.1rem;
+    justify-content: flex-end;
+}
+
+.info-cont a {
+    text-decoration: none;
+    color: #D1D2D7;
+    margin-bottom: 3rem;
+}
+
+.info-cont p {
+    line-height: 1;
+}
+
+.lower-cont{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: flex-start;
+}
+
+.payment-cont, .social-cont{
+    width: 35rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.payment-logo{
+    width: 5.5rem;
+    height: 3.5rem;
+    display: flex;
+    border-style: solid;
+    border-color: white;
+    border-radius: .4rem;
+    filter:grayscale(1);
+}
+
+.payment-logo img{
+    height: 100%;
+    width: 100%;
+}
+
+.social-logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.social-logo{
+    width: 4rem;
+    height: 4rem;
+}
+
+.social-logo {
+    transition: transform .2s;
+}
+
+.social-logo :hover{
+    transform: scale(1.5);
+}
+
+@media (max-width: 1150px) {
+    .footer-cont{
+        min-width: 90%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .top-cont{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .logo-cont{
+        grid-column: 1 / 4;
+        display: flex;
+        justify-content: space-around;
+    }
+    .logo1, .logo2{
+        margin-bottom: 0;
+    }
+    .link-cont, .info-cont{
+        justify-content: center;
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .link-cont, .info-cont{
+        justify-content: center;
+        font-size: 1.3rem;
+    }
+    .logo1, .logo2{
+        height: 45%;
+    }
+    .payment-cont{
+        width: 27rem;
+    }
+    .social-cont{
+        width: 20rem;
+    }
+}
+
+@media (max-width: 523px) {
+    .logo2{
+        height: 2.5rem;
+    }
+
+    .payment-cont , .social-cont{
+        width: 15rem ;
+    }
+
+    .payment-logo{
+        height: 1.6rem;
+        width: 2.6rem;
+    }
+
+    .social-logo{
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+}

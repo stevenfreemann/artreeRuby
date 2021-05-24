@@ -1,0 +1,24 @@
+.sectionProduct{
+    background-color: #d1d2d7;
+}
+
+.sectionProduct__cont{
+    margin: 0 auto;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .sectionProduct__cont{
+        width: 60%;
+    }
+}
+
+@media (max-width: 720px) {
+    .sectionProduct__cont{
+        width:90%
+    }
+}
