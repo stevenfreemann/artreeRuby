@@ -4,14 +4,16 @@ import Subir from '../assets/static/icon/subir@2x.png'
 import Carrito from '../assets/static/buttons/carrito@2x.png'
 export default function Upload() {
     return (
-        <div style={{backgroundColor:'var(--backGray)'}}>
-            <Title title={'LIKE A PRO - Espacio 1'} background={'var(--backGray)'}/>
-            <div style={{backgroundColor:'var(--backGray)'}}>
-                <div className='container-upload'>
-                    <img src={Subir} style={{width:'42%', height:'88%'}}/>
+        <div className='upload' style={{ backgroundColor: 'var(--backGray)' }}>
+            <Title title={'LIKE A PRO - Espacio 1'} backTitle={true} alignLeft={true} background={'var(--backGray)'} />
+            <div className='upload__cont'>
+                <div className='upload__img'>
+                    <img src={Subir}/>
                 </div>
-                <img src={Carrito} style={{width:'10%'}}/>
-                <div className='container-buttom'/>
+                <div className='upload__cart'>
+                    <img src={Carrito}/>
+                    <span>Inicia tu compra</span>
+                </div>
             </div>
         </div>
     )

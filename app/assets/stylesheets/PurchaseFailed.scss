@@ -1,0 +1,84 @@
+.purchaseFailed{
+    background-color: #d1d2d7;
+    padding:5% 0 5%;
+}
+
+.purchaseFailed__cont{
+    width: 38.4rem;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.purchaseFailed__back{
+    position: absolute;
+    left: 15rem;
+    height: 4%;
+    transition: transform .2s;
+}
+
+.purchaseFailed__back:hover{
+    transform : scale(1.5)
+}
+
+.purchaseFailed__cont img{
+    width: 15%;
+    margin-bottom: 10%;
+}
+
+.purchaseFailed__cont h3{
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 7%;
+}
+
+.purchaseFailed__cont span{
+    font-size: 2.1rem;
+    margin-bottom: 15%;
+}
+
+.purchaseFailed__cont button{
+    font-size: 2.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 60%;
+    padding: 1%;
+    border: none;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+}
+
+.purchaseFailed__cont button:hover{
+    background-color: white;
+    color: black;
+}
+
+@media (max-width: 720px) {
+    .purchaseFailed__cont{
+        margin: 10% auto;
+    }
+    .purchaseFailed__back{
+        left: 5rem;
+        height: 3%;
+    }
+    .purchaseFailed__cont h3{
+        font-size: 2.6rem;
+    }
+    .purchaseFailed__cont span{
+        font-size: 1.6rem;
+    }
+    .purchaseFailed__cont button{
+        font-size: 1.2rem;
+        width: 16.3rem;
+        height: 3rem;
+    }
+}
+
+@media (max-width: 384px) {
+    .purchaseFailed__cont{
+        width: 100%;
+    }
+}

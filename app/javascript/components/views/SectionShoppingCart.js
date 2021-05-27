@@ -8,6 +8,7 @@ import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
 import Edit from '../../assets/static/buttons/editar@2x.png'
 import Delete from '../../assets/static/buttons/eliminar@2x.png'
 import Wishlist from '../../assets/static/buttons/moverwishlistbtn@2x.png'
+import AddAdressModal from '../AddAddresModal'
 
 const products=[
     {

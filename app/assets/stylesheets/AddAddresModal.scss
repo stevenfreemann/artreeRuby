@@ -1,0 +1,62 @@
+.container-addres{
+    z-index: 1;
+    position: absolute;
+    width: 120em;
+    height: 100em;
+    background-color: #000000a1;
+}
+
+.container-addres-modal{
+    top: 7%;
+    left: 22%;
+    background-color:white;
+    height: 548px;
+    width: 858px;
+    border-radius: 28px;
+    padding: 2%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-addres-modal input{
+    border-radius: 5px;
+    background-color:var(--backGray);
+    height: 30px;
+    border: transparent;
+}
+.form-addres{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 95%;
+}
+.form-addres label{
+    margin-bottom: 2%;
+}
+.form-add-addres-input:not(label){
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+}
+.inputs-select-addres input{
+    width: 21%;
+}
+.inputs-form-addres-general{
+    width: 90%;
+}
+.inputs-form-addres-general-der{
+    width: 90%;
+    align-self: flex-end;
+}
+.title-add-addres{
+    text-align: center;
+    font-size: 1.8em;
+}
+.drop-down-form-addres{
+    background-color: var(--backGray);
+    margin-right: 5%;
+    border-radius: 5px;
+    border: transparent;
+    height: 30px;
+}

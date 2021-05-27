@@ -1,0 +1,260 @@
+.aboutUs__hero{
+    width: 100%;
+    background-image: url(/images/somos.png);
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    height: 50.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutUs__hero-cont{
+    width: 120rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUs__hero-cont h1{
+    font-size: 4.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1%;
+    background-color: rgba(209, 210, 214, 0.6);
+}
+
+.aboutUs__hero-cont span{
+    width: 80%;
+    font-size: 2.6rem;
+    background-color: rgba(209, 210, 214, 0.6);
+}
+
+.aboutUs__distintion{
+    width: 120rem;
+    height: 30rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutUs__distintion-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1rem;
+    color: #7b7b7b;
+    transition: opacity .5s ease-in-out;
+}
+
+.aboutUs__distintion-item:hover{
+    opacity: (.5);
+}
+
+.aboutUs__distintion-item img{
+    width: 50%;
+}
+
+.aboutUs__client{
+    background-color: #ECEDDB;
+    text-align: center;
+    padding: 3% 0;
+}
+
+.aboutUs__client h2{
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+}
+
+.aboutUs__client-cont{
+    width: 120rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2% 1fr 2%;
+    column-gap: 6rem;
+    padding: 0 3%;
+}
+
+.aboutUs__client-show{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 6rem;
+}
+
+.aboutUs__client-arrow{
+    width: 100%;
+    align-self: center;
+    transition: transform .5s;
+}
+
+.aboutUs__client-arrow:hover{
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.aboutUs__client-item img{
+    border: solid .7rem white; 
+    margin-bottom: 5%;
+    width: 100%;
+    box-shadow: 3px 3px 6px #00000033;
+}
+
+.aboutUs__client-item span{
+    font-size: 1.8rem;
+}
+
+.aboutUs__info{
+    width: 120rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.aboutUs__info h1{
+    font-size: 4.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5% auto;
+}
+
+.aboutUs__info-social{
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10%;
+}
+
+.aboutUs__info-social img{
+    width: 7rem;
+    transition: transform .5s;
+}
+
+.aboutUs__info-social img:hover{
+    transform: scale(1.3);
+}
+
+.aboutUs__info-other{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4rem;
+}
+
+.aboutUs__info-other div{
+    transition: opacity .5s ease-in-out;
+}
+
+.aboutUs__info-other div:hover{
+    cursor: pointer;
+    opacity: .5;
+}
+
+.aboutUs__info-other img {
+    width: 86%;
+    height: 50%;
+    margin-bottom: 5%;
+    border: solid .7rem #d1d2d7;
+    box-shadow: 3px 3px 6px #00000033;
+    object-fit: cover;
+    object-position: top;
+
+}
+
+.aboutUs__info-other h2{
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1200px) {
+    .aboutUs{
+        margin-bottom: 10%;
+    }
+    .aboutUs__hero-cont,
+    .aboutUs__distintion{
+        width: 72rem;
+    }
+    .aboutUs__info,
+    .aboutUs__client-cont{
+        width: 95%;
+    }
+    
+}
+
+@media (max-width: 720px) {
+    .aboutUs__hero-cont,
+    .aboutUs__distintion{
+        width: 100%;
+    }
+    .aboutUs__hero{
+        height: 30.3rem;
+    }
+    .aboutUs__distintion{
+        flex-direction: column;
+        height: auto;
+        margin: 10% 0 5%;
+    }
+    .aboutUs__distintion-item{
+        margin-bottom: 7%;
+    }
+    .aboutUs__distintion-item img{
+        width: 25%;
+    }
+    .aboutUs__info h1,
+    .aboutUs__hero-cont h1,
+    .aboutUs__client h2,
+    .aboutUs__info-other h2{
+        font-size: 2.6rem;
+    }
+    .aboutUs__hero-cont span{
+        font-size: 1.6rem;
+    }
+    .aboutUs__client-item span{
+        font-size: 1.4rem;
+    }
+    .aboutUs__info-social{
+        width: 60%;
+    }
+    .aboutUs__info-social img{
+        width: 4.3rem;
+    }
+    .aboutUs__info-other{
+        grid-template-columns: auto;
+        justify-items: center;
+    }
+    .aboutUs__info-other div{
+        width: 80%;
+        margin-bottom: 10%;
+    }
+    .aboutUs__info-other img {
+        width: 28.4rem;
+        height: 18.9rem;
+    }
+    .aboutUs__client-show{
+        grid-template-columns: auto;
+    }
+    .aboutUs__client-cont{
+        column-gap: 2rem;
+    }
+    .aboutUs__client-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5%;
+    }
+    .aboutUs__client-item span {
+        display: contents;
+    }
+    .aboutUs__client-item img {
+        width: 80%;
+    }
+
+}

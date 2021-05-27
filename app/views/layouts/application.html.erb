@@ -13,15 +13,21 @@
     <%= stylesheet_link_tag 'Footer'%>
     <%= stylesheet_link_tag 'MainSectionMaterials'%>
     <%= stylesheet_link_tag 'MaterialCards'%>
+    <%= stylesheet_link_tag 'UserAcountData'%>
+    <%= stylesheet_link_tag 'UserAcount'%>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <%= react_component("Header", { greeting: "Hello from react-rails." },)%>
+ 
   <body>
+   <%= react_component("AddAddresModal", { greeting: "Hello from react-rails." },)%>
+    <div class="container-artree">
+    <%= react_component("Header", { greeting: "Hello from react-rails." },)%>
     <div class="App">
       <div class="App--HeaderPadding">
         <%= yield %>
       </div>
     </div>
+    <%= react_component("Footer", { greeting: "Hello from react-rails." },)%>
+  </div>
   </body>
-  <%= react_component("Footer", { greeting: "Hello from react-rails." },)%>
 </html>

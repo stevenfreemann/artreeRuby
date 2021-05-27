@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get 'infoPrint' => 'home#infoPrintPhotos'
   get 'infoPurchase' => 'home#infoPurchase'
   get 'profile' => 'profile#profile'
+  get 'about' => 'home#aboutUs'
+  get 'failPurchase' => 'home#purchaseFailed'
+  get 'succesPurchase' => 'home#purchaseSucces'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
