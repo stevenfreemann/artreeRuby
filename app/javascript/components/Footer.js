@@ -18,23 +18,19 @@ const pinte = "https://pinterest.com"
 const Footer = () => {
     return (
         <footer className='footer'>
-            <div className='footer-cont'>
-                <div className='top-cont'>
-                    <div className='logo-cont'>
-                        <div className='logo1'>
-                            <img src={LogoArtree}/>
-                        </div>
-                        <div className='logo2'>
-                            <img src={LogoSuper}/>
-                        </div>
+            <div className='footer__cont'>
+                <div className='footer__top'>
+                    <div className='footer__logo-cont'>
+                        <img className='footer__logo1' src={LogoArtree}/>
+                        <img className='footer__logo2'src={LogoSuper}/>
                     </div>
-                    <div className='link-cont'>
+                    <div className='footer__link-cont'>
                         <li><a href="#">Envíos</a></li>
                         <li><a href="#">Nosotros</a></li>
-                        <li><a href="#">Contactanos</a></li>
+                        <li><a href="/contacto">Contactanos</a></li>
                         <li><a href="#">Suscripciones</a></li>
                     </div>
-                    <div className='info-cont'>
+                    <div className='footer__info-cont'>
                         <a href="#">Términos y condiciones</a>
                         <p>
                             Cra. 11 #11-11<br></br>
@@ -44,32 +40,32 @@ const Footer = () => {
                         </p>
                     </div>
                 </div>
-                <div className='lower-cont'>
-                    <div className='payment-cont'>
-                        <div className='payment-logo'>
+                <div className='footer__lower-cont'>
+                    <div className='footer__payment-cont'>
+                        <div className='footer__payment-logo'>
                             <img src={LogoVisa} alt='Visa'/>
                         </div>
-                        <div className='payment-logo'>
+                        <div className='footer__payment-logo'>
                             <img src={LogoAmerican} alt='American Express'/>
                         </div>
-                        <div className='payment-logo'>
+                        <div className='footer__payment-logo'>
                             <img src={LogoMaster} alt='MasterCard'/>
                         </div>
-                        <div className='payment-logo'>
+                        <div className='footer__payment-logo'>
                             <img src={LogoPayPal} alt='PayPal'/>
                         </div>
                     </div>
-                    <div className='social-cont'>
-                        <div className='social-logo'>
+                    <div className='footer__social-cont'>
+                        <div className='footer__social-logo'>
                             <a href={insta} target="_blank"><img src={LogoInsta} alt='Instagram'/></a>
                         </div>
-                        <div className='social-logo'>
+                        <div className='footer__social-logo'>
                             <a href={facebook} target="_blank"><img src={LogoFacebook} alt='Facebook'/></a>
                         </div>
-                        <div className='social-logo'>
+                        <div className='footer__social-logo'>
                             <a href={whats} target="_blank"><img src={LogoWhats} alt='WhatsApp'/></a>
                         </div>
-                        <div className='social-logo'>
+                        <div className='footer__social-logo'>
                             <a href={pinte} target="_blank"><img src={LogoPinterest} alt='Pinterest'/></a>
                         </div>
                     </div>

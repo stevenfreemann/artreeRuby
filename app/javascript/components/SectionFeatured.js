@@ -1,5 +1,4 @@
 import React from 'react'
-import Title from './Title'
 
 import exclusive from '../assets/static/images/exclusive.png'
 import pro from '../assets/static/images/pro.png'
@@ -21,18 +20,17 @@ const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer i
 const SectionFeatures = () => {
     return (
       <>
-        <Title title={title} text={text}/>
         <div className="featured">
+          <h1 className="featured__title" >{title}</h1>
+          <p>{text}</p>
             <div className='featured__content'>
               {Array(imagesD.length).fill().map(
                 (_, i) =>
-                  <div key={imagesD[i].id}className='content__img'>
+                  <div key={imagesD[i].id}className='featured__content-img'>
                       <img src={imagesD[i].img}/>
-                    <div className="label">
-                      <h2>
+                      <h2 className="label">
                         {imagesD[i].type}
                       </h2>
-                    </div>
                   </div>
               )}
             </div>
