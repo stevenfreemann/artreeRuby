@@ -20,8 +20,6 @@
   --Montserrat: 'Montserrat', sans-serif;
   --Roboto: 'Roboto', sans-serif;
 }
-
-
 html {
   font-size: 62.5%; 
 }
@@ -39,6 +37,7 @@ body {
   --backPurple:#CBBDCB;
   --backCream:#ECEDDB;
   --backWhiteCream:#D6E1E6;
+  --purpleCream:#CBBDCB;
   
 }
 
