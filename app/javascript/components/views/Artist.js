@@ -14,24 +14,7 @@ const DescriptionArtist = 'Lorem ipsum dolor sit, amet consectetur adipisicing e
 
 
 const Artist = ({artistas,foto}) => {
-    //const artistList = [
-    //    {id:1,nameArtist: 'Artista_A',img:foto,description:DescriptionArtist,},
-    //    {id:2,nameArtist: 'Artista_B',img:foto,description:DescriptionArtist,},
-    //    {id:3,nameArtist: 'Artista_C',img:foto,description:DescriptionArtist,},
-    //    {id:4,nameArtist: 'Artista_D',img:foto,description:DescriptionArtist,},
-    //    {id:5,nameArtist: 'Artista_E',img:foto,description:DescriptionArtist,},
-    //    {id:6,nameArtist: 'Artista_F',img:foto,description:DescriptionArtist,},
-    //    {id:7,nameArtist: 'Artista_G',img:foto,description:DescriptionArtist,},
-    //    {id:8,nameArtist: 'Artista_H',img:foto,description:DescriptionArtist,},
-    //    {id:9,nameArtist: 'Artista_I',img:foto,description:DescriptionArtist,},
-    //    {id:10,nameArtist: 'Artista_J',img:foto,description:DescriptionArtist,},
-    //    {id:11,nameArtist: 'Artista_K',img:foto,description:DescriptionArtist,},
-    //    {id:12,nameArtist: 'Artista_L',img:foto,description:DescriptionArtist,},
-    //    {id:13,nameArtist: 'Artista_M',img:foto,description:DescriptionArtist,},
-    //    {id:14,nameArtist: 'Artista_N',img:foto,description:DescriptionArtist,},
-    //    {id:15,nameArtist: 'Artista_O',img:foto,description:DescriptionArtist,},
-    //    {id:16,nameArtist: 'Artista_P',img:foto,description:DescriptionArtist,},
-    //]
+    
     console.log(artistas)
     const [page, setPage] = useState(1)
     const elements = 16

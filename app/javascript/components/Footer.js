@@ -26,7 +26,7 @@ const Footer = () => {
                     </div>
                     <div className='footer__link-cont'>
                         <li><a href="#">Envíos</a></li>
-                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="/about">Nosotros</a></li>
                         <li><a href="/contacto">Contactanos</a></li>
                         <li><a href="#">Suscripciones</a></li>
                     </div>

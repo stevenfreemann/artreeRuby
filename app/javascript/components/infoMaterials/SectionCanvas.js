@@ -10,7 +10,7 @@ import MaterialCards from '../MaterialCard'
 const marcos = { 
     title:'CANVAS',
     type:'Tips de composición',
-    text1:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.',
+    text1:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus,dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus',
     img1: marcosComposicion,
     subtitle: 'Tipos de Canvas',
     text2: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.',
@@ -42,9 +42,15 @@ const papeles = {
 }; 
     
 const SectionCanvas = () => {
+    const navigate=(dir)=>{
+        const direction={
+            'back':'/infoMaterials'
+        }
+        window.location=direction[dir] ? direction[dir] : '/'
+    }
     return (
         <>
-            <Title title={marcos.title} backTitle={true}/>
+            <Title title={marcos.title} backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionCanvas'>
                 <div className='sectionCanvas__first-intro'>
                     <h2>{marcos.type}</h2>

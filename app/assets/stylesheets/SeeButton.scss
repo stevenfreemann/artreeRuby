@@ -6,9 +6,11 @@
     font-size: 2.1rem;
     font-family: var(--Roboto);
     font-weight: bold;
+    background-color: white;
 }
 
 .see-Button:hover{
+    cursor: pointer;
     background-color: black;
     color:white;
 }

@@ -18,6 +18,14 @@ const title = "DESTACADOS"
 const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum erat, consequat fermentum sollicitudin vel, porttitor eu nisi. Vivamus scelerisque ac sapien eu ornare. Sed placerat sed nunc nec ultricies. Curabitur lacinia lorem leo, nec venenatis eros egestas at."
 
 const SectionFeatures = () => {
+  const navigate=(section)=>{
+    const redirect={
+        'EXCLUSIVE':'/infoExclusive',
+        'PRO':'/',
+        'LIKE A PRO':'/',
+    }
+    window.location = redirect[section] ? redirect[section]: '/'
+}
     return (
       <>
         <div className="featured">
@@ -26,7 +34,7 @@ const SectionFeatures = () => {
             <div className='featured__content'>
               {Array(imagesD.length).fill().map(
                 (_, i) =>
-                  <div key={imagesD[i].id}className='featured__content-img'>
+                  <div key={imagesD[i].id}className='featured__content-img' onClick={()=>navigate('Usuario')}>
                       <img src={imagesD[i].img}/>
                       <h2 className="label">
                         {imagesD[i].type}

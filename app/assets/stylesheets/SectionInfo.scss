@@ -57,7 +57,10 @@
     }
 
     .sectionInfo__info{
+        height: auto;
         margin: 0 5rem;
+        display: flex;
+        flex-direction: column;
     }
     
     .sectionInfo__img{
@@ -84,8 +87,4 @@
     .sectionInfo__title{
         font-size: 2.1rem;
     }
-}
-@media (max-width: 400px){
-    .sectionInfo__cont {
-        height: 53rem;}
 }

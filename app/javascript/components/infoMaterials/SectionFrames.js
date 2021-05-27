@@ -7,7 +7,7 @@ import MaterialCards from '../MaterialCard'
 const marcos = { 
     title:'MARCOS',
     type:'Tips de composición',
-    text1:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.',
+    text1:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus,dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus',
     img1: marcosComposicion,
     subtitle: 'Tipos de Marco',
     text2: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.',
@@ -16,7 +16,7 @@ const marcos = {
 const papelTipoText= 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente.'
 const papel = {
     subtitle: 'tipos de papel',
-    text:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.',
+    text:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus',
     tipos: [
         {id:1,type:'Papel1',img:papelComposicion,text:papelTipoText,},
         {id:2,type:'Papel2',img:papelComposicion,text:papelTipoText,},
@@ -27,11 +27,17 @@ const papel = {
         {id:7,type:'Papel7',img:papelComposicion,text:papelTipoText,},
     ]
 }; 
-    
+
 const SectionFrames = () => {
+    const navigate=(dir)=>{
+        const direction={
+            'back':'/infoMaterials'
+        }
+        window.location=direction[dir] ? direction[dir] : '/'
+    }
     return (
         <>
-            <Title title={marcos.title} backTitle={true}/>
+            <Title title={marcos.title} backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionFrames'>
                 <div className='sectionFrames__first-intro'>
                     <h2>{marcos.type}</h2>
@@ -46,9 +52,9 @@ const SectionFrames = () => {
                 <div className='sectionFrames__content'>
                     <h2>{papel.subtitle}</h2>
                     <p>{papel.text}</p>
-                    <div className="materials__cont">
+                    <div className="sectionFrames__materials">
                     {papel.tipos.map(item=>
-                        <MaterialCards id={item.id} img={item.img} text={item.text} type={item.type}/>
+                        <MaterialCards id={item.id} img={item.img} text={item.text} type={item.type} borderColor={'#D6E1E6'}/>
                     )}
                     </div>         
                 </div>
