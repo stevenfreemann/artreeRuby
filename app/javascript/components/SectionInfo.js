@@ -1,44 +1,35 @@
 import React from 'react'
 import SeeButton from './SeeButton'
-import img from '../assets/static/images/javier-vanegas.png'
-const title = 'Javier Vanegas'
-const texto = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor neque placeat culpa eos accusantium itaque molestiae cupiditate, ipsa non rem sint facilis blanditiis impedit consequuntur nisi. Totam earum distinctio odio!'
-const textoBtn = 'Ver todos los artistas'
+
 const listener = (dato) => {
     console.log(dato)
 }
-const SectionArtist = (props) => {
-    const inverso = () => {
-        let inv = props.inverso === true ? "inverso" : ""
+const SectionInfo = ({inverso, img, title, text,listener, ignoreButton, textoBtn}) => {
+    const showInverso = () => {
+        let inv = inverso ? "inverso" : ""
         return inv
     }
-    let color = props.backColor ? props.backColor : props.inverso && 'var(--backWhiteCream)'
+    let color = inverso ? 'var(--backCream)' : 'var(--backWhiteCream)';
     return (
-        <section className={`main-section ${inverso()}`} style={{ backgroundColor: color }}>
-            <div className='section-cont'>
-                <div className={`section-info ${inverso()}`}>
-                    <div className="info-title">
-                        <h2>
-                            {title}
-                        </h2>
-                    </div>
-                    <div className='info-text'>
-                        <p>
-                            {texto}
-                        </p>
-                    </div>
-                    {!props.ignoreButton &&
-                        <div className='info-button'>
-                            <SeeButton textBtn={textoBtn} listener={props.listener} />
+        <section className={`sectionInfo ${showInverso()}`} style={{ backgroundColor: color }}>
+            <div className='sectionInfo__cont'>
+                <div className={`sectionInfo__info ${showInverso()}`}>
+                    <h2 className="sectionInfo__title">
+                        {title}
+                    </h2>
+                    <p className='sectionInfo__text'>
+                        {text}
+                    </p>
+                    {!ignoreButton &&
+                        <div className='sectionInfo__button'>
+                            <SeeButton textBtn={textoBtn} listener={listener} />
                         </div>
                     }
                 </div>
-                <div className='section-img'>
-                    <img src={img} />
-                </div>
+                <img className='sectionInfo__img' src={img} />
             </div>
         </section>
     )
 }
 
-export default SectionArtist
+export default SectionInfo

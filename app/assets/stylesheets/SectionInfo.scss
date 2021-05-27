@@ -1,84 +1,91 @@
-.main-section{
+.sectionInfo{
     background-color: #ECEDDB;
-    display: flex;
-    justify-content: center;
 }
-.section-cont{
-    max-width: 115rem;
+
+.sectionInfo__cont{
+    width: 115rem;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     align-items: center;
 }
 
-.section-img{
-    width: 100%;
-    height: 38rem;
+.sectionInfo__img{
+    width: 91%;
     margin: 10rem 0;
+    border: solid 1.8rem white;
 }
 
-.section-img img{
-    width: 100%;
-    height: 100%;
-    border-style: solid;
-    border-color: white;
-    border-width: 1.8rem;
-}
-
-.section-info{
+.sectionInfo__info{
     grid-column: 1 / 3;
     display: grid;
-    grid-template-columns: repeat(1,3fr);
-    align-content: space-around;
-    margin: 0 10rem;
+    grid-template-columns: repeat(1, 3fr);
+    align-content: flex-start;
+    margin: 0;
     height: 38.4rem;
+    width: 80%;
 }
 
 .inverso{
     grid-column: 2 / 4;
     grid-row: 1 / 2;
+    margin: 0 0 0 auto;
 }
 
-.info-title h2{
+.sectionInfo__title{
+    font-family: var(--Roboto);
     font-size: 3.5rem;
     font-weight: bold;
 }
 
-.info-text p {
+.sectionInfo__text{
+    font-family: var(--Montserrat);
     font-size: 2.1rem;
 }
 
-@media (max-width: 1024px) {
-    .section-info{
-        margin: 0 5rem;
-    }
-    
-    .section-cont{
+.sectionInfo__button{
+    margin-top: 12%;
+}
+
+@media (max-width: 1200px) {
+    .sectionInfo__cont{
+        width: 71.5rem;
         display: flex;
         flex-direction: column-reverse;
         text-align: center;
+        padding: 2% 0 5%;
+    }
+
+    .sectionInfo__info{
+        margin: 0 5rem;
     }
     
-    .section-img{
+    .sectionInfo__img{
         margin-bottom: 0;
         margin-top: 5rem;
-    }
-
-    .info-button{
-        margin-bottom: 5rem ;
-    }
-
-    .section-img{
         width: 50%;
         height: auto;
     }
+
+    .sectionInfo__button{
+        margin-bottom: 5rem ;
+    }
 }
 
-@media (max-width: 600px) {
-    .info-text p {
+@media (max-width: 720px) {
+    .sectionInfo__cont{
+        width: 100%;
+        padding: 0 0 0;
+    }
+    .sectionInfo__text{
         font-size: 1.4rem;
     }
 
-    .info-title h2{
-        font-size: 3.5rem;
+    .sectionInfo__title{
+        font-size: 2.1rem;
     }
+}
+@media (max-width: 400px){
+    .sectionInfo__cont {
+        height: 53rem;}
 }

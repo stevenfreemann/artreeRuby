@@ -1,183 +1,180 @@
 .footer{
     background-color: #464646;
-    display: flex;
-    justify-content: center;
+}
+
+.footer__cont{
+    width: 120rem;
     height: 38.7rem;
+    margin: 0 auto;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
 }
 
-.footer-cont{
-    min-width: 115rem;
-    display: grid;
-    margin: 4rem;
-}
-
-.top-cont{
+.footer__top{
+    width: 85%;
+    justify-self: center;
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-row: 1 / 3;
+    margin-bottom: 5%;
 }
 
-.logo-cont{
+.footer__logo-cont{
     display: grid;
     justify-content: flex-start;
     align-content: flex-start;
 }
 
-.logo1, .logo2{
+.footer__logo1, .logo2{
     margin-bottom: 4rem;
 }
 
-.logo1{
+.footer__logo1{
     height: 6.8rem;
 }
-.logo2{
+.footer__logo2{
     height: 4.1rem;
 }
 
-.logo1 img, .logo2 img{
-    height: 100%;    
-}
-
-.link-cont, .info-cont{
+.footer__link-cont, .footer__info-cont{
     display: grid;
     font-size: 2.4rem;
     justify-content: flex-start;
     align-content: flex-start;
 }
 
-.link-cont li {
-    list-style: none;
-    margin-bottom: 1.5rem;
+.footer__link-cont{
+    margin-left: 15%;
 }
 
-.link-cont a{
+.footer__link-cont li {
+    list-style: none;
+    margin-bottom: 25%;
+}
+
+.footer__link-cont a{
     color: #D1D2D7;
+    text-decoration: none;
     font-weight: 500;
 }
 
-.link-cont a:hover,
-.info-cont a:hover{
+.footer__link-cont a:hover,
+.footer__info-cont a:hover{
     text-decoration: none;
     color: grey;
 }
 
-.info-cont{
+.footer__info-cont{
     color: #D1D2D7;
     font-size: 2.1rem;
     justify-content: flex-end;
 }
 
-.info-cont a {
+.footer__info-cont a {
     text-decoration: none;
     color: #D1D2D7;
     margin-bottom: 3rem;
 }
 
-.info-cont p {
+.footer__info-cont p {
     line-height: 1;
 }
 
-.lower-cont{
+.footer__lower-cont{
+    width: 85%;
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     align-items: flex-start;
 }
 
-.payment-cont, .social-cont{
+.footer__payment-cont, .footer__social-cont{
     width: 35rem;
     display: flex;
     justify-content: space-evenly;
 }
 
-.payment-logo{
+.footer__payment-logo{
     width: 5.5rem;
     height: 3.5rem;
     display: flex;
-    border-style: solid;
-    border-color: white;
-    border-radius: .4rem;
-    filter:grayscale(1);
 }
 
-.payment-logo img{
+.footer__payment-logo img{
     height: 100%;
     width: 100%;
 }
 
-.social-logo img{
+.footer__social-logo img{
     width: 100%;
     height: 100%;
 }
 
-.social-logo{
+.footer__social-logo{
     width: 4rem;
     height: 4rem;
 }
 
-.social-logo {
+.footer__social-logo img{
     transition: transform .2s;
 }
 
-.social-logo :hover{
+.footer__social-logo img:hover{
     transform: scale(1.5);
 }
 
-@media (max-width: 1150px) {
-    .footer-cont{
-        min-width: 90%;
+@media (max-width: 1200px) {
+    .footer__cont{
+        width: 90%;
     }
-}
-
-@media (max-width: 1024px) {
-    .top-cont{
+    .footer__top{
         grid-template-columns: repeat(2, 1fr);
     }
-    .logo-cont{
+    .footer__logo-cont{
         grid-column: 1 / 4;
         display: flex;
         justify-content: space-around;
     }
-    .logo1, .logo2{
-        margin-bottom: 0;
-    }
-    .link-cont, .info-cont{
+    .footer__link-cont, .footer__info-cont{
         justify-content: center;
         font-size: 1.7rem;
     }
 }
 
-@media (max-width: 768px) {
-    .link-cont, .info-cont{
+@media (max-width: 720px) {
+    .footer__link-cont, .footer__info-cont{
         justify-content: center;
         font-size: 1.3rem;
     }
-    .logo1, .logo2{
+    .footer__logo1, .footer__logo2{
         height: 45%;
     }
-    .payment-cont{
+    .footer__payment-cont{
         width: 27rem;
     }
-    .social-cont{
+    .footer__social-cont{
         width: 20rem;
     }
 }
 
 @media (max-width: 523px) {
-    .logo2{
+    .footer__logo2{
         height: 2.5rem;
     }
 
-    .payment-cont , .social-cont{
+    .footer__payment-cont , .footer__social-cont{
         width: 15rem ;
     }
 
-    .payment-logo{
+    .footer__payment-logo{
         height: 1.6rem;
         width: 2.6rem;
     }
 
-    .social-logo{
+    .footer__social-logo{
         height: 1.8rem;
         width: 1.8rem;
     }
