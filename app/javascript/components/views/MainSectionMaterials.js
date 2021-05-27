@@ -58,16 +58,17 @@ const MainSectionMaterials = () => {
             2:'/infoCanvas',
             4:'/infoPapers',
             3:'/infoAcrilics',
-            5:'/infoCanvas'
+            5:'/infoCanvas',
+            'back':'/'
         }
         window.location=direction[id] ? direction[id] : '/'
     }
     return (
         <div className="sec-materials">
-            <Title title="MATERIALES" backTitle={true} />
+            <Title title="MATERIALES" backTitle={true} listener={()=>navigate('back')}/>
             <div className="materials__pres">
                 <div className="materials__background">
-                    <div class="materials__img--pos">
+                    <div className="materials__img--pos">
                         <div>
                             <span>Canvas</span>
                             <img src={canvas} alt="Canvas" />
@@ -89,7 +90,7 @@ const MainSectionMaterials = () => {
             </div>
             <div className="materials__cont">
                 {type.map(item =>
-                    <MaterialCard type={item.type} img={item.img} id={item.id} text={item.text} main={true} listener={()=>navigate(item.id)} />  
+                    <MaterialCard type={item.type} img={item.img} key={item.id} text={item.text} main={true} borderColor={'#D1D2D7'} listener={()=>navigate(item.id)} />  
                 )}
             </div>   
         </div>

@@ -21,9 +21,9 @@ const PaymentInformation = (props) => {
     return (
         <div className="paymentInformation__cont">
             <div className="paymentInformation__tabs">
-                <div className={check==="Acount" && "paymentInformation__tabs--selected"} onClick={()=>setCheck("Acount")}>Cuenta</div>
-                <div className={check==="Check" && "paymentInformation__tabs--selected"} onClick={()=>setCheck("Check")}>Check Out</div>
-                <div className={check==="Payment" && "paymentInformation__tabs--selected"} onClick={()=>setCheck("Payment")}>Pagos</div>
+                <div className={check==="Acount" ? "paymentInformation__tabs--selected":""} onClick={()=>setCheck("Acount")}>Cuenta</div>
+                <div className={check==="Check" ? "paymentInformation__tabs--selected":""} onClick={()=>setCheck("Check")}>Check Out</div>
+                <div className={check==="Payment" ? "paymentInformation__tabs--selected":""} onClick={()=>setCheck("Payment")}>Pagos</div>
             </div>
             <div className="paymentInformation__acount">
                 {check==="Acount"&&cuenta===1 ? 

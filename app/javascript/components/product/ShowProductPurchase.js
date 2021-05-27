@@ -54,19 +54,19 @@ const ShowProductPurchase = (props) => {
                     <span>Foto</span>
                 </div>
                 <div>
-                    <div className={selectSize!==0&&"item-selected"}></div>
+                    <div className={selectSize!==0?"item-selected":""}></div>
                     <span>Tamaño</span>
                 </div>
                 {!exclusive&&<div>
-                    <div className={selectMaterial!==0&&"item-selected"}></div>
+                    <div className={selectMaterial!==0?"item-selected":""}></div>
                     <span>Materiales</span>
                 </div>}
                 <div>
-                    <div className={selectFrame===true&&"item-selected"}></div>
+                    <div className={selectFrame===true?"item-selected":""}></div>
                     <span>Marco</span>
                 </div>
                 <div>
-                    <div className={selectPaking===true&&"item-selected"}></div>
+                    <div className={selectPaking===true?"item-selected":""}></div>
                     <span>Empaque</span>
                 </div>
             </div>

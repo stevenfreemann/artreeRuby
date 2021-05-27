@@ -14,9 +14,18 @@ const Header =() => {
     
     const navigate=(section)=>{
         const redirect={
-            'MATERIALES':'/infoMaterials',
+            '¿Quienes somos?':'/about',
             'EXCLUSIVE':'/infoExclusive',
+            'PRO':'/',
+            'LIKE A PRO':'/',
+            'MATERIALES':'/infoMaterials',
+            'REGALOS':'/',
+            'Artistas':'/artist',
             'profile':'/register',
+            'Wishlist':'/',
+            'Carrito':'/cart',
+            'Carrito':'/cart',
+            'Usuario':'/profile',
             'home':'/'
         }
         window.location = redirect[section] ? redirect[section]: '/'
@@ -27,12 +36,12 @@ const Header =() => {
             <div className="header__cont">
                 <img className="header__logo" src={Logo} alt='Logo' onClick={()=>navigate('home')}/>
                     <div className="header__iconsCont">
-                        <img className='header__icon' src={User} onClick={()=>navigate('profile')}/>
-                        <div className='icons__notification'>
+                        <img className='header__icon' src={User} onClick={()=>navigate('Usuario')}/>
+                        <div className='icons__notification' onClick={()=>navigate('Wishlist')}>
                             <img className='header__icon2' src={Wish} />
                             {notificationWhish!==0&&<div>{notificationWhish}</div>}
                         </div>
-                        <div className='icons__notification'>
+                        <div className='icons__notification' onClick={()=>navigate('Carrito')}>
                             <img className='header__icon2' src={Shop} />
                             {notificationCart!==0&&<div>{notificationCart}</div>}
                         </div>

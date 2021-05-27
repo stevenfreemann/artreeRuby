@@ -19,7 +19,7 @@ export default function Contactanos() {
                     Queremos solucionar cualquier duda con respecto a tu compra, contáctanos para poder ofrecerte un servicio más integral y personalizado.
                 </p>
             </div>
-            <div className={'iconscontact'} >
+            <div className='iconscontact' >
                 {icons.map(icon =>
                     <div style={{ width: '110px', marginLeft: '5%', textAlign: 'center' }}>
                         <img src={icon.img} style={{ width: '100%' }} />
