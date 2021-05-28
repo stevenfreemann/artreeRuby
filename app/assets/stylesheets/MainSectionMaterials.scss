@@ -106,7 +106,7 @@
 
 .materials__cont{
     width: 120rem;
-    margin: 0 auto;
+    margin: 0 auto 5%;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     row-gap: 6rem;
@@ -117,7 +117,8 @@
     .materials__cont {
         width: 72rem;
         grid-template-columns: repeat(1, 1fr);
-        row-gap: 3rem;
+        row-gap: 6rem;
+        margin: 0 auto 10%;
     }
     .materials__img-cont{
         height: 32.6rem;
@@ -135,6 +136,7 @@
 @media (max-width: 720px) {
     .materials__cont {
         width: 90%;
+        row-gap: 4rem;
     }
     .materials__background{
         height: 19.5rem;

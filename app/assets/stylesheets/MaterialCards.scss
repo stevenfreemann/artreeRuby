@@ -65,6 +65,8 @@
 .material-card__img img,
 .material-card__img--main img {
   box-shadow: 3px 3px 6px #00000033;
+  border-style: solid;
+  border-width: 1.5rem;
 }
 
 .material-card__img:hover {
@@ -100,8 +102,14 @@
   .material-card__img--main span {
     font-size: 3.2rem;
   }
-  .material-card__info {
+  .material-card__info,
+  .material-card__info--main{
     font-size: 1.6rem;
+  }
+  .material-card__img img,
+  .material-card__img--main img {
+    border-style: solid;
+    border-width: 0.7rem;
   }
   .material-card__img {
     width: 90%;

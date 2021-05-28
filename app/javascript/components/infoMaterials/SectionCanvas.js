@@ -71,15 +71,17 @@ const SectionCanvas = () => {
                         <h2>{espesores.subtitle}</h2>
                         <div className="materials__cont">
                             {espesores.tipos.map(e=>
-                                <MaterialCards id={e.id} type={e.type} img={e.img} text={e.text}/>
+                                <MaterialCards id={e.id} type={e.type} img={e.img} text={e.text} borderColor={'#CBBDCB'}/>
                                 )}
                         </div> 
                     </div>
                     <div>
                         <h2>{papeles.subtitle}</h2>
-                        {papeles.tipos.map(paper=>
-                             <MaterialCards id={paper.id} img={paper.img} text={paper.text} type={paper.type}/>
-                        )}
+                        <div className='sectionCanvas__materials'>
+                            {papeles.tipos.map(paper=>
+                                 <MaterialCards id={paper.id} img={paper.img} text={paper.text} type={paper.type} borderColor={'#D6E1E6'}/>
+                            )}
+                        </div>
                        
                     </div>
                 </div>

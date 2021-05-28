@@ -7,7 +7,7 @@ const MaterialCard = ({main, id, type , img , text, listener, borderColor}) => {
             <div key={id} className="material-card" onClick={listener}>
                 <div className={`material-card__img${main ? '--main' : ''}`}>
                     {main && <span>{type}</span>}
-                    <img style={{border: `solid 1.5rem ${borderColor}`}} src={img} alt={type} />
+                    <img style={{borderColor: `${borderColor}`}} src={img} alt={type} />
                 </div>
                 {text ? <div className={`material-card__info${main ? '--main' : ''}`}>
                     <span className>{type}. </span>

@@ -36,7 +36,7 @@
 .sectionFrames__materials{
     padding: 5% 0;
     width: 120rem;
-    margin: 0 auto;
+    margin: 0 auto 5%;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     row-gap: 6rem;
@@ -62,31 +62,34 @@
     transform: scale(1.1);
 }
 
-.sectionFrames__subContent img{
-    width: 68%;
-}
-
 @media (max-width: 1200px) {
-    .sectionFrames__materials{
-        width: 72rem;
-        grid-template-columns: repeat(1, 1fr);
-        row-gap: 3rem;
-    }
     .sectionFrames{
         width: 72rem;
     }    
+    .sectionFrames__materials{
+        width: 72rem;
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 6rem;
+        margin: 0 auto 10%;
+    }
 }
 @media (max-width: 720px) {
-    .sectionFrames__materials{
-        width: 90%;
-    }
     .sectionFrames{
         width: 100%;
+    }
+    .sectionFrames__materials{
+        width: 90%;
+        row-gap: 4rem;
     }
     .sectionFrames h2 {
         font-size: 1.8rem;
     }
     .sectionFrames p {
         font-size: 1.6rem;
+        width: 80%;
+        margin-bottom: 5%;
     }
+    .sectionFrames__second-intro img{
+        border: solid .7rem #D1D2D7;
+    }    
 }
