@@ -26,9 +26,29 @@
     right: 0;
 }
 
-.carousel__img {
+.carousel__img-with-text{
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+}
+.container-content-carousel{
+    display: 'flex';
+    
+}
+.container-content-carousel h1{
+    font-size: 48px;
+}
+.container-content-carousel p{
+    font-size: 26px;
+}
+
+.container-text-carousel{
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    width:37%;
+    margin-left:25%;
+    margin-top:6%; 
+    margin-right: 5%;
 }
 
 .carousel__slideInd{
@@ -69,5 +89,15 @@
     .carousel__indicator, .carousel__indicator--selected{
         height: 14px;
         width: 14px; 
+    }
+    .container-text-carousel{
+        width:61%;
+        margin-left:22%;
+    }
+    .container-text-carousel h1{
+        font-size: 24px;
+    }
+    .container-text-carousel p{
+        font-size: 13px;
     }
 }

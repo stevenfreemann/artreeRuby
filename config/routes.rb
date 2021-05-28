@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'contacto' => 'home#contacto'
   get 'infoMaterials' => 'home#infoMaterials'
   get 'infoExclusive' => 'home#infoExclusive'
+  get 'infoPro' => 'home#infoPro'
+  get 'infoLikepro' => 'home#infoLikeAPro'
   get 'subInfoMaterial' => 'home#subInfoMaterials'
   get 'cart' =>'shoppin_cart#shoppingCart'
   get 'register' => 'register#register'
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
   get 'about' => 'home#aboutUs'
   get 'failPurchase' => 'home#purchaseFailed'
   get 'succesPurchase' => 'home#purchaseSucces'
+  get 'wishlist' => 'profile#sectionWishlist'
+  get 'upload' => 'like_pro#upload'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

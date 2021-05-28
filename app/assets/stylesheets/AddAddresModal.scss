@@ -1,4 +1,8 @@
 .container-addres{
+    display: none;
+}
+
+.container-addres-show{
     z-index: 1;
     position: absolute;
     width: 120em;
@@ -59,4 +63,19 @@
     border-radius: 5px;
     border: transparent;
     height: 30px;
+}
+.button-modal-addres{
+    width: 160px;
+    height: 35px;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    font-family: var(--Roboto);
+    font-weight: bold;
+    border-color: black;
+    background-color: white;
+    margin-top: 20%;
+}
+.button-modal-addres:hover{
+    background-color: black;
+    color:white;
 }
