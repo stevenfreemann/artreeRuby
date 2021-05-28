@@ -10,17 +10,17 @@ const SectionInfo = ({inverso, img, title, text, color}) => {
         return inv
     }
     return (
-        <section className={`sectionInfo ${showInverso()}`} style={{ backgroundColor: color }}>
-            <div className='sectionInfo__cont'>
-                <div className={`sectionInfo__info ${showInverso()}`}>
-                    <h2 className="sectionInfo__title">
+        <section className={`sectionRoom ${showInverso()}`} style={{ backgroundColor: color }}>
+            <div className='sectionRoom__cont'>
+                <div className={`sectionRoom__info ${showInverso()}`}>
+                    <h2 className="sectionRoom__title">
                         {title}
                     </h2>
-                    <p className='sectionInfo__text'>
+                    <p className='sectionRoom__text'>
                         {text}
                     </p>
                 </div>
-                <img className='sectionInfo__img' src={img} />
+                <img className='sectionRoom__img' src={img} />
             </div>
         </section>
     )

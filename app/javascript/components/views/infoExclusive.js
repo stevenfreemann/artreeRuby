@@ -16,16 +16,22 @@ const rooms = [
 ]
 
 export default function infoExclusive() {
+    const navigate=(dir)=>{
+        const direction={
+            'home':'/'
+        }
+        window.location=direction[dir] ? direction[dir] : '/'
+    }
     return (
         <>
-            <Title title={'EXCLUSIVE'} backTitle={true} />
+            <Title title={'EXCLUSIVE'} backTitle={true} alignLeft={true} listener={()=>navigate('home')}/>
             <div className='infoExclusive' > 
                 <p>
-                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
             </div>
             <Carrousel />
-            <div style={{ height: '4rem' }} />
+            <div className='infoExclusive__rooms'/>
             {rooms.map(item =>
                 <SectionRoom key={item.id} inverso={rooms.indexOf(item) % 2 === 0 ? false : true } title={item.room} text={item.text} img={item.img} color={item.color} />
             )}
