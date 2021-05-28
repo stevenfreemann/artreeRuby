@@ -23,16 +23,16 @@ const info = [
 
 const initialState = info.find(dato => dato.id===1) 
 
-const SectionProduct = ({exclusive, title}) => {
+const SectionProduct = ({view, title}) => {
     const [data, setData] = useState(initialState)
-    const [screen, setScreen] = useState("picture")
+    const [screen, setScreen] = useState(view === 3 ? 'purchase':"picture")
     return (
         <div className="sectionProduct">
             <Title title={title} alignLeft={true} backTitle={true}/>
             <div className="sectionProduct__cont">
                     {screen==="picture"?<ShowProduct data={data} setScreen={setScreen}/>
                     :screen==="purchase"&&
-                    <ShowProductPurchase exclusive={exclusive} data={data}/>}
+                    <ShowProductPurchase exclusive={view===1 ? true : false} data={data}/>}
                     <CarrouselDown idSelected={data.id} info={info} listener={(info)=> setData(info)}/>
             </div>
         </div>
