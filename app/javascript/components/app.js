@@ -25,7 +25,7 @@ export default function app(props) {
         'infoMaterials':'/infoMaterials'
     }
     window.location = redirect[section] ? redirect[section]: '/'
-}
+  }
   return (
     <>
       <Carousel />

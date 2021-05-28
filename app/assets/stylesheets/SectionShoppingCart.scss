@@ -1,10 +1,11 @@
 .sectionShoppingCart{
+    box-sizing: border-box;
     width: 100%;
 }
 
 .shoppingCard__cont{
     max-width: 120rem;
-    margin: 0 auto;
+    margin: 0 auto 7%;
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(2, 1fr);

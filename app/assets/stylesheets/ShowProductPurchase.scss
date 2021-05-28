@@ -1,4 +1,5 @@
 .showProductPurchase{
+    box-sizing: border-box;
     display: grid;
     grid-template-rows: repeat(10% 90%);
     justify-items: center;
@@ -36,6 +37,7 @@
 .showProductPurchase__progress hr{
     position: absolute;
     width: 97%;
+    // top: 3px;
     left: 5px;
     height: 1px;
     background-color: black;
@@ -197,6 +199,10 @@
     font-size: 16px;
     color: #7b7b7b;
     text-align: center;
+}
+
+.showProductPurchase__icons div:hover{
+    cursor: pointer;
 }
 
 .showProductPurchase__icons img{

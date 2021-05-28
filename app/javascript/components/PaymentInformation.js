@@ -14,7 +14,7 @@ const sub = ["Interior","Apto"]
 
 const PaymentInformation = (props) => {
     const [check, setCheck] = useState("Acount")
-    const [cuenta, setCuenta] = useState(2)
+    const [cuenta, setCuenta] = useState(1)
     const products = props.products
 
     
@@ -43,8 +43,8 @@ const PaymentInformation = (props) => {
                     </div>
                     <button type="button" onClick={()=>setCuenta(3)}>Entrar</button>
                     <div className="links">
-                        <a href="#" onClick={()=>setCuenta(2)}>Registrarse</a>
-                        <a href="#">Recordar Contraseña</a>
+                        <a onClick={()=>setCuenta(2)}>Registrarse</a>
+                        <a>Recordar Contraseña</a>
                     </div>
                 </form>
                 :check==="Acount"&&cuenta===2?

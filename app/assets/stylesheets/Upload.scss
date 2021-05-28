@@ -1,14 +1,65 @@
-.container-upload{
+.upload{
+    padding-bottom: 3%;
+    box-sizing: border-box;
+}
+
+.upload__cont{
+    width: 120rem;
+    margin: 0 auto;
+    padding: 0 3%;
+    display: grid;
+    grid-template-columns: 1fr 10%;
+}
+
+.upload__img{
     background-color: white;
-    width: 927px;
+    width: 90%;
     height: 435px;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    padding: 24px;
-   
+    align-items: center;
+    box-shadow: 3px 3px 6px #00000033;
 }
-.container-buttom{
-    height: 90px;
-    background-color: var(--backGray);
+
+.upload__img img{
+    height: 63%;
+}
+
+.upload__cart{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    color: #7b7b7b;
+    text-align: center;
+    align-items: center;
+}
+
+.upload__cart img{
+    width: 6.4rem;
+    transition: opacity .2s;
+}
+
+.upload__cart img:hover{
+    cursor: pointer;
+    opacity: .5;
+}
+
+@media (max-width: 1200px) {
+    .upload__cont{
+        width: 100%;
+    }
+}
+@media (max-width: 720px) {
+    .upload__cont{
+        grid-template-columns: auto;
+        row-gap: 3rem;
+        margin-bottom: 5%;
+    }
+    .upload__img{
+        height: 26rem;
+    }
+    .upload__cart img{
+        width: 4.4rem;
+    }
 }

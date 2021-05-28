@@ -4,9 +4,9 @@ import SeeButton from './SeeButton'
 const listener = (dato) => {
     console.log(dato)
 }
-const SectionInfo = ({inverso, img, title, text, color}) => {
+const SectionInfo = ({inverso, img, title, text, subtitle, color,listener}) => {
     const showInverso = () => {
-        let inv = inverso ? "inverso" : ""
+        let inv = inverso ? "room_inverso" : ""
         return inv
     }
     return (
@@ -16,11 +16,14 @@ const SectionInfo = ({inverso, img, title, text, color}) => {
                     <h2 className="sectionRoom__title">
                         {title}
                     </h2>
+                    {subtitle&&<span className="sectionRoom__subtitle">
+                        {subtitle}
+                    </span>}
                     <p className='sectionRoom__text'>
-                        {text}
+                    {text}
                     </p>
                 </div>
-                <img className='sectionRoom__img' src={img} />
+                <img className='sectionRoom__img' src={img} onClick={listener}/>
             </div>
         </section>
     )

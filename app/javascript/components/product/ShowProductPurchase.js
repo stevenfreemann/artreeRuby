@@ -45,6 +45,14 @@ const ShowProductPurchase = (props) => {
     const [selectFrame, setSelectFrame] = useState(false)
     const [selectPaking, setSelectPaking] = useState(false)
     
+    const navigate=(section)=>{
+        const redirect={
+            'wishlist':'/wishlist',
+            'cart':'/cart'
+        }
+        window.location = redirect[section] ? redirect[section]: '/'
+      }
+
     return (
         <div className="showProductPurchase">
             <div className="showProductPurchase__progress">
@@ -137,11 +145,11 @@ const ShowProductPurchase = (props) => {
 
                     </div>
                     <div className="showProductPurchase__icons">
-                        <div>
+                        <div onClick={()=>navigate('wishlist')} >
                             <img src={whishList} alt="whishlist"/>
                             <span>Whish List</span>
                         </div>
-                        <div>
+                        <div onClick={()=>navigate('cart')} >
                             <img src={compra} alt="compra"/>
                             <span>Finalizar Compra</span>
                         </div>

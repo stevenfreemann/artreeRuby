@@ -1,4 +1,5 @@
 .paymentInformation__cont{
+    box-sizing: border-box;
     background-color: #d1d2d7;
     display: flex;
     flex-direction: column;
@@ -16,10 +17,15 @@
 
 
 .paymentInformation__tabs div{
+    height: 99%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.6rem;
+    font-family: var(--Roboto);
     border-style: solid;
     border-color: #d1d2d7;
-    border-width: .4rem;
+    border-width: .1rem;
     color: #7b7b7b;
 }
 
@@ -79,6 +85,7 @@
 }
 
 .paymentInformation__acount button:hover{
+    cursor: pointer;
     background-color: white;
     color: black;
 }
@@ -156,6 +163,7 @@
 }
 
 .links a:hover{
+    cursor: pointer;
     color: #5a5a5a;
     text-decoration: none;
 }

@@ -1,46 +1,61 @@
 .sectionRoom{
-    background-color: #ECEDDB;
+    height: 48rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sectionRoom__cont{
     width: 115rem;
+    height: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: 1fr 55%;
     align-items: center;
+    justify-items: center;
 }
 
 .sectionRoom__img{
-    width: 91%;
-    margin: 10rem 0;
+    width: 56.7rem;
+    height: 37.8rem;
+    object-fit: cover;
+    box-sizing: border-box;
     border: solid 1.8rem white;
+    transition: opacity .2s;
+}
+.sectionRoom__img:hover{
+    cursor: pointer;
+    opacity: .5;
 }
 
 .sectionRoom__info{
-    grid-column: 60% 1fr;
-    display: grid;
-    grid-template-columns: 2fr;
-    align-content: flex-start;
-    margin: 0;
-    height: 38.4rem;
-    width: 80%;
+    width: 95%;
 }
 
-.inverso{
-    grid-column: 2 / 4;
+.room_inverso{
+    grid-column: 2 / 3;
     grid-row: 1 / 2;
+    grid-template-columns: 55% 1fr;
     margin: 0 0 0 auto;
 }
 
 .sectionRoom__title{
     font-family: var(--Roboto);
     font-size: 3.5rem;
+    margin:0;
+    font-weight: bold;
+
+}
+
+.sectionRoom__subtitle{
+    font-size: 2.1rem;
     font-weight: bold;
 }
 
 .sectionRoom__text{
     font-family: var(--Montserrat);
     font-size: 2.1rem;
+    margin: 5% auto 0
 }
 
 .sectionRoom__button{
@@ -53,6 +68,7 @@
         display: flex;
         flex-direction: column-reverse;
         text-align: center;
+        justify-content: center;
         padding: 2% 0 5%;
     }
 
@@ -65,13 +81,21 @@
     
     .sectionRoom__img{
         margin-bottom: 0;
-        margin-top: 5rem;
-        width: 50%;
+        margin-bottom: 5%;
+        width: 55%;
+        height: 50%!important;
         height: auto;
     }
 
     .sectionRoom__button{
         margin-bottom: 5rem ;
+    }
+    .sectionRoom__text{
+        font-size: 1.4rem;
+    }
+    
+    .sectionRoom__title{
+        font-size: 2.1rem;
     }
 }
 
@@ -79,12 +103,21 @@
     .sectionRoom__cont{
         width: 100%;
         padding: 0 0 0;
+        justify-content: center;
     }
-    .sectionRoom__text{
-        font-size: 1.4rem;
-    }
+    .sectionRoom__img{
+        width: 50%;
+        height: 40%!important;
+        border: solid .7rem white;
 
-    .sectionRoom__title{
-        font-size: 2.1rem;
     }
+    .sectionRoom__info{
+        width: 85%;
+    }
+}
+@media (max-width: 400px) {
+    .sectionRoom__img{
+        width: 90%;
+    }
+    
 }

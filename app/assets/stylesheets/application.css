@@ -23,6 +23,7 @@
 }
 html {
   font-size: 62.5%; 
+  /* box-sizing: border-box; */
 }
 
 body {
@@ -95,7 +96,7 @@ code {
   h2 {
     font-family: var(--Roboto);
   }
-  span, p{
+  span, p ,h3,h4{
     font-family: var(--Montserrat);
 
   }

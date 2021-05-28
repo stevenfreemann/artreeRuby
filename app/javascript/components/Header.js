@@ -21,7 +21,7 @@ const Header =() => {
             'MATERIALES':'/infoMaterials',
             'REGALOS':'/',
             'Artistas':'/artist',
-            'profile':'/register',
+            'Register':'/register',
             'Wishlist':'/wishlist',
             'Carrito':'/cart',
             'Carrito':'/cart',
@@ -36,7 +36,7 @@ const Header =() => {
             <div className="header__cont">
                 <img className="header__logo" src={Logo} alt='Logo' onClick={()=>navigate('home')}/>
                     <div className="header__iconsCont">
-                        <img className='header__icon' src={User} onClick={()=>navigate('Usuario')}/>
+                        <img className='header__icon' src={User} onClick={()=>navigate('Register')}/>
                         <div className='icons__notification' onClick={()=>navigate('Wishlist')}>
                             <img className='header__icon2' src={Wish} />
                             {notificationWhish!==0&&<div>{notificationWhish}</div>}
