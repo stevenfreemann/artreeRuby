@@ -1,107 +1,108 @@
 .signIn{
-  background-color: #d1d2d7;
-}
-.signIn__form{
-    width: 120rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.signIn__form div{
-    width: 36%;
-}
-
-.signIn__form label {
-    font-size: 1.6rem;
-    margin: 1rem 1rem;
-
-}
-
-.signIn__form input:not([type='checkbox']){
-    width:100%;
-    height: 5.3rem;
-    border-radius: .5rem;
-    font-size: 1.8rem;
-    border-style: none;
-}
-
-.signIn__form button{
-    width: 50%;
-    height: 6rem;
-    margin-bottom: 8rem;
-    background-color: black;
-    color:white;
-    border-radius: .5rem;
-    font-size: 2.6rem;
-    align-self: center;
-    border-style: none;
-    text-transform: uppercase;
-    width: 27rem;
-    font-weight: bold;
-}
-
-.signIn__form button:hover{
-    background-color: white;
-    color: black;
-}
-
-.signIn__form-terms{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 36%;
-    font-size: 2.1rem;
-    color: #7b7b7b;
-    margin: 5rem 0;
-}
-
-.signIn__form-terms a {
-    color:#41817e;
-}
-.signIn__form-terms a:hover{
-    color:#41817e;
-}
-
-.signIn__form-terms input[type='checkbox']{
-    margin-right: 5%;
-    width: 25px;
-    height: 25px;
-}
-
-@media (max-width: 1200px) {
-    .signIn__form {
-        width:72rem;
-    }
-    .signIn__form div {
-        width: 50%;
-    }
-}
-
-@media (max-width: 720px) {
-    .signIn__form {
-        width:100%;
-    }
-    .signIn__form div {
-        width: 75%;
-    }
-    .signIn__form input:not([type='checkbox']){
-        height: 3.2rem;
-        font-size: 1.6rem;
-    }
-
-    .signIn__form label,
-    .signIn__form input,
-    .signIn__form span,
-    .signIn__form button{
-        font-size: 1.6rem;
-    }
-    .signIn__form-terms{
-        margin: 3rem 0;
-    }
-    .signIn__form button{
-        height: 4rem;
-    }
-}
+    background-color: #d1d2d7;
+    box-sizing: border-box;
+  }
+  .signIn__form{
+      width: 120rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .signIn__form div{
+      width: 36%;
+  }
+  
+  .signIn__form label {
+      font-size: 1.6rem;
+      margin: 1rem 1rem;
+  
+  }
+  
+  .signIn__form input:not([type='checkbox']){
+      width:100%;
+      height: 5.3rem;
+      border-radius: .5rem;
+      font-size: 1.8rem;
+      border-style: none;
+  }
+  
+  .signIn__form button{
+      width: 50%;
+      height: 6rem;
+      margin-bottom: 8rem;
+      background-color: black;
+      color:white;
+      border-radius: .5rem;
+      font-size: 2.6rem;
+      align-self: center;
+      border-style: none;
+      text-transform: uppercase;
+      width: 27rem;
+      font-weight: bold;
+  }
+  
+  .signIn__form button:hover{
+      background-color: white;
+      color: black;
+  }
+  
+  .signIn__form-terms{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36%;
+      font-size: 2.1rem;
+      color: #7b7b7b;
+      margin: 5rem 0;
+  }
+  
+  .signIn__form-terms a {
+      color:#41817e;
+  }
+  .signIn__form-terms a:hover{
+      color:#41817e;
+  }
+  
+  .signIn__form-terms input[type='checkbox']{
+      margin-right: 5%;
+      width: 25px;
+      height: 25px;
+  }
+  
+  @media (max-width: 1200px) {
+      .signIn__form {
+          width:72rem;
+      }
+      .signIn__form div {
+          width: 50%;
+      }
+  }
+  
+  @media (max-width: 720px) {
+      .signIn__form {
+          width:100%;
+      }
+      .signIn__form div {
+          width: 75%;
+      }
+      .signIn__form input:not([type='checkbox']){
+          height: 3.2rem;
+          font-size: 1.6rem;
+      }
+  
+      .signIn__form label,
+      .signIn__form input,
+      .signIn__form span,
+      .signIn__form button{
+          font-size: 1.6rem;
+      }
+      .signIn__form-terms{
+          margin: 3rem 0;
+      }
+      .signIn__form button{
+          height: 4rem;
+      }
+  }

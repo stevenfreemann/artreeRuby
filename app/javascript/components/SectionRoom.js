@@ -4,23 +4,26 @@ import SeeButton from './SeeButton'
 const listener = (dato) => {
     console.log(dato)
 }
-const SectionInfo = ({inverso, img, title, text, color}) => {
+const SectionInfo = ({inverso, img, title, text, subtitle, color,listener}) => {
     const showInverso = () => {
-        let inv = inverso ? "inverso" : ""
+        let inv = inverso ? "room_inverso" : ""
         return inv
     }
     return (
-        <section className={`sectionInfo ${showInverso()}`} style={{ backgroundColor: color }}>
-            <div className='sectionInfo__cont'>
-                <div className={`sectionInfo__info ${showInverso()}`}>
-                    <h2 className="sectionInfo__title">
+        <section className={`sectionRoom ${showInverso()}`} style={{ backgroundColor: color }}>
+            <div className='sectionRoom__cont'>
+                <div className={`sectionRoom__info ${showInverso()}`}>
+                    <h2 className="sectionRoom__title">
                         {title}
                     </h2>
-                    <p className='sectionInfo__text'>
-                        {text}
+                    {subtitle&&<span className="sectionRoom__subtitle">
+                        {subtitle}
+                    </span>}
+                    <p className='sectionRoom__text'>
+                    {text}
                     </p>
                 </div>
-                <img className='sectionInfo__img' src={img} />
+                <img className='sectionRoom__img' src={img} onClick={listener}/>
             </div>
         </section>
     )

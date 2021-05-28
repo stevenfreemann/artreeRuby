@@ -3,33 +3,40 @@ import Carrousel from '../Carousel'
 import Title from '../Title'
 import SectionRoom from '../SectionRoom'
 
-import infoMaterials from '../../assets/static/images/infoMaterials.png'
-import img from '../../assets/static/images/javier-vanegas.png'
+import Pro1 from '../../assets/static/images/PRO/COLECCION-PARA-TU-COCINA-5846.jpeg'
+import Pro2 from '../../assets/static/images/PRO/COLECCION-FACHADAS-2486.jpeg'
+import Pro3 from '../../assets/static/images/ShoppingCart2.png'
 
 const texto = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor neque placeat culpa eos accusantium itaque molestiae cupiditate, ipsa non rem sint facilis blanditiis impedit consequuntur nisi. Totam earum distinctio odio!'
 
 const rooms = [
-  {id:1,room:'Sala 1',text:texto, img:img,color:'var(--backPurple)',},
-  {id:2,room:'Sala 2',text:texto, img:infoMaterials,color:'white',},
-  {id:3,room:'Sala 3',text:texto, img:img,color:'var(--backCream',},
-  {id:4,room:'Sala 4',text:texto, img:infoMaterials,color:'var(--white)',}
+    {id:1,room:'ESPACIO 1',area:'Sala',text:texto, img:Pro1,color:'var(--backCream)',},
+    {id:2,room:'ESPACIO 2',area:'Estudio',text:texto, img:Pro2,color:'white',},
+    {id:3,room:'ESPACIO 3',area:'Habitación',text:texto, img:Pro3,color:'var(--backPurple',},
 ]
 
-export default function InfoLikeAPro() {
+export default function infoPro() {
+    const navigate=(dir)=>{
+        const direction={
+            'home':'/',
+            'Sala 1':'/upload'
+        }
+        window.location=direction[dir] ? direction[dir] : '/'
+    }
     return (
         <>
-            <Title title={'EXCLUSIVE'} backTitle={true} />
-            <div className='infoExclusive' > 
+            <Title title={'LIKE A PRO'} backTitle={true} alignLeft={true} listener={()=>navigate('home')}/>
+            <div className='infoPro' > 
                 <p>
-                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
-            </div>
             <Carrousel />
-            <div style={{ height: '4rem' }} />
+            </div>
+            <Title title={'ESPACIOS'}/>
+            <div className='infoPro__rooms'/>
             {rooms.map(item =>
-                <SectionRoom key={item.id} inverso={rooms.indexOf(item) % 2 === 0 ? false : true } title={item.room} text={item.text} img={item.img} color={item.color} />
+                <SectionRoom key={item.id} inverso={rooms.indexOf(item) % 2 === 0 ? false : true } title={item.room} subtitle={item.area} text={item.text} img={item.img} color={item.color} listener={()=>navigate('Sala 1')}/>
             )}
         </>
     )
 }
-
