@@ -16,7 +16,7 @@
 }
 
 .sectionCanvas p{
-    width: 90%;
+    width: 70%;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -33,6 +33,16 @@
     align-items: center;
 }
 
+.sectionCanvas__materials{
+    padding: 5% 0;
+    width: 120rem;
+    margin: 0 auto 5%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    row-gap: 6rem;
+    column-gap: 3rem;
+}
+
 .sectionCanvas__first-intro img{
     width: 90%;
 }
@@ -42,18 +52,19 @@
 }
 
 .sectionCanvas__second-intro img{
-    width: 68%;
-    transition: transform .2s;
+    width: 50%;
+    transition: transform .2s ease-in-out,;
     margin: 2% 0;
+    border: solid 1.5rem #D1D2D7;
 }
 
 .sectionCanvas__second-intro img:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .sectionCanvas__subContent h2{
+    margin-left: 1%;
     align-items: flex-start;
-    margin-left: 10%;
 }
 
 .sectionCanvas__subContent div{
@@ -61,19 +72,37 @@
 }
 
 @media (max-width: 1200px) {
-    
     .sectionCanvas{
         width: 72rem;
     }    
+    .sectionCanvas__materials{
+        width: 72rem;
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 6rem;
+        margin: 0 auto 10%;
+    }
+    .sectionCanvas__subContent h2{
+        text-align: center;
+    }
 }
 @media (max-width: 720px) {
     .sectionCanvas{
         width: 100%;
+    }
+    .sectionCanvas__materials{
+        width: 90%;
+        row-gap: 4rem;
     }
     .sectionCanvas h2 {
         font-size: 1.8rem;
     }
     .sectionCanvas p {
         font-size: 1.6rem;
+        width: 80%;
+        margin-bottom: 5%;
     }
+    .sectionCanvas__second-intro img{
+        width: 80%;
+        border: solid .7rem #D1D2D7;
+    }  
 }

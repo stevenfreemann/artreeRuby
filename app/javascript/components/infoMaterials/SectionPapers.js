@@ -19,15 +19,22 @@ const papelTipos = [
     ]
     
 const SectionPapers = () => {
+    const navigate=(dir)=>{
+        const direction={
+            'back':'/infoMaterials'
+        }
+        window.location=direction[dir] ? direction[dir] : '/'
+    }
+
     return (
         <>
-            <Title title={papeles.title} backTitle={true}/>
+            <Title title={papeles.title} backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionPapers'>
                 <h2>{papeles.subtitle}</h2>
                 <p>{papeles.text}</p>
-                <div className="materials__cont">
+                <div className="sectionPapers__cont">
                     {papelTipos.map(item=>
-                         <MaterialCards id={item.id} img={item.img} type={item.type} text={item.type}/>
+                         <MaterialCards id={item.id} img={item.img} type={item.type} text={item.text} borderColor={'#D6E1E6'}/>
                     )}
                </div>
             </div>

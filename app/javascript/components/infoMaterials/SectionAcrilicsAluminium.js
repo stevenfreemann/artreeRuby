@@ -6,7 +6,7 @@ import aluminioImg from '../../assets/static/images/aluminio.png'
 
 const acrilicoTipoText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.'
 const acrilicos = {
-    title: 'ACRILICOS',
+    title: 'ACRÍLICOS',
     tipos: [
         { id: 1, type: 'Papel1', img: acrilicoSection, },
         { id: 2, type: 'Papel2', img: acrilicoSection, },
@@ -14,7 +14,7 @@ const acrilicos = {
 };
 const aluminioTipoText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.'
 const aluminio = {
-    title: 'ALUMINIO',
+    title: 'ALUMINIOS',
     tipos: [
         { id: 1, type: 'Papel1', img: aluminioImg, },
         { id: 2, type: 'Papel2', img: aluminioImg, },
@@ -23,21 +23,27 @@ const aluminio = {
 
 
 const SectionAcrilicsAluminium = () => {
+    const navigate=(dir)=>{
+        const direction={
+            'back':'/infoMaterials'
+        }
+        window.location=direction[dir] ? direction[dir] : '/'
+    }
     return (
         <>
-            <Title title={acrilicos.title} backTitle={true} />
+            <Title title={acrilicos.title} backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionAcrilicsAluminium'>
                 <p>{acrilicoTipoText}</p>
-                <div className="materials__cont">
-                    {aluminio.tipos.map(alm =>
-                        <MaterialCards id={alm.id} type={alm.type} img={alm.img} />
+                <div className="sectionAcrilicsAluminium__cont">
+                    {acrilicos.tipos.map(alm =>
+                        <MaterialCards id={alm.id} type={alm.type} img={alm.img} borderColor={'#D1D2D7'} />
                     )}
                 </div>
                 <Title title={aluminio.title} />
                 <p>{aluminioTipoText}</p>
-                <div className="materials__cont">
+                <div className="sectionAcrilicsAluminium__cont">
                     {aluminio.tipos.map(alm =>
-                        <MaterialCards id={alm.id} type={alm.type} img={alm.img} />
+                        <MaterialCards id={alm.id} type={alm.type} img={alm.img} borderColor={'#D6E1E6'} />
                     )}
                 </div>
             </div>
