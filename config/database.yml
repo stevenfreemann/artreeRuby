@@ -12,7 +12,7 @@ default: &default
   port: 5432
   #To connect locally
   host: localhost
-  user: engine
+  user: <%= ENV.fetch("PDB_USER")%>
   password: 1234
 
 development:

@@ -39,9 +39,7 @@ const Header = () => {
     }
     const displayMenu = () => {
         let element = document.getElementById('menuDesplegable')
-        element.attributes.getNamedItem('hidden')
-            ? element.removeAttribute('hidden') :
-            element.hidden = true
+        element.attributes.getNamedItem('hidden') ? element.removeAttribute('hidden') : element.hidden = true
     }
 
     return (
