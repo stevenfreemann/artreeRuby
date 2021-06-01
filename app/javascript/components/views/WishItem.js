@@ -6,6 +6,14 @@ import DeleteActivo from '../../assets/static/buttons/eliminarwishlistactivo@2x.
 import Cart from '../../assets/static/buttons/movercarrito@2x.png'
 import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
+const hoverImg = (img)=>{
+    img = {
+        "Edit":Edit,
+        "Activo": EditActivo   
+    }
+    return img
+}
+
 const WishItem = ({ product }) => {
     return (
         <div className="wishItem">
@@ -23,7 +31,7 @@ const WishItem = ({ product }) => {
             </div>
             <div className="wishItem__options">
                 <div>
-                    <img src={Edit} alt="Editar" />
+                    <img src={hoverImg()} alt="Editar" onMouseOver={}/>
                     <span>Editar</span>
                 </div>
                 <div>
