@@ -38,6 +38,7 @@ const userAcount = {
             price: 130000,
             paymentInfo:{
                 success:true,
+                date:'20/05/2021',
                 detail:'Debito RedCompra PSE Davivienda',
                 lastDB: 1031,
                 paymentReference: 4923121608,
@@ -57,6 +58,7 @@ const userAcount = {
             price: 140000,
             paymentInfo:{
                 sucess:true,
+                date:'20/05/2021',
                 detail:'Debito RedCompra PSE Davivienda',
                 lastDB: 1031,
                 paymentReference: 4923121608,

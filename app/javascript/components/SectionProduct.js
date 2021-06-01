@@ -29,7 +29,6 @@ const SectionProduct = ({view, title}) => {
     return (
         <div className="sectionProduct">
             <div className="sectionProduct__title">
-                {/* <Title title={title} alignLeft={true} backTitle={true}/> */}
                 <h1>{title}</h1>
             </div>
             <div className="sectionProduct__cont">

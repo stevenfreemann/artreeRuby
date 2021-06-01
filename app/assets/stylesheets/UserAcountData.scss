@@ -55,6 +55,7 @@
     width: 60%;
     border: none;
     text-align: center;
+    background-color: white;
 }
 
 .userAcountData__input img{
@@ -70,10 +71,14 @@
     flex-direction: column;
     position: relative;
     justify-content: center;
+    
+}
+.userAcountData__address-input input{
+    background-color: white;
 }
 
 .userAcountData__address-input img{
-    height: 30%;
+    height: 19%;
     position: absolute;
     top: 15%;
     right: 4%;

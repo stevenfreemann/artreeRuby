@@ -26,7 +26,7 @@
 }
 
 .userAcount__menu div{
-    width: 96px;
+    width: 10.6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,7 +43,8 @@
 }
 
 .userAcount__menu img{
-    width: 100%;
+    width: 90%;
+    margin-bottom: 3%;
 }
 
 .userAcount__cont{
@@ -54,7 +55,16 @@
 
 .userAcount__purshase hr{
     width: 60%;
-    height: 2px;
+    height: .2rem;
+    margin: 3% auto;
+}
+@media (max-width: 1366px){
+    .userAcount__menu img{
+        width: 70%;
+    }
+    .userAcount__menu{
+        height: 11.9rem;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -68,7 +78,7 @@
         font-size: 10px;
     }
     .userAcount__menu div{
-        width: 60px;
+        width: 9rem;
     }
     .userAcount__cont hr{
         width: 80%;
@@ -77,17 +87,20 @@
 
 @media (max-width: 720px) {
     .userAcount__info{
-        height: 100px;
+        height: 10rem;
         font-size: 16px;
     }
     .userAcount__info img {
-        width: 57px;
-        height: 57px;
+        width: 5.7rem;
+        height: 5.7rem;
     }
     .userAcount__menu{
         width: 100%;
     }
     .userAcount__menu{
         height: 10rem;
+    }
+    .userAcount__menu div{
+        width: 6rem;
     }
 }

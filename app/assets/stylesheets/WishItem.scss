@@ -1,3 +1,5 @@
+
+
 .wishItem{
     width: 100%;
     display: grid;
@@ -41,8 +43,8 @@
     width: 72%;
 }
 .wishItem__options img:hover{
-    filter: invert(75%);
     cursor: pointer;
+    background-image: url(../../javascript/assets/static/buttons/editarwishlistactivo@2x.png);
 }
 
 .wishItem__options{

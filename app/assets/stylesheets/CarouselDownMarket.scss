@@ -1,58 +1,61 @@
-.sectionExclusive__carousel{
+.carouselDownMarket__carousel{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 5%;
 }
 
-.sectionExclusive__content{
+.carouselDownMarket__content{
     display: grid;
     grid-auto-flow: column;
-    width: 48%;
+    width: 80%;
     height: 13.3rem;
     align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
-    padding: 0 2%;
+    padding: 0 3%;
     margin: 0 2%;
 }
 
-.sectionExclusive__content--selected {
+.carouselDownMarket__content--selected {
     border-style: solid;
     border-color: #fff4dc;
     border-width: 2px;
     transform: scale(1.2);
 }
 
-.sectionExclusive__content img {
-    // width: 100%;
+.carouselDownMarket__content img {
     width: 10vw;
     height: 90px;
     object-fit: cover;
 }
 
-.sectionExclusive__content img:hover{
+.carouselDownMarket__content img:hover{
     cursor: pointer;
 }
 
 
-.sectionExclusive__direction{
+.carouselDownMarket__direction{
     width: 20px!important;
     height: 35px!important;
     transition: transform .2s;
 }
 
-.sectionExclusive__direction:hover{
+.carouselDownMarket__direction:hover{
 cursor: pointer;
 transform: scale(1.2);
 }
 
+@media (max-width: 1366px) {
+    .carouselDownMarket__content img {
+        width: 15vw
+    }
+}
 @media (max-width: 720px) {
-    .sectionExclusive__content{
-        display: flex;
+    .carouselDownMarket__content{
         width: 80%;
     }
-    .sectionExclusive__content img {
-        width: 30vw;
+    .carouselDownMarket__content img {
+        width: 25vw;
     }
 }

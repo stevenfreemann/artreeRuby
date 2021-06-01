@@ -19,6 +19,7 @@ const UserAcountPurshase = ({purshase}) => {
                         <img src={check} alt='Estado de pago'/>
                         <div>
                             <h3>Detalle de pago:</h3>
+                            <span>{purshase.paymentInfo.date}</span>
                             <span>{purshase.paymentInfo.detail} terminada en <span style={{fontWeight:'bold'}}>{purshase.paymentInfo.lastDB}</span></span>
                             
                             <span style={{fontWeight:'bold'}}>Referencia de pago: {purshase.paymentInfo.paymentReference}</span>
