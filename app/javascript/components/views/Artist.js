@@ -57,6 +57,7 @@ const Artist = ({artistas,foto}) => {
             <div className='artist__want'>
                 <div>
                     {page>1&&<img src={left} alt='Anterior' onClick={()=>setPage(page-1)}></img>}
+                    <span>{`Página ${page} de ${pages}`}</span>
                     {page<pages&&page!==pages&&<img src={right} alt='Sigiente' onClick={()=>setPage(page+1)}></img>}
                 </div>
                 <h2>¿Quieres ser uno de nuestros artistas?</h2>

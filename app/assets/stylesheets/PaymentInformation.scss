@@ -55,17 +55,19 @@
     font-size: 2.1rem;
     font-weight: bold;
     text-align: center;
+    margin: 5% auto;
 }
 
 .paymentInformation__acount label{
     font-size: 1.7rem;
-    margin-bottom: 0;
-    margin-top: 1rem;
+    margin-left: 3%;
 }
 
 .paymentInformation__acount input:not([type="checkbox"]){
     width:100%;
     height: 4.1rem;
+    margin: 2% 0 4%;
+    padding: 0 4%;
     border-radius: .5rem;
     font-size: 1.7rem;
     border-style: none;
@@ -91,8 +93,10 @@
 }
 
 .paymentInformation__acount select{
+    background-color: white;
     width:100%;
     height: 4.1rem;
+    margin: 2% 0 4%;
     border-radius: .5rem;
     font-size: 1.7rem;
     border-style: none;
@@ -109,7 +113,6 @@
 
 .address{
     display: flex;
-    margin-bottom: 1rem;
     justify-content: space-between;
 }
 
@@ -118,7 +121,12 @@
     margin-right: 5%;
 }
 
+.address span{
+    align-self: center;
+}
+
 .address input{
+    margin: 2% 0 0;
     width: 30% !important;
 }
 
@@ -132,6 +140,7 @@
 }
 
 .address2 input{
+    margin: 0 0 4%;
     width: 50% !important;
 }
 
@@ -227,12 +236,26 @@
     display: flex;
     flex-direction: column;
 }
+.paymentInformation__market h3{
+    margin: 0;
+}
+.paymentInformation__market div span{
+    color: #7B7B7B;
+}
 
 .paymentInformation__total{
     background-color: #b7b7b7;
     padding: 7%;
     font-weight: bold;
     margin-bottom: 10%;
+}
+
+.paymentInformation__code{
+    align-items: center;
+}
+
+.paymentInformation__code input{
+    margin: 0;
 }
 
 .paymentInformation__check label{
@@ -266,8 +289,9 @@
 }
 
 .paymentInformation__logo{
+    background-color: #7B7B7B;
     margin-top: 15%;
-    display: flex;
+    // display: flex;
     justify-content: space-evenly;
     align-self: center;
     width: 100%;

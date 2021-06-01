@@ -9,16 +9,17 @@
 .sectionWishlist__next-prev{
     width: 60%;
     margin: 0 auto;
-    margin-bottom: 5%;
+    margin-bottom: 8%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
 .sectionWishlist__next-prev img{
     width: 4.4rem;
     height: 4.4rem;
     margin: 0 2%;
-    transition: opacity .2;
+    transition: opacity .2s;
 }
 
 .sectionWishlist__next-prev img:hover{

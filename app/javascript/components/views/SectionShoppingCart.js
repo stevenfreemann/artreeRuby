@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Title from '../Title'
+import CartItem from './CartItem'
 import PaymentInformation from '../PaymentInformation'
+
 import ShoppingCart1 from '../../assets/static/images/ShoppingCart1.png'
 import ShoppingCart2 from '../../assets/static/images/ShoppingCart2.png'
 import ShoppingCart3 from '../../assets/static/images/ShoppingCart3.png'
 import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
-import Edit from '../../assets/static/buttons/editar@2x.png'
-import Delete from '../../assets/static/buttons/eliminar@2x.png'
-import Wishlist from '../../assets/static/buttons/moverwishlistbtn@2x.png'
+
 import AddAdressModal from '../AddAddresModal'
 
 const products=[
@@ -56,11 +56,9 @@ const products=[
         price: 150000,
     },   
 ]
-const cant=[1,2,3,4,5]
 
 const SectionShoppingCart = () => {
     const [value, setValue] = useState(0)
-    const quantity = useRef(null)
 
     return (
         <div className="sectionShoppingCart">
@@ -68,47 +66,10 @@ const SectionShoppingCart = () => {
             <div className="shoppingCard__cont">
                 <div className="shoppingCard__items">
                     {products.map((product)=>
-                    <div className="shoppingCard__item" key={product.id}>
-                        <div className="shoppingCard__product">
-                            <div className="shoppingCard__img"><img src={product.img} alt={product.name}/></div>
-                            <div className="shoppingCard__options">
-                                <div>
-                                    <img src={Edit} alt="Editar"/>
-                                    <span>Editar</span>
-                                </div>
-                                <div>
-                                    <img src={Delete} alt="Eliminar"/>
-                                    <span>Eliminar</span>
-                                </div>
-                                <div>
-                                    <img src={Wishlist} alt="Wishlist"/>
-                                    <span>Wishlist</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shoppingCard__infoAndPrice">
-                            <div className="shoppingCard__info">
-                                <h3>{product.type}</h3>
-                                <h4>{product.name}, </h4>
-                                <span>{product.phrase}, </span>
-                                <span>{product.dimensions}, </span>
-                                <span>{product.frame}, </span>
-                                <span>{product.material}</span>
-                            </div>
-                            <div className="shoppingCard__price">
-                                <select ref={quantity}>
-                                    {cant.map((cant)=>
-                                        <option value={cant}>{cant}</option>
-                                    )}
-                                </select>
-                                <h3>${product.price}</h3>
-                            </div>
-                        </div>
-                        <hr/>
-                    </div>
+                    <CartItem key={product.id} product={product}/>
                     )}    
                 </div>
-                <div className="payment">
+                <div className="sectionShoppingCart__payment">
                    <PaymentInformation products={products}/> 
                 </div>
             </div>
