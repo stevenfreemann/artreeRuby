@@ -34,7 +34,7 @@ const Artist = ({artistas,foto}) => {
 
     return (
         <>
-            <Title title="ARTISTAS" backTitle={true} alignLeft={false}/>
+            <Title title="ARTISTAS" alignLeft={false}/>
             <div className='artist__cont'>
                 {showArtist.map((artist)=>
                     <div key={artist.id} className={`artist__card ${((showArtist.indexOf(artist) % 2) == 0)?'':'invertido'}`}>

@@ -31,7 +31,7 @@ const papel = {
 const SectionMaterials = () => {
     return (
         <>
-            <Title title={marcos.title} backTitle={true}/>
+            <Title title={marcos.title} />
             <div className='sectionMaterials'>
                 <div className='sectionMaterials__first-intro'>
                     <h2>{marcos.type}</h2>

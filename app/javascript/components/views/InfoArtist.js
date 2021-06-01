@@ -13,7 +13,7 @@ const list = [
 const InfoArtist = () => {
     return (
         <div>
-            <Title title='SI QUIERES SER UN ARTISTA' backTitle={true}/>
+            <Title title='SI QUIERES SER UN ARTISTA'/>
             <div className='infoArtist'>
                 <div className='infoArtist__cont'>
                     <div className='infoArtist__img'>

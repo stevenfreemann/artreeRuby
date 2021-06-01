@@ -26,6 +26,13 @@
     right: 0;
 }
 
+.carousel__leftButton img:hover{
+    filter: drop-shadow(2px 4px 6px black);
+}
+.carousel__rigthButton img:hover{
+    filter: drop-shadow(2px 4px 6px black);
+}
+
 .carousel__img-with-text{
     width: 100%;
     height: 100%;

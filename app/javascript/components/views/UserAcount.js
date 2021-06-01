@@ -74,7 +74,7 @@ const UserAcount = () => {
     const [acountInfo, setAcountInfo] = useState(1)
     return (
         <div className='userAcount'>
-            <Title title='MI CUENTA' backTitle={true}/>
+            <Title title='MI CUENTA' />
             <div className='userAcount__info'>
                 <img src={userAcount.img} />
                 <span>{userAcount.userName}</span>

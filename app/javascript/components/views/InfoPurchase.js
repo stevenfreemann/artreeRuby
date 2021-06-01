@@ -14,7 +14,7 @@ const list = [
 const InfoPurchase = () => {
     return (
         <div>
-        <Title title='SI QUIERES COMPRAR LOS PRODUCTOS' backTitle={true}/>
+        <Title title='SI QUIERES COMPRAR LOS PRODUCTOS' />
         <div className='infoPurchase'>
             <div className='infoPurchase__cont'>
                 <div className='infoPurchase__img'>

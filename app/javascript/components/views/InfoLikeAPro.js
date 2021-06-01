@@ -2,7 +2,6 @@ import React from 'react'
 import Carrousel from '../Carousel'
 import Title from '../Title'
 import SectionRoom from '../SectionRoom'
-
 import Pro1 from '../../assets/static/images/PRO/COLECCION-PARA-TU-COCINA-5846.jpeg'
 import Pro2 from '../../assets/static/images/PRO/COLECCION-FACHADAS-2486.jpeg'
 import Pro3 from '../../assets/static/images/ShoppingCart2.png'
@@ -25,7 +24,7 @@ export default function infoPro() {
     }
     return (
         <>
-            <Title title={'LIKE A PRO'} backTitle={true} alignLeft={true} listener={()=>navigate('home')}/>
+            <Title title={'LIKE A PRO'} alignLeft={true} listener={()=>navigate('home')}/>
             <div className='infoPro' > 
                 <p>
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.

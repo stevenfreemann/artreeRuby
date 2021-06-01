@@ -10,7 +10,7 @@ const UserAcountData = ({ userAcount }) => {
         let cuerpo=document.body
         cuerpo.scrollTop=0
         document.documentElement.scrollTop = 0;
-        if(window.screen.width>720){
+        if(window.screen.width>768){
             cuerpo.style.overflow='hidden'
         }
         let blur = document.getElementsByClassName('container-artree-none')[0]

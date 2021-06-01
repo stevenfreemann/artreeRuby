@@ -57,7 +57,7 @@ const SectionWishlist = ({title}) => {
     return (
         <div>
             {title&&<div className='sectionWishlist__title'>
-                <Title title='WISHLIST' backTitle={true} />
+                <Title title='WISHLIST' />
             </div>}
             <div className='sectionWishlist__cont'>
                 {showProducts.map((product) =>
