@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Wish from '../assets/static/buttons/wish@2x.png'
 import User from '../assets/static/buttons/perfil@2x.png'
 import Shop from '../assets/static/buttons/carrito@2x.png'
@@ -31,6 +31,18 @@ const Header =() => {
         window.location = redirect[section] ? redirect[section]: '/'
     }
     
+    useEffect(() => {
+        const clickEvent=()=>{
+            setShowMenu(!showMenu)
+        }
+        if (showMenu) {
+            document.addEventListener('click',clickEvent)            
+        }
+        return () => {
+            document.removeEventListener("click", clickEvent)
+        }
+    }, [showMenu])
+
     return (
         <nav className="header">
             <div className="header__cont">
@@ -46,16 +58,17 @@ const Header =() => {
                             {notificationCart!==0&&<div>{notificationCart}</div>}
                         </div>
                         <img className='header__icon' src={Search} />
-                        <img className="menu__img"src={Menu} alt="Menu" onClick={()=>setShowMenu(!showMenu)}/>
+                        <img className="menu__img"src={Menu} alt="Menu" onClick={()=>{setShowMenu(true)}}/>
                     </div>
-                    {showMenu && 
-                <div className="menu__content">
-                    {menu.map((items)=>
-                        <div className="menu__item" onClick={()=>navigate(items)}>
-                            <h3>{items}</h3>
-                        </div>
-                    )}
-                </div>}
+                    
+                    {showMenu&&
+                    <div className="menu__content">
+                        {menu.map((items)=>
+                            <div className="menu__item" onClick={()=>navigate(items)}>
+                                <h3>{items}</h3>
+                            </div>
+                        )}
+                    </div>}
             </div>
         </nav>
     )

@@ -5,13 +5,14 @@
 
 .showProduct__info{
     display: grid;
-    grid-template-rows: 1fr 110px;
+    grid-template-rows: 1fr 90px;
     justify-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
 
 .showProduct__text{
-    justify-self: start;
+    width: 90%;
+    justify-self: center;
     font-size: 21px;
     overflow-y: auto;
     margin-top: 2%;
@@ -62,7 +63,17 @@
     opacity: .5;
     cursor: pointer;
 }
-
+@media (max-width: 1366px) {
+    .showProduct__info{
+        grid-template-rows: 1fr 90px;
+    }
+    .showProduct__picture img{
+        height: 400px;
+    }
+    .showProduct__spaces img{
+        height: 320px;
+    }
+}
 @media (max-width: 1200px) {
     .showProduct{
         grid-template-columns: auto;

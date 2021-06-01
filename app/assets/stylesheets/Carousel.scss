@@ -81,6 +81,18 @@
 .carousel__indicator--selected{
     background-color: black;
 }
+@media (max-width: 1366px) {
+    .carousel{
+        height: 354px;
+    }
+    .carousel__indicator, .carousel__indicator--selected{
+        height: 16px;
+        width: 16px; 
+    }
+}
+
+@media (max-width: 1200px) {
+}
 
 @media (max-width: 720px) {
     .carousel{
