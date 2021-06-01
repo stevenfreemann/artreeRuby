@@ -82,9 +82,9 @@ const PaymentInformation = (props) => {
                             <option>{dir}</option>
                             )}
                         </select>
-                        <label>#</label>
+                        <span>#</span>
                         <input type="text" autocomplete="off"></input>
-                        <label>-</label>
+                        <span>-</span>
                         <input type="text" autocomplete="off"></input>
                     </div>
                     <div className="address2">
@@ -131,16 +131,18 @@ const PaymentInformation = (props) => {
                                 <span>${product.price}</span>
                             </div>
                         )}
-                        <div><span>costo de envio</span><span>$0</span></div>
-                        <div><span>IVA</span><span>$102.600</span></div>
+                        <div><span>Costo de envio</span><span>$0</span></div>
+                        <div><span>Descuento</span><span>-$50.000</span></div>
+                        <div><span>IVA (19%)</span><span>$102.600</span></div>
                     </div>
                     <div className="paymentInformation__total">
                         <span>Total</span>
-                        <span>$642.600</span>
+                        <span>$592.600</span>
                     </div>
-                    <div>
+                    <div className="paymentInformation__code">
                         <label>CÓDIGO</label>
                         <input type="text"></input>
+                        <button type='button'>Redimir</button>
                     </div>
                     <button type="button" onClick={()=>setCheck("Payment")}>Pagar</button>
                 </div>
@@ -151,12 +153,12 @@ const PaymentInformation = (props) => {
                    <button type="button">Crédito</button>
                    <button type="button">PayPal</button>
 
-                   <div className='paymentInformation__logo'>
+                   {/* <div className='paymentInformation__logo'>
                             <img className='payment-logo' src={LogoVisa} alt='Visa'/>
                             <img className='payment-logo' src={LogoAmerican} alt='American Express'/>
                             <img className='payment-logo' src={LogoMaster} alt='MasterCard'/>
                             <img className='payment-logo' src={LogoPayPal} alt='PayPal'/>
-                    </div>
+                    </div> */}
                 </div>
                 }
             </div>

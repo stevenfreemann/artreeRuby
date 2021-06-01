@@ -48,7 +48,8 @@
 .artist__want div {
     margin-bottom: 5%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     transition: opacity .2s;
 }
 

@@ -66,6 +66,7 @@ const SectionWishlist = ({title}) => {
             </div>
             <div className='sectionWishlist__next-prev'>
                 {page>1&&<img src={leftButton} alt='Atras' onClick={()=>setPage(page-1)}/>}
+                <span>{`Página ${page} de ${pages}`}</span>
                 {pages>1&&pages!==page&&<img src={rightButton} alt='Siguente' onClick={()=>setPage(page+1)}/>}
             </div>
         </div>
