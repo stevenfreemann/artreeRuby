@@ -4,7 +4,7 @@ import Title from '../Title'
 const SignIn = () => {
     return (
         <div className='signIn'>
-            <Title title='REGISTRATE' backTitle={true}/>
+            <Title title='REGISTRATE'/>
             <form className='signIn__form' action="">
                 <div>
                     <label>Tu Nombre</label>

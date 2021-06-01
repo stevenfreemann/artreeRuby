@@ -96,7 +96,7 @@ code {
   h2 {
     font-family: var(--Roboto);
   }
-  span, p ,h3,h4{
+  span, p ,h3,h4, label{
     font-family: var(--Montserrat);
 
   }

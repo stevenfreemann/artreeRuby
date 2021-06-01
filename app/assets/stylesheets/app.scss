@@ -37,6 +37,12 @@
     -ms-overflow-style: none;
   }
 
+  @media (max-width: 1366px) {
+    .App--HeaderPadding{
+      padding-top: 9.6rem;
+    }
+  }
+
   @media (max-width: 720px) {
     .App--HeaderPadding{
       padding-top: 6rem;

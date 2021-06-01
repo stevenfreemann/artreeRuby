@@ -21,8 +21,8 @@ const SectionFeatures = () => {
   const navigate=(section)=>{
     const redirect={
         'EXCLUSIVE':'/infoExclusive',
-        'PRO':'/',
-        'LIKE A PRO':'/',
+        'PRO':'/infoPro',
+        'LIKE A PRO':'/infoLikepro',
     }
     window.location = redirect[section] ? redirect[section]: '/'
 }
@@ -32,12 +32,11 @@ const SectionFeatures = () => {
           <h1 className="featured__title" >{title}</h1>
           <p>{text}</p>
             <div className='featured__content'>
-              {Array(imagesD.length).fill().map(
-                (_, i) =>
-                  <div key={imagesD[i].id}className='featured__content-img' onClick={()=>navigate('Usuario')}>
-                      <img src={imagesD[i].img}/>
+              {imagesD.map((item) =>
+                  <div key={item.id}className='featured__content-img' onClick={()=>navigate(item.type)}>
+                      <img src={item.img}/>
                       <h2 className="label">
-                        {imagesD[i].type}
+                        {item.type}
                       </h2>
                   </div>
               )}

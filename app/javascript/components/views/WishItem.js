@@ -1,7 +1,10 @@
 import React from 'react'
 import Edit from '../../assets/static/buttons/editar@2x.png'
+import EditActivo from '../../assets/static/buttons/editarwishlistactivo@2x'
 import Delete from '../../assets/static/buttons/eliminar@2x.png'
+import DeleteActivo from '../../assets/static/buttons/eliminarwishlistactivo@2x.png'
 import Cart from '../../assets/static/buttons/movercarrito@2x.png'
+import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 const WishItem = ({ product }) => {
     return (

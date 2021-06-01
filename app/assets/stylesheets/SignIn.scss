@@ -17,13 +17,14 @@
   
   .signIn__form label {
       font-size: 1.6rem;
-      margin: 1rem 1rem;
   
   }
   
   .signIn__form input:not([type='checkbox']){
       width:100%;
       height: 5.3rem;
+      margin: 2% 0 4%;
+      padding: 3%;
       border-radius: .5rem;
       font-size: 1.8rem;
       border-style: none;

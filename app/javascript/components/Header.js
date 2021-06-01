@@ -11,7 +11,6 @@ const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
     const [notificationWhish, setNotificationWhish] = useState(12)
     const [notificationCart, setNotificationCart] = useState(10)
-    let MenuTags = document.getElementById('menuDesplegable')
     const navigate = (section) => {
         const redirect = {
             '¿Quienes somos?': '/about',
@@ -30,42 +29,45 @@ const Header = () => {
         }
         window.location = redirect[section] ? redirect[section] : '/'
     }
-    window.onclick = function (event) {
-        let obj = event.path[0]['className']
-        let menu = document.getElementById('menuDesplegable')
-        if (!menu.hidden && obj !== "menu__img") {
-            menu.hidden = true
+    
+    useEffect(() => {
+        const clickEvent=()=>{
+            setShowMenu(!showMenu)
         }
-    }
-    const displayMenu = () => {
-        let element = document.getElementById('menuDesplegable')
-        element.attributes.getNamedItem('hidden') ? element.removeAttribute('hidden') : element.hidden = true
-    }
+        if (showMenu) {
+            document.addEventListener('click',clickEvent)            
+        }
+        return () => {
+            document.removeEventListener("click", clickEvent)
+        }
+    }, [showMenu])
 
     return (
         <nav className="header">
             <div className="header__cont">
-                <img className="header__logo" src={Logo} alt='Logo' onClick={() => navigate('home')} />
-                <div className="header__iconsCont">
-                    <img className='header__icon' src={User} onClick={() => navigate('Register')} />
-                    <div className='icons__notification' onClick={() => navigate('Wishlist')}>
-                        <img className='header__icon2' src={Wish} />
-                        {notificationWhish !== 0 && <div>{notificationWhish}</div>}
-                    </div>
-                    <div className='icons__notification' onClick={() => navigate('Carrito')}>
-                        <img className='header__icon2' src={Shop} />
-                        {notificationCart !== 0 && <div>{notificationCart}</div>}
-                    </div>
-                    <img className='header__icon' src={Search} />
-                    <img className="menu__img" src={Menu} alt="Menu" onClick={() => displayMenu()} />
-                </div>
-                <div id='menuDesplegable' className="menu__content" hidden>
-                    {menu.map((items) =>
-                        <div className="menu__item" onClick={() => navigate(items)}>
-                            <h3>{items}</h3>
+                <img className="header__logo" src={Logo} alt='Logo' onClick={()=>navigate('home')}/>
+                    <div className="header__iconsCont">
+                        <img className='header__icon' src={User} onClick={()=>navigate('Register')}/>
+                        <div className='icons__notification' onClick={()=>navigate('Wishlist')}>
+                            <img className='header__icon2' src={Wish} />
+                            {notificationWhish!==0&&<div>{notificationWhish}</div>}
                         </div>
-                    )}
-                </div>
+                        <div className='icons__notification' onClick={()=>navigate('Carrito')}>
+                            <img className='header__icon2' src={Shop} />
+                            {notificationCart!==0&&<div>{notificationCart}</div>}
+                        </div>
+                        <img className='header__icon' src={Search} />
+                        <img className="menu__img"src={Menu} alt="Menu" onClick={()=>{setShowMenu(true)}}/>
+                    </div>
+                    
+                    {showMenu&&
+                    <div className="menu__content">
+                        {menu.map((items)=>
+                            <div className="menu__item" onClick={()=>navigate(items)}>
+                                <h3>{items}</h3>
+                            </div>
+                        )}
+                    </div>}
             </div>
         </nav>
     )

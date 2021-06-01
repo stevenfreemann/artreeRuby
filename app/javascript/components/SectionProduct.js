@@ -28,7 +28,9 @@ const SectionProduct = ({view, title}) => {
     const [screen, setScreen] = useState(view === 3 ? 'purchase':"picture")
     return (
         <div className="sectionProduct">
-            <Title title={title} alignLeft={true} backTitle={true}/>
+            <div className="sectionProduct__title">
+                <h1>{title}</h1>
+            </div>
             <div className="sectionProduct__cont">
                     {screen==="picture"?<ShowProduct data={data} setScreen={setScreen}/>
                     :screen==="purchase"&&
