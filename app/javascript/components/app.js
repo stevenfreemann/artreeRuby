@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import Carousel from './Carousel'
 import Upload from './Upload'
@@ -6,7 +6,7 @@ import Contactanos from './Contactanos'
 import Footer from './Footer'
 import SectionInfo from './SectionInfo'
 import SectionFeatures from './SectionFeatured'
-
+import Api from './api'
 
 import infoMaterials from '../assets/static/images/infoMaterials.png'
 import img from '../assets/static/images/javier-vanegas.png'
@@ -19,6 +19,11 @@ const info = [
 ]
 
 export default function app(props) {
+  useEffect(()=>{
+    Api.getArtistas((response)=>{
+      console.log('respuesta api--',response)
+    })
+  },[])
   const navigate=(section)=>{
     const redirect={
         'artist':'/artist',

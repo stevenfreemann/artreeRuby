@@ -1,34 +1,33 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Wish from '../assets/static/buttons/wish@2x.png'
 import User from '../assets/static/buttons/perfil@2x.png'
 import Shop from '../assets/static/buttons/carrito@2x.png'
 import Search from '../assets/static/buttons/buscar@2x.png'
 import Menu from '../assets/static/buttons/menu.png'
 import Logo from '../assets/static/graphics/logoartree.png'
-const menu = ['¿Quienes somos?','EXCLUSIVE','PRO','LIKE A PRO','MATERIALES','REGALOS','Artistas','Wishlist','Carrito','Usuario']
+const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito', 'Usuario']
 
-const Header =() => {
+const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
     const [notificationWhish, setNotificationWhish] = useState(12)
     const [notificationCart, setNotificationCart] = useState(10)
-    
-    const navigate=(section)=>{
-        const redirect={
-            '¿Quienes somos?':'/about',
-            'EXCLUSIVE':'/infoExclusive',
-            'PRO':'/infoPro',
-            'LIKE A PRO':'/infoLikepro',
-            'MATERIALES':'/infoMaterials',
-            'REGALOS':'/',
-            'Artistas':'/artist',
-            'Register':'/register',
-            'Wishlist':'/wishlist',
-            'Carrito':'/cart',
-            'Carrito':'/cart',
-            'Usuario':'/profile',
-            'home':'/'
+    const navigate = (section) => {
+        const redirect = {
+            '¿Quienes somos?': '/about',
+            'EXCLUSIVE': '/infoExclusive',
+            'PRO': '/infoPro',
+            'LIKE A PRO': '/infoLikepro',
+            'MATERIALES': '/infoMaterials',
+            'REGALOS': '/',
+            'Artistas': '/artist',
+            'Register': '/register',
+            'Wishlist': '/wishlist',
+            'Carrito': '/cart',
+            'Carrito': '/cart',
+            'Usuario': '/profile',
+            'home': '/'
         }
-        window.location = redirect[section] ? redirect[section]: '/'
+        window.location = redirect[section] ? redirect[section] : '/'
     }
     
     useEffect(() => {

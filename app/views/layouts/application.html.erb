@@ -23,6 +23,12 @@
     <%= react_component("Header", { greeting: "Hello from react-rails." },)%>
     <div class="App">
       <div class="App--HeaderPadding">
+      <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+    <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
         <%= yield %>
       </div>
     </div>

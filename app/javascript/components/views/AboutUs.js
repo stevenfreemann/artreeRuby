@@ -31,6 +31,16 @@ const clients =[
 ]
 
 const AboutUs = () => {
+
+    const navigate=(id)=>{
+        const direction={
+            'artist':'/infoArtist',
+            'purchase':'/infoPurchase',
+            'print':'/infoPrint',
+        }
+        window.location=direction[id] ? direction[id] : '/'
+    }
+
     return (
         <div className='aboutUs'>
             <div className='aboutUs__hero'>
@@ -76,15 +86,15 @@ const AboutUs = () => {
                 </div>
                 <div className='aboutUs__info-other'>
                     <div>
-                        <img src={artist} alt='Artista'/>
+                        <img src={artist} alt='Artista' onClick={()=>navigate('artist')}/>
                         <h2>Si quieres ser un artista</h2>
                     </div>
                     <div>
-                        <img src={purchase} alt='Compra'/>
+                        <img src={purchase} alt='Compra' onClick={()=>navigate('purchase')}/>
                         <h2>Si quieres comprar los productos</h2>
                     </div>
                     <div>
-                        <img src={print} alt='Imprimir'/>
+                        <img src={print} alt='Imprimir' onClick={()=>navigate('print')}/>
                         <h2>Si quieres imprimir tus fotos</h2>
                     </div>
                 </div>

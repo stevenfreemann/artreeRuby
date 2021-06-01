@@ -79,3 +79,47 @@
     background-color: black;
     color:white;
 }
+@media (max-width:1600px){
+    .container-addres-show{
+        width: 100em;
+        height: 100em;
+    }
+}
+@media (max-width:1400px){
+    .container-addres-show{
+        width: 87em;
+        height: 100em;
+    }
+    .container-addres-modal{
+        left: 18%;
+    }
+}
+@media (max-width:1200px){
+    .container-addres-show{
+        width: 75em;
+        height: 100em;
+    }
+    .container-addres-modal{
+        left: 12%;
+    }
+}
+@media (max-width:720px){
+    .container-addres-show{
+        width: 46em;
+    }
+    .container-addres-modal{
+        top: 2%;
+        left: 7%;
+        width: 620px;
+        height: 880px;
+    }
+    .form-addres{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        width: 95%;
+    }
+    .form-add-addres-input:not(label){
+        display:block;
+        
+    }
+}
