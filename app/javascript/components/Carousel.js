@@ -43,13 +43,13 @@ export default function Carrousel() {
         // 0 is right
         // 1 is left
         let slides = document.getElementsByClassName('carousel')[0]
-        if ((dir === 1 && index > 0) || (dir === 0 && index < contentCarousel.length - 1)) {
+        if ((dir === 1 && index > 0) || (dir === 0 && index < contentCarousel.length - 1) || (index===contentCarousel.length-1)) {
             slides.classList.add('carousel--slide')
         }
         setTimeout(() => {
             if (dir === 1 && index > 0) { setIndex(index - 1); slides.classList.replace('carousel--slide', 'carousel--show') }
             else if (dir === 0 && index < contentCarousel.length - 1) { setIndex(index + 1); slides.classList.replace('carousel--slide', 'carousel--show') }
-            else if(dir === 0 && index===contentCarousel.length-1) setIndex(0)
+            else if(dir === 0 && index===contentCarousel.length-1) setIndex(0); slides.classList.replace('carousel--slide', 'carousel--show')
             setTimeout(() => {
                 slides.classList.remove('carousel--show')
             }, 300)
