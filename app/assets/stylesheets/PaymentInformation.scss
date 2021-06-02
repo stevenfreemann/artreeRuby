@@ -315,6 +315,9 @@
     .paymentInformation__acount{
         width: 100%;
     }
+    .paymentInformation__welcome button{
+        width: 70%!important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -328,4 +331,8 @@
         width: 50%;
     }
 }
-
+@media (max-width: 400px) {
+    .paymentInformation__welcome button{
+        width: 80%!important;
+    }
+}

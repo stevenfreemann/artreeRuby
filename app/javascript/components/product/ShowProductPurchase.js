@@ -57,23 +57,24 @@ const ShowProductPurchase = (props) => {
         <div className="showProductPurchase">
             <div className="showProductPurchase__progress">
                 <hr></hr>
-                <div>
+                <div className="showProductPurchase__item">
                     <div className="item-selected"></div>
                     <span>Foto</span>
                 </div>
-                <div>
+                <div className="showProductPurchase__item">
                     <div className={selectSize!==0?"item-selected":""}></div>
                     <span>Tamaño</span>
                 </div>
-                {!exclusive&&<div>
+                {!exclusive&&
+                <div className="showProductPurchase__item">
                     <div className={selectMaterial!==0?"item-selected":""}></div>
                     <span>Materiales</span>
                 </div>}
-                <div>
+                <div className="showProductPurchase__item">
                     <div className={selectFrame===true?"item-selected":""}></div>
                     <span>Marco</span>
                 </div>
-                <div>
+                <div className="showProductPurchase__item">
                     <div className={selectPaking===true?"item-selected":""}></div>
                     <span>Empaque</span>
                 </div>

@@ -41,7 +41,6 @@
     }
     .sectionPapers__cont{
         width: 72rem;
-        grid-template-columns: repeat(1, 1fr);
         row-gap: 6rem;
         margin: 0 auto 10%;
     }  
@@ -52,6 +51,7 @@
     }
     .sectionPapers__cont{
         width: 90%;
+        grid-template-columns: repeat(1, 1fr);
         row-gap: 4rem;
     }
     .sectionPapers h2 {
