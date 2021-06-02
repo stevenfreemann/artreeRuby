@@ -5,7 +5,7 @@ import Shop from '../assets/static/buttons/carrito@2x.png'
 import Search from '../assets/static/buttons/buscar@2x.png'
 import Menu from '../assets/static/buttons/menu.png'
 import Logo from '../assets/static/graphics/logoartree.png'
-const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito', 'Usuario']
+const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito', 'Usuario','CONTÁCTENOS']
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
@@ -25,6 +25,7 @@ const Header = () => {
             'Carrito': '/cart',
             'Carrito': '/cart',
             'Usuario': '/profile',
+            'CONTÁCTENOS': 'contacto',
             'home': '/'
         }
         window.location = redirect[section] ? redirect[section] : '/'

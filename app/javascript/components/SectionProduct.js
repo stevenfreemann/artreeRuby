@@ -34,8 +34,8 @@ const SectionProduct = ({view, title}) => {
             <div className="sectionProduct__cont">
                     {screen==="picture"?<ShowProduct data={data} setScreen={setScreen}/>
                     :screen==="purchase"&&
-                    <ShowProductPurchase exclusive={view===1 ? true : false} data={data}/>}
-                    <CarrouselDown idSelected={data.id} info={info} listener={(info)=> setData(info)}/>
+                    <ShowProductPurchase exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false} data={data}/>}
+                    {view!==3&&<CarrouselDown idSelected={data.id} info={info} listener={(info)=> setData(info)}/>}
             </div>
         </div>
     )

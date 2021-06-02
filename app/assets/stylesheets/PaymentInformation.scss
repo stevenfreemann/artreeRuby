@@ -41,7 +41,7 @@
 }
 
 .paymentInformation__acount{
-    width:80%;
+    width:90%;
     margin: 0 auto;
 }
 
@@ -231,14 +231,26 @@
 }
 
 .paymentInformation__market{
-    padding: 7%;
+    padding: 7% 7% 0;
     background-color: white;
     display: flex;
     flex-direction: column;
 }
+
+.paymentInformation__market div{
+    margin-bottom: 5%;
+}
+
 .paymentInformation__market h3{
     margin: 0;
 }
+.paymentInformation__market hr{
+    width: 100%;
+    margin: 5% auto;
+    background-color: black;
+    height: 1px;
+}
+
 .paymentInformation__market div span{
     color: #7B7B7B;
 }
@@ -251,11 +263,13 @@
 }
 
 .paymentInformation__code{
+    display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
-.paymentInformation__code input{
-    margin: 0;
+.paymentInformation__code button{
+    margin: 0!important;
 }
 
 .paymentInformation__check label{
@@ -268,7 +282,7 @@
 }
 
 .paymentInformation__check button{
-    margin-top: 10%;
+    margin: 20%
 }
 
 .paymentInformation__payment{
@@ -295,6 +309,12 @@
     justify-content: space-evenly;
     align-self: center;
     width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .paymentInformation__acount{
+        width: 100%;
+    }
 }
 
 @media (max-width: 768px) {

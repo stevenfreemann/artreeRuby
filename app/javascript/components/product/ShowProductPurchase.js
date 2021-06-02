@@ -39,6 +39,7 @@ const materials = [acrilico,canvas,papel,marco,]
 
 const ShowProductPurchase = (props) => {
     const [exclusive] = useState(props.exclusive)
+    const [likeAPro] = useState(props.likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(1)
     const [selectSize, setSelectSize] = useState(0)
     const [selectMaterial, setSelectMaterial] = useState(0)
@@ -47,7 +48,6 @@ const ShowProductPurchase = (props) => {
     
     const navigate=(section)=>{
         const redirect={
-            'wishlist':'/wishlist',
             'cart':'/cart'
         }
         window.location = redirect[section] ? redirect[section]: '/'
@@ -145,10 +145,10 @@ const ShowProductPurchase = (props) => {
 
                     </div>
                     <div className="showProductPurchase__icons">
-                        <div onClick={()=>navigate('wishlist')} >
+                        {!likeAPro&&<div>
                             <img src={whishList} alt="whishlist"/>
                             <span>Whish List</span>
-                        </div>
+                        </div>}
                         <div onClick={()=>navigate('cart')} >
                             <img src={compra} alt="compra"/>
                             <span>Finalizar Compra</span>

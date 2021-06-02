@@ -140,7 +140,7 @@ const PaymentInformation = (props) => {
                         <span>$592.600</span>
                     </div>
                     <div className="paymentInformation__code">
-                        <label>CÓDIGO</label>
+                        <label>Código de Descuento</label>
                         <input type="text"></input>
                         <button type='button'>Redimir</button>
                     </div>

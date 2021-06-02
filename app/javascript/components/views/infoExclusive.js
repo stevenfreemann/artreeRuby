@@ -21,7 +21,7 @@ export default function infoExclusive() {
     const navigate=(dir)=>{
         const direction={
             'home':'/',
-            'Sala 1':'/proMarket'
+            'Sala 1':'/exclusiveMarket'
         }
         window.location=direction[dir] ? direction[dir] : '/'
     }

@@ -4,7 +4,7 @@
 }
 
 .shoppingCard__cont{
-    max-width: 120rem;
+    max-width: 100.4rem;
     margin: 0 auto 7%;
     display: grid;
     justify-content: center;
@@ -13,6 +13,16 @@
 }
 
 @media (max-width: 1200px) {
+
+}
+
+@media (max-width: 1024px) {
+    .shoppingCard__cont{
+        width: 95%;
+    }
+}
+
+@media (max-width: 720px) {
     .shoppingCard__cont{
         width: 60%;
         grid-template-columns: repeat(1,1fr);
@@ -20,12 +30,6 @@
     .sectionShoppingCart__payment{
         grid-row: 1 / 3;
         margin-bottom: 10%;
-    }
-}
-
-@media (max-width: 1024px) {
-    .shoppingCard__cont{
-        width: 80%;
     }
 }
 

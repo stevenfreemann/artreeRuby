@@ -211,24 +211,24 @@
     height: 64px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1020px) {
     .showProductPurchase__product{
         width: 100%;
         display: grid;
         grid-template-columns: auto;
     }
-
+    .showProductPurchase__info{
+        grid-template-rows: 1fr 70px;
+    }
     .showProductPurchase__carac{
         grid-row: 2 / 4;
         grid-column: auto;
         margin-top: 5%;
     }
-
     .showProductPurchase__icons{
         width: 70%;
         justify-content: space-evenly;
     }
-
     .showProductPurchase__icons div{
         font-size: 10px;
     }
@@ -243,13 +243,11 @@
         height: 10px !important;
         border-width: 1px;
     }
-    
     .showProductPurchase__progress hr{
         margin-top: 5px;
         height: 0px;
         width: 95%;
     }
-
     .showProductPurchase__icons img{
         width: 44px;
         height: 44px;
@@ -260,12 +258,10 @@
     .showProductPurchase__info div, .showProductPurchase__accordeon{
         font-size: 16px;
     }
-
     .showProductPurchase__progress div div{
         width: 22px;
         height: 22px;
     }
-
     .accordeon-info div span{
         font-size: 13px;
 

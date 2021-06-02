@@ -132,7 +132,6 @@
   .menu__content {
     top: 137%;
   }
-  
 }
 
 @media (max-width: 1200px) {
@@ -173,11 +172,16 @@
     font-weight: bold;
   }
 }
-@media(max-width: 370px){
+@media(max-width: 350px){
   .header__cont {
     justify-content: flex-start;
   }
+  .header__logo {
+      max-height: 3rem;
+      max-width: 40%;
+      margin: 0 8% 0 3%;
+  }
   .header__iconsCont {
-    width: 10rem;
+    width: 12rem;
   }
 }

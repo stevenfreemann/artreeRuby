@@ -1,5 +1,6 @@
 .sectionInfo{
     background-color: #ECEDDB;
+    box-sizing: border-box;
 }
 
 .sectionInfo__cont{
@@ -11,9 +12,10 @@
 }
 
 .sectionInfo__img{
-    width: 91%;
+    max-width: 91%;
     margin: 10rem 0;
     border: solid 1.8rem white;
+    object-fit: cover;
 }
 
 .sectionInfo__info{
@@ -41,6 +43,7 @@
 .sectionInfo__text{
     font-family: var(--Montserrat);
     font-size: 2.1rem;
+    padding-right: 5%;
 }
 
 .sectionInfo__button{
@@ -66,9 +69,14 @@
     .sectionInfo__img{
         margin-bottom: 0;
         margin-top: 5rem;
-        width: 50%;
+        max-width: 50%;
         height: auto;
     }
+
+    .sectionInfo__text{
+        padding-right: 0;
+    }
+
 
     .sectionInfo__button{
         margin-bottom: 5rem ;
@@ -86,5 +94,9 @@
 
     .sectionInfo__title{
         font-size: 2.1rem;
+    }
+    .sectionInfo__img{
+        max-width: 62%;
+        border: solid 1rem white;
     }
 }

@@ -4,7 +4,7 @@ import SeeButton from './SeeButton'
 const listener = (dato) => {
     console.log(dato)
 }
-const SectionInfo = ({inverso, img, title, text,listener, ignoreButton, textoBtn}) => {
+const SectionInfo = ({inverso, img, title, text,listener, textoBtn}) => {
     const showInverso = () => {
         let inv = inverso ? "inverso" : ""
         return inv
@@ -20,11 +20,9 @@ const SectionInfo = ({inverso, img, title, text,listener, ignoreButton, textoBtn
                     <p className='sectionInfo__text'>
                         {text}
                     </p>
-                    {!ignoreButton &&
-                        <div className='sectionInfo__button'>
-                            <SeeButton textBtn={textoBtn} listener={listener} />
-                        </div>
-                    }
+                    <div className='sectionInfo__button'>
+                        <SeeButton textBtn={textoBtn} listener={listener} />
+                    </div>
                 </div>
                 <img className='sectionInfo__img' src={img} />
             </div>

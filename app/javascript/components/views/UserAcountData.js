@@ -22,7 +22,7 @@ const UserAcountData = ({ userAcount }) => {
 
     const infoInput = [
         {
-            label: 'Nombre',
+            label: 'Usuario',
             data: userAcount.userName,
             type: 'text'
         },
@@ -32,7 +32,7 @@ const UserAcountData = ({ userAcount }) => {
             type: 'email'
         },
         {
-            label: 'Nombre y apellido',
+            label: 'Nombre',
             data: userAcount.fullName,
             type: 'text'
         },

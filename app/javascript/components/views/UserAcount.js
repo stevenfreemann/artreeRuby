@@ -14,7 +14,7 @@ import ShoppingCart2 from '../../assets/static/images/ShoppingCart2.png'
 import ShoppingCart3 from '../../assets/static/images/ShoppingCart3.png'
 
 const userAcount = {
-    userName: 'Natalia Bedoya',
+    userName: 'Natalia_532',
     img: user,
     email: 'natalia_bedoya@gmail.com',
     fullName:'Natalia Carolina Bedoya Velasquez',

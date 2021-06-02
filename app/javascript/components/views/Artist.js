@@ -32,12 +32,19 @@ const Artist = ({artistas,foto}) => {
 
     const showArtist = paginationArtist(artistas)
 
+    const navigate=(dir)=>{
+        const direction={
+            'back':'/'
+        }
+        window.location=direction[dir] ? direction[dir] : '/'
+    }
+
     return (
         <>
-            <Title title="ARTISTAS" backTitle={true} alignLeft={false}/>
+            <Title title="ARTISTAS" backTitle={true} alignLeft={false} listener={()=>navigate('back')}/>
             <div className='artist__cont'>
                 {showArtist.map((artist)=>
-                    <div key={artist.id} className={`artist__card ${((showArtist.indexOf(artist) % 2) == 0)?'':'invertido'}`}>
+                    <div key={artist.id} className={`artist__card${((showArtist.indexOf(artist) % 2) == 0)?'':'--invertido'}`}>
                         <img className='artist__card-img' src={artist.img} alt={artist.nombre}/>
                         <div className='artist__info-cont'>
                             <div className='artist__info'>
