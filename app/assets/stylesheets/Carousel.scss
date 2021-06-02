@@ -27,10 +27,12 @@
 }
 
 .carousel__leftButton img:hover{
-    filter: drop-shadow(2px 4px 6px black);
+    transition: 0.3s;
+    filter: drop-shadow(2px 4px 6px rgb(255, 255, 255));
 }
 .carousel__rigthButton img:hover{
-    filter: drop-shadow(2px 4px 6px black);
+    filter: drop-shadow(2px 4px 6px rgb(255, 255, 255));
+    transition: 0.3s;
 }
 
 .carousel__img-with-text{
@@ -98,9 +100,22 @@
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
+    .container-text-carousel{
+        width: 58%;
+    }
+    .container-content-carousel p{
+        font-size: 21px;
+    }
 }
-
+@media (max-width: 768px){
+    .container-text-carousel{
+        width: 58%;
+    }
+    .container-content-carousel p{
+        font-size: 21px;
+    }
+}
 @media (max-width: 720px) {
     .carousel{
         height: 243px;
