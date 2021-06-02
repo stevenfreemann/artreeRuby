@@ -6,13 +6,15 @@ const UserAcountData = ({ userAcount }) => {
     const [prevId2, setPrevId2] = useState(null)
 
     const showModal = () => {
-        console.log('modal-->', window.screen.width)
+        //console.log('modal-->', window.screen.width)
         let cuerpo=document.body
-        cuerpo.scrollTop=0
+        cuerpo.style.overflow='hidden'
         document.documentElement.scrollTop = 0;
-        if(window.screen.width>768){
-            cuerpo.style.overflow='hidden'
-        }
+        //cuerpo.scrollTop=0
+        //
+        //if(window.screen.width>768){
+        //    
+        //}
         let blur = document.getElementsByClassName('container-artree-none')[0]
         let modal = document.getElementsByClassName('container-addres')[0]
         blur.classList.replace('container-artree-none', 'container-artree')

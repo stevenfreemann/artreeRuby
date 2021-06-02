@@ -34,7 +34,7 @@
 .form-addres{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    width: 95%;
+    width: 100%;
 }
 .form-addres label{
     margin-bottom: 2%;
@@ -77,7 +77,6 @@
     font-weight: bold;
     border-color: black;
     background-color: white;
-    margin-top: 20%;
 }
 .button-modal-addres:hover{
     background-color: black;
@@ -90,39 +89,33 @@
     padding-left: 2%;
 }
 .container-terminos-modal{
-    width: 29%;
+    width: 100%;
     margin-top: 5%;
+    text-align: center;
 }
 .img-close-modal-addres{
     position: absolute;
     left: 96%;
     bottom: 66%;
+    width: 5%;
 }
-@media (max-width:1200px){
-    .container-addres-modal{
-        height: 45vh;
-        width: 75vw;
-    }
+@media (max-width:1280px){
+    
     .img-close-modal-addres{
         left: 91%;
         bottom: 48%;
         width: 25px;
     }  
 }
-@media (max-width:768px){
-    .container-addres-show{
-        width: 100vw;
-        height: 232vh;
+@media (max-width:1024px){
+    .container-addres-modal{
+        height: 80vh;
+        width: 87vw;
     }
     .form-addres{
         display: grid;
         grid-template-columns: repeat(1,1fr);
         width: 95%;
-    }
-    .container-addres-modal{
-        height: 99vh;
-        transform: translate(-50%, -79%);
-        width: 90vw;
     }
     .form-add-addres-input:not(label){
         display:block;
@@ -157,31 +150,14 @@
 }
 
 @media (max-width:540px){
-    .container-addres-modal{
-        height: 119vh;
-    }
+
 }
 
 @media (max-width:375px){
-    .container-addres-show{
-        width: 100vw;
-        height: 232vh;
-    }
-    .container-addres-modal{
-        height: 132vh;
-        transform: translate(-50%, -79%);
-        width: 90vw;
-    }
     .title-add-addres{
         font-size: 1.4em;
     }
     
 }
 @media (max-width:320px){
-    .container-addres-show{
-        height: 255vh;
-    }
-    .container-addres-modal{
-        height: 145vh;
-    }
 }
