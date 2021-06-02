@@ -34,6 +34,9 @@
     filter: drop-shadow(2px 4px 6px rgb(255, 255, 255));
     transition: 0.3s;
 }
+.carousel__img{
+    width: 100%;
+}
 
 .carousel__img-with-text{
     width: 100%;
@@ -100,7 +103,7 @@
     }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1300px) {
     .container-text-carousel{
         width: 58%;
     }
