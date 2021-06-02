@@ -13,7 +13,9 @@ const list = [
 const InfoArtist = () => {
     return (
         <div>
-            <Title title='SI QUIERES SER UN ARTISTA'/>
+            <h1 className="infoArtist__title" >
+            SI QUIERES SER UN ARTISTA
+            </h1>
             <div className='infoArtist'>
                 <div className='infoArtist__cont'>
                     <div className='infoArtist__img'>

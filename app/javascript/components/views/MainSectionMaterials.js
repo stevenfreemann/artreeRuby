@@ -65,7 +65,7 @@ const MainSectionMaterials = () => {
     }
     return (
         <div className="sec-materials">
-            <Title title="MATERIALES" listener={()=>navigate('back')}/>
+            <Title title="MATERIALES" backTitle={true} listener={()=>navigate('back')}/>
             <div className="materials__pres">
                 <div className="materials__background">
                     <div className="materials__img--pos">

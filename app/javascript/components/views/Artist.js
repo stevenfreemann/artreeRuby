@@ -32,6 +32,13 @@ const Artist = ({artistas,foto}) => {
 
     const showArtist = paginationArtist(artistas)
 
+    const navigate = (section) => {
+        const redirect = {
+            'infoArtist': '/infoArtist',
+        }
+        window.location = redirect[section] ? redirect[section] : '/'
+    }
+
     return (
         <>
             <Title title="ARTISTAS" alignLeft={false}/>
@@ -61,7 +68,7 @@ const Artist = ({artistas,foto}) => {
                     {page<pages&&page!==pages&&<img src={right} alt='Sigiente' onClick={()=>setPage(page+1)}></img>}
                 </div>
                 <h2>¿Quieres ser uno de nuestros artistas?</h2>
-                <button type="button">Click aquí</button>
+                <button type="button" onClick={()=>navigate('infoArtist')}>Click aquí</button>
             </div>
         </>
     )

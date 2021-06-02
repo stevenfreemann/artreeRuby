@@ -28,6 +28,8 @@ const clients =[
     {id:1,img:client,ubication:'Ubicacion1', name:'Nombre fotografo1', photoName:'Nombre fotografia', phrase:phrase},
     {id:2,img:client,ubication:'Ubicacion1', name:'Nombre fotografo1', photoName:'Nombre fotografia', phrase:phrase},
     {id:3,img:client,ubication:'Ubicacion1', name:'Nombre fotografo1', photoName:'Nombre fotografia', phrase:phrase},
+    {id:4,img:client,ubication:'Ubicacion1', name:'Nombre fotografo1', photoName:'Nombre fotografia', phrase:phrase},
+    {id:5,img:client,ubication:'Ubicacion1', name:'Nombre fotografo1', photoName:'Nombre fotografia', phrase:phrase},
 ]
 
 const AboutUs = () => {
@@ -39,6 +41,17 @@ const AboutUs = () => {
             'print':'/infoPrint',
         }
         window.location=direction[id] ? direction[id] : '/'
+    }
+
+    const handleClick = (dir)=>{
+        let direction = 0
+        direction = {
+            'left':-70,
+            'right':70
+        }
+        if (dir) {
+            document.getElementById('client_cont').scrollLeft += direction[dir];
+        }
     }
 
     return (
@@ -60,9 +73,8 @@ const AboutUs = () => {
             <div className='aboutUs__client'>
                 <h2>Clientes Felices</h2>
                 <div className='aboutUs__client-cont'>
-                    <img className='aboutUs__client-arrow'
-/* TODO: cuadrar la pagina de clientes */ src={left} alt='left'/>
-                        <div className='aboutUs__client-show'>
+                    <img className='aboutUs__client-arrow' src={left} alt='left' onClick={()=>handleClick('left')}/>
+                        <div className='aboutUs__client-show' id='client_cont'>
                             {clients.map((client)=>
                                 <div className='aboutUs__client-item' key={client.id}>
                                     <img src={client.img} alt='Cliente'/>
@@ -73,7 +85,7 @@ const AboutUs = () => {
                                 </div>
                             )}
                         </div>
-                    <img className='aboutUs__client-arrow' src={right} alt='right'/>
+                    <img className='aboutUs__client-arrow' src={right} alt='right' onClick={()=>handleClick('right')}/>
                 </div>
             </div>
             <div className='aboutUs__info'>

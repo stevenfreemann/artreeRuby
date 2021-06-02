@@ -2,6 +2,15 @@
     background-color: #fff4dc;
 }
 
+.infoArtist__title{
+    width: 60%;
+    font-size: 4.8rem;
+    font-weight: 900;
+    font-family: var(--Roboto);
+    margin: 3% auto;
+    text-align: center;
+}
+
 .infoArtist__cont{
     width: 120rem;
     margin: 2% auto 0;
@@ -65,6 +74,11 @@
 @media (max-width: 720px) {
     .infoArtist__cont{
         width: 90%;
+    }
+    .infoArtist__title{
+        width: 100%;
+        font-size: 2.6rem;
+        margin: 5% auto;
     }
     .infoArtist__list,
     .infoArtist__img button{

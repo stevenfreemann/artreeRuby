@@ -14,7 +14,9 @@ const list = [
 const InfoPurchase = () => {
     return (
         <div>
-        <Title title='SI QUIERES COMPRAR LOS PRODUCTOS' />
+        <h1 className="infoArtist__title" >
+        SI QUIERES COMPRAR LOS PRODUCTOS
+        </h1>
         <div className='infoPurchase'>
             <div className='infoPurchase__cont'>
                 <div className='infoPurchase__img'>

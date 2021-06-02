@@ -28,7 +28,7 @@ const userAcount = {
     purshases:[ 
         {
             id:2,
-            type:'LÍNEA PRO',
+            type:'LÍNEA EXCLUSIVE',
             name:'Nombre Fotografía 2',
             img: ShoppingCart2,
             phrase:'Frase Fotografía 2',
@@ -48,6 +48,7 @@ const userAcount = {
         },
         {
             id:3,
+            type:'LÍNEA PRO',
             type:'',
             name:'Nombre Fotografía 3',
             dimensions: '120 * 140',

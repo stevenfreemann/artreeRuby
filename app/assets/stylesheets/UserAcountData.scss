@@ -122,7 +122,7 @@
 .userAcountData__pass div{
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin-bottom: 3%;
 }
 
@@ -225,5 +225,9 @@
         margin-top: 5%;
 
     }
-
+}
+@media (max-width: 450px) {
+    .userAcountData__pass {
+        width: 90%;
+    }
 }
