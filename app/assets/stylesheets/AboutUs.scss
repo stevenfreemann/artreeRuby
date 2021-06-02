@@ -198,7 +198,9 @@
     .aboutUs__client-cont{
         width: 95%;
     }
-    
+    .aboutUs__client-item {
+        width: 37vw;
+    }
 }
 
 @media (max-width: 720px) {
@@ -228,9 +230,6 @@
     }
     .aboutUs__hero-cont span{
         font-size: 1.6rem;
-    }
-    .aboutUs__client-item {
-        width: 37vw;
     }
     .aboutUs__client-item span{
         font-size: 1.4rem;
