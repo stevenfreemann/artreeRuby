@@ -15,7 +15,7 @@ const list = [
 const InfoPrintPhotos = () => {
     return (
         <div>
-            <Title title='SI QUIERES IMPRIMIR TUS FOTOS' backTitle={true}/>
+            <Title title='SI QUIERES IMPRIMIR TUS FOTOS' />
             <div className='infoPrintPhotos'>
                 <div className='infoPrintPhotos__cont'>
                     <div className='infoPrintPhotos__img'>

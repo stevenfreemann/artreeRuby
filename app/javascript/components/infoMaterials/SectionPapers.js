@@ -28,7 +28,7 @@ const SectionPapers = () => {
 
     return (
         <>
-            <Title title={papeles.title} backTitle={true} listener={()=>navigate('back')}/>
+            <Title title={papeles.title} listener={()=>navigate('back')}/>
             <div className='sectionPapers'>
                 <h2>{papeles.subtitle}</h2>
                 <p>{papeles.text}</p>

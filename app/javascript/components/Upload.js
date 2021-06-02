@@ -12,7 +12,7 @@ export default function Upload() {
     }
     return (
         <div className='upload' style={{ backgroundColor: 'var(--backGray)' }}>
-            <Title title={'LIKE A PRO - Espacio 1'} backTitle={true} alignLeft={true} background={'var(--backGray)'} />
+            <Title title={'LIKE A PRO - Espacio 1'} alignLeft={true} background={'var(--backGray)'} />
             <div className='upload__cont'>
                 <div className='upload__img'>
                     <img src={Subir}/>

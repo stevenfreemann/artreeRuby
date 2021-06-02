@@ -27,7 +27,7 @@ export default function infoExclusive() {
     }
     return (
         <>
-            <Title title={'EXCLUSIVE'} backTitle={true} alignLeft={true} listener={()=>navigate('home')}/>
+            <Title title={'EXCLUSIVE'} alignLeft={true} listener={()=>navigate('home')}/>
             <div className='infoExclusive' > 
                 <p>
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.

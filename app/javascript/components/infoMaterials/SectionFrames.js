@@ -37,7 +37,7 @@ const SectionFrames = () => {
     }
     return (
         <>
-            <Title title={marcos.title} backTitle={true} listener={()=>navigate('back')}/>
+            <Title title={marcos.title} listener={()=>navigate('back')}/>
             <div className='sectionFrames'>
                 <div className='sectionFrames__first-intro'>
                     <h2>{marcos.type}</h2>

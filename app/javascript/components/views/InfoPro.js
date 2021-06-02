@@ -31,7 +31,7 @@ export default function infoPro() {
     }
     return (
         <>
-            <Title title={'PRO'} backTitle={true} alignLeft={true} listener={()=>navigate('home')}/>
+            <Title title={'PRO'} alignLeft={true} listener={()=>navigate('home')}/>
             <div className='infoPro' > 
                 <p>
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
