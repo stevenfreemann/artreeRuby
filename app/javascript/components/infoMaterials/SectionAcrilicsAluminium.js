@@ -31,7 +31,7 @@ const SectionAcrilicsAluminium = () => {
     }
     return (
         <>
-            <Title title={acrilicos.title} listener={()=>navigate('back')}/>
+            <Title title={acrilicos.title} backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionAcrilicsAluminium'>
                 <p>{acrilicoTipoText}</p>
                 <div className="sectionAcrilicsAluminium__cont">

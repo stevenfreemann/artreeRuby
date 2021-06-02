@@ -50,7 +50,7 @@ const SectionCanvas = () => {
     }
     return (
         <>
-            <Title title={marcos.title} listener={()=>navigate('back')}/>
+            <Title title={marcos.title} backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionCanvas'>
                 <div className='sectionCanvas__first-intro'>
                     <h2>{marcos.type}</h2>
