@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'subInfoMaterial' => 'home#subInfoMaterials'
   get 'cart' =>'shoppin_cart#shoppingCart'
   get 'register' => 'register#register'
+  get 'signIn' => 'register#signIn'
   get 'exclusiveMarket' => 'exclusive#exclusiveMarket'
   get 'proMarket' => 'pro#proMarket'
   get 'likeProMarket' => 'like_pro#likeProMarket'

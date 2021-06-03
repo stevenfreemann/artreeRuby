@@ -93,7 +93,7 @@ code {
     font-family: var(--Roboto);
   }
 
-  h2 {
+  h2, h3 {
     font-family: var(--Roboto);
   }
   a, span, p , h3, h4, label, legend{

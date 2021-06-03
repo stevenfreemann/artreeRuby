@@ -82,7 +82,8 @@
   overflow-y: auto;
 }
 
-.menu__item{
+.menu__item,
+.menu__name{
   width: 24.2rem;
   height: 4.8rem;
   background-color: white;
@@ -92,13 +93,20 @@
   align-items: center;
 }
 
-.menu__item:hover{
+.menu__name{
+  height: 5.8rem;
+  background-color: #d6e1e6;
+}
+
+.menu__item:hover, .menu__name:hover{
   background-color: #7B7B7B;
   color: white;
   cursor: pointer;
 }
 
-.menu__item h3{
+
+.menu__item h3,
+.menu__name h3{
   font-size: 2.1rem;
   font-weight: bold;
   margin-right: 10%; 
@@ -163,11 +171,13 @@
   .menu__content {
     top: 128%;
   }
-  .menu__item{
+  .menu__item,
+  .menu__name{
     width: 18.3rem;
     height: 3.6rem;
   }
-  .menu__item h3{
+  .menu__item h3,
+  .menu__name h3{
     font-size: 1.4rem;
     font-weight: bold;
   }

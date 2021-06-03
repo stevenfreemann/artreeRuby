@@ -5,13 +5,19 @@ import Shop from '../assets/static/buttons/carrito@2x.png'
 import Search from '../assets/static/buttons/buscar@2x.png'
 import Menu from '../assets/static/buttons/menu.png'
 import Logo from '../assets/static/graphics/logoartree.png'
-const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito', 'Usuario','Contáctenos']
+
+const firstName = ''
+const menuName = firstName?`¡Hola ${firstName}!`:'¡Bienvenido!'
+const firsNavigate = firstName?'Usuario':'Register'
+
+const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito','Contáctenos']
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
     const [notificationWhish, setNotificationWhish] = useState(12)
     const [notificationCart, setNotificationCart] = useState(10)
     const navigate = (section) => {
+        
         const redirect = {
             '¿Quienes somos?': '/about',
             'EXCLUSIVE': '/infoExclusive',
@@ -54,7 +60,7 @@ const Header = () => {
                             {notificationWhish!==0&&<div>{notificationWhish}</div>}
                         </div>
                         <div className='icons__notification' onClick={()=>navigate('Carrito')}>
-                            <img className='header__icon2' src={Shop} />
+                            <img className='header__i¡Bienvenido!con2' src={Shop} />
                             {notificationCart!==0&&<div>{notificationCart}</div>}
                         </div>
                         <img className='header__icon' src={Search} />
@@ -63,9 +69,12 @@ const Header = () => {
                     
                     {showMenu&&
                     <div className="menu__content">
-                        {menu.map((items)=>
-                            <div className="menu__item" onClick={()=>navigate(items)}>
-                                <h3>{items}</h3>
+                        <div className="menu__name" onClick={()=>navigate(firsNavigate)}>
+                            <h3>{menuName}</h3>
+                        </div>
+                        {menu.map((item,i)=>
+                            <div className="menu__item" onClick={()=>navigate(item)}>
+                                <h3>{item}</h3>
                             </div>
                         )}
                     </div>}

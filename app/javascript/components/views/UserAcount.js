@@ -14,7 +14,7 @@ import ShoppingCart2 from '../../assets/static/images/ShoppingCart2.png'
 import ShoppingCart3 from '../../assets/static/images/ShoppingCart3.png'
 
 const userAcount = {
-    userName: 'Natalia_532',
+    userID: 1,
     img: user,
     email: 'natalia_bedoya@gmail.com',
     fullName:'Natalia Carolina Bedoya Velasquez',
@@ -70,7 +70,6 @@ const userAcount = {
     ]
 }
 
-
 const UserAcount = () => {
     const [acountInfo, setAcountInfo] = useState(1)
     return (
@@ -78,7 +77,7 @@ const UserAcount = () => {
             <Title title='MI CUENTA' />
             <div className='userAcount__info'>
                 <img src={userAcount.img} />
-                <span>{userAcount.userName}</span>
+                <span>{userAcount.fullName}</span>
             </div>
             <div className='userAcount__menu'>
                 <div onClick={()=>setAcountInfo(1)}>

@@ -35,12 +35,12 @@
     padding: 0 5%;
 }
 
-.userAcountData__input:nth-child(3){
+.userAcountData__input:nth-child(1){
     position: relative;
     width: 120%;
 }
 
-.userAcountData__input:nth-child(4){
+.userAcountData__input:nth-child(2){
     position: relative;
     width: 80%;
     justify-self: end;
@@ -174,17 +174,17 @@
     .userAcountData__pass {
         width: 75%;
     }
-    .userAcountData__input:nth-child(3){
+    .userAcountData__input:nth-child(1){
         position: relative;
         width: 100%;
     }
     
-    .userAcountData__input:nth-child(4){
+    .userAcountData__input:nth-child(2){
         position: relative;
         width: 100%;
         justify-content: flex-start;
     }
-    .userAcountData__input:nth-child(4) input{
+    .userAcountData__input:nth-child(2) input{
         margin-left: 10%;
     }
 }

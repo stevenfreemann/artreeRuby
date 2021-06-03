@@ -24,8 +24,13 @@ const UserAcountData = ({ userAcount }) => {
 
     const infoInput = [
         {
-            label: 'Usuario',
-            data: userAcount.userName,
+            label: 'Nombre',
+            data: userAcount.fullName,
+            type: 'text'
+        },
+        {
+            label: 'Documento',
+            data: `${userAcount.documentID.type} ${userAcount.documentID.numberID}`,
             type: 'text'
         },
         {
@@ -34,13 +39,8 @@ const UserAcountData = ({ userAcount }) => {
             type: 'email'
         },
         {
-            label: 'Nombre',
-            data: userAcount.fullName,
-            type: 'text'
-        },
-        {
-            label: 'Documento',
-            data: `${userAcount.documentID.type} ${userAcount.documentID.numberID}`,
+            label: 'Usuario',
+            data: userAcount.userName,
             type: 'text'
         },
         {
@@ -107,7 +107,7 @@ const UserAcountData = ({ userAcount }) => {
                     </div>
                 )}
             </div>
-            <legend>Domicilios</legend>
+            <legend>Direcciones</legend>
             <div className='userAcountData__address'>
                 {addressInput.map((address, i) =>
                     <div key={i + 1} className='userAcountData__address-input'>

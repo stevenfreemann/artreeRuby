@@ -31,15 +31,15 @@ const PaymentInformation = (props) => {
                     <legend>Login</legend>
                     <div>
                         <label>Nombre</label>
-                        <input type="text"></input>
+                        <input type="text" autocomplete="name"></input>
                     </div>
                     <div>
                         <label>Correo</label>
-                        <input type="email"></input>
+                        <input type="email" autocomplete="email"></input>
                     </div>
                     <div>
                         <label>Contraseña</label>
-                        <input type="password"></input>
+                        <input type="password" autocomplete="password"></input>
                     </div>
                     <button type="button" onClick={()=>setCuenta(3)}>Entrar</button>
                     <div className="links">
@@ -73,7 +73,7 @@ const PaymentInformation = (props) => {
                             <option>{ind}</option>
                             )}
                         </select>
-                        <input type="tel" autocomplete="tel"></input>
+                        <input type="tel" autocomplete="tel-national"></input>
                     </div>
                     <label>Dirección</label>
                     <div className="address">
