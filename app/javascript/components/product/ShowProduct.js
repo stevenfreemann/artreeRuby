@@ -9,11 +9,13 @@ import whishList from '../../assets/static/buttons/perfilwish@2x.png'
 import whishListActivo from '../../assets/static/buttons/perfilwishactivobtn@2x.png'
 import imgGalery from '../../assets/static/images/galeria.png'
 import imgSpaces from '../../assets/static/images/espacios.png'
+import SectionProductModal from '../SectionProductModal'
 
 const ShowProduct = ({data,setScreen}) => {
     const [sala, setSala] = useState("picture")
     return (
         <div className="showProduct" >
+            <SectionProductModal/>
             <div className="showProduct__info">
                 {sala==="picture"?
                     <div className="showProduct__picture"><img src={data.img}/></div>

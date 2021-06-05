@@ -1,0 +1,31 @@
+.sectionProductModal-show{
+    display: none;
+}
+
+.sectionProductModal{
+    z-index: 4;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000a1;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.sectionProductModal__cont{
+    top: 50%;
+    left: 50%;
+    background-color:white;
+    height: 58vh;
+    width: 50vw;
+    border-radius: 28px;
+    padding: 2%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+}
+

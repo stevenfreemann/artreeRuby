@@ -11,6 +11,8 @@ import canvas from '../../assets/static/images/canvas-section.png'
 import papel from '../../assets/static/images/papel-section.png'
 import marco from '../../assets/static/images/marcoSection.png'
 
+import SectionProductModal from '../SectionProductModal'
+
 const sizeInfo = [
     {   
         id:1,
@@ -52,9 +54,9 @@ const ShowProductPurchase = (props) => {
         }
         window.location = redirect[section] ? redirect[section]: '/'
       }
-
-    return (
-        <div className="showProductPurchase">
+      return (
+          <div className="showProductPurchase">
+            {/* <SectionProductModal/> */}
             <div className="showProductPurchase__progress">
                 <hr></hr>
                 <div className="showProductPurchase__item">

@@ -91,10 +91,10 @@ const AboutUs = () => {
             <div className='aboutUs__info'>
                 <h1>Siguenos en nuestras redes sociales</h1>
                 <div className='aboutUs__info-social'>
-                    <a href={insta} target="_blank"><img src={logoInsta} alt='Social'/></a>
-                    <a href={facebook} target="_blank"><img src={logoFacebook} alt='Social'/></a>
-                    <a href={whats} target="_blank"><img src={logoWhats} alt='Social'/></a>
-                    <a href={pinte} target="_blank"><img src={logoPinterest} alt='Social'/></a>
+                    {insta&&<a href={insta} target="_blank"><img src={logoInsta} alt='Social'/></a>}
+                    {facebook&&<a href={facebook} target="_blank"><img src={logoFacebook} alt='Social'/></a>}
+                    {whats&&<a href={whats} target="_blank"><img src={logoWhats} alt='Social'/></a>}
+                    {pinte&&<a href={pinte} target="_blank"><img src={logoPinterest} alt='Social'/></a>}
                 </div>
                 <div className='aboutUs__info-other'>
                     <div>

@@ -96,9 +96,9 @@ const PaymentInformation = (props) => {
                         <input type="text" autocomplete="off"></input>
                     </div>
                     <label>Contraseña</label>
-                    <input type="password"></input>
+                    <input type="password" autocomplete="new-password"></input>
                     <label> Confirmar Contraseña</label>
-                    <input type="password"></input>
+                    <input type="password" autocomplete="new-password"></input>
                     <div className="terms">
                         <input type="checkbox"></input>
                         <span>

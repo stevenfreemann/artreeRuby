@@ -6,7 +6,7 @@ import Search from '../assets/static/buttons/buscar@2x.png'
 import Menu from '../assets/static/buttons/menu.png'
 import Logo from '../assets/static/graphics/logoartree.png'
 
-const firstName = ''
+const firstName = 'Natalia'
 const menuName = firstName?`¡Hola ${firstName}!`:'¡Bienvenido!'
 const firsNavigate = firstName?'Usuario':'Register'
 
