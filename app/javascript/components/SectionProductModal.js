@@ -91,16 +91,25 @@ const SectionProductModal = ({show}) => {
         const clickEvent=()=>{
             setShowModal(!showModal)
         }
+        const keyEsc=(e)=>{
+            if (e.key=="Escape") {
+                setShowModal(!showModal)
+            }
+        }
         if (!showModal) {
-            document.addEventListener('click',clickEvent)            
+            console.log(modalRef.current)
+            modalRef.current.addEventListener('click',clickEvent)
+            document.addEventListener('keyup', keyEsc)
         }
         return () => {
-            document.removeEventListener("click", clickEvent)
+            modalRef.current.removeEventListener("click", clickEvent)
+            document.removeEventListener('keyup',keyEsc)
         }
     }, [showModal])
 
     return (
-        <div className='sectionProductModal' ref={modalRef} hidden={showModal?true:false}>
+        <div className='sectionProductModal' hidden={showModal?true:false}>
+            <div className='sectionProductModal__back' ref={modalRef}></div>
             <div className='sectionProductModal__cont'>
                 <img className='sectionProductModal__close' src={cerrar} alt='X'/>
                 {showInfo===1&&
@@ -108,17 +117,17 @@ const SectionProductModal = ({show}) => {
                     <div className='sectionProductModal__size-select1'>
                         {sizeInfo.map((size)=>
                         <div className='sectionProductModal__size-select1-item' key={size.id}>
+                            <input type="radio" value={size.id}></input>
                             <div>
                                 <img src={size.img}/>
                                 <span>{size.width}x{size.height}</span>
                             </div>
-                            <input type='radio' value={size.id}></input>
                         </div>
                         )}
                     </div>
                     <select className='sectionProductModal__size-select2'>
                         {sizeInfo.map((size)=>
-                        <option key={size.id}><span>{size.width}x{size.height}</span><span>${size.price}</span></option>)}
+                        <option align='justify' key={size.id}>{size.width}x{size.height} ${size.price}</option>)}
                     </select>
                     <SeeButton textBtn={'Añadir'} />
                 </div>}

@@ -3,7 +3,17 @@
 }
 
 .sectionProductModal{
+    box-sizing: border-box;
     z-index: 4;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sectionProductModal__back{
+    z-index: 1;
     top: 0;
     left: 0;
     position: absolute;
@@ -15,6 +25,7 @@
 }
 
 .sectionProductModal__cont{
+    z-index: 2;
     top: 50%;
     left: 50%;
     background-color:white;
@@ -29,3 +40,51 @@
     transform: translate(-50%, -50%);
 }
 
+.sectionProductModal__close{
+    align-self: flex-end;
+    margin-bottom: 5%;
+}
+
+.sectionProductModal__size{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionProductModal__size-select1{
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 10rem;
+    position: relative;
+    margin: 0 auto 5%;
+}
+
+.sectionProductModal__size-select1-item{
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionProductModal__size-select1-item input{
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.sectionProductModal__size-select1-item div{
+    text-align: center;
+}
+
+.sectionProductModal__size-select1-item img{
+    width: 100%;
+}
+
+.sectionProductModal__size-select1-item input +
+.sectionProductModal__size-select1-item img{
+    cursor: pointer;
+}
+
+// .sectionProductModal__size-select1-item input:checked + 
+// .sectionProductModal__size-select1-item div{
+//     outline: 2px solid #f00;
+// }
