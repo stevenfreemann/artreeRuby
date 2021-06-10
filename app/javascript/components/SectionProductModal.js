@@ -85,7 +85,13 @@ const frames =[
 const SectionProductModal = ({show}) => {
     const [showModal, setShowModal] = useState(show&&false)
     const [showInfo, setShowInfo] = useState(1)
+    const [selectSize, setSelectSize] = useState(1)
+    const [selectMaterial, setSelectMaterial] = useState(1)
     const modalRef = useRef({})
+    const inputSizeRadioRef = useRef({})
+    const selectSizeRef = useRef({})
+    const inputMaterialRadioRef = useRef({})
+    const selectMaterialRef = useRef({})
 
     useEffect(() => {
         const clickEvent=()=>{
@@ -97,7 +103,6 @@ const SectionProductModal = ({show}) => {
             }
         }
         if (!showModal) {
-            console.log(modalRef.current)
             modalRef.current.addEventListener('click',clickEvent)
             document.addEventListener('keyup', keyEsc)
         }
@@ -107,48 +112,69 @@ const SectionProductModal = ({show}) => {
         }
     }, [showModal])
 
+    const checkedSize=(value)=>{
+        if (inputSizeRadioRef) {
+            setSelectSize(selectSizeRef.current.value)
+            inputSizeRadioRef.current.children[value].children[0].checked=true
+        }
+    }
+    const checkedMaterial=(value)=>{
+        if (inputSizeRadioRef) {
+            setSelectMaterial(selectMaterialRef.current.value)
+            inputMaterialRadioRef.current.children[value].children[0].checked=true
+        }
+    }
+    
     return (
         <div className='sectionProductModal' hidden={showModal?true:false}>
-            <div className='sectionProductModal__back' ref={modalRef}></div>
+            <div className='sectionProductModal__backGround' ref={modalRef}>
+            </div>
             <div className='sectionProductModal__cont'>
-                <img className='sectionProductModal__close' src={cerrar} alt='X'/>
+                <img className='sectionProductModal__close' src={cerrar} alt='X' onClick={()=> {setShowModal(!showModal)}}/>
                 {showInfo===1&&
                 <div className='sectionProductModal__size'>
-                    <div className='sectionProductModal__size-select1'>
+                    <div className='sectionProductModal__size-select1' ref={inputSizeRadioRef}>
                         {sizeInfo.map((size)=>
-                        <div className='sectionProductModal__size-select1-item' key={size.id}>
-                            <input type="radio" value={size.id}></input>
-                            <div>
+                        <label className='sectionProductModal__size-select1-item' key={size.id}>
+                            <input type="radio" name="size" value={size.id} defaultChecked={selectSize===size.id?true:false}></input>
+                            <div onClick={()=>{setSelectSize(size.id)}} >
                                 <img src={size.img}/>
                                 <span>{size.width}x{size.height}</span>
                             </div>
-                        </div>
+                        </label>
                         )}
                     </div>
-                    <select className='sectionProductModal__size-select2'>
+                    <select className='sectionProductModal__size-select2' ref={selectSizeRef} value={selectSize} onChange={()=>{checkedSize(selectSizeRef.current.value-1)}}>
+                        {/* <option value='0' disabled></option> */}
                         {sizeInfo.map((size)=>
-                        <option align='justify' key={size.id}>{size.width}x{size.height} ${size.price}</option>)}
+                        <option key={size.id} value={size.id} >{size.width}x{size.height} ${size.price}</option>
+                        )}
                     </select>
-                    <SeeButton textBtn={'Añadir'} />
+                    <div className='sectionProductModal__size-button'>
+                        <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'170%'}}/>
+                    </div>
                 </div>}
+                {/* Modal Material*/}
                 {showInfo===2&&
                 <div className='sectionProductModal__material'>
-                    <img className='sectionProductModal__material-show' src={materials[0].backShow}/>
-                    <div className='sectionProductModal__material-select1'>
+                    <img className='sectionProductModal__material-show' src={selectMaterial?materials[(selectMaterial)-1].backShow:null}/>
+                    <div className='sectionProductModal__material-select1' ref={inputMaterialRadioRef}>
                         {materials.map((material)=>
-                        <div key={material.id}>
-                            <img src={material.img}/>
-                            <input type='radio' value={material.id}></input>
-                        </div>
+                        <label className='sectionProductModal__material-select1-item' key={material.id}>
+                            <input type='radio' name='material' value={material.id} defaultChecked={selectMaterial===material.id?true:false} ></input>
+                            <img onClick={()=>{setSelectMaterial(material.id)}} src={material.img}/>
+                        </label>
                         )}
                     </div>
-                    <select className='sectionProductModal__material-select2'>
+                    <select className='sectionProductModal__material-select2' ref={selectMaterialRef} value={selectMaterial} onChange={()=>{checkedMaterial(selectMaterialRef.current.value-1)}}>
+                        {/* <option value='0' disabled></option> */}
                         {materials.map((material)=>
-                        <option><span>{material.type}</span><span>${material.price}</span></option>)}
+                        <option key={material.id} value={material.id} >{material.type} ${material.price}</option>)}
                     </select>
-                    <SeeButton textBtn={'Añadir'}/>
+                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'170%'}}/>
                 </div>}
-                {showInfo===2&&
+                {/* Modal Frame*/}
+                {showInfo===3&&
                 <div className='sectionProductModal__frame'>
                     <img className='sectionProductModal__frame-show' src={frames[0].backShow}/>
                     <select className='sectionProductModal__frame-select'>
