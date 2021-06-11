@@ -15,7 +15,6 @@ const ShowProduct = ({data,setScreen}) => {
     const [sala, setSala] = useState("picture")
     return (
         <div className="showProduct" >
-            <SectionProductModal/>
             <div className="showProduct__info">
                 {sala==="picture"?
                     <div className="showProduct__picture"><img src={data.img}/></div>
