@@ -1,4 +1,5 @@
 .infoPurchase{
+    margin-bottom: 10%;
     background-color: #eceddb;
 }
 
@@ -52,6 +53,9 @@
 }
 
 @media (max-width: 1200px) {
+    .infoPurchase{
+        margin-bottom: 15%;
+    }
     .infoPurchase__cont{
         width: 72rem;
         grid-template-columns: auto;
@@ -63,6 +67,9 @@
     }
 }
 @media (max-width: 720px) {
+    .infoPurchase{
+        margin-bottom: 20%;
+    }
     .infoPurchase__cont{
         width: 90%;
     }

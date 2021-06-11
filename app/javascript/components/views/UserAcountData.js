@@ -6,15 +6,9 @@ const UserAcountData = ({ userAcount }) => {
     const [prevId2, setPrevId2] = useState(null)
 
     const showModal = () => {
-        //console.log('modal-->', window.screen.width)
         let cuerpo=document.body
         cuerpo.style.overflow='hidden'
         document.documentElement.scrollTop = 0;
-        //cuerpo.scrollTop=0
-        //
-        //if(window.screen.width>768){
-        //    
-        //}
         let blur = document.getElementsByClassName('container-artree-none')[0]
         let modal = document.getElementsByClassName('container-addres')[0]
         blur.classList.replace('container-artree-none', 'container-artree')
@@ -127,11 +121,11 @@ const UserAcountData = ({ userAcount }) => {
                 </div>
                 <div>
                     <label>Nueva Contraseña</label>
-                    <input type='password' />
+                    <input type='password' autocomplete="new-password"/>
                 </div>
                 <div>
                     <label>Confirmar Contraseña</label>
-                    <input type='password' />
+                    <input type='password' autocomplete="new-password"/>
                 </div>
                 <button type='button'>Actualizar</button>
             </div>

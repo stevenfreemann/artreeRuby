@@ -1,5 +1,6 @@
 .infoArtist{
     background-color: #fff4dc;
+    margin-bottom: 10%;
 }
 
 .infoArtist__title{
@@ -61,6 +62,9 @@
 }
 
 @media (max-width: 1200px) {
+    .infoArtist{
+        margin-bottom: 15%;
+    }
     .infoArtist__cont{
         width: 72rem;
         grid-template-columns: auto;
@@ -72,6 +76,9 @@
     }
 }
 @media (max-width: 720px) {
+    .infoArtist{
+        margin-bottom: 20%;
+    }
     .infoArtist__cont{
         width: 90%;
     }

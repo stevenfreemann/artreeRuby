@@ -111,16 +111,19 @@
 .accordeon-sizes div {
     display: grid;
 }
+.accordeon-sizes div img{
+    cursor: pointer;
+}
 
-.accordeon-sizes div[id="1"] img{
+.accordeon-sizes div[id="size1"] img{
     width: 50%;
 }
 
-.accordeon-sizes div[id="2"] img{
+.accordeon-sizes div[id="size2"] img{
     width: 75%;
 }
 
-.accordeon-sizes div[id="3"] img{
+.accordeon-sizes div[id="size3"] img{
     width: 100%;
 }
 
@@ -135,7 +138,6 @@
 }
 
 .accordeon-material img{
-    // width: 20%;
     height: 6.3rem;
     transition: opacity .3s;
     border: solid 1px #cbbdcb;
@@ -143,6 +145,7 @@
 }
 
 .accordeon-material img:hover{
+    cursor: pointer;
     opacity: .5;
     width: 20%;
 }
@@ -173,6 +176,7 @@
 }
 
 .accordeon-info input{
+    cursor: pointer;
     appearance: none;
     border-radius: 50%;
     width: 22px;

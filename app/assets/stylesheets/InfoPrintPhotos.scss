@@ -1,4 +1,5 @@
 .infoPrintPhotos{
+    margin-bottom: 10%;
     background-color: #d6e1e6;
 }
 
@@ -52,6 +53,9 @@
 }
 
 @media (max-width: 1200px) {
+    .infoPrintPhotos{
+        margin-bottom: 15%;
+    }
     .infoPrintPhotos__cont{
         width: 72rem;
         grid-template-columns: auto;
@@ -63,6 +67,9 @@
     }
 }
 @media (max-width: 720px) {
+    .infoPrintPhotos{
+        margin-bottom: 20%;
+    }
     .infoPrintPhotos__cont{
         width: 90%;
     }
