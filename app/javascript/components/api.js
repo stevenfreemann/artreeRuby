@@ -1,5 +1,6 @@
 const api = {
-	getArtistas: (listener) => call("GET", "api/AllArtist",{}, listener),
+	getArtistas: (listener) => call("GET", "/api/v1/artistas",{}, listener),
+
 	//New objects
 	new: (controller, listener) => call("GET", `${controller}/new`, {}, listener),
 	create: (object, images = {}, authenticity_token, controller, listener) => {
@@ -25,11 +26,11 @@ const setParams = function(data, get){
 
 const	setDefaults =  function(data = {}, defaults = {}){for (var key in defaults) data[key] = defaults[key];return data;}
 
+
 const call = function(method, services, data, listener){
 	const formData = setParams(data, method === "GET")
 	let url = window.location.origin
-	let service = `/middleware/${services}`
-  console.log(method, service, formData)
+  console.log(method, services, formData)
 	//Set Headers
 	var myHeaders = new Headers();
 	myHeaders.append("Accept", "application/json");
@@ -45,11 +46,12 @@ const call = function(method, services, data, listener){
    function middlewareListener(data){
    	if(listener != null && listener !== undefined){listener(data)}else{console.log("Middleware data:", data)}
    }
-   var built = new URL(url + service)
+   var built = new URL(url + services)
    if(method==="GET") Object.keys(formData).forEach(key => built.searchParams.append(key, formData[key]))
 
    fetch(built, miInit)
-		.then(response =>{console.log(response)} ).then(function(data) {middlewareListener(data)});
+		.then(response => response.json()).then(function(data) {middlewareListener(data)});
 }
+
 
 export default api;

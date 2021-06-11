@@ -20,8 +20,8 @@ const info = [
 
 export default function app(props) {
   useEffect(()=>{
-    Api.getArtistas((response)=>{
-      console.log('respuesta api--',response)
+    //api que obtiene los artistas
+    Api.getArtistas((res)=>{
     })
   },[])
   const navigate=(section)=>{
