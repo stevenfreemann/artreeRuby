@@ -95,43 +95,47 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(1)
     const [selectSize, setSelectSize] = useState(0)
-    const [selectMaterial, setSelectMaterial] = useState(false)
-    const [selectFrame, setSelectFrame] = useState(false)
-    const [selectPaking, setSelectPaking] = useState(false)
+    const [selectMaterial, setSelectMaterial] = useState(0)
+    const [selectFrame, setSelectFrame] = useState(0)
+    const [selectPaking, setSelectPaking] = useState(0)
     const [modal, setModal] = useState(false)
-    const modalInfoRef = useRef({})
     const modalDataRef = useRef({})
+    const modalInfoRef = useRef({})
+    const modalProductRef = useRef({})
 
     const navigate=(section)=>{
-        const redirect={
-            'cart':'/cart'
+        if (selectSize&&selectMaterial&&selectFrame&&selectPaking) {
+            const redirect={
+                'cart':'/cart'
+            }
+            window.location = redirect[section] ? redirect[section]: '/'
+        }else{
+            alert('Por favor seleccione todas las opciones')
         }
-        window.location = redirect[section] ? redirect[section]: '/'
     }
 
-    const showModal = (tag)=>{
+    const showModal = (tag,product)=>{
         if (tag==='size') {
             modalDataRef.current=sizeInfo
             modalInfoRef.current=1
+            modalProductRef.current=product
             setModal(true)
         }
-        if (selectMaterial) {
+        if (tag==='material') {
             modalDataRef.current=materials
             modalInfoRef.current=2
             setModal(true)
         }
-        if (selectFrame) {
+        if (tag==='frame') {
             modalDataRef.current=frames
             modalInfoRef.current=3
             setModal(true)
         }
     }
-    console.log(modal)
-    console.log(modalDataRef)
-    console.log(modalInfoRef)
+    console.log('Frame',selectFrame)
       return (
           <div className="showProductPurchase">
-            {modal&&<SectionProductModal showModal={modal} info={modalInfoRef.current} dataModal={modalDataRef.current} listener={(showModal)=>{setModal(showModal)}}/>}
+            {modal&&<SectionProductModal showModal={modal} info={modalInfoRef.current} dataModal={modalDataRef.current} selectSize={selectSize} setSelectSize={setSelectSize} selectMaterial={selectMaterial} setSelectMaterial={setSelectMaterial} selectFrame={selectFrame} setSelectFrame={setSelectFrame} listener={(showModal)=>{setModal(showModal)}}/>}
             <div className="showProductPurchase__progress">
                 <hr></hr>
                 <div className="showProductPurchase__item">
@@ -148,11 +152,11 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                     <span>Materiales</span>
                 </div>}
                 <div className="showProductPurchase__item">
-                    <div className={selectFrame===true?"item-selected":""}></div>
+                    <div className={selectFrame!==0?"item-selected":""}></div>
                     <span>Marco</span>
                 </div>
                 <div className="showProductPurchase__item">
-                    <div className={selectPaking===true?"item-selected":""}></div>
+                    <div className={selectPaking!==0?"item-selected":""}></div>
                     <span>Empaque</span>
                 </div>
             </div>
@@ -172,8 +176,8 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-sizes">
                                 {sizeInfo.map((size)=>
-                                <div id={size.id} key={size.id}>
-                                    <img style={selectSize===size.id?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{showModal('size');setSelectSize(size.id)}}/>
+                                <div id={`size${size.id}`} key={size.id}>
+                                    <img style={selectSize===size.id?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{setSelectSize(size.id);showModal('size',size.id)}}/>
                                     <span>{size.width}x{size.height} cm</span>
                                     <span>$ {size.price}</span>
                                 </div>
@@ -186,7 +190,7 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-material">
                                 {materials.map((material)=>
-                                    <img key={material.id} src={material.img} alt='material' onClick={()=>setSelectMaterial(true)}/>
+                                    <img style={selectMaterial===material.id?{opacity:1, transform:'scale(1.2)'}:{opacity:0.3}} key={material.id} src={material.img} alt='material' onClick={()=>{showModal('material');setSelectMaterial(material.id)}}/>
                                 )}
                             </div>
                         </div>}
@@ -195,14 +199,12 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                         <div className="accordeon-info">
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-frame">
-                                <div>
-                                    <input type="radio" name="marco" onChange={()=>setSelectFrame(true)}/>
-                                    <label>Blanco</label>
+                                {frames.map((frame)=>
+                                <div key={frame.id}>
+                                    <input type="radio" name="marco" checked={selectFrame===frame.id?true:false} onChange={()=>{showModal('frame'); setSelectFrame(frame.id)}}/>
+                                    <label>{frame.type}</label>
                                 </div>
-                                <div>
-                                    <input type="radio" name="marco" onChange={()=>setSelectFrame(true)}/>
-                                    <label>Negro</label>
-                                </div>
+                                )}
                             </div>
                         </div>}
                         <div className={`accordeon-title${accordionInfo===4?"-selected":""}`} onClick={()=>setAccordionInfo(4)}>Empaque<img src={accordionInfo===4?minus:plus}/></div>
@@ -211,11 +213,11 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                         <div className="accordeon-package">
                             <div>
-                                <input type="radio" name="marco" onChange={()=>setSelectPaking(true)}/>
+                                <input type="radio" name="marco" onChange={()=>setSelectPaking(1)}/>
                                 <label>Normal</label>
                             </div>
                             <div>
-                                <input type="radio" name="marco" onChange={()=>setSelectPaking(true)}/>
+                                <input type="radio" name="marco" onChange={()=>setSelectPaking(2)}/>
                                 <label>Regalo</label>
                             </div>
                         </div>

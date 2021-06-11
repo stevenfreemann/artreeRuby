@@ -30,10 +30,6 @@ const PaymentInformation = (props) => {
                 <form action="">
                     <legend>Login</legend>
                     <div>
-                        <label>Nombre</label>
-                        <input type="text" autocomplete="name"></input>
-                    </div>
-                    <div>
                         <label>Correo</label>
                         <input type="email" autocomplete="email"></input>
                     </div>
@@ -75,25 +71,13 @@ const PaymentInformation = (props) => {
                         </select>
                         <input type="tel" autocomplete="tel-national"></input>
                     </div>
-                    <label>Dirección</label>
+                    <label>Código Postal</label>
                     <div className="address">
-                        <select>
-                            {dir.map((dir)=>
-                            <option>{dir}</option>
-                            )}
-                        </select>
-                        <span>#</span>
-                        <input type="text" autocomplete="off"></input>
-                        <span>-</span>
-                        <input type="text" autocomplete="off"></input>
+                        <input type="text" autocomplete="postal-code"></input>
                     </div>
+                    <label>Dirección</label>
                     <div className="address2">
-                        <select>
-                            {sub.map((sub)=>
-                            <option>{sub}</option>
-                            )}
-                        </select>
-                        <input type="text" autocomplete="off"></input>
+                        <input type="text" autocomplete="street-address"></input>
                     </div>
                     <label>Contraseña</label>
                     <input type="password" autocomplete="new-password"></input>
