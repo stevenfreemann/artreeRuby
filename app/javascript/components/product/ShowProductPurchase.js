@@ -104,13 +104,27 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
     const modalProductRef = useRef({})
 
     const navigate=(section)=>{
-        if (selectSize&&selectMaterial&&selectFrame&&selectPaking) {
-            const redirect={
-                'cart':'/cart'
+        if(showExclusive){
+            if (selectSize&&selectFrame&&selectPaking) {
+                const redirect={
+                    'cart':'/cart'
+                }
+                window.location = redirect[section] ? redirect[section]: '/'
             }
-            window.location = redirect[section] ? redirect[section]: '/'
-        }else{
-            alert('Por favor seleccione todas las opciones')
+            else{
+                alert('Por favor seleccione todas las opciones')
+            }
+        }
+        else{
+            if (selectSize&&selectMaterial&&selectFrame&&selectPaking) {
+                const redirect={
+                    'cart':'/cart'
+                }
+                window.location = redirect[section] ? redirect[section]: '/'
+            }
+            else{
+                alert('Por favor seleccione todas las opciones')
+            }
         }
     }
 
@@ -132,7 +146,6 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
             setModal(true)
         }
     }
-    console.log('Frame',selectFrame)
       return (
           <div className="showProductPurchase">
             {modal&&<SectionProductModal showModal={modal} info={modalInfoRef.current} dataModal={modalDataRef.current} selectSize={selectSize} setSelectSize={setSelectSize} selectMaterial={selectMaterial} setSelectMaterial={setSelectMaterial} selectFrame={selectFrame} setSelectFrame={setSelectFrame} listener={(showModal)=>{setModal(showModal)}}/>}

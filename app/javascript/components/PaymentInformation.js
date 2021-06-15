@@ -8,11 +8,9 @@ import api from './api'
 import { element } from 'prop-types'
 
 const usuario = "Natalia Bedoya"
-const country = ["Colombia", "Ecuador", "Venezuela", "Estados Unidos"]
-const city = ["Bogotá", "Medellín", "Cali", "Barranquilla"]
-const ind = ["+57", "+58", "+59"]
-const dir = ["Cra", "Calle", "Diagonal", "Transversal"]
-const sub = ["Interior", "Apto"]
+const country = ["Colombia","Ecuador","Venezuela","Estados Unidos"]
+const city = ["Bogotá","Medellín","Cali","Barranquilla"]
+const ind = ["+57","+58","+59"]
 
 const PaymentInformation = (props) => {
     const [check, setCheck] = useState("Acount")
@@ -29,6 +27,8 @@ const PaymentInformation = (props) => {
                 var wrapper = document.createElement('div');
                 wrapper.innerHTML = data;
                 let formulario = wrapper.getElementsByClassName('checkIn__form')[0]
+                let input = formulario.getElementsByTagName('input')[1]
+                input.value='screen2'
                 setform(formulario.outerHTML)
             });
 
@@ -40,11 +40,6 @@ const PaymentInformation = (props) => {
                console.log(data)
             });
     }, [])
-
-    const showform = () => {
-        setCuenta(2)
-
-    }
 
     return (
         <div className="paymentInformation__cont">
@@ -67,7 +62,7 @@ const PaymentInformation = (props) => {
                         </div>
                         <button type="button" onClick={() => setCuenta(3)}>Entrar</button>
                         <div className="links">
-                            <a onClick={() => showform()}>Registrarse</a>
+                            <a onClick={() => setCuenta(2)}>Registrarse</a>
                             <a>Recordar Contraseña</a>
                         </div>
                     </form>

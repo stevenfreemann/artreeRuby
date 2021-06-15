@@ -21,12 +21,28 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
     }
     overflow()
 
+    const withoutItem = ()=>{
+        if (showInfo===1){
+            setSelectSize(0)
+        }
+        if (showInfo===2){
+            setSelectMaterial(0)
+        }
+        if (showInfo===3){
+            setSelectFrame(0)
+        }
+    }
+    
     useEffect(() => {
         const clickEvent=()=>{
+            document.body.style.overflow='visible'
+            withoutItem()
             listener(!showModal)
         }
         const keyEsc=(e)=>{
             if (e.key=="Escape") {
+                document.body.style.overflow='visible'
+                withoutItem()
                 listener(!showModal)
             }
         }
@@ -35,8 +51,9 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
             document.addEventListener('keyup', keyEsc)
         }
         return () => {
-            modalRef.current.removeEventListener("click", clickEvent)
-            document.removeEventListener('keyup',keyEsc)
+            if(!showModal){
+                modalRef.current.removeEventListener("click", clickEvent)
+                document.removeEventListener('keyup',keyEsc)}
         }
     }, [showModal])
 
@@ -52,13 +69,12 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
             inputMaterialRadioRef.current.children[(value)-1].children[0].checked=true
         }
     }
-    console.log('Dentro',selectFrame)
     return (
         <div className='sectionProductModal' hidden={showModal?false:true}>
             <div className='sectionProductModal__backGround' ref={modalRef}>
             </div>
             <div className='sectionProductModal__cont'>
-                <img className='sectionProductModal__close' src={cerrar} alt='X' onClick={()=> {listener(!showModal)}}/>
+                <img className='sectionProductModal__close' src={cerrar} alt='X' onClick={()=> {listener(!showModal);withoutItem()}}/>
                 {showInfo===1&&
                 <div className='sectionProductModal__size'>
                     <div className='sectionProductModal__size-select1' ref={inputSizeRadioRef}>
@@ -79,7 +95,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         )}
                     </select>
                     <div className='sectionProductModal__size-button'>
-                        <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}}/>
+                        <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} listener={()=>listener(!showModal)}/>
                     </div>
                 </div>}
                 {/* Modal Material*/}
@@ -99,7 +115,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         {dataModal.map((material)=>
                         <option key={material.id} value={material.id} >{material.type} ${material.price}</option>)}
                     </select>
-                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}}/>
+                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} onClick={()=> {listener(!showModal)}}/>
                 </div>}
                 {/* Modal Frame*/}
                 {showInfo===3&&
@@ -110,7 +126,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         <option key={frame.id} value={frame.id} >{frame.type} ${frame.price}</option>
                         )}
                         </select>
-                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}}/>
+                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} onClick={()=> {listener(!showModal)}}/>
                 </div>}
             </div>
         </div>
