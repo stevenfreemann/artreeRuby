@@ -2,16 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import SeeButton from './SeeButton'
 import cerrar from '../assets/static/buttons/boton cerrar.png'
 
-import acrilico from '../assets/static/images/acrilico-section.png'
-import canvas from '../assets/static/images/canvas-section.png'
-import papel from '../assets/static/images/papel-section.png'
-import marco from '../assets/static/images/marcoSection.png'
-import marco2 from '../assets/static/images/marcos2.png'
-import marco3 from '../assets/static/images/marcos3.png'
-import size1 from '../assets/static/images/size1.png'
-import size2 from '../assets/static/images/size2.png'
-import size3 from '../assets/static/images/size3.png'
-
 const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,selectMaterial,setSelectMaterial,selectFrame,setSelectFrame,listener}) => {
     const [showInfo] = useState(info)
     const modalRef = useRef({})

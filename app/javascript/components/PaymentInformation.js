@@ -9,8 +9,6 @@ const usuario = "Natalia Bedoya"
 const country = ["Colombia","Ecuador","Venezuela","Estados Unidos"]
 const city = ["Bogotá","Medellín","Cali","Barranquilla"]
 const ind = ["+57","+58","+59"]
-const dir = ["Cra","Calle","Diagonal","Transversal"]
-const sub = ["Interior","Apto"]
 
 const PaymentInformation = (props) => {
     const [check, setCheck] = useState("Acount")
