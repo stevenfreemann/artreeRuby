@@ -20,12 +20,6 @@ const PaymentInformation = (props) => {
     const [formu, setform] = useState(null);
     const products = props.products
 
-
-    var stringToHTML = function (str) {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(str, 'text/html');
-        return doc.body;
-    };
     useEffect(() => {
         fetch('/users/sign_up')
             .then(res => {
@@ -34,11 +28,16 @@ const PaymentInformation = (props) => {
             .then(data => {
                 var wrapper = document.createElement('div');
                 wrapper.innerHTML = data;
-                //let document1 = stringToHTML(data)
-                console.log(wrapper)
                 let formulario = wrapper.getElementsByClassName('checkIn__form')[0]
-                console.log(formulario)
                 setform(formulario.outerHTML)
+            });
+
+        fetch('/users/sign_in')
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+               console.log(data)
             });
     }, [])
 
@@ -73,7 +72,7 @@ const PaymentInformation = (props) => {
                         </div>
                     </form>
                     : check === "Acount" && cuenta === 2 ?
-                        <div dangerouslySetInnerHTML={{__html:formu}}/>
+                        <div dangerouslySetInnerHTML={{ __html: formu }} />
                         : check === "Acount" && cuenta === 3 ?
                             <div className="paymentInformation__welcome">
                                 <legend>Registrate</legend>

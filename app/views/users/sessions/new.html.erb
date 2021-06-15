@@ -11,9 +11,8 @@
     </div>
     <%= f.submit "Log in", class:'button__signIn' %>
     <div class="signIn__links">
-      <a href="/register">Registrarse</a>
-      <a href="#">Recordar Contraseña</a>
+      <a href="/users/sign_up">Registrarse</a>
+      <a href="/users/password/new">Recordar Contraseña</a>
     </div>
   <% end %>
 </div>
-<%= render "devise/shared/links" %>
