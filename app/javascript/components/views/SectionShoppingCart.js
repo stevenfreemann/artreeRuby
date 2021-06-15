@@ -57,9 +57,8 @@ const products=[
     },   
 ]
 
-const SectionShoppingCart = () => {
+const SectionShoppingCart = ({authenticity_token}) => {
     const [value, setValue] = useState(0)
-
     return (
         <div className="sectionShoppingCart">
             <Title title="CARRITO"/>
@@ -70,7 +69,7 @@ const SectionShoppingCart = () => {
                     )}    
                 </div>
                 <div className="sectionShoppingCart__payment">
-                   <PaymentInformation products={products}/> 
+                   <PaymentInformation {...{products,authenticity_token}}/> 
                 </div>
             </div>
         </div>

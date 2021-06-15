@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   get 'infoPro' => 'home#infoPro'
   get 'infoLikepro' => 'home#infoLikeAPro'
   get 'subInfoMaterial' => 'home#subInfoMaterials'
-  get 'cart' =>'shoppin_cart#shoppingCart'
-  get 'register' => 'register#register'
-  get 'signIn' => 'register#signIn'
+  get 'cart' =>'shoppin_cart#shoppingCart' 
   get 'exclusiveMarket' => 'exclusive#exclusiveMarket'
   get 'proMarket' => 'pro#proMarket'
   get 'likeProMarket' => 'like_pro#likeProMarket'
@@ -29,7 +27,7 @@ Rails.application.routes.draw do
   get 'upload' => 'like_pro#upload'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations'}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "home#index"
   
