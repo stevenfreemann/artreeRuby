@@ -18,12 +18,6 @@ const PaymentInformation = (props) => {
     const [formu, setform] = useState(null);
     const products = props.products
 
-
-    var stringToHTML = function (str) {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(str, 'text/html');
-        return doc.body;
-    };
     useEffect(() => {
         fetch('/users/sign_up')
             .then(res => {
@@ -32,18 +26,12 @@ const PaymentInformation = (props) => {
             .then(data => {
                 var wrapper = document.createElement('div');
                 wrapper.innerHTML = data;
-                //let document1 = stringToHTML(data)
-                console.log(wrapper)
                 let formulario = wrapper.getElementsByClassName('checkIn__form')[0]
-                console.log(formulario)
+                let input = formulario.getElementsByTagName('input')[1]
+                input.value='Screen2'
                 setform(formulario.outerHTML)
             });
     }, [])
-
-    const showform = () => {
-        setCuenta(2)
-
-    }
 
     return (
         <div className="paymentInformation__cont">
@@ -66,7 +54,7 @@ const PaymentInformation = (props) => {
                         </div>
                         <button type="button" onClick={() => setCuenta(3)}>Entrar</button>
                         <div className="links">
-                            <a onClick={() => showform()}>Registrarse</a>
+                            <a onClick={() => setCuenta(2)}>Registrarse</a>
                             <a>Recordar Contraseña</a>
                         </div>
                     </form>
