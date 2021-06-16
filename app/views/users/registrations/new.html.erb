@@ -1,9 +1,8 @@
 <div class='checkIn'>
 <%= react_component("Title",{title:"REGÍSTRATE"},)%>
-
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => 'checkIn__form'})  do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <%=  hidden_field_tag "registerScreen", "screen1" %>
+    <%= hidden_field_tag "screen", "screen1" %>
     <div >
       <%= f.label :Tu_Nombre %><br/>
       <%= f.text_field :name, autofocus: true %>

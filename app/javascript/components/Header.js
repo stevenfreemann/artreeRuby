@@ -12,12 +12,12 @@ const firsNavigate = firstName?'Usuario':'Register'
 
 const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito','Contáctenos']
 
-const Header = () => {
+const Header = ({currentUser}) => {
+    console.log('HEADER-->',currentUser)
     const [showMenu, setShowMenu] = useState(false)
     const [notificationWhish, setNotificationWhish] = useState(12)
     const [notificationCart, setNotificationCart] = useState(10)
     const navigate = (section) => {
-        
         const redirect = {
             '¿Quienes somos?': '/about',
             'EXCLUSIVE': '/infoExclusive',

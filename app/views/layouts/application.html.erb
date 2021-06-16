@@ -21,7 +21,7 @@
   <body>
   <%= react_component("AddAddresModal", { greeting: "Hello from react-rails." },)%>
     <div class="container-artree-none">
-    <%= react_component("Header", { greeting: "Hello from react-rails." },)%>
+    <%= react_component("Header", {currentUser: current_user },)%>
     <div class="App">
       <div class="App--HeaderPadding">
       <% if notice %>

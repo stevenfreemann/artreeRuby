@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
   def index
+    puts "entro al index"
+    if current_user
+        @current_user=current_user
+        puts "HAY UN USUARIO"
+    end  
   end
   def contacto
   end

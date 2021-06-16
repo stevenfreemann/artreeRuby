@@ -17,7 +17,6 @@ const PaymentInformation = (props) => {
     const [cuenta, setCuenta] = useState(1)
     const [formu, setform] = useState(null);
     const products = props.products
-
     useEffect(() => {
         fetch('/users/sign_up')
             .then(res => {
