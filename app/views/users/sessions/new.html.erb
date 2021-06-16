@@ -1,6 +1,7 @@
 <div class='signIn'>
   <%= react_component("Title", { title: "INICIAR SESIÓN" },)%>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name) , :html => {:class => 'signIn__form'}) do |f| %>
+    <%=  hidden_field_tag "signUpScreen", "screen1" %>
     <div class="field">
       <%= f.label :Email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

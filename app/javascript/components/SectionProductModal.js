@@ -11,15 +11,14 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
     const selectMaterialRef = useRef({})
     const selectFrameRef = useRef({})
 
-    const overflow = ()=>{
+    useEffect(() => {
         if (showModal) {
             document.body.style.overflow='hidden'
             document.documentElement.scrollTop = 0;
         }else{
             document.body.style.overflow='visible'
         }
-    }
-    overflow()
+    }, [showModal])
 
     const withoutItem = ()=>{
         if (showInfo===1){
@@ -95,7 +94,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         )}
                     </select>
                     <div className='sectionProductModal__size-button'>
-                        <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} listener={()=>listener(!showModal)}/>
+                        <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} listener={()=>{listener(!showModal);document.body.style.overflow='visible'}}/>
                     </div>
                 </div>}
                 {/* Modal Material*/}
@@ -115,7 +114,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         {dataModal.map((material)=>
                         <option key={material.id} value={material.id} >{material.type} ${material.price}</option>)}
                     </select>
-                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} onClick={()=> {listener(!showModal)}}/>
+                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} listener={()=>{listener(!showModal);document.body.style.overflow='visible'}}/>
                 </div>}
                 {/* Modal Frame*/}
                 {showInfo===3&&
@@ -126,7 +125,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         <option key={frame.id} value={frame.id} >{frame.type} ${frame.price}</option>
                         )}
                         </select>
-                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} onClick={()=> {listener(!showModal)}}/>
+                    <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} listener={()=>{listener(!showModal);document.body.style.overflow='visible'}}/>
                 </div>}
             </div>
         </div>
