@@ -15,22 +15,28 @@ const ind = ["+57", "+58", "+59"];
 const PaymentInformation = (props) => {
   const [check, setCheck] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
-  const [formu, setform] = useState(null);
   const [signIn, setSignIn] = useState(null);
+  const [formu, setform] = useState(null);
   const [forgot, setForgot] = useState(null);
   const products = props.products;
 
-  const linkRef = useRef({})
-
-  const changeCuenta = () => {
-      setCuenta(2)
-  }
-  const setAttribute = () => {
+  useEffect(() => {
     let a = document.getElementById("registerLink")
-    // a.onclick= ()=>changeCuenta()
-    console.log('2',a)
-  }
-  setAttribute()
+    let b = document.getElementById("forgotPass")
+    let c = document.getElementById("loginLink")
+    if (a){
+      a.onclick= ()=>{setCuenta(2);document.documentElement.scrollTop = 100;}
+    }if(b){
+      console.log(b)
+      b.onclick= ()=>{setCuenta(4);document.documentElement.scrollTop = 100;}
+    }
+    console.log(c)
+    if (c){
+      c.onclick= ()=>{setCuenta(1);document.documentElement.scrollTop = 100;}
+    }
+  }, [signIn,cuenta,formu])
+
+
 
   useEffect(() => {
     fetch("/users/sign_in")
@@ -42,13 +48,13 @@ const PaymentInformation = (props) => {
         wrapper.innerHTML = data;
         let formulario = wrapper.getElementsByClassName("signIn__form")[0];
         let input = formulario.getElementsByTagName("input")[1];
-        input.value = "screen3";
+        input.value = "screen2";
         let a = formulario.getElementsByTagName("a")[0]
-        // a.addEventListener("click", console.log('aqui')
-        // );
+        let b = formulario.getElementsByTagName("a")[1]
         a.setAttribute("id","registerLink")
+        b.setAttribute("id","forgotPass")
         a.removeAttribute("href")
-        console.log('1',a)
+        b.removeAttribute("href")
         setSignIn(formulario.outerHTML);
     });
     fetch("/users/sign_up")
@@ -61,6 +67,9 @@ const PaymentInformation = (props) => {
         let formulario = wrapper.getElementsByClassName("checkIn__form")[0];
         let input = formulario.getElementsByTagName("input")[1];
         input.value = "screen2";
+        let c = formulario.getElementsByClassName("checkIn__signIn")[0]
+        c.setAttribute("id","loginLink")
+        c.removeAttribute("href")
         setform(formulario.outerHTML);
       });
     fetch("/users/password/new")
@@ -76,7 +85,6 @@ const PaymentInformation = (props) => {
         setForgot(formulario.outerHTML);
       });
   }, []);
- console.log(linkRef.current)
   return (
     <div className="paymentInformation__cont">
       <div className="paymentInformation__tabs">
@@ -107,11 +115,17 @@ const PaymentInformation = (props) => {
       </div>
       <div className="paymentInformation__acount">
         {check === "Acount" && cuenta === 1 ? (
-          <div dangerouslySetInnerHTML={{ __html: signIn }} />
+          <div>
+            <legend>Login</legend>
+            <div className='paymentInformation__acount-login' dangerouslySetInnerHTML={{ __html: signIn }}/>
+          </div>
         ) 
         : check === "Acount" && cuenta === 2 ? (
-          <div dangerouslySetInnerHTML={{ __html: formu }} />
-        ) 
+          <div>
+            <legend>Login</legend>
+            <div className='paymentInformation__acount-registration' dangerouslySetInnerHTML={{ __html: formu }} />
+          </div>
+                    )
         : check === "Acount" && cuenta === 3 ? (
           <div className="paymentInformation__welcome">
             <legend>Registrate</legend>
@@ -126,7 +140,10 @@ const PaymentInformation = (props) => {
           </div>
         ) 
         : check === "Acount" && cuenta === 4 ? (
-            <div dangerouslySetInnerHTML={{ __html: forgot}} />
+          <div>
+            <legend>¿Olvidó su contraseña?</legend>
+              <div className='paymentInformation__acount-forgot' dangerouslySetInnerHTML={{ __html: forgot}} />
+          </div>
         )
         : check === "Check" ? (
           <div className="paymentInformation__check">
