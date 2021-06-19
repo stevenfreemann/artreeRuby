@@ -119,7 +119,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                 {/* Modal Frame*/}
                 {showInfo===3&&
                 <div className='sectionProductModal__frame'>
-                    <img className='sectionProductModal__frame-show' src={dataModal[(selectFrame)-1].backShow}/>
+                    <img className='sectionProductModal__frame-show' src={selectFrame?dataModal[(selectFrame)-1].backShow:null}/>
                         <select className='sectionProductModal__frame-select' ref={selectFrameRef} value={selectFrame} onChange={()=>{setSelectFrame(parseInt(selectFrameRef.current.value))}}>
                         {dataModal.map((frame)=>
                         <option key={frame.id} value={frame.id} >{frame.type} ${frame.price}</option>

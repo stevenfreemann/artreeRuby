@@ -93,7 +93,7 @@ const frames =[
 const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
-    const [accordionInfo, setAccordionInfo] = useState(1)
+    const [accordionInfo, setAccordionInfo] = useState(0)
     const [selectSize, setSelectSize] = useState(0)
     const [selectMaterial, setSelectMaterial] = useState(0)
     const [selectFrame, setSelectFrame] = useState(0)
@@ -127,6 +127,15 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
             }
         }
     }
+
+    useEffect(() => {
+        let info = document.getElementsByClassName('accordeon-info')
+        for (let i = 0; i < info.length; i++) {
+            if(accordionInfo===(i+1)){
+                let div = document.getElementsByClassName('accordeon-info')[i]
+                div.style.height=`${div.scrollHeight}px`}
+        }
+    }, [accordionInfo])
 
     const showModal = (tag,product)=>{
         if (tag==='size') {
@@ -175,7 +184,7 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
             </div>
             <div className="showProductPurchase__product">
                 <div className="showProductPurchase__info">
-                    <img src={data.img}/>
+                    <img src={data.img} alt={data.nombre}/>
                     <div>
                         <span style={{fontWeight:"bold"}}>{data.nombre}: </span>
                         <span>{data.info}</span>
@@ -183,9 +192,8 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                 </div>
                 <div className="showProductPurchase__carac">
                     <div className="showProductPurchase__accordeon">
-                        <div className={`accordeon-title${accordionInfo===1?"-selected":""}`} onClick={()=>setAccordionInfo(1)}>Tamaño<img src={accordionInfo===1?minus:plus}/></div>
-                        {accordionInfo===1&&
-                        <div className="accordeon-info">
+                        <div className={`accordeon-title${accordionInfo===1?"-selected":""}`} onClick={()=>{accordionInfo===1?setAccordionInfo(0):setAccordionInfo(1)}}>Tamaño<img src={accordionInfo===1?minus:plus}/></div>
+                        <div className="accordeon-info" style={accordionInfo!==1?{height:'0'}:{}}>
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-sizes">
                                 {sizeInfo.map((size)=>
@@ -196,20 +204,19 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                                 </div>
                                 )}
                             </div>
-                        </div>}
-                        {!showExclusive&&<div className={`accordeon-title${accordionInfo===2?"-selected":""}`} onClick={()=>setAccordionInfo(2)}>Materiales<img src={accordionInfo===2?minus:plus}/></div>}
-                        {accordionInfo===2&&
-                        <div className="accordeon-info">
+                        </div>
+                        <div className={`accordeon-title${accordionInfo===2?"-selected":""}`} onClick={()=>{accordionInfo===2?setAccordionInfo(0):setAccordionInfo(2)}} hidden={!showExclusive?false:true}>Materiales<img src={accordionInfo===2?minus:plus}/>
+                        </div>
+                        <div className="accordeon-info" hidden={!showExclusive?false:true} style={accordionInfo!==2?{height:'0'}:{}}>
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-material">
                                 {materials.map((material)=>
                                     <img style={selectMaterial===material.id?{opacity:1, transform:'scale(1.2)'}:{opacity:0.3}} key={material.id} src={material.img} alt='material' onClick={()=>{showModal('material');setSelectMaterial(material.id)}}/>
                                 )}
                             </div>
-                        </div>}
-                        <div className={`accordeon-title${accordionInfo===3?"-selected":""}`} onClick={()=>setAccordionInfo(3)}>Marco<img src={accordionInfo===3?minus:plus}/></div>
-                        {accordionInfo===3&&
-                        <div className="accordeon-info">
+                        </div>
+                        <div className={`accordeon-title${accordionInfo===3?"-selected":""}`} onClick={()=>{accordionInfo===3?setAccordionInfo(0):setAccordionInfo(3)}}>Marco<img src={accordionInfo===3?minus:plus}/></div>
+                        <div className="accordeon-info" style={accordionInfo!==3?{height:'0'}:{}}>
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-frame">
                                 {frames.map((frame)=>
@@ -219,23 +226,21 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                                 </div>
                                 )}
                             </div>
-                        </div>}
-                        <div className={`accordeon-title${accordionInfo===4?"-selected":""}`} onClick={()=>setAccordionInfo(4)}>Empaque<img src={accordionInfo===4?minus:plus}/></div>
-                        {accordionInfo===4&&
-                        <div className="accordeon-info">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
-                        <div className="accordeon-package">
-                            <div>
-                                <input type="radio" name="marco" onChange={()=>setSelectPaking(1)}/>
-                                <label>Normal</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="marco" onChange={()=>setSelectPaking(2)}/>
-                                <label>Regalo</label>
+                        </div>
+                        <div className={`accordeon-title${accordionInfo===4?"-selected":""}`} onClick={()=>{accordionInfo===4?setAccordionInfo(0):setAccordionInfo(4)}}>Empaque<img src={accordionInfo===4?minus:plus}/></div>
+                        <div className="accordeon-info" style={accordionInfo!==4?{height:'0'}:{}}>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
+                            <div className="accordeon-package">
+                                <div>
+                                    <input type="radio" name="marco" onChange={()=>setSelectPaking(1)}/>
+                                    <label>Normal</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="marco" onChange={()=>setSelectPaking(2)}/>
+                                    <label>Regalo</label>
+                                </div>
                             </div>
                         </div>
-                    </div>}
-
                     </div>
                     <div className="showProductPurchase__icons">
                         {!showLikeAPro&&<div>

@@ -45,7 +45,10 @@
     margin: 0 auto;
 }
 
+//Login
+
 .paymentInformation__acount form{
+    width: 100%;
     padding: 7%;
     display:flex;
     flex-direction: column;
@@ -55,7 +58,7 @@
     font-size: 2.1rem;
     font-weight: bold;
     text-align: center;
-    margin: 5% auto;
+    margin: 10% auto 0;
 }
 
 .paymentInformation__acount label{
@@ -63,17 +66,21 @@
     margin-left: 3%;
 }
 
-.paymentInformation__acount input:not([type="checkbox"]){
-    width:100%;
-    height: 4.1rem;
-    margin: 2% 0 4%;
-    padding: 0 4%;
-    border-radius: .5rem;
-    font-size: 1.7rem;
-    border-style: none;
+.paymentInformation__acount form div{
+    width: 100% !important;
 }
 
-.paymentInformation__acount button{
+.paymentInformation__acount input:not([type="checkbox"],[type="submit"]){
+    width:100% !important;
+    height: 4.1rem !important;
+    margin: 2% 0 4% !important;
+    padding: 0 4% !important;
+    border-radius: .5rem !important;
+    font-size: 1.7rem !important;
+    border-style: none !important;
+}
+
+.paymentInformation__acount input[type="submit"]{
     width: 50%;
     height: 3.5rem;
     margin: 3rem;
@@ -86,7 +93,7 @@
     text-transform: uppercase;
 }
 
-.paymentInformation__acount button:hover{
+.paymentInformation__acount input[type="submit"]:hover{
     cursor: pointer;
     background-color: white;
     color: black;
@@ -101,48 +108,6 @@
     font-size: 1.7rem;
     border-style: none;
 }
-
-.tel select{
-    width: 21% !important;
-    margin-right: 5%;
-}
-
-.tel input{
-    width: 74% !important;
-}
-
-// .address{
-//     display: flex;
-//     justify-content: space-between;
-// }
-
-// .address select{
-//     width: 25% !important;
-//     margin-right: 5%;
-// }
-
-// .address span{
-//     align-self: center;
-// }
-
-// .address input{
-//     margin: 2% 0 0;
-//     width: 30% !important;
-// }
-
-// .address2{
-//     display: flex;
-//     justify-content: space-evenly;
-// }
-
-// .address2 select{
-//     width: 30% !important;
-// }
-
-// .address2 input{
-//     margin: 0 0 4%;
-//     width: 50% !important;
-// }
 
 .terms{
     display: flex;
@@ -184,6 +149,33 @@
 
 .links a:nth-child(2){
     text-align: end;
+}
+
+#registerLink{
+    cursor: pointer;
+}
+
+#forgotPass{
+    cursor: pointer;
+}
+
+#loginLink:hover{
+    cursor: pointer;
+}
+
+#forgot_button{
+    width: 17.3rem;
+    font-size: 1.1rem;
+}
+
+.paymentInformation__acount-back{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+.paymentInformation__acount-back:hover{
+    cursor: pointer;
+    color: #5a5a5a;
 }
 
 .paymentInformation__welcome{

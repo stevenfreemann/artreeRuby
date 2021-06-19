@@ -79,7 +79,7 @@
   top: 136%;
   right: 0;
   text-align: right;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .menu__item,
@@ -96,6 +96,24 @@
 .menu__name{
   height: 5.8rem;
   background-color: #d6e1e6;
+  position: relative;
+}
+
+.menu__name h3{
+  width: 64%;
+}
+
+.menu__name a {
+  position: absolute;
+  color: white;
+  text-decoration: none;
+  right: 100%;
+  transition: .5s;
+}
+
+.menu__name:hover > a {
+  right: 75%;
+  transition: .5s;
 }
 
 .menu__item:hover, .menu__name:hover{
@@ -180,6 +198,11 @@
   .menu__name h3{
     font-size: 1.4rem;
     font-weight: bold;
+  }
+  .menu__name a {
+    right: 75%;
+    font-size: 1.4rem;
+    color: black;
   }
 }
 @media(max-width: 350px){

@@ -135,6 +135,7 @@
 .accordeon-material{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5%;
 }
 
 .accordeon-material img{
@@ -150,12 +151,9 @@
     width: 20%;
 }
 
-.accordeon-frame{
-    display: grid;
-}
-
 .accordeon-frame, .accordeon-package{
     display: grid;
+    margin-bottom: 5%;
 }
 
 .accordeon-frame div, .accordeon-package div{
@@ -168,7 +166,9 @@
 }
 
 .accordeon-info{
-    margin-bottom: 5%;
+    overflow: hidden;
+    transition: height .7s ease-out;
+    height: 0;
 }
 
 .accordeon-info div{

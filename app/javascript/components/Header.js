@@ -6,10 +6,6 @@ import Search from '../assets/static/buttons/buscar@2x.png'
 import Menu from '../assets/static/buttons/menu.png'
 import Logo from '../assets/static/graphics/logoartree.png'
 
-const firstName = 'Natalia'
-const menuName = firstName?`¡Hola ${firstName}!`:'¡Bienvenido!'
-const firsNavigate = firstName?'Usuario':'Register'
-
 const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito','Contáctenos']
 
 const Header = ({currentUser}) => {
@@ -17,6 +13,11 @@ const Header = ({currentUser}) => {
     const [showMenu, setShowMenu] = useState(false)
     const [notificationWhish, setNotificationWhish] = useState(12)
     const [notificationCart, setNotificationCart] = useState(10)
+    
+    const firstName = currentUser?currentUser.name.split(" ", 1):""
+    const menuName = firstName?`¡Hola ${firstName}!`:'¡Bienvenido!'
+    const firsNavigate = firstName?'Usuario':'Register'
+
     const navigate = (section) => {
         const redirect = {
             '¿Quienes somos?': '/about',
@@ -26,7 +27,7 @@ const Header = ({currentUser}) => {
             'MATERIALES': '/infoMaterials',
             'REGALOS': '/',
             'Artistas': '/artist',
-            'Register': '/users/sign_up',
+            'Register': '/users/sign_in',
             'Wishlist': '/wishlist',
             'Carrito': '/cart',
             'Usuario': '/profile',
@@ -59,7 +60,7 @@ const Header = ({currentUser}) => {
                             {notificationWhish!==0&&<div>{notificationWhish}</div>}
                         </div>
                         <div className='icons__notification' onClick={()=>navigate('Carrito')}>
-                            <img className='header__i¡Bienvenido!con2' src={Shop} />
+                            <img className='header__icon2' src={Shop} />
                             {notificationCart!==0&&<div>{notificationCart}</div>}
                         </div>
                         <img className='header__icon' src={Search} />
@@ -68,8 +69,10 @@ const Header = ({currentUser}) => {
                     
                     {showMenu&&
                     <div className="menu__content">
-                        <div className="menu__name" onClick={()=>navigate(firsNavigate)}>
-                            <h3>{menuName}</h3>
+                        <div className="menu__name">
+                            <h3 onClick={()=>navigate(firsNavigate)}>{menuName}</h3>
+                            {menuName!=='¡Bienvenido!'&&
+                            <a data-method="delete" href="/users/sign_out">Cerrar Sesión</a>}
                         </div>
                         {menu.map((item,i)=>
                             <div className="menu__item" onClick={()=>navigate(item)}>

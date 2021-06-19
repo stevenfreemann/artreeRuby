@@ -25,14 +25,12 @@ const PaymentInformation = (props) => {
     let b = document.getElementById("forgotPass")
     let c = document.getElementById("loginLink")
     if (a){
-      a.onclick= ()=>{setCuenta(2);document.documentElement.scrollTop = 100;}
+      a.onclick= ()=>{setCuenta(2);document.documentElement.scrollTop = 0;}
     }if(b){
-      console.log(b)
-      b.onclick= ()=>{setCuenta(4);document.documentElement.scrollTop = 100;}
+      b.onclick= ()=>{setCuenta(4);document.documentElement.scrollTop = 0;}
     }
-    console.log(c)
     if (c){
-      c.onclick= ()=>{setCuenta(1);document.documentElement.scrollTop = 100;}
+      c.onclick= ()=>{setCuenta(1);document.documentElement.scrollTop = 0;}
     }
   }, [signIn,cuenta,formu])
 
@@ -79,9 +77,11 @@ const PaymentInformation = (props) => {
       .then((data) => {
         var wrapper = document.createElement("div");
         wrapper.innerHTML = data;
-        let formulario = wrapper.getElementsByClassName("forgot__form")[0];
+        let formulario = wrapper.getElementsByClassName("forgotPass__form")[0];
         let input = formulario.getElementsByTagName("input")[1];
         input.value = "screen2";
+        let inputButton = formulario.getElementsByTagName("input")[3];
+        inputButton.setAttribute("id","forgot_button")
         setForgot(formulario.outerHTML);
       });
   }, []);
@@ -116,19 +116,18 @@ const PaymentInformation = (props) => {
       <div className="paymentInformation__acount">
         {check === "Acount" && cuenta === 1 ? (
           <div>
-            <legend>Login</legend>
+            <legend>Iniciar Sesión</legend>
             <div className='paymentInformation__acount-login' dangerouslySetInnerHTML={{ __html: signIn }}/>
           </div>
         ) 
         : check === "Acount" && cuenta === 2 ? (
           <div>
-            <legend>Login</legend>
+            <legend>Regístrate</legend>
             <div className='paymentInformation__acount-registration' dangerouslySetInnerHTML={{ __html: formu }} />
           </div>
                     )
         : check === "Acount" && cuenta === 3 ? (
           <div className="paymentInformation__welcome">
-            <legend>Registrate</legend>
             <div>
               <span>¡Bienvenido(a)!</span>
               <span>{usuario}</span>
@@ -143,6 +142,7 @@ const PaymentInformation = (props) => {
           <div>
             <legend>¿Olvidó su contraseña?</legend>
               <div className='paymentInformation__acount-forgot' dangerouslySetInnerHTML={{ __html: forgot}} />
+            <div className='paymentInformation__acount-back'><a onClick={()=>setCuenta(1)}>Atrás</a></div>
           </div>
         )
         : check === "Check" ? (
