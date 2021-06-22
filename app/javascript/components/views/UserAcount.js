@@ -70,14 +70,14 @@ const userAcount = {
     ]
 }
 
-const UserAcount = () => {
+const UserAcount = ({currentUser}) => {
     const [acountInfo, setAcountInfo] = useState(1)
     return (
         <div className='userAcount'>
             <Title title='MI CUENTA' />
             <div className='userAcount__info'>
-                <img src={userAcount.img} />
-                <span>{userAcount.fullName}</span>
+                <img src={user} />
+                <span>{currentUser.name}</span>
             </div>
             <div className='userAcount__menu'>
                 <div onClick={()=>setAcountInfo(1)}>
@@ -96,7 +96,7 @@ const UserAcount = () => {
             <div className='userAcount__cont'>
                 {acountInfo===1&&
                 <div>
-                    <UserAcountData userAcount={userAcount}/>
+                    <UserAcountData userAcount={currentUser}/>
                 </div>}
                 {acountInfo===2?<div className='userAcount__purshase'>
                     {userAcount.purshases.map((purshase)=>

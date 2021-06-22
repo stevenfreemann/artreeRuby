@@ -5,7 +5,7 @@ const dir = ['Cra', 'Cll']
 const indicator = ['+57', '+49']
 const optionDir = ['Interior']
 
-const AddAdressModal = (showAddressModal, listener) => {
+const AddAdressModal = ({showAddressModal, listener}) => {
     const ModalBgRef = useRef({})
 
     useEffect(() => {

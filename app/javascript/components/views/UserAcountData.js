@@ -10,12 +10,15 @@ const UserAcountData = ({ userAcount }) => {
     const infoInput = [
         {
             label: 'Nombre',
-            data: userAcount.fullName,
+            data: userAcount.name,
             type: 'text'
         },
         {
+            // label: 'Documento',
+            // data: `${userAcount.documentID.type} ${userAcount.documentID.numberID}`,
+            // type: 'text'
             label: 'Documento',
-            data: `${userAcount.documentID.type} ${userAcount.documentID.numberID}`,
+            data: `CC ${userAcount.document}`,
             type: 'text'
         },
         {
@@ -25,12 +28,12 @@ const UserAcountData = ({ userAcount }) => {
         },
         {
             label: 'Usuario',
-            data: userAcount.userName,
+            data: 'Por Definir',
             type: 'text'
         },
         {
             label: 'Telefono',
-            data: userAcount.phone,
+            data: userAcount.mobile2,
             type: 'tel'
         },
         {
@@ -79,10 +82,9 @@ const UserAcountData = ({ userAcount }) => {
         setPrevId2(id)
     }
 
-
     return (
         <form className='userAcountData'>
-            {showAddressModal&&<AddAdressModal showAddressModal={showAddressModal} listener={(showAddressModal)=>{setModal(showAddressModal)}} />}
+            {showAddressModal&&<AddAdressModal showAddressModal={showAddressModal} listener={(showAddressModal)=>{setShowAddressModal(showAddressModal)}} />}
             <legend>Datos de cuenta</legend>
             <div className='userAcountData__main' >
                 {infoInput.map((info, i) =>
