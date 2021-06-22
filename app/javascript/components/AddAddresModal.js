@@ -1,20 +1,48 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import SeeButton from './SeeButton'
 import cerrar from '../assets/static/buttons/boton cerrar.png'
 const dir = ['Cra', 'Cll']
 const indicator = ['+57', '+49']
 const optionDir = ['Interior']
-const AddAdressModal = () => {
-    const hiddenModal = () => {
-        let cuerpo = document.body
-        cuerpo.style.overflow = null
-        let blur = document.getElementsByClassName('container-artree')[0]
-        let modal = document.getElementsByClassName('container-addres-show')[0]
-        blur.classList.replace('container-artree', 'container-artree-none')
-        modal.classList.replace('container-addres-show', 'container-addres')
-    }
+
+const AddAdressModal = (showAddressModal, listener) => {
+    const ModalBgRef = useRef({})
+
+    useEffect(() => {
+        if (showAddressModal) {
+            document.body.style.overflow='hidden'
+            document.documentElement.scrollTop = 0;
+        }else{
+            document.body.style.overflow='visible'
+        }
+    }, [showAddressModal])
+
+    useEffect(() => {
+        const clickEvent=()=>{
+            document.body.style.overflow='visible'
+            listener(!showAddressModal)
+        }
+        const keyEsc=(e)=>{
+            if (e.key=="Escape") {
+                document.body.style.overflow='visible'
+                listener(!showAddressModal)
+            }
+        }
+        if (showAddressModal) {
+            ModalBgRef.current.addEventListener('click',clickEvent)
+            document.addEventListener('keyup', keyEsc)
+        }
+        return () => {
+            if(!showAddressModal){
+                ModalBgRef.current.removeEventListener("click", clickEvent)
+                document.removeEventListener('keyup',keyEsc)}
+        }
+    }, [showAddressModal])
+
     return (
-        <div className='container-addres'>
+        <div className='container-addres' hidden={showAddressModal?false:true}>
+            <div className='addressModal__backGround' ref={ModalBgRef}>
+            </div>
             <div className="container-addres-modal">
                 <div style={{ display: 'flex', width: '100%', justifyContent: 'center', position: 'relative' }}>
                     <h2 className='title-add-addres'>AGREGAR DOMICILIO</h2>

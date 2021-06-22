@@ -19,8 +19,6 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <%= react_component("AddAddresModal", { greeting: "Hello from react-rails." },)%>
-    <div class="container-artree-none">
     <%= react_component("Header", {currentUser: current_user },)%>
     <div class="App">
       <div class="App--HeaderPadding">

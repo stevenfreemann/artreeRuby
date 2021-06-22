@@ -63,9 +63,9 @@ const Artist = ({artistas,foto}) => {
             </div>
             <div className='artist__want'>
                 <div>
-                    {page>1&&<img src={left} alt='Anterior' onClick={()=>setPage(page-1)}></img>}
+                    <img src={left} alt='Anterior' style={{visibility:`${page>1?'visible':'hidden'}`}} onClick={()=>{setPage(page-1);document.documentElement.scrollTop = 0}}></img>
                     <span>{`Página ${page} de ${pages}`}</span>
-                    {page<pages&&page!==pages&&<img src={right} alt='Sigiente' onClick={()=>setPage(page+1)}></img>}
+                    <img src={right} alt='Sigiente' style={{visibility:`${page<pages&&page!==pages?'visible':'hidden'}`}} onClick={()=>{setPage(page+1);document.documentElement.scrollTop = 0}}></img>
                 </div>
                 <h2>¿Quieres ser uno de nuestros artistas?</h2>
                 <button type="button" onClick={()=>navigate('infoArtist')}>Click aquí</button>

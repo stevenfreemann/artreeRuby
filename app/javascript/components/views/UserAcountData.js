@@ -1,20 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import edit from '../../assets/static/buttons/editarlapiz@2x.png'
+import AddAdressModal from '../AddAddresModal'
 
 const UserAcountData = ({ userAcount }) => {
     const [prevId, setPrevId] = useState(null)
     const [prevId2, setPrevId2] = useState(null)
-
-    const showModal = () => {
-        let cuerpo=document.body
-        cuerpo.style.overflow='hidden'
-        document.documentElement.scrollTop = 0;
-        let blur = document.getElementsByClassName('container-artree-none')[0]
-        let modal = document.getElementsByClassName('container-addres')[0]
-        blur.classList.replace('container-artree-none', 'container-artree')
-        modal.classList.replace('container-addres', 'container-addres-show')
-    }
-
+    const [showAddressModal, setShowAddressModal] = useState(false)
 
     const infoInput = [
         {
@@ -91,6 +82,7 @@ const UserAcountData = ({ userAcount }) => {
 
     return (
         <form className='userAcountData'>
+            {showAddressModal&&<AddAdressModal showAddressModal={showAddressModal} listener={(showAddressModal)=>{setModal(showAddressModal)}} />}
             <legend>Datos de cuenta</legend>
             <div className='userAcountData__main' >
                 {infoInput.map((info, i) =>
@@ -111,7 +103,7 @@ const UserAcountData = ({ userAcount }) => {
                         <img src={edit} alt='Editar' onClick={() => handleClickAddr(`address-input${i + 1}`)} />
                     </div>
                 )}
-                <a onClick={() => showModal()} style={{ cursor: 'pointer' }}>Agregar Domicilio</a>
+                <a onClick={() => setShowAddressModal(!showAddressModal)} style={{ cursor: 'pointer' }}>Agregar Domicilio</a>
             </div>
             <legend>Cambiar Contraseña</legend>
             <div className='userAcountData__pass'>
@@ -121,11 +113,11 @@ const UserAcountData = ({ userAcount }) => {
                 </div>
                 <div>
                     <label>Nueva Contraseña</label>
-                    <input type='password' autocomplete="new-password"/>
+                    <input type='password' autoComplete="new-password"/>
                 </div>
                 <div>
                     <label>Confirmar Contraseña</label>
-                    <input type='password' autocomplete="new-password"/>
+                    <input type='password' autoComplete="new-password"/>
                 </div>
                 <button type='button'>Actualizar</button>
             </div>
