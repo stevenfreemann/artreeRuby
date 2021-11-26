@@ -11,7 +11,7 @@ export default function ContentCarousel({ id, obj }) {
     } else if (obj.text) {
         return (
             <div className='container-content-carousel'>
-                <div style={{display:'flex', height:'100%'}}>
+                <div style={{display:'flex', height:'100%', width:'100%'}}>
                     <div className='container-text-carousel'>
                         <h1>{obj.Title}</h1>
                         <p>{obj.text}</p>
