@@ -11,9 +11,9 @@ default: &default
   pool: 5
   port: 5432
   #To connect locally
-  host: localhost
-  user: <%= ENV.fetch("PDB_USER")%>
-  password: <%= ENV.fetch("PDB_PASSWORD")%>
+  # host: localhost
+  # user: <%= ENV.fetch("PDB_USER")%>
+  # password: <%= ENV.fetch("PDB_PASSWORD")%>
 
 development:
   <<: *default

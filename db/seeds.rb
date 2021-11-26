@@ -6,10 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-40.times do |i|
-	Artistum.create(nombre: "nombre_#{i}", bio: "Description #{i}", facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", destacado:false)
+if !Artistum.first
+	40.times do |i|
+		Artistum.create(nombre: "nombre_#{i}", bio: "Description #{i}", facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", destacado:false)
+	end
 end
 
+if !AdminUser.first
+	AdminUser.create!(email: 'jonathan.jrr.rincon@gmail.com', password: '123456', password_confirmation: '123456')
+end
+
+if !User.first
+	AdminUser.create!(email: 'jonathan.jrr.rincon@gmail.com', password: '123456', password_confirmation: '123456')
+end
 #if !AdminUser.first
 #	AdminUser.create!(email: 'lalalopezv@me.com', password: 'password', password_confirmation: 'password')
 #	AdminUser.create!(email: 'ecoelloc@hotmail.com', password: 'password', password_confirmation: 'password')
