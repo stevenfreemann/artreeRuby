@@ -21,7 +21,7 @@ const SectionInfo = ({inverso, img, title, text,listener, textoBtn}) => {
                         {text}
                     </p>
                     <div className='sectionInfo__button'>
-                        <SeeButton textBtn={textoBtn} listener={listener} />
+                        <SeeButton textBtn={textoBtn} listener={listener} /> {/*redirect wompi*/}
                     </div>
                 </div>
                 <img className='sectionInfo__img' src={img} />

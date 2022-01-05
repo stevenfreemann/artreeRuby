@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'infoPapers' => 'home#infoPappers'
   get 'infoAcrilics' => 'home#infoAcrilics'
   get 'artist' => 'home#artist'
+  get 'pay' => 'payment#pay'
   get 'infoArtist' => 'home#infoArtist'
   get 'infoPrint' => 'home#infoPrintPhotos'
   get 'infoPurchase' => 'home#infoPurchase'
