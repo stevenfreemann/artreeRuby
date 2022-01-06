@@ -199,26 +199,29 @@ const PaymentInformation = (props) => {
                           <SeeButton textBtn={"Pagar con Wompi"} listener={() => setViewPayment(2)} />
                         </div>
                         :
-                        <form action="https://checkout.wompi.co/p/" method="GET">
-                          <input name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
-                          <input name="currency" value="COP" />
-                          <input name="amount-in-cents" value="500000000" />
-                          <input name="reference" value="12348" />
-
-                          <input name="signature:integrity" value="d60e279f966eff091651dbfbe4c6d9c221cd4952bde19125794e913ceec02581" />
-                          <input name="redirect-url" value="http://localhost:3000/succesPurchase" />
-                          <input name="tax-in-cents:vat" value="15000000" />
-                          <input name="tax-in-cents:consumption" value="10000000" />
-                          <input name="customer-data:email" value="test@test.com" />
-                          <input name="customer-data:full-name" value="Homero Simpson" />
-                          <input name="customer-data:phone-number" value="4152121" />
-                          <input name="customer-data:legal-id" value="123444555" />
-                          <input name="customer-data:legal-id-type" value="CC" />
-                          <input name="shipping-address:address-line-1" value="Salitre Plaza" />
-                          <input name="shipping-address:country" value="CO" />
-                          <input name="shipping-address:phone-number" value="4152121" />
-                          <input name="shipping-address:city" value="Bogota" />
-                          <input name="shipping-address:region" value="Cundinamarca" />
+                        <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
+                          <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
+                          <input type="hidden" name="currency" value="COP" />
+                          <input type="hidden" name="amount-in-cents" value="25000000" />
+                          <input type="hidden" name="reference" value="12342" />
+                          <input type="hidden" name="signature:integrity" value="32ea87632cdabc262d83dbf651047615d381d34c8e74032bd89d924a37b9c27b" />
+                          <input type="hidden" name="redirect-url" value="http://localhost:3000/succesPurchase" />
+                          <input type="hidden" name="tax-in-cents:vat" value="150000" />
+                          <input type="hidden" name="tax-in-cents:consumption" value="100000" />
+                          <input type="hidden" name="customer-data:email" value="test@test.com" />
+                          <input type="hidden" name="customer-data:full-name" value="Homero Simpson" />
+                          <input type="hidden" name="customer-data:phone-number" value="4152121" />
+                          {/* <input name="customer-data:legal-id-type" value="CC" /> */}
+                          <select form = "wompi">
+                             <option value = {"CE"}> CE </option>
+                             <option value = {"CC"}> CC </option>
+                          </select>
+                          <input name="customer-data:legal-id"/>
+                          <input type="hidden" name="shipping-address:address-line-1" value="Salitre Plaza" />
+                          <input type="hidden" name="shipping-address:country" value="CO" />
+                          <input type="hidden" name="shipping-address:phone-number" value="4152121" />
+                          <input type="hidden" name="shipping-address:city" value="Bogota" />
+                          <input type="hidden" name="shipping-address:region" value="Cundinamarca" />
                           <button type="submit">Pagar con Wompi</button>
                         </form>
                       }
