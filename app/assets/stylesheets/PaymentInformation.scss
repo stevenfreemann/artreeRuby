@@ -45,6 +45,33 @@
     margin: 0 auto;
 }
 
+// Logout
+
+.paymentInformation__acount-logout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+.paymentInformation__acount-logout a {
+    width: 50%;
+    background-color: black;
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    border-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    padding: 3%;
+}
+.paymentInformation__acount-logout a:hover{
+    background-color: white;
+    color: black;
+}
+
 //Login
 
 .paymentInformation__acount form{
@@ -274,7 +301,37 @@
 }
 
 .paymentInformation__check button{
-    margin: 20%
+    margin: 20%;
+    width: 27.5rem;
+    height: 5.5rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 2.1rem;
+    font-family: var(--Roboto);
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+}
+.paymentInformation__check button:hover{
+    background-color: black;
+    color: white;
+}
+
+.paymentInformation__paymentButton{
+    margin: 10% auto;
+    width: 27.5rem;
+    height: 5.5rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 2.1rem;
+    font-family: var(--Roboto);
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+}
+.paymentInformation__paymentButton:hover{
+    background-color: black;
+    color: white;
 }
 
 .paymentInformation__payment{
@@ -289,7 +346,6 @@
 }
 
 .paymentInformation__payment button{
-    width:30%;
     margin: 2%;
     text-transform: none;
 }

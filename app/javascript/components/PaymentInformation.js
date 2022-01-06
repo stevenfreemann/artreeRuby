@@ -13,14 +13,13 @@ const country = ["Colombia", "Ecuador", "Venezuela", "Estados Unidos"];
 const city = ["Bogotá", "Medellín", "Cali", "Barranquilla"];
 const ind = ["+57", "+58", "+59"];
 const fields = ["correo", ""]
-const PaymentInformation = (props) => {
+const PaymentInformation = ({ products, currentUser }) => {
   const [check, setCheck] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
   const [signIn, setSignIn] = useState(null);
   const [formu, setform] = useState(null);
   const [forgot, setForgot] = useState(null);
   const [viewPayment, setViewPayment] = useState(1);
-  const products = props.products;
 
   useEffect(() => {
     let a = document.getElementById("registerLink")
@@ -36,7 +35,7 @@ const PaymentInformation = (props) => {
     }
   }, [signIn, cuenta, formu])
 
-
+  console.log('currentUser :>> ', currentUser);
 
   useEffect(() => {
     fetch("/users/sign_in")
@@ -118,8 +117,12 @@ const PaymentInformation = (props) => {
       <div className="paymentInformation__acount">
         {check === "Acount" && cuenta === 1 ? (
           <div>
-            <legend>Iniciar Sesión</legend>
+            {!currentUser&&<legend>Iniciar Sesión</legend>}
             <div className='paymentInformation__acount-login' dangerouslySetInnerHTML={{ __html: signIn }} />
+            {currentUser && 
+            <div className="paymentInformation__acount-logout">
+              <a data-method="delete" href="/users/sign_out">Cerrar Sesión</a>
+            </div>}
           </div>
         )
           : check === "Acount" && cuenta === 2 ? (
@@ -222,7 +225,7 @@ const PaymentInformation = (props) => {
                           <input type="hidden" name="shipping-address:phone-number" value="4152121" />
                           <input type="hidden" name="shipping-address:city" value="Bogota" />
                           <input type="hidden" name="shipping-address:region" value="Cundinamarca" />
-                          <button type="submit">Pagar con Wompi</button>
+                          <button className="paymentInformation__paymentButton" type="submit">Pagar con Wompi</button>
                         </form>
                       }
                     </>

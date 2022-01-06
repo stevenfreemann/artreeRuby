@@ -25,13 +25,14 @@
 
 .featured__content{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 2%;
-    
+    width: 100%;
 }
 
 .featured__content-img img{
-    width: 85%;
+    width: 100%;
+    max-width: 342px;
     transition: opacity .5s;
     box-shadow: 3px 3px 6px #00000033;
 }

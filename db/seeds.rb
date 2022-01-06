@@ -17,7 +17,7 @@ if !AdminUser.first
 end
 
 if !User.first
-	AdminUser.create!(email: 'jonathan.jrr.rincon@gmail.com', password: '123456', password_confirmation: '123456')
+	User.create!(email: 'jonathan.jrr.rincon@gmail.com', password: '123456', password_confirmation: '123456')
 end
 #if !AdminUser.first
 #	AdminUser.create!(email: 'lalalopezv@me.com', password: 'password', password_confirmation: 'password')
