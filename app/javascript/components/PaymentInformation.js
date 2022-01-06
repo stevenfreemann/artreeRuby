@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import SeeButton from "./SeeButton";
 import LogoVisa from "../assets/static/icon/visa-logo.png";
 import LogoAmerican from "../assets/static/icon/american-express.png";
 import LogoMaster from "../assets/static/icon/mastercard-logo.png";
@@ -45,7 +46,7 @@ const PaymentInformation = (props) => {
         var wrapper = document.createElement("div");
         wrapper.innerHTML = data;
         let formulario = wrapper.getElementsByClassName("signIn__form")[0];
-        let input = formulario.getElementsByTagName("input")[1];
+        let input = formulario && formulario.getElementsByTagName("input")[1];
         input.value = "screen2";
         let a = formulario.getElementsByTagName("a")[0]
         let b = formulario.getElementsByTagName("a")[1]
@@ -63,7 +64,7 @@ const PaymentInformation = (props) => {
         var wrapper = document.createElement("div");
         wrapper.innerHTML = data;
         let formulario = wrapper.getElementsByClassName("checkIn__form")[0];
-        let input = formulario.getElementsByTagName("input")[1];
+        let input = formulario && formulario.getElementsByTagName("input")[1];
         input.value = "screen2";
         let c = formulario.getElementsByClassName("checkIn__signIn")[0]
         c.setAttribute("id","loginLink")
@@ -78,7 +79,7 @@ const PaymentInformation = (props) => {
         var wrapper = document.createElement("div");
         wrapper.innerHTML = data;
         let formulario = wrapper.getElementsByClassName("forgotPass__form")[0];
-        let input = formulario.getElementsByTagName("input")[1];
+        let input = formulario && formulario.getElementsByTagName("input")[1];
         input.value = "screen2";
         let inputButton = formulario.getElementsByTagName("input")[3];
         inputButton.setAttribute("id","forgot_button")
@@ -190,11 +191,13 @@ const PaymentInformation = (props) => {
         ) 
         : (
           check === "Payment" && (
-            <div className="paymentInformation__payment">
+            <div className="paymentInformation__payment" style= {{alignItems: "center"}}>
               <legend>Métodos de pago</legend>
-              <button type="button">Débito PSE</button>
-              <button type="button">Crédito</button>
-              <button type="button">PayPal</button>
+              <SeeButton textBtn={"Pagar con Wompi"} listener = { () => console.log("test") } /> 
+
+              {/*<button type="button">Pagar con wompi</button>
+               <button type="button">Crédito</button>
+              <button type="button">PayPal</button> */}
 
               {/* <div className='paymentInformation__logo'>
                     <img className='payment-logo' src={LogoVisa} alt='Visa'/>
