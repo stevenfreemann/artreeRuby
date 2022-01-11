@@ -1,0 +1,4 @@
+class WompiController < ApplicationController
+  
+  
+end

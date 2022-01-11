@@ -2,6 +2,12 @@ import React from 'react'
 import atras from '../../assets/static/buttons/left-arrow.png'
 import check from '../../assets/static/graphics/check@2x.png'
 
+element.addEventListener("transaction.updated", bankInfo);
+
+const bankInfo = () => {
+
+}
+
 const paymentInfo ={
     sucess:true,
     detail:'Debito RedCompra PSE Davivienda',
