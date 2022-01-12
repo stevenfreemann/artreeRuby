@@ -2,15 +2,14 @@ class WompiController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    puts "---------------#{@data}"
-    render json: @data
+    puts "---------------#{@data_index}"
+    render json: @data_index
   end
 
   def receive
-    @data = params.as_json
+    data = params.as_json
+    redirect_to wompi_index_url(@data_index = data)
 
-
-    redirect_to wompi_index_url(@data)
     # if request.headers['Content-Type'] == 'application/json'
     #   @data = JSON.parse(request.body.read)
     # else
