@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'wishlist' => 'profile#sectionWishlist'
   get 'upload' => 'like_pro#upload'
 
+  resources :wompi
+
   post 'receive' => 'wompi#receive', as: :receive_webhooks
   
 
