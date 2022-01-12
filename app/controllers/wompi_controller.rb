@@ -7,11 +7,10 @@ class WompiController < ApplicationController
 
   def receive
     @data = params.as_json
-    puts "params"
     puts "---------------#{@data}"
 
 
-    redirect_to wompi_index
+    redirect_to wompi_index_url
     # if request.headers['Content-Type'] == 'application/json'
     #   @data = JSON.parse(request.body.read)
     # else
