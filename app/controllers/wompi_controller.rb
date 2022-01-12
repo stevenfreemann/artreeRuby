@@ -7,7 +7,9 @@ class WompiController < ApplicationController
 
   def receive
     @data = params.as_json
+    puts "params"
     puts "---------------#{@data}"
+
 
     redirect_to wompi_index
     # if request.headers['Content-Type'] == 'application/json'
