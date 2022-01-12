@@ -13,11 +13,11 @@ if !Artistum.first
 end
 
 if !AdminUser.first
-	AdminUser.create!(email: 'jonathan.jrr.rincon@gmail.com', password: '123456', password_confirmation: '123456')
+	AdminUser.create!(email: 'stevenfreemann8@gmail.com', password: '123456', password_confirmation: '123456')
 end
 
 if !User.first
-	User.create!(email: 'jonathan.jrr.rincon@gmail.com', password: '123456', password_confirmation: '123456')
+	User.create!(email: 'prueba1@gmail.com', password: '123456', password_confirmation: '123456')
 end
 #if !AdminUser.first
 #	AdminUser.create!(email: 'lalalopezv@me.com', password: 'password', password_confirmation: 'password')
