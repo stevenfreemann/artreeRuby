@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   get 'succesPurchase' => 'home#purchaseSucces'
   get 'wishlist' => 'profile#sectionWishlist'
   get 'upload' => 'like_pro#upload'
+
+  post 'receive' => 'wompi#receive', as: :receive_webhooks
+  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations'}
