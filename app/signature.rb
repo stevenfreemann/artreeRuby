@@ -8,4 +8,3 @@ chain = ref_number.to_s + price + "COP" + secret
 #result = Digest::SHA2.hexdigest(chain)
 puts chain
 puts ref_number
-puts secret

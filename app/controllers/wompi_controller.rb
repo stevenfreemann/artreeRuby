@@ -1,20 +1,22 @@
 class WompiController < ApplicationController
-  #skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
+  require "http"
 
-  def index
-    render json: @data
-  end
-
-  def receive
-    @data = params.as_json
-
-    redirect_to wompi_index
-    # if request.headers['Content-Type'] == 'application/json'
-    #   @data = JSON.parse(request.body.read)
-    # else
-      # application/x-www-form-urlencoded
-    # end
-
-    #Webhook::Received.save(data: data, integration: params[:integration_name])
+  def transaction
+    id = params[:id]
+    response = HTTP.get("https://sandbox.wompi.co/v1/transactions/#{id}").to_s
+    json = JSON.parse(response)
+      @paymentInfo = {
+        status: json["data"]["status"],
+        creditCard: json["data"]["payment_method"]["extra"]["last_four"],
+        reference: json["data"]["reference"],
+        transaction_id: json["data"]["id"],
+        payment_type: json["data"]["payment_method"]["type"]
+      }
+    if json["data"]["status_message"] != nil
+      @paymentInfo["status_message"] = json["data"]["status_message"]
+    end
+    
+    #render json: final
   end
 end

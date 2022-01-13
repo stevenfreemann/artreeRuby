@@ -26,10 +26,7 @@ Rails.application.routes.draw do
   get 'succesPurchase' => 'home#purchaseSucces'
   get 'wishlist' => 'profile#sectionWishlist'
   get 'upload' => 'like_pro#upload'
-
-  resources :wompi
-
-  post 'receive' => 'wompi#receive', as: :receive_webhooks
+  get 'transaction' => 'wompi#transaction'
   
 
   devise_for :admin_users, ActiveAdmin::Devise.config
