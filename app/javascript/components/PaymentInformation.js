@@ -205,10 +205,10 @@ const PaymentInformation = ({ products, currentUser }) => {
                         <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
                           <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
                           <input type="hidden" name="currency" value="COP" />
-                          <input type="hidden" name="amount-in-cents" value="13000000" />
-                          <input type="hidden" name="reference" value="3265" />
-                          <input type="hidden" name="signature:integrity" value="92f28317e9ff7c3835e80ba4e2a263cbde703048e2ca274c797ba7c1b448244b"/>
-                          <input type="hidden" name="redirect-url" value="http://localhost:3000/succesPurchase" />
+                          <input type="hidden" name="amount-in-cents" value="9000000" />
+                          <input type="hidden" name="reference" value="7655" />
+                          <input type="hidden" xname="signature:integrity" value="a62e8318e0012d6746f7e002052a5d823678d3078bae6671e5ccb611b4c17ebd"/>
+                          <input type="hidden" name="redirect-url" value="http://localhost:3000/transaction" />
                           <input type="hidden" name="tax-in-cents:vat" value="150000" />
                           <input type="hidden" name="tax-in-cents:consumption" value="100000" />
                           <input type="hidden" name="customer-data:email" value="test@test.com" />

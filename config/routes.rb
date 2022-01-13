@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   resources :wompi
 
-  post 'receive' => 'wompi#receive', as: :receive_webhooks
+  get 'transaction' => 'wompi#transaction'
   
 
   devise_for :admin_users, ActiveAdmin::Devise.config
