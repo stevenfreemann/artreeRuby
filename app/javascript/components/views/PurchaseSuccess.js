@@ -3,16 +3,9 @@ import atras from '../../assets/static/buttons/left-arrow.png'
 import check from '../../assets/static/graphics/check@2x.png'
 
 
-const paymentInfo ={
-    sucess:true,
-    detail:'Wompi Bancolombia',
-    lastDB: 1031,
-    paymentReference: 4923121608,
-    authorizationCode: 601319,
-    paymentType:'Credito'
-}
 
-const PurchaseSuccess = () => {
+const PurchaseSuccess = ({info}) => {
+    console.log(info)
     return (
         <div className='purchaseSuccess'>
             <div className='purchaseSuccess__cont'>
@@ -24,12 +17,12 @@ const PurchaseSuccess = () => {
                 <div className='purchaseSuccess__payment-info'>
                     <img src={check} alt='Estado de pago'/>
                     <div>
-                        <h3>Pago Aprobado</h3>
+                    <span>{info.status}  <span style={{fontWeight:'bold'}}>{info.status_message}</span></span>
                         <h3>Detalle de pago:</h3>
-                        <span>{paymentInfo.detail} terminada en <span style={{fontWeight:'bold'}}>{paymentInfo.lastDB}</span></span>
-                        <span style={{fontWeight:'bold'}}>Referencia de pago: {paymentInfo.paymentReference}</span>
-                        <span style={{fontWeight:'bold'}}>Código de autorización: {paymentInfo.authorizationCode}</span>
-                        <span style={{fontWeight:'bold'}}>Tipo de pago: {paymentInfo.paymentType}</span>
+                        <span>Tarjeta terminada en <span style={{fontWeight:'bold'}}>{info.creditCard}</span></span>
+                        <span style={{fontWeight:'bold'}}>Referencia de pago: {info.reference}</span>
+                        <span style={{fontWeight:'bold'}}>Código de transacción: {info.transaction_id}</span>
+                        <span style={{fontWeight:'bold'}}>Tipo de pago: {info.payment_type}</span>
                     </div>
                 </div>
             </div>

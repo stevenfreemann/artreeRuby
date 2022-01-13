@@ -26,9 +26,6 @@ Rails.application.routes.draw do
   get 'succesPurchase' => 'home#purchaseSucces'
   get 'wishlist' => 'profile#sectionWishlist'
   get 'upload' => 'like_pro#upload'
-
-  resources :wompi
-
   get 'transaction' => 'wompi#transaction'
   
 
