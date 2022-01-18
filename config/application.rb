@@ -1,4 +1,5 @@
 require_relative 'boot'
+require 'fog/aws'
 
 require 'rails/all'
 
