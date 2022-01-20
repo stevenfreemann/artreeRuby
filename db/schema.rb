@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_185508) do
+ActiveRecord::Schema.define(version: 2022_01_20_153817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_185508) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "artista", force: :cascade do |t|
+  create_table "artistas", force: :cascade do |t|
     t.string "nombre"
     t.text "bio"
     t.string "facebook"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_185508) do
     t.boolean "destacado", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar"
   end
 
   create_table "banners", force: :cascade do |t|
@@ -67,6 +68,14 @@ ActiveRecord::Schema.define(version: 2022_01_18_185508) do
   create_table "color_marcos", force: :cascade do |t|
     t.string "nombre"
     t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "compras", force: :cascade do |t|
+    t.integer "numero_referencia", default: 1
+    t.integer "costo_total"
+    t.string "productos"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -196,7 +205,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_185508) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "fotos", "artista"
+  add_foreign_key "fotos", "artistas", column: "artistum_id"
   add_foreign_key "fotos", "lineas"
   add_foreign_key "fotos", "salas"
   add_foreign_key "marco_colors", "color_marcos"
