@@ -1,3 +1,3 @@
 class Compra < ApplicationRecord
-  serialize :productos
+  belongs_to :user
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_153817) do
+ActiveRecord::Schema.define(version: 2022_01_20_171039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_153817) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "artistas", force: :cascade do |t|
+  create_table "artista", force: :cascade do |t|
     t.string "nombre"
     t.text "bio"
     t.string "facebook"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_01_20_153817) do
     t.boolean "destacado", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "avatar"
+    t.string "file"
   end
 
   create_table "banners", force: :cascade do |t|
@@ -75,9 +75,16 @@ ActiveRecord::Schema.define(version: 2022_01_20_153817) do
   create_table "compras", force: :cascade do |t|
     t.integer "numero_referencia", default: 1
     t.integer "costo_total"
-    t.string "productos"
+    t.text "productos", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.string "metodo_pago"
+    t.integer "ultimos_4"
+    t.integer "transaction_id"
+    t.float "impuesto_iva"
+    t.float "impuesto_consumo"
+    t.integer "cedula"
   end
 
   create_table "empaques", force: :cascade do |t|
@@ -205,7 +212,20 @@ ActiveRecord::Schema.define(version: 2022_01_20_153817) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "fotos", "artistas", column: "artistum_id"
+  create_table "wish_items", force: :cascade do |t|
+    t.string "name"
+    t.string "phrase"
+    t.string "dimensions"
+    t.string "frame"
+    t.string "material"
+    t.integer "price"
+    t.string "group"
+    t.string "img"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "fotos", "artista"
   add_foreign_key "fotos", "lineas"
   add_foreign_key "fotos", "salas"
   add_foreign_key "marco_colors", "color_marcos"

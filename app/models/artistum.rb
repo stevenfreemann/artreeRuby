@@ -1,5 +1,7 @@
 class Artistum < ApplicationRecord
 	has_many :fotos
+	mount_uploader :file, FileUploader
+
 	def name
 		self.nombre
 	end

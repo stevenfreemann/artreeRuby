@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "-----migrating"
 if !Artistum.first
 	40.times do |i|
 		Artistum.create(nombre: "nombre_#{i}", bio: "Description #{i}", facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", destacado:false)
@@ -19,6 +20,13 @@ end
 if !User.first
 	User.create!(email: 'prueba1@gmail.com', password: '123456', password_confirmation: '123456')
 end
+
+if !WishItem.first
+	5.times do |i|
+		WishItem.create(name: "nombre_#{i}", phrase: "Description #{i}", dimensions: "120 * 240", frame: "Tipo de marco #{i}", material: "Tipo de material #{i}", price: 120000 , group: "linea pro", user: User.first)
+	end
+end
+
 #if !AdminUser.first
 #	AdminUser.create!(email: 'lalalopezv@me.com', password: 'password', password_confirmation: 'password')
 #	AdminUser.create!(email: 'ecoelloc@hotmail.com', password: 'password', password_confirmation: 'password')
