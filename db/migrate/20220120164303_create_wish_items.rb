@@ -7,8 +7,9 @@ class CreateWishItems < ActiveRecord::Migration[6.0]
       t.string :frame
       t.string :material
       t.integer :price
-      t.string :group
+      t.references :linea, null: false, foreign_key: true
       t.string :img
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

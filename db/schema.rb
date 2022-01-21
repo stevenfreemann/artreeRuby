@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_171039) do
+ActiveRecord::Schema.define(version: 2022_01_21_140821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 2022_01_20_171039) do
     t.float "impuesto_iva"
     t.float "impuesto_consumo"
     t.integer "cedula"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_compras_on_user_id"
   end
 
   create_table "empaques", force: :cascade do |t|
@@ -219,12 +221,16 @@ ActiveRecord::Schema.define(version: 2022_01_20_171039) do
     t.string "frame"
     t.string "material"
     t.integer "price"
-    t.string "group"
+    t.bigint "linea_id", null: false
     t.string "img"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["linea_id"], name: "index_wish_items_on_linea_id"
+    t.index ["user_id"], name: "index_wish_items_on_user_id"
   end
 
+  add_foreign_key "compras", "users"
   add_foreign_key "fotos", "artista"
   add_foreign_key "fotos", "lineas"
   add_foreign_key "fotos", "salas"
@@ -235,4 +241,6 @@ ActiveRecord::Schema.define(version: 2022_01_20_171039) do
   add_foreign_key "salas", "lineas"
   add_foreign_key "tamano_disponibles", "fotos"
   add_foreign_key "tamano_disponibles", "tamanos"
+  add_foreign_key "wish_items", "lineas"
+  add_foreign_key "wish_items", "users"
 end

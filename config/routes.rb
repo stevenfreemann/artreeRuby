@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'about' => 'home#aboutUs'
   get 'failPurchase' => 'home#purchaseFailed'
   get 'succesPurchase' => 'home#purchaseSucces'
-  get 'wishlist' => 'profile#sectionWishlist'
+  get 'wishlist/:id' => 'wish_item#show'
   get 'upload' => 'like_pro#upload'
   get 'transaction' => 'wompi#transaction'
   

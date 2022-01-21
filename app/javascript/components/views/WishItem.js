@@ -7,7 +7,8 @@ import Cart from '../../assets/static/buttons/movercarrito@2x.png'
 import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
-const WishItem = ({ product }) => {
+
+const WishItem = ({ product, AddItems }) => {
 
     const editRef = useRef({})
     const deleteRef = useRef({})
@@ -42,11 +43,13 @@ const WishItem = ({ product }) => {
                 <div>
                     <img src={Cart} alt="Wishlist" onMouseOver={()=> cartRef.current.src=CartActivo} 
                     onMouseLeave={()=> cartRef.current.src=Cart} ref={cartRef}/>
-                    <span>Mover al Carrito</span>
+                    <button type="button" onClick={() => AddItems(WishItem)}>
+                        Mover al Carrito                  
+                    </button>
                 </div>
             </div>
         </div>
     )
 }
-
+// localStorage.setItem("products", JSON.stringify(WishItem))
 export default WishItem

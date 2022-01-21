@@ -22,11 +22,10 @@ class ComprasController < ApplicationController
   # POST /compras or /compras.json
   def create
     @compra = Compra.new(compra_params)
-    reference_number
-    @compra.numero_referencia = @ref
     
     respond_to do |format|
       if @compra.save
+        @compra.numero_referencia = DateTime.now.strftime("%d%m%Y-")+ (sprintf '%07d', @compra.id)
         format.html { redirect_to compra_url(@compra), notice: "Compra was successfully created." }
         format.json { render :show, status: :created, location: @compra }
       else
@@ -63,14 +62,6 @@ class ComprasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_compra
       @compra = Compra.find(params[:id])
-    end
-
-    def reference_number
-      if Compra.last == nil
-        @ref = sprintf '%07d', 1
-      else
-        @ref = sprintf '%07d', Compra.last.numero_referencia.to_i + 1
-      end
     end
 
     # Only allow a list of trusted parameters through.
