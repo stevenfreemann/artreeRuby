@@ -8,7 +8,7 @@ import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
 
-const WishItem = ({ product, AddItems }) => {
+const WishItem = ({ product, click }) => {
 
     const editRef = useRef({})
     const deleteRef = useRef({})
@@ -16,7 +16,7 @@ const WishItem = ({ product, AddItems }) => {
 
     return (
         <div className="wishItem">
-            <img className="wishItem__img" src={product.img} alt={product.name}/>
+            <img className="wishItem__img" src={product.img} alt={product.name} />
             <div className="wishItem__infoAndPrice">
                 <div className="wishItem__info">
                     <h3>{product.type}</h3>
@@ -30,21 +30,21 @@ const WishItem = ({ product, AddItems }) => {
             </div>
             <div className="wishItem__options">
                 <div>
-                    <img src={Edit} alt="Editar" onMouseOver={()=> editRef.current.src=EditActivo} 
-                    onMouseLeave={()=> editRef.current.src=Edit} ref={editRef}/>
+                    <img src={Edit} alt="Editar" onMouseOver={() => editRef.current.src = EditActivo}
+                        onMouseLeave={() => editRef.current.src = Edit} ref={editRef} />
                     <span>Editar</span>
                 </div>
                 <div>
-                    <img src={Delete} alt="Eliminar" 
-                    onMouseOver={()=> deleteRef.current.src=DeleteActivo}
-                    onMouseLeave={()=> deleteRef.current.src=Delete} ref={deleteRef}/>
+                    <img src={Delete} alt="Eliminar"
+                        onMouseOver={() => deleteRef.current.src = DeleteActivo}
+                        onMouseLeave={() => deleteRef.current.src = Delete} ref={deleteRef} />
                     <span>Eliminar</span>
                 </div>
                 <div>
-                    <img src={Cart} alt="Wishlist" onClick={() => AddItems(WishItem)} onMouseOver={()=> cartRef.current.src=CartActivo } 
-                    onMouseLeave={()=> cartRef.current.src=Cart} ref={cartRef}/>
-                    <span> Mover al Carrito</span>              
-                   
+                    <img src={Cart} alt="Wishlist" onClick={click} onMouseOver={() => cartRef.current.src = CartActivo}
+                        onMouseLeave={() => cartRef.current.src = Cart} ref={cartRef} />
+                    <span> Mover al Carrito</span>
+
                 </div>
             </div>
         </div>

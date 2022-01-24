@@ -13,7 +13,7 @@ const country = ["Colombia", "Ecuador", "Venezuela", "Estados Unidos"];
 const city = ["Bogotá", "Medellín", "Cali", "Barranquilla"];
 const ind = ["+57", "+58", "+59"];
 const fields = ["correo", ""]
-const PaymentInformation = ({ products, currentUser }) => {
+const PaymentInformation = ({ items, currentUser }) => {
   const [check, setCheck] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
   const [signIn, setSignIn] = useState(null);
@@ -46,15 +46,17 @@ const PaymentInformation = ({ products, currentUser }) => {
         var wrapper = document.createElement("div");
         wrapper.innerHTML = data;
         let formulario = wrapper.getElementsByClassName("signIn__form")[0];
-        let input = formulario && formulario.getElementsByTagName("input")[1];
-        input.value = "screen2";
-        let a = formulario.getElementsByTagName("a")[0]
-        let b = formulario.getElementsByTagName("a")[1]
-        a.setAttribute("id", "registerLink")
-        b.setAttribute("id", "forgotPass")
-        a.removeAttribute("href")
-        b.removeAttribute("href")
-        setSignIn(formulario.outerHTML);
+        if (formulario) {
+          let input = formulario && formulario.getElementsByTagName("input")[1];
+          input.value = "screen2"
+          let a = formulario.getElementsByTagName("a")[0]
+          let b = formulario.getElementsByTagName("a")[1]
+          a.setAttribute("id", "registerLink")
+          b.setAttribute("id", "forgotPass")
+          a.removeAttribute("href")
+          b.removeAttribute("href")
+          setSignIn(formulario.outerHTML);
+        }
       });
     fetch("/users/sign_up")
       .then((res) => {
@@ -64,12 +66,14 @@ const PaymentInformation = ({ products, currentUser }) => {
         var wrapper = document.createElement("div");
         wrapper.innerHTML = data;
         let formulario = wrapper.getElementsByClassName("checkIn__form")[0];
-        let input = formulario && formulario.getElementsByTagName("input")[1];
-        input.value = "screen2";
-        let c = formulario.getElementsByClassName("checkIn__signIn")[0]
-        c.setAttribute("id", "loginLink")
-        c.removeAttribute("href")
-        setform(formulario.outerHTML);
+        if (formulario) {
+          let input = formulario && formulario.getElementsByTagName("input")[1];
+          input.value = "screen2"
+          let c = formulario.getElementsByClassName("checkIn__signIn")[0]
+          c.setAttribute("id", "loginLink")
+          c.removeAttribute("href")
+          setform(formulario.outerHTML);
+        }
       });
     fetch("/users/password/new")
       .then((res) => {
@@ -79,11 +83,13 @@ const PaymentInformation = ({ products, currentUser }) => {
         var wrapper = document.createElement("div");
         wrapper.innerHTML = data;
         let formulario = wrapper.getElementsByClassName("forgotPass__form")[0];
-        let input = formulario && formulario.getElementsByTagName("input")[1];
-        input.value = "screen2";
-        let inputButton = formulario.getElementsByTagName("input")[3];
-        inputButton.setAttribute("id", "forgot_button")
-        setForgot(formulario.outerHTML);
+        if (formulario) {
+          let input = formulario && formulario.getElementsByTagName("input")[1];
+          input.value = "screen2"
+          let inputButton = formulario.getElementsByTagName("input")[3];
+          inputButton.setAttribute("id", "forgot_button")
+          setForgot(formulario.outerHTML);
+        }
       });
   }, []);
   return (
@@ -117,12 +123,12 @@ const PaymentInformation = ({ products, currentUser }) => {
       <div className="paymentInformation__acount">
         {check === "Acount" && cuenta === 1 ? (
           <div>
-            {!currentUser&&<legend>Iniciar Sesión</legend>}
+            {!currentUser && <legend>Iniciar Sesión</legend>}
             <div className='paymentInformation__acount-login' dangerouslySetInnerHTML={{ __html: signIn }} />
-            {currentUser && 
-            <div className="paymentInformation__acount-logout">
-              <a data-method="delete" href="/users/sign_out">Cerrar Sesión</a>
-            </div>}
+            {currentUser &&
+              <div className="paymentInformation__acount-logout">
+                <a data-method="delete" href="/users/sign_out">Cerrar Sesión</a>
+              </div>}
           </div>
         )
           : check === "Acount" && cuenta === 2 ? (
@@ -158,9 +164,9 @@ const PaymentInformation = ({ products, currentUser }) => {
                     </span>
                     <h3 style={{ alignSelf: "center" }}>LISTA DE ORDEN</h3>
                     <div className="paymentInformation__market">
-                      <h3>{`${products.length} Productos`}</h3>
+                      <h3>{`${items.length} Productos`}</h3>
                       <hr />
-                      {products.map((product) => (
+                      {items.map((product) => (
                         <div key={product.id}>
                           <span>{product.name}</span>
                           <span>${product.price}</span>
@@ -207,7 +213,7 @@ const PaymentInformation = ({ products, currentUser }) => {
                           <input type="hidden" name="currency" value="COP" />
                           <input type="hidden" name="amount-in-cents" value="9800000" />
                           <input type="hidden" name="reference" value="1621" />
-                          <input type="hidden" xname="signature:integrity" value="84edad1fb28adaba7e8c3642ffc1d094dd6b7be4e00a38134beedc39565b9f98"/>
+                          <input type="hidden" xname="signature:integrity" value="84edad1fb28adaba7e8c3642ffc1d094dd6b7be4e00a38134beedc39565b9f98" />
                           <input type="hidden" name="redirect-url" value="http://localhost:3000/transaction" />
                           <input type="hidden" name="tax-in-cents:vat" value="150000" />
                           <input type="hidden" name="tax-in-cents:consumption" value="100000" />
@@ -215,11 +221,11 @@ const PaymentInformation = ({ products, currentUser }) => {
                           <input type="hidden" name="customer-data:full-name" value="Homero Simpson" />
                           <input type="hidden" name="customer-data:phone-number" value="4152121" />
                           {/* <input name="customer-data:legal-id-type" value="CC" /> */}
-                          <select form = "wompi">
-                             <option value = {"CE"}> CE </option>
-                             <option value = {"CC"}> CC </option>
+                          <select form="wompi">
+                            <option value={"CE"}> CE </option>
+                            <option value={"CC"}> CC </option>
                           </select>
-                          <input name="customer-data:legal-id"/>
+                          <input name="customer-data:legal-id" />
                           <input type="hidden" name="shipping-address:address-line-1" value="Salitre Plaza" />
                           <input type="hidden" name="shipping-address:country" value="CO" />
                           <input type="hidden" name="shipping-address:phone-number" value="4152121" />

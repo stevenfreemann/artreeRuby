@@ -8,14 +8,14 @@ import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.p
 
 const cant = [1, 2, 3, 4, 5];
 
-const CartItem = ({ product }) => {
+const CartItem = ({ product, k }) => {
   const quantity = useRef(null);
   const editRef = useRef({});
   const deleteRef = useRef({});
   const wishRef = useRef({});
 
   return (
-    <div className="cardItem">
+    <div className="cardItem" key={k}>
       <div className="cardItem__product">
         <div className="cardItem__img">
           <img src={product.img} alt={product.name} />
