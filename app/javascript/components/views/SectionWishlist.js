@@ -19,6 +19,7 @@ const SectionWishlist = ({ title, products }) => {
     const pages = (Math.floor((products.length - 1) / elements) + 1)
     const addItems = (wishItem) => {
         const data = localStorage.getItem("items")
+        console.log(WishItem)
         if (data) {
             let temp = JSON.parse(data)
             temp.push(wishItem)
