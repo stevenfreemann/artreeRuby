@@ -14,14 +14,24 @@ import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
 //     {id:1,type:'LINEA EXCLUSIVE',name:'Nombre Fotografia 1',img: ShoppingCart1,phrase:'Frase Fotografia 1',dimensions: '120 * 140',frame:'Tipo de Marco 1',material:'Tipo de Material 1',price: 120000,},   
 //]
 const SectionWishlist = ({title, products}) => {
-    const [items, setItems] = useState([])
     const [page, setPage] = useState(1)
     const elements = title?12:6
     const pages = (Math.floor((products.length-1)/elements)+1)
 
-    // const AddItems = (WishItem) => {
-    //   setItems([...items, WishItem])
-    // }
+    const AddItems = (WishItem) => {
+        const data = localStorage.getItem("items")
+        if (data) {
+            console.log(data)
+            console.log("if")
+
+        } else {
+            let arr = []
+            arr.push(WishItem)
+            localStorage.setItem("items", "test")
+            console.log("else")
+
+        }
+    }
     
     const paginationWish = (products)=>{
         if (products.length>elements) {

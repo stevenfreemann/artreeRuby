@@ -41,11 +41,10 @@ const WishItem = ({ product, AddItems }) => {
                     <span>Eliminar</span>
                 </div>
                 <div>
-                    <img src={Cart} alt="Wishlist" onMouseOver={()=> cartRef.current.src=CartActivo} 
+                    <img src={Cart} alt="Wishlist" onClick={() => AddItems(WishItem)} onMouseOver={()=> cartRef.current.src=CartActivo } 
                     onMouseLeave={()=> cartRef.current.src=Cart} ref={cartRef}/>
-                    <button type="button" onClick={() => AddItems(WishItem)}>
-                        Mover al Carrito                  
-                    </button>
+                    <span> Mover al Carrito</span>              
+                   
                 </div>
             </div>
         </div>
@@ -53,3 +52,5 @@ const WishItem = ({ product, AddItems }) => {
 }
 // localStorage.setItem("products", JSON.stringify(WishItem))
 export default WishItem
+
+// , en imagen

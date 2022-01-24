@@ -225,7 +225,7 @@ const PaymentInformation = ({ products, currentUser }) => {
                           <input type="hidden" name="shipping-address:phone-number" value="4152121" />
                           <input type="hidden" name="shipping-address:city" value="Bogota" />
                           <input type="hidden" name="shipping-address:region" value="Cundinamarca" />
-                          <button className="paymentInformation__paymentButton" type="submit">Pagar con Wompi</button>
+                          <button className="paymentInformation__paymentButton" type="submit" onClick={() => AddItems(WishItem)}>Pagar con Wompi</button>
                         </form>
                       }
                     </>

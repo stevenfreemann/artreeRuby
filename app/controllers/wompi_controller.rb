@@ -16,7 +16,5 @@ class WompiController < ApplicationController
     if json["data"]["status_message"] != nil
       @paymentInfo["status_message"] = json["data"]["status_message"]
     end
-    
-    #render json: final
   end
 end
