@@ -1,2 +1,0 @@
-class Banner < ApplicationRecord
-end

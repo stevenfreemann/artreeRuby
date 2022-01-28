@@ -1,2 +1,0 @@
-class ColorMarco < ApplicationRecord
-end

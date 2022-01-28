@@ -1,2 +1,0 @@
-class Marco < ApplicationRecord
-end
