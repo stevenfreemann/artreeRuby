@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :wish_items
-  has_many :compras
+  has_many :transactions
 
 end

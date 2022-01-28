@@ -16,7 +16,7 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.bigint "user_id"
       t.string "signature"
       t.string "status_message"
-      t.index ["user_id"], name: "index_transactions_on_user_id"
+      t.references :user, null: false, foreign_key: true
     end
   end
 end

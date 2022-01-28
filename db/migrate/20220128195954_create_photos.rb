@@ -10,10 +10,10 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
       t.boolean :active, default: false
       t.boolean :starred, default: false
       t.string :file 
-      t.references :line, null: false, foreign_key: true
       t.integer :stock
+      t.references :line, null: false, foreign_key: true
       t.references :room, null: false, foreign_key: true
-
+      t.references :artist, null: false, foreign_key: true
       t.timestamps
     end
   end
