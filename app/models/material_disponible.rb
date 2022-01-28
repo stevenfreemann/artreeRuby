@@ -1,3 +1,4 @@
 class MaterialDisponible < ApplicationRecord
-  has_many :materials
+  belongs_to :material
+  belongs_to :foto
 end

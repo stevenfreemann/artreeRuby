@@ -5,7 +5,6 @@ import check from '../../assets/static/graphics/check@2x.png'
 
 
 const PurchaseSuccess = ({ info }) => {
-    localStorage.removeItem('items');
     return (
         <div className='purchaseSuccess'>
             <div className='purchaseSuccess__cont'>

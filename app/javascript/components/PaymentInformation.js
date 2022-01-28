@@ -13,14 +13,13 @@ const country = ["Colombia", "Ecuador", "Venezuela", "Estados Unidos"];
 const city = ["Bogotá", "Medellín", "Cali", "Barranquilla"];
 const ind = ["+57", "+58", "+59"];
 const fields = ["correo", ""]
-const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token }) => {
+const PaymentInformation = ({ items, currentUser }) => {
   const [check, setCheck] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
   const [signIn, setSignIn] = useState(null);
   const [formu, setform] = useState(null);
   const [forgot, setForgot] = useState(null);
   const [viewPayment, setViewPayment] = useState(1);
-  const [response, setResponse] = useState(null);
 
   useEffect(() => {
     let a = document.getElementById("registerLink")
@@ -37,20 +36,6 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
   }, [signIn, cuenta, formu])
 
   console.log('currentUser :>> ', currentUser);
-
-  const generarCompra = async() => {
-    const response = await fetch('/compra', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({costo: total_cost, productos: items, authenticity_token: authenticity_token}),
-    })
-    const respuesta = await response.json()
-    setResponse(respuesta)
-    console.log(respuesta)
-    setCheck("Payment")
-  }
 
   useEffect(() => {
     fetch("/users/sign_in")
@@ -193,29 +178,29 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                       </div>
                       <div>
                         <span>Descuento</span>
-                        <span>-$0</span>
+                        <span>-$50.000</span>
                       </div>
                       <div>
                         <span>IVA (19%)</span>
-                        <span>${total_cost * 0.19}</span>
+                        <span>$102.600</span>
                       </div>
                     </div>
                     <div className="paymentInformation__total">
                       <span>Total</span>
-                      <span>${total_cost + (total_cost * 0.19) }</span>
+                      <span>$592.600</span>
                     </div>
                     <div className="paymentInformation__code">
                       <label>Código de Descuento</label>
                       <input type="text"></input>
                       <button type="button">Redimir</button>
                     </div>
-                    <button type="button" onClick={() =>  generarCompra() }>
+                    <button type="button" onClick={() => setCheck("Payment")}>
                       Pagar
                     </button>
                   </div>
                 )
                   : (
-                    check === "Payment" && response &&
+                    check === "Payment" &&
                     <>
                       {viewPayment === 1 ?
                         <div className="paymentInformation__payment" style={{ alignItems: "center" }}>
@@ -226,26 +211,26 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
                           <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
                           <input type="hidden" name="currency" value="COP" />
-                          <input type="hidden" name="amount-in-cents" value={response.costo_total} />
-                          <input type="hidden" name="reference" value={response.numero_referencia} />
-                          <input type="hidden" xname="signature:integrity" value={response.firma} />
+                          <input type="hidden" name="amount-in-cents" value="9800000" />
+                          <input type="hidden" name="reference" value="1621" />
+                          <input type="hidden" xname="signature:integrity" value="84edad1fb28adaba7e8c3642ffc1d094dd6b7be4e00a38134beedc39565b9f98" />
                           <input type="hidden" name="redirect-url" value="http://localhost:3000/transaction" />
-                          <input type="hidden" name="tax-in-cents:vat" value={response.impuesto_iva} />
-                          <input type="hidden" name="tax-in-cents:consumption" value={response.impuesto_consumo} />
-                          <input type="hidden" name="customer-data:email" value={currentUser.email} />
-                          <input type="hidden" name="customer-data:full-name" value={currentUser.name} />
-                          <input type="hidden" name="customer-data:phone-number" value={currentUser.phone} />
+                          <input type="hidden" name="tax-in-cents:vat" value="150000" />
+                          <input type="hidden" name="tax-in-cents:consumption" value="100000" />
+                          <input type="hidden" name="customer-data:email" value="test@test.com" />
+                          <input type="hidden" name="customer-data:full-name" value="Homero Simpson" />
+                          <input type="hidden" name="customer-data:phone-number" value="4152121" />
                           {/* <input name="customer-data:legal-id-type" value="CC" /> */}
                           <select form="wompi">
                             <option value={"CE"}> CE </option>
                             <option value={"CC"}> CC </option>
                           </select>
-                          <input name="customer-data:legal-id" placeholder="cedula" />
-                          <input name="shipping-address:address-line-1" placeholder="dirección"/>
-                          <input name="shipping-address:country" placeholder="pais"/>
-                          <input name="shipping-address:phone-number" placeholder="telefono"/>
-                          <input name="shipping-address:city" placeholder="ciudad"/>
-                          <input name="shipping-address:region" placeholder="region"/>
+                          <input name="customer-data:legal-id" />
+                          <input type="hidden" name="shipping-address:address-line-1" value="Salitre Plaza" />
+                          <input type="hidden" name="shipping-address:country" value="CO" />
+                          <input type="hidden" name="shipping-address:phone-number" value="4152121" />
+                          <input type="hidden" name="shipping-address:city" value="Bogota" />
+                          <input type="hidden" name="shipping-address:region" value="Cundinamarca" />
                           <button className="paymentInformation__paymentButton" type="submit" onClick={() => AddItems(WishItem)}>Pagar con Wompi</button>
                         </form>
                       }

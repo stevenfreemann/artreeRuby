@@ -1,0 +1,2 @@
+class Tamano < ApplicationRecord
+end

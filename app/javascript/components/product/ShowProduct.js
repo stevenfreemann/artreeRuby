@@ -75,7 +75,7 @@ const ShowProduct = ({data,setScreen}) => {
                 </div>
                 <div>
                     <img src={whishList}/>
-                    <span>whish List</span>
+                    <span>wish List</span>
                 </div>
             </div>
         </div>
