@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "-----migrating"
-if !Artistum.first
+if !Artist.first
 	40.times do |i|
-		Artistum.create(nombre: "nombre_#{i}", bio: "Description #{i}", facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", destacado:false)
+		Artist.create(name: "nombre_#{i}", bio: "Description #{i}", facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", starred:false)
 	end
 end
 

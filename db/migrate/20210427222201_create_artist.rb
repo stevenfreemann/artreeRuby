@@ -1,13 +1,13 @@
-class CreateArtista < ActiveRecord::Migration[6.0]
+class CreateArtist < ActiveRecord::Migration[6.0]
   def change
-    create_table :artista do |t|
-      t.string :nombre
+    create_table :artist do |t|
+      t.string :name
       t.text :bio
       t.string :facebook
       t.string :instagram
       t.string :pinterest
       t.string :linkedin
-      t.boolean :destacado, default: false
+      t.boolean :starred, default: false
 
       t.timestamps
     end

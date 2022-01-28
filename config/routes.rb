@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'wishlist' => 'wish_item#index'
   get 'upload' => 'like_pro#upload'
   get 'transaction' => 'wompi#transaction'
+  post 'compra' => 'compras#create'
   
 
   devise_for :admin_users, ActiveAdmin::Devise.config

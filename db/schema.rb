@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_140821) do
+ActiveRecord::Schema.define(version: 2022_01_27_161439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,19 +41,6 @@ ActiveRecord::Schema.define(version: 2022_01_21_140821) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "artista", force: :cascade do |t|
-    t.string "nombre"
-    t.text "bio"
-    t.string "facebook"
-    t.string "instagram"
-    t.string "pinterest"
-    t.string "linkedin"
-    t.boolean "destacado", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "file"
-  end
-
   create_table "banners", force: :cascade do |t|
     t.string "titulo"
     t.text "texto"
@@ -73,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_140821) do
   end
 
   create_table "compras", force: :cascade do |t|
-    t.integer "numero_referencia", default: 1
+    t.bigint "numero_referencia", default: 1
     t.integer "costo_total"
     t.text "productos", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
@@ -86,6 +73,8 @@ ActiveRecord::Schema.define(version: 2022_01_21_140821) do
     t.float "impuesto_consumo"
     t.integer "cedula"
     t.bigint "user_id"
+    t.string "firma"
+    t.string "mensaje_status"
     t.index ["user_id"], name: "index_compras_on_user_id"
   end
 
@@ -93,30 +82,6 @@ ActiveRecord::Schema.define(version: 2022_01_21_140821) do
     t.string "nombre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "fotos", force: :cascade do |t|
-    t.string "referencia"
-    t.bigint "artistum_id", null: false
-    t.string "nombre"
-    t.text "descripcion"
-    t.integer "precio_base"
-    t.integer "prioridad"
-    t.boolean "activo", default: false
-    t.boolean "destacado", default: false
-    t.boolean "destacado_temporada", default: false
-    t.bigint "linea_id", null: false
-    t.string "color"
-    t.integer "numero_actual"
-    t.integer "stock"
-    t.boolean "pineado", default: false
-    t.bigint "sala_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "file"
-    t.index ["artistum_id"], name: "index_fotos_on_artistum_id"
-    t.index ["linea_id"], name: "index_fotos_on_linea_id"
-    t.index ["sala_id"], name: "index_fotos_on_sala_id"
   end
 
   create_table "lineas", force: :cascade do |t|
@@ -144,12 +109,10 @@ ActiveRecord::Schema.define(version: 2022_01_21_140821) do
   end
 
   create_table "material_disponibles", force: :cascade do |t|
-    t.bigint "material_id", null: false
-    t.bigint "foto_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["foto_id"], name: "index_material_disponibles_on_foto_id"
-    t.index ["material_id"], name: "index_material_disponibles_on_material_id"
+    t.string "nombre"
+    t.string "tipo"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -172,27 +135,11 @@ ActiveRecord::Schema.define(version: 2022_01_21_140821) do
     t.index ["linea_id"], name: "index_salas_on_linea_id"
   end
 
-  create_table "tamano_disponibles", force: :cascade do |t|
-    t.bigint "tamano_id", null: false
-    t.bigint "foto_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["foto_id"], name: "index_tamano_disponibles_on_foto_id"
-    t.index ["tamano_id"], name: "index_tamano_disponibles_on_tamano_id"
-  end
-
-  create_table "tamanos", force: :cascade do |t|
-    t.string "nombre"
-    t.string "dimensiones"
-    t.text "descripcion"
-    t.integer "precio"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "temporadas", force: :cascade do |t|
-    t.string "nombre"
-    t.boolean "active", default: false
+  create_table "sizes", force: :cascade do |t|
+    t.string "name"
+    t.string "dimensions"
+    t.text "description"
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -231,16 +178,9 @@ ActiveRecord::Schema.define(version: 2022_01_21_140821) do
   end
 
   add_foreign_key "compras", "users"
-  add_foreign_key "fotos", "artista"
-  add_foreign_key "fotos", "lineas"
-  add_foreign_key "fotos", "salas"
   add_foreign_key "marco_colors", "color_marcos"
   add_foreign_key "marco_colors", "marcos"
-  add_foreign_key "material_disponibles", "fotos"
-  add_foreign_key "material_disponibles", "materials"
   add_foreign_key "salas", "lineas"
-  add_foreign_key "tamano_disponibles", "fotos"
-  add_foreign_key "tamano_disponibles", "tamanos"
   add_foreign_key "wish_items", "lineas"
   add_foreign_key "wish_items", "users"
 end
