@@ -1,0 +1,2 @@
+class SubMaterial < ApplicationRecord
+end
