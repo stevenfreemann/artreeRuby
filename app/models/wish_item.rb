@@ -5,5 +5,4 @@ class WishItem < ApplicationRecord
   has_one :size
   has_one :packing
   belongs_to :user
-
 end

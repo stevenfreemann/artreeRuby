@@ -13,7 +13,6 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.float "iva_tax"
       t.float "consumption_tax"
       t.integer "civil_id"
-      t.bigint "user_id"
       t.string "signature"
       t.string "status_message"
       t.references :user, null: false, foreign_key: true

@@ -8,12 +8,12 @@ class CreateWishItems < ActiveRecord::Migration[6.0]
       t.string "material"
       t.integer "price"
       t.string "img"
-      add_reference :user, foreign_key: true
-      add_reference :photo, foreign_key: true
-      add_reference :sub_material, foreign_key: true
-      add_reference :size, foreign_key: true
-      add_reference :packing, foreign_key: true
-      add_reference :frame, foreign_key: true
+      t.references :user, null: false, foreign_key: true
+      t.references :photo, null: false, foreign_key: true
+      t.references :sub_material, null: false, foreign_key: true
+      t.references :size, null: false, foreign_key: true
+      t.references :package, null: false, foreign_key: true
+      t.references :frame, null: false, foreign_key: true
       t.datetime "created_at", precision: 6, null: false
       t.datetime "updated_at", precision: 6, null: false
     end
