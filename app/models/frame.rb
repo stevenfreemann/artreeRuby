@@ -1,3 +1,3 @@
 class Frame < ApplicationRecord
-  has_many :wish_items
+  belongs_to :wish_item
 end

@@ -4,6 +4,7 @@ class CreatePackages < ActiveRecord::Migration[6.0]
       t.string "name"
       t.datetime "created_at", precision: 6, null: false
       t.datetime "updated_at", precision: 6, null: false
+      t.references :wish_item, null: true, foreign_key: true
     end
   end
 end

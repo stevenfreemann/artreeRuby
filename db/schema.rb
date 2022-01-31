@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "wish_item_id"
+    t.index ["wish_item_id"], name: "index_frames_on_wish_item_id"
   end
 
   create_table "lines", force: :cascade do |t|
@@ -91,6 +93,8 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "wish_item_id"
+    t.index ["wish_item_id"], name: "index_packages_on_wish_item_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -106,11 +110,13 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.bigint "line_id", null: false
     t.bigint "room_id", null: false
     t.bigint "artist_id", null: false
+    t.bigint "wish_item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["artist_id"], name: "index_photos_on_artist_id"
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"
+    t.index ["wish_item_id"], name: "index_photos_on_wish_item_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -129,6 +135,8 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "wish_item_id"
+    t.index ["wish_item_id"], name: "index_sizes_on_wish_item_id"
   end
 
   create_table "sub_materials", force: :cascade do |t|
@@ -139,7 +147,9 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "material_id", null: false
+    t.bigint "wish_item_id"
     t.index ["material_id"], name: "index_sub_materials_on_material_id"
+    t.index ["wish_item_id"], name: "index_sub_materials_on_wish_item_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -186,32 +196,19 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.string "material"
     t.integer "price"
     t.string "img"
-    t.bigint "user_id", null: false
-    t.bigint "photo_id", null: false
-    t.bigint "sub_material_id", null: false
-    t.bigint "size_id", null: false
-    t.bigint "package_id", null: false
-    t.bigint "frame_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["frame_id"], name: "index_wish_items_on_frame_id"
-    t.index ["package_id"], name: "index_wish_items_on_package_id"
-    t.index ["photo_id"], name: "index_wish_items_on_photo_id"
-    t.index ["size_id"], name: "index_wish_items_on_size_id"
-    t.index ["sub_material_id"], name: "index_wish_items_on_sub_material_id"
-    t.index ["user_id"], name: "index_wish_items_on_user_id"
   end
 
+  add_foreign_key "frames", "wish_items"
+  add_foreign_key "packages", "wish_items"
   add_foreign_key "photos", "artists"
   add_foreign_key "photos", "lines"
   add_foreign_key "photos", "rooms"
+  add_foreign_key "photos", "wish_items"
   add_foreign_key "rooms", "lines"
+  add_foreign_key "sizes", "wish_items"
   add_foreign_key "sub_materials", "materials"
+  add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"
-  add_foreign_key "wish_items", "frames"
-  add_foreign_key "wish_items", "packages"
-  add_foreign_key "wish_items", "photos"
-  add_foreign_key "wish_items", "sizes"
-  add_foreign_key "wish_items", "sub_materials"
-  add_foreign_key "wish_items", "users"
 end

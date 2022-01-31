@@ -12,7 +12,7 @@ import bicycle6 from '../assets/static/images/bicycle6.jpg'
 import bicycle7 from '../assets/static/images/bicycle7.jpg'
 
 const info = [
-    {id:1,nombre: "Bicicleta 1", img: bicycle1,info:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores molestiae libero eaque omnis sequi! Nam ab corrupti blanditiis eaque."},
+    {id:1,nombre: "Bicicleta test", img: bicycle1,info:"Lorem ipsum dolor sit"},
     {id:2,nombre: "Bicicleta 2", img: bicycle2,info:"Lorem ipsum dolor sit amet consectetur adipisicing elit."},
     {id:3,nombre: "Bicicleta 3", img: bicycle3,info:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores molestiae libero eaque omnis sequi! Nam ab corrupti blanditiis eaque."},
     {id:4,nombre: "Bicicleta 4", img: bicycle4,info:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores molestiae libero eaque omnis sequi! Nam ab corrupti blanditiis eaque. Asperiores molestiae libero eaque omnis sequi! Nam ab corrupti blanditiis eaque."},

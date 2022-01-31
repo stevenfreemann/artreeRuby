@@ -13,6 +13,7 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
       t.references :line, null: false, foreign_key: true
       t.references :room, null: false, foreign_key: true
       t.references :artist, null: false, foreign_key: true
+      t.references :wish_item, null: true, foreign_key: true
       t.timestamps
     end
   end

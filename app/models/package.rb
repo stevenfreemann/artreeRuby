@@ -1,3 +1,3 @@
 class Package < ApplicationRecord
-  belongs to wish_item
+  belongs_to :wish_item
 end
