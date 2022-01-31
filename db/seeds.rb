@@ -22,7 +22,7 @@ if !AdminUser.first
 end
 
 if !User.first
-	User.create!(email: 'prueba1@gmail.com', password: '123456', password_confirmation: '123456', name: 'Test test')
+	User.create!(email: 'prueba1@gmail.com', password: '123456', password_confirmation: '123456', name: 'Test', last_name: 'test', mobile_phone: 3002111111, mobile_phone2: 3001111111)
 end
 
 # if !WishItem.first

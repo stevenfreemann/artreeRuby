@@ -165,6 +165,10 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name"
+    t.string "last_name"
+    t.string "mobile_phone"
+    t.string "mobile_phone2"
+    t.text "addresses", default: [], array: true
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
