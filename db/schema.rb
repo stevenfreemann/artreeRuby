@@ -196,8 +196,10 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.string "material"
     t.integer "price"
     t.string "img"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wish_items_on_user_id"
   end
 
   add_foreign_key "frames", "wish_items"
@@ -211,4 +213,5 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
   add_foreign_key "sub_materials", "materials"
   add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"
+  add_foreign_key "wish_items", "users"
 end

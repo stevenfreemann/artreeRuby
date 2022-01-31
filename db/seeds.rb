@@ -25,6 +25,35 @@ if !User.first
 	User.create!(email: 'prueba1@gmail.com', password: '123456', password_confirmation: '123456', name: 'Test', last_name: 'test', mobile_phone: 3002111111, mobile_phone2: 3001111111)
 end
 
+if !Line.first
+	Line.create!(name: 'exclusive', description: 'Linea exclusiva')
+end
+
+if !Room.first
+	3.times do |i|
+		Room.create!(name: "Sala #{i}", line: Line.first)
+	end
+end
+
+if !Package.first
+	Package.create!(name: 'regalo')
+end
+
+if !Material.first
+	Material.create!(name: 'reciclado', kind: 'papel')
+end
+
+if !SubMaterial.first
+	SubMaterial.create!(name: 'doble', description: 'papel reforzado', price: 25000, material: Material.first)
+end
+
+if !Size.first
+	Size.create!(name: 'mediano', dimensions: '120 x 120', price: 32000, description: 'Adecuado para decoracion en habitaciones')
+end
+
+if !Frame.first
+	Frame.create!(name: 'cedro', description: 'Marco en madera, tipo cedro', price: 40000)
+end
 # if !WishItem.first
 # 	5.times do |i|
 # 		WishItem.create(name: "nombre_#{i}", phrase: "Description #{i}", dimensions: "120 * 240", frame: "Tipo de marco #{i}", material: "Tipo de material #{i}", price: 120000 , group: "linea pro", user: User.first)
