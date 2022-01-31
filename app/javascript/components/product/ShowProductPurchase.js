@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import SectionProductModal from '../SectionProductModal'
+import WishItem from './WishItem'
+
 
 import minus from '../../assets/static/buttons/minus.png'
 import plus from '../../assets/static/buttons/plus.png'
@@ -90,7 +92,7 @@ const frames =[
     },
 ]
 
-const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
+const ShowProductPurchase = ({exclusive,likeAPro,data, click}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -245,9 +247,9 @@ const ShowProductPurchase = ({exclusive,likeAPro,data}) => {
                     <div className="showProductPurchase__icons">
                         {!showLikeAPro&&<div>
                             <img src={whishList} alt="whishlist"/>
-                            <span>Whish List</span>
+                            <span>Wish List</span>
                         </div>}
-                        <div onClick={()=>navigate('cart')} >
+                        <div onClick={click} >
                             <img src={compra} alt="compra"/>
                             <span>Finalizar Compra</span>
                         </div>

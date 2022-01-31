@@ -21,7 +21,6 @@ import bicycle7 from '../assets/static/images/bicycle7.jpg'
 //     {id:7,nombre: "Bicicleta 7", img: bicycle7,info:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores molestiae libero eaque omnis sequi! Nam ab corrupti blanditiis eaque.  Asperiores molestiae libero eaque omnis sequi! Nam ab corrupti blanditiis eaque. Asperiores molestiae libero eaque omnis sequi! Nam ab corrupti blanditiis eaque."},
 // ]
 
-
 const SectionProduct = ({view, title, info}) => {
     console.log(info)
     const [data, setData] = useState(info[0])
