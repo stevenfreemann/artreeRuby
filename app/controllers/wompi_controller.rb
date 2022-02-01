@@ -2,7 +2,7 @@ class WompiController < ApplicationController
   skip_before_action :verify_authenticity_token
   require "http"
 
-  def transaction
+  def wompi_response
     id = params[:id]
     response = HTTP.get("https://sandbox.wompi.co/v1/transactions/#{id}").to_s
     json = JSON.parse(response)
@@ -19,7 +19,7 @@ class WompiController < ApplicationController
       @paymentInfo["status_message"] = json["data"]["status_message"]
     end
 
-    @transaction = Transaction.find_by(reference_number: json["data"]["reference"])
+    @transaction = Transaction.find_by(ref_number: json["data"]["reference"])
     @transaction.status = json["data"]["status"]
     @transaction.last_4 = json["data"]["payment_method"]["extra"]["last_four"]
     @transaction.transaction_id = json["data"]["id"]

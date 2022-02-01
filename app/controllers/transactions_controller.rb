@@ -22,30 +22,19 @@ class TransactionsController < ApplicationController
   # POST /transactions or /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-    cost = params[:cost]
+    cost = params[:total_cost]
     iva = cost * 0.19
     consumo = cost * 0.08
     total_cost = cost + iva + consumo   
-    puts total_cost
-    @transaction = Transaction.new(products: params[:products], total_cost: (total_cost * 100) , impuesto_iva: (iva  * 100), impuesto_consumo: (consumo * 100), user: current_user)
+    @transaction = Transaction.new(products: params[:products], total_cost: (total_cost * 100) , iva_tax: (iva  * 100), consumption_tax: (consumo * 100), user: current_user)
     @transaction.save
-    @transaction.reference_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
+    @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
     @transaction.save
-
-    respond_to do |format|
-      if @transaction.save
-        @transaction.reference_number = DateTime.now.strftime("%d%m%Y-")+ (sprintf '%07d', @transaction.id)
-        format.html { redirect_to transaction_url(@transaction), notice: "transaction was successfully created." }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
+       
     price = total_cost.to_s + "00"
     secret = "test_integrity_wi0bQa6UvC3a7trCM2uj7fgo1yBy5754"
-    chain = @transaction.reference_number.to_s + price + "COP" + secret
-    @transaction.firma = Digest::SHA2.hexdigest(chain)
+    chain = @transaction.ref_number.to_s + price + "COP" + secret
+    @transaction.signature = Digest::SHA2.hexdigest(chain)
     @transaction.save
 
     render json: @transaction.to_json
@@ -64,24 +53,14 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # DELETE /compras/1 or /compras/1.json
-  def destroy
-    @compra.destroy
-
-    respond_to do |format|
-      format.html { redirect_to compras_url, notice: "Compra was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_compra
-      @compra = Compra.find(params[:id])
+    def set_transaction
+      @transaction = Transaction.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def compra_params
-      params.require(:compras).permit(:reference_number, :products, :total_cost)
+    def transaction_params
+      params.require(:transaction).permit(:products, :total_cost)
     end
 end
