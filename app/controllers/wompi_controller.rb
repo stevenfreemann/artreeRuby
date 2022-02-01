@@ -8,18 +8,18 @@ class WompiController < ApplicationController
     
     transaction = Transaction.find_by(ref_number: json["transaction"]["reference"])
     
-    transaction.status = json["status"]
+    transaction.status = json["transaction"]["status"]
     puts "-------------status--------------#{transaction.status}"
     transaction.last_4 = json["transaction"]["payment_method"]["extra"]["last_four"]
     puts "-------------last_4--------------#{transaction.last_4}"
     transaction.transaction_id = json["transaction"]["id"]
     puts "-------------ref--------------#{json["transaction"]["reference"]}"
     transaction.payment_method = json["transaction"]["payment_method"]["type"]
-    transaction.civil_id = json["customer_data"]["legal_id"]
+    transaction.civil_id = json["transaction"]["customer_data"]["legal_id"]
     transaction.save
     
-    if json["status_message"] != nil
-      transaction.status_message = json["status_message"]
+    if json["transaction"]["status_message"] != nil
+      transaction.status_message = json["transaction"]["status_message"]
       transaction.save
       
       render json: { result: "transaction updated" }, status: 200
@@ -27,10 +27,10 @@ class WompiController < ApplicationController
   end
   
   def result
-    id = params[:id]
     #response = HTTP.get("https://sandbox.wompi.co/v1/transactions/#{id}").to_s
     
-    @transaction = Transaction.find_by(transaction_id: id)
+    @transaction = Transaction.find_by(transaction_id: params[:id])
+    puts "--------------id-------------#{id}"
     puts "--------------transaction-------------#{@transaction}"
   end
 end
