@@ -18,7 +18,7 @@ class WompiController < ApplicationController
       transaction.status_message = json["status_message"]
       transaction.save
       
-      render json: { "transaction updated" }, status: 200
+      render json: { result: "transaction updated" }, status: 200
     end   
   end
   
