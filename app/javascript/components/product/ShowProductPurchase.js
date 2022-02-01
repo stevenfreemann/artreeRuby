@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import SectionProductModal from '../SectionProductModal'
-import WishItem from './WishItem'
+import WishItem from '../views/WishItem'
 
 
 import minus from '../../assets/static/buttons/minus.png'
 import plus from '../../assets/static/buttons/plus.png'
 import sizeImg from '../../assets/static/images/size.png'
-import whishList from '../../assets/static/buttons/perfilwish@2x.png'
-import whishListActivo from '../../assets/static/buttons/perfilwishactivobtn@2x.png'
+import wishList from '../../assets/static/buttons/perfilwish@2x.png'
+import wishListActivo from '../../assets/static/buttons/perfilwishactivobtn@2x.png'
 import compra from '../../assets/static/buttons/perfilcarrito@2x.png'
 import compraActivo from '../../assets/static/buttons/perfilcarritoactivobtn@2x.png'
 
@@ -246,7 +246,7 @@ const ShowProductPurchase = ({exclusive,likeAPro,data, click}) => {
                     </div>
                     <div className="showProductPurchase__icons">
                         {!showLikeAPro&&<div>
-                            <img src={whishList} alt="whishlist"/>
+                            <img src={wishList} alt="wishlist"/>
                             <span>Wish List</span>
                         </div>}
                         <div onClick={click} >

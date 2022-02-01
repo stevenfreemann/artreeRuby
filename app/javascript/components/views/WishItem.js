@@ -52,5 +52,3 @@ const WishItem = ({ product, click }) => {
 }
 // localStorage.setItem("products", JSON.stringify(WishItem))
 export default WishItem
-
-// , en imagen

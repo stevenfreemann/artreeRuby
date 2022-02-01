@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   get 'wishlist' => 'wish_item#index'
   get 'upload' => 'like_pro#upload'
   post 'transaction' => 'transactions#create'
-  get 'response' => 'wompi#wompi_response'
+  post 'response' => 'wompi#wompi_response'
+  get 'result' => 'wompi#result'
+
   
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations'}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
