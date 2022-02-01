@@ -12,6 +12,8 @@ class WompiController < ApplicationController
     transaction.last_4 = json["transaction"]["payment_method"]["extra"]["last_four"]
     transaction.transaction_id = json["transaction"]["id"]
     puts "-------------id--------------#{json["transaction"]["id"]}"
+    puts "-------------id--------------#{transaction.transaction_id}"
+
     transaction.payment_method = json["transaction"]["payment_method"]["type"]
     transaction.civil_id = json["transaction"]["customer_data"]["legal_id"]
     transaction.save
@@ -27,10 +29,10 @@ class WompiController < ApplicationController
   def result
     #response = HTTP.get("https://sandbox.wompi.co/v1/transactions/#{id}").to_s
     id = params[:id]
-    puts "-------------id--------------#{id}"
+    puts "-------------id--------------#{json["transaction"]["id"]}"
 
     @transaction = Transaction.find_by(transaction_id: "#{params[:id]}")
-    puts "--------------transaction-------------#{@transaction}"
+    puts "--------------transaction-------------#{@transaction.transaction_id}"
   end
 end
 
