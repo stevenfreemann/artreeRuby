@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_141150) do
+ActiveRecord::Schema.define(version: 2022_02_01_205308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 2022_01_31_141150) do
     t.string "status"
     t.string "payment_method"
     t.integer "last_4"
-    t.integer "transaction_id"
+    t.string "transaction_id"
     t.float "iva_tax"
     t.float "consumption_tax"
     t.integer "civil_id"
