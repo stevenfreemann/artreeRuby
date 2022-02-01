@@ -29,7 +29,7 @@ class WompiController < ApplicationController
   def result
     #response = HTTP.get("https://sandbox.wompi.co/v1/transactions/#{id}").to_s
     id = params[:id]
-    puts "-------------id--------------#{json["transaction"]["id"]}"
+    puts "-------------id--------------#{params[:id]}"
 
     @transaction = Transaction.find_by(transaction_id: "#{params[:id]}")
     puts "--------------transaction-------------#{@transaction.transaction_id}"
