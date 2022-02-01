@@ -4,14 +4,17 @@ class WompiController < ApplicationController
 
   def wompi_response
     json = params[:data]
-    puts "---------------------------#{json}"
-    
-    transaction = Transaction.find_by(ref_number: json["reference"])
+    puts "-------------json--------------#{json}"
+    puts "-------------ref--------------#{json["transaction"]["reference"]}"
+
+    transaction = Transaction.find_by(ref_number: json["transaction"]["reference"])
+    puts "-------------transaction--------------#{transaction}"
+
     transaction.status = json["status"]
-    transaction.last_4 = json["payment_method"]["extra"]["last_four"]
-    transaction.transaction_id = json["id"]
-    transaction.payment_method = json["payment_method"]["type"]
-    transaction.civil_id = json['merchant']['legal_id']
+    transaction.last_4 = json["transaction"]["payment_method"]["extra"]["last_four"]
+    transaction.transaction_id = json["transaction"]["id"]
+    transaction.payment_method = json["transaction"]["payment_method"]["type"]
+    transaction.civil_id = json['customer_data']['legal_id']
     transaction.save
     
     if json["status_message"] != nil
