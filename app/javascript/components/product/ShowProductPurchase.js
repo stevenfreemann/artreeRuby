@@ -92,7 +92,7 @@ const frames =[
     },
 ]
 
-const ShowProductPurchase = ({exclusive,likeAPro,data, click}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -186,9 +186,9 @@ const ShowProductPurchase = ({exclusive,likeAPro,data, click}) => {
             </div>
             <div className="showProductPurchase__product">
                 <div className="showProductPurchase__info">
-                    <img src={data.img} alt={data.nombre}/>
+                    <img src={data.file.url} alt={data.name}/>
                     <div>
-                        <span style={{fontWeight:"bold"}}>{data.nombre}: </span>
+                        <span style={{fontWeight:"bold"}}>{data.name}: </span>
                         <span>{data.info}</span>
                     </div>
                 </div>

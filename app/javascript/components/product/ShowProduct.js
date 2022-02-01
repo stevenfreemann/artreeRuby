@@ -34,14 +34,14 @@ const ShowProduct = ({data,setScreen}) => {
         <div className="showProduct" >
             <div className="showProduct__info">
                 {sala==="picture"?
-                    <div className="showProduct__picture"><img src={data.img}/></div>
+                    <div className="showProduct__picture"><img src={data.file.url}/></div>
                 :sala==="spaces"&&
                 <div className="showProduct__spaces">
                     <div>
                         <h3>De la galería...</h3>
                         <div className="showProduct__spaces-galeryBg">
                             <img src={imgGalery} alt="galeriaBg"/>
-                            <img className="showProduct__spaces-galeryPt" src={data.img} alt="galeriaPt"/>
+                            <img className="showProduct__spaces-galeryPt" src={data.file.url} alt="galeriaPt"/>
                             <a href="https://www.freepik.es/fotos-vectores-gratis/fondo">pikisuperstar</a>
                         </div>
                     </div>
@@ -49,14 +49,14 @@ const ShowProduct = ({data,setScreen}) => {
                         <h3>...a tus espacios</h3>
                         <div className="showProduct__spaces-spaceBg">
                             <img src={imgSpaces} alt="espacios"/>
-                            <img className="showProduct__spaces-spacePt" src={data.img} alt="galeriaPt"/>
+                            <img className="showProduct__spaces-spacePt" src={data.file.url} alt="galeriaPt"/>
                             <a href="https://www.freepik.es/psd/maqueta">alexandercho</a>
                         </div>
                     </div>
                 </div>
                 }
                 <div className="showProduct__text">
-                    <span style={{fontWeight:"bold"}}>{data.nombre}: </span>
+                    <span style={{fontWeight:"bold"}}>{data.name}: </span>
                     <span>{data.info}</span>
                 </div>
             </div>

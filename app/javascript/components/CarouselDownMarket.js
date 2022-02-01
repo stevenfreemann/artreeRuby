@@ -51,7 +51,7 @@ const CarouselDownMarket = ({info,idSelected, listener}) => {
             <img className="carouselDownMarket__direction" src={Left} alt="Left" ref={leftRef} onClick={()=>handleClick('left')}/>
             <div className='carouselDownMarket__content' ref={contentRef}>
                 {info.map((info) =>
-                    <img className={idSelected === info.id ?  "carouselDownMarket__content--selected":''} key={info.id} src={info.img} alt={info.nombre} onClick={()=>listener(info)}/>
+                    <img className={idSelected === info.id ?  "carouselDownMarket__content--selected":''} key={info.id} src={info.file.url} alt={info.nombre} onClick={()=>listener(info)}/>
                 )}
             </div>
             <img className="carouselDownMarket__direction" src={Right} alt="Right" ref={rightRef} onClick={()=>handleClick('right')}/>
