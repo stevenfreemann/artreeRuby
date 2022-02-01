@@ -9,11 +9,9 @@ class WompiController < ApplicationController
     transaction = Transaction.find_by(ref_number: json["transaction"]["reference"])
     
     transaction.status = json["transaction"]["status"]
-    puts "-------------status--------------#{transaction.status}"
     transaction.last_4 = json["transaction"]["payment_method"]["extra"]["last_four"]
-    puts "-------------last_4--------------#{transaction.last_4}"
     transaction.transaction_id = json["transaction"]["id"]
-    puts "-------------ref--------------#{json["transaction"]["reference"]}"
+    puts "-------------id--------------#{json["transaction"]["id"]}"
     transaction.payment_method = json["transaction"]["payment_method"]["type"]
     transaction.civil_id = json["transaction"]["customer_data"]["legal_id"]
     transaction.save
@@ -28,7 +26,9 @@ class WompiController < ApplicationController
   
   def result
     #response = HTTP.get("https://sandbox.wompi.co/v1/transactions/#{id}").to_s
-    
+    id = params[:id]
+    puts "-------------id--------------#{id}"
+
     @transaction = Transaction.find_by(transaction_id: "#{params[:id]}")
     puts "--------------transaction-------------#{@transaction}"
   end
