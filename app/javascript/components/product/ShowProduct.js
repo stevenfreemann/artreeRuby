@@ -73,9 +73,9 @@ const ShowProduct = ({data,setScreen}) => {
                     <img src={compra}/>
                     <span>Inicia tu compra</span>
                 </div>
-                <div>
+                <div onClick={()=>setScreen('purchase')}>
                     <img src={whishList}/>
-                    <span>whish List</span>
+                    <span>wish List</span>
                 </div>
             </div>
         </div>

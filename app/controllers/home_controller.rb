@@ -15,11 +15,11 @@ class HomeController < ApplicationController
   def subInfoMaterial
   end
   def artist
-    artist=Artistum.all
+    artist=Artist.all
     @artistas=[]
     artist.each { |x|
       obj=x.attributes
-      obj["img"]= Artistum.photo
+      obj["img"]= Artist.file
       @artistas << obj
     }
   end

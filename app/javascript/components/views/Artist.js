@@ -45,10 +45,10 @@ const Artist = ({artistas,foto}) => {
             <div className='artist__cont'>
                 {showArtist.map((artist)=>
                     <div key={artist.id} className={`artist__card${((showArtist.indexOf(artist) % 2) == 0)?'':'--invertido'}`}>
-                        <img className='artist__card-img' src={artist.img} alt={artist.nombre}/>
+                        <img className='artist__card-img' src={artist.img} alt={artist.name}/>
                         <div className='artist__info-cont'>
                             <div className='artist__info'>
-                                <span style={{fontWeight:'bold'}}>{artist.nombre}: </span>
+                                <span style={{fontWeight:'bold'}}>{artist.name}: </span>
                                 <span>{artist.bio}</span>
                             </div>
                             <div className='artist__card-social' >

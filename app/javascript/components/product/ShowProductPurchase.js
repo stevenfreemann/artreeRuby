@@ -22,84 +22,84 @@ import marco2 from '../../assets/static/images/marcos2.png'
 import marco3 from '../../assets/static/images/marcos3.png'
 
 
-const sizeInfo = [
-    {   
-        id:1,
-        width:120,
-        height:120,
-        price:2000000,
-        img:size1,
-    },
-    {   
-        id:2,
-        width:130,
-        height:130,
-        price:2200000,
-        img:size2,
-    },
-    {   
-        id:3,
-        width:140,
-        height:140,
-        price:2400000,
-        img:size3,
-    },
-]
+// const sizeInfo = [
+//     {   
+//         id:1,
+//         width:120,
+//         height:120,
+//         price:2000000,
+//         img:size1,
+//     },
+//     {   
+//         id:2,
+//         width:130,
+//         height:130,
+//         price:2200000,
+//         img:size2,
+//     },
+//     {   
+//         id:3,
+//         width:140,
+//         height:140,
+//         price:2400000,
+//         img:size3,
+//     },
+// ]
 
-const materials = [
-    {
-        id:1,
-        type:'papel1',
-        img:acrilico,
-        price:1000000,
-        backShow:acrilico,
-    },
-    {
-        id:2,
-        type:'papel2',
-        img:canvas,
-        price:2000000,
-        backShow:canvas,
-    },
-    {
-        id:3,
-        type:'papel3',
-        img:papel,
-        price:3000000,
-        backShow:papel,
-    },
-    {
-        id:4,
-        type:'papel4',
-        img:marco,
-        price:4000000,
-        backShow:marco,
-    },
-]
+// const materials = [
+//     {
+//         id:1,
+//         type:'papel1',
+//         img:acrilico,
+//         price:1000000,
+//         backShow:acrilico,
+//     },
+//     {
+//         id:2,
+//         type:'papel2',
+//         img:canvas,
+//         price:2000000,
+//         backShow:canvas,
+//     },
+//     {
+//         id:3,
+//         type:'papel3',
+//         img:papel,
+//         price:3000000,
+//         backShow:papel,
+//     },
+//     {
+//         id:4,
+//         type:'papel4',
+//         img:marco,
+//         price:4000000,
+//         backShow:marco,
+//     },
+// ]
 
-const frames =[
-    {
-        id:1,
-        type:'Blanco Marfil',
-        backShow:marco2,
-        price:1000000
-    },
-    {
-        id:2,
-        type:'Negro Marfil',
-        backShow:marco3,
-        price:2000000
-    },
-]
+// const frames =[
+//     {
+//         id:1,
+//         type:'Blanco Marfil',
+//         backShow:marco2,
+//         price:1000000
+//     },
+//     {
+//         id:2,
+//         type:'Negro Marfil',
+//         backShow:marco3,
+//         price:2000000
+//     },
+// ]
 
-const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, data, click, sizeInfo, materials, frames}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
     const [selectSize, setSelectSize] = useState(0)
     const [selectMaterial, setSelectMaterial] = useState(0)
     const [selectFrame, setSelectFrame] = useState(0)
-    const [selectPaking, setSelectPaking] = useState(0)
+    const [selectPacking, setSelectPacking] = useState(0)
     const [modal, setModal] = useState(false)
     const modalDataRef = useRef({})
     const modalInfoRef = useRef({})
@@ -107,7 +107,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
 
     const navigate=(section)=>{
         if(showExclusive){
-            if (selectSize&&selectFrame&&selectPaking) {
+            if (selectSize&&selectFrame&&selectPacking) {
                 const redirect={
                     'cart':'/cart'
                 }
@@ -118,7 +118,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
             }
         }
         else{
-            if (selectSize&&selectMaterial&&selectFrame&&selectPaking) {
+            if (selectSize&&selectMaterial&&selectFrame&&selectPacking) {
                 const redirect={
                     'cart':'/cart'
                 }
@@ -180,7 +180,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
                     <span>Marco</span>
                 </div>
                 <div className="showProductPurchase__item">
-                    <div className={selectPaking!==0?"item-selected":""}></div>
+                    <div className={selectPacking!==0?"item-selected":""}></div>
                     <span>Empaque</span>
                 </div>
             </div>
@@ -201,7 +201,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
                                 {sizeInfo.map((size)=>
                                 <div id={`size${size.id}`} key={size.id}>
                                     <img style={selectSize===size.id?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{setSelectSize(size.id);showModal('size',size.id)}}/>
-                                    <span>{size.width}x{size.height} cm</span>
+                                    <span>{size.dimensions} cm</span>
                                     <span>$ {size.price}</span>
                                 </div>
                                 )}
@@ -224,7 +224,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
                                 {frames.map((frame)=>
                                 <div key={frame.id}>
                                     <input type="radio" name="marco" checked={selectFrame===frame.id?true:false} onChange={()=>{showModal('frame'); setSelectFrame(frame.id)}}/>
-                                    <label>{frame.type}</label>
+                                    <label>{frame.name}</label>
                                 </div>
                                 )}
                             </div>
@@ -234,11 +234,11 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click}) => {
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-package">
                                 <div>
-                                    <input type="radio" name="marco" onChange={()=>setSelectPaking(1)}/>
+                                    <input type="radio" name="marco" onChange={()=>setSelectPacking(1)}/>
                                     <label>Normal</label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="marco" onChange={()=>setSelectPaking(2)}/>
+                                    <input type="radio" name="marco" onChange={()=>setSelectPacking(2)}/>
                                     <label>Regalo</label>
                                 </div>
                             </div>
