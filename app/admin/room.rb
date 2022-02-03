@@ -1,5 +1,5 @@
 ActiveAdmin.register Room do
-  permit_params :name, :pinned, :line_id
+  permit_params :name, :pinned, :line_id, :description
 
   # form :html => { :enctype => "multipart/form-data" } do |f|
   #   f.inputs "Details" do

@@ -1,2 +1,0 @@
-class LikeProController < ApplicationController
-end

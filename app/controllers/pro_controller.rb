@@ -1,2 +1,0 @@
-class ProController < ApplicationController
-end

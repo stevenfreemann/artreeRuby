@@ -105,6 +105,20 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click, sizeInfo, materi
     const modalInfoRef = useRef({})
     const modalProductRef = useRef({})
 
+    const generateWishItem = async() => {
+        const response = await fetch('/wishItem', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({    authenticity_token: authenticity_token}), //completar!
+        })
+        const respuesta = await response.json()
+        setResponse(respuesta)
+        console.log(respuesta)
+        setCheck("Payment")
+      }
+
     const navigate=(section)=>{
         if(showExclusive){
             if (selectSize&&selectFrame&&selectPacking) {
