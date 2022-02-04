@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
 
   def show
     @photos = Photo.where(room: @room).to_a
-    @title = "Exclusive - Sala #{@room.id}"
+    @title = "#{@room.line.name} - #{@room.name}"
   end
 
   private
