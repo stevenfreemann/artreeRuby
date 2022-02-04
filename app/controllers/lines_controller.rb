@@ -13,5 +13,4 @@ class LinesController < ApplicationController
     @rooms = Room.where(line: 2)
     @line = Line.find(2)
   end
-
 end
