@@ -49,7 +49,7 @@ const SectionWishlist = ({ title, products }) => {
             </div>}
             <div className='sectionWishlist__cont'>
                 {showProducts.map((product) =>
-                    <WishItem clickWishItem ={() => addItems(product)} product={product} key={product.id} />
+                    <WishItem click={() => addItems(product)} product={product} key={product.id} />
                 )}
             </div>
             <div className='sectionWishlist__next-prev'>

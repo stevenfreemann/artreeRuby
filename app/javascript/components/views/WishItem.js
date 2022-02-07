@@ -8,7 +8,12 @@ import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
 
-const WishItem = ({ product, clickWishItem }) => {
+const WishItem = ({ product, clickWishItem, size, frame, material, photo }) => {
+    console.log(product)
+    console.log(size)
+    console.log(frame)
+    console.log(material)
+    console.log(photo)
 
     const editRef = useRef({})
     const deleteRef = useRef({})
