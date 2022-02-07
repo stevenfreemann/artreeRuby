@@ -80,7 +80,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         {dataModal.map((size)=>
                         <label className='sectionProductModal__size-select1-item' key={size.id}>
                             <input type="radio" name="size" value={size.id} defaultChecked={selectSize===size.id?true:false}></input>
-                            <div onClick={()=>{setSelectSize(size.id)}} >
+                            <div onClick={()=>{setSelectSize(size.id), console.log(selectSize)}} >
                                 <img src={size.img}/>
                                 <span>{size.width}x{size.height}</span>
                             </div>
@@ -105,11 +105,13 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                         {dataModal.map((material)=>
                         <label className='sectionProductModal__material-select1-item' key={material.id}>
                             <input type='radio' name='material' value={material.id} defaultChecked={selectMaterial===material.id?true:false} ></input>
-                            <img onClick={()=>{setSelectMaterial(material.id)}} src={material.img}/>
+                            <div onClick={()=>{setSelectMaterial(material.id), console.log(selectMaterial)}} >
+                                <img src={material.img}/>
+                            </div> 
                         </label>
                         )}
                     </div>
-                    <select className='sectionProductModal__material-select2' ref={selectMaterialRef} value={selectMaterial} onChange={()=>{checkedMaterial(parseInt(selectMaterialRef.current.value))}}>
+                    <select className='sectionProductModal__material-select2' ref={selectMaterialRef} value={selectMaterial} onChange={()=>{checkedMaterial(parseInt(selectMaterialRef.current.value)), console.log(selectMaterial)}}>
                         {/* <option value='0' disabled></option> */}
                         {dataModal.map((material)=>
                         <option key={material.id} value={material.id} >{material.type} ${material.price}</option>)}
@@ -120,7 +122,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                 {showInfo===3&&
                 <div className='sectionProductModal__frame'>
                     <img className='sectionProductModal__frame-show' src={selectFrame?dataModal[(selectFrame)-1].backShow:null}/>
-                        <select className='sectionProductModal__frame-select' ref={selectFrameRef} value={selectFrame} onChange={()=>{setSelectFrame(parseInt(selectFrameRef.current.value))}}>
+                        <select className='sectionProductModal__frame-select' ref={selectFrameRef} value={selectFrame} onChange={()=>{setSelectFrame(parseInt(selectFrameRef.current.value)), console.log(selectFrame)}}>
                         {dataModal.map((frame)=>
                         <option key={frame.id} value={frame.id} >{frame.type} ${frame.price}</option>
                         )}

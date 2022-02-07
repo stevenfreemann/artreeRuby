@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'failPurchase' => 'home#purchaseFailed'
   get 'succesPurchase' => 'home#purchaseSucces'
   get 'wishlist' => 'wish_item#index'
-  get 'wishItem' => 'wish_item#create'
+  post 'wishItem' => 'wish_item#create'
   get 'upload' => 'like_pro#upload'
   post 'transaction' => 'transactions#create'
   post 'response' => 'transactions#wompi_response'

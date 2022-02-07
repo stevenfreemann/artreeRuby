@@ -8,10 +8,10 @@ import Logo from '../assets/static/graphics/logoartree.png'
 
 const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'REGALOS', 'Artistas', 'Wishlist', 'Carrito','Contáctenos']
 
-const Header = ({currentUser}) => {
+const Header = ({currentUser, count}) => {
     console.log('HEADER-->',currentUser)
     const [showMenu, setShowMenu] = useState(false)
-    const [notificationWhish, setNotificationWhish] = useState(12)
+    const [notificationWhish, setNotificationWhish] = useState(count)
     const [notificationCart, setNotificationCart] = useState(10)
     
     const firstName = currentUser?currentUser.name.split(" ", 1):""

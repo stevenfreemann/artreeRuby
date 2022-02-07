@@ -22,77 +22,7 @@ import marco2 from '../../assets/static/images/marcos2.png'
 import marco3 from '../../assets/static/images/marcos3.png'
 
 
-// const sizeInfo = [
-//     {   
-//         id:1,
-//         width:120,
-//         height:120,
-//         price:2000000,
-//         img:size1,
-//     },
-//     {   
-//         id:2,
-//         width:130,
-//         height:130,
-//         price:2200000,
-//         img:size2,
-//     },
-//     {   
-//         id:3,
-//         width:140,
-//         height:140,
-//         price:2400000,
-//         img:size3,
-//     },
-// ]
-
-// const materials = [
-//     {
-//         id:1,
-//         type:'papel1',
-//         img:acrilico,
-//         price:1000000,
-//         backShow:acrilico,
-//     },
-//     {
-//         id:2,
-//         type:'papel2',
-//         img:canvas,
-//         price:2000000,
-//         backShow:canvas,
-//     },
-//     {
-//         id:3,
-//         type:'papel3',
-//         img:papel,
-//         price:3000000,
-//         backShow:papel,
-//     },
-//     {
-//         id:4,
-//         type:'papel4',
-//         img:marco,
-//         price:4000000,
-//         backShow:marco,
-//     },
-// ]
-
-// const frames =[
-//     {
-//         id:1,
-//         type:'Blanco Marfil',
-//         backShow:marco2,
-//         price:1000000
-//     },
-//     {
-//         id:2,
-//         type:'Negro Marfil',
-//         backShow:marco3,
-//         price:2000000
-//     },
-// ]
-
-const ShowProductPurchase = ({exclusive, likeAPro, data, clickWishItem, sizeInfo, materials, frames}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, photo, clickWishItem, sizeInfo, materials, frames}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -186,10 +116,10 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, clickWishItem, sizeInfo
             </div>
             <div className="showProductPurchase__product">
                 <div className="showProductPurchase__info">
-                    <img src={data.file.url} alt={data.name}/>
+                    <img src={photo.file.url} alt={photo.name}/>
                     <div>
-                        <span style={{fontWeight:"bold"}}>{data.name}: </span>
-                        <span>{data.info}</span>
+                        <span style={{fontWeight:"bold"}}>{photo.name}: </span>
+                        <span>{photo.info}</span>
                     </div>
                 </div>
                 <div className="showProductPurchase__carac">
@@ -200,7 +130,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, clickWishItem, sizeInfo
                             <div className="accordeon-sizes">
                                 {sizeInfo.map((size)=>
                                 <div id={`size${size.id}`} key={size.id}>
-                                    <img style={selectSize===size.id?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{setSelectSize(size.id);showModal('size',size.id)}}/>
+                                    <img style={selectSize===size.id?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{showModal('size',size.id)}}/>
                                     <span>{size.dimensions} cm</span>
                                     <span>$ {size.price}</span>
                                 </div>
@@ -213,7 +143,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, clickWishItem, sizeInfo
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-material">
                                 {materials.map((material)=>
-                                    <img style={selectMaterial===material.id?{opacity:1, transform:'scale(1.2)'}:{opacity:0.3}} key={material.id} src={material.img} alt='material' onClick={()=>{showModal('material');setSelectMaterial(material.id)}}/>
+                                    <img style={selectMaterial===material.id?{opacity:1, transform:'scale(1.2)'}:{opacity:0.3}} key={material.id} src={material.img} alt='material' onClick={()=>{showModal('material'), material.id}}/>
                                 )}
                             </div>
                         </div>
@@ -223,7 +153,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, clickWishItem, sizeInfo
                             <div className="accordeon-frame">
                                 {frames.map((frame)=>
                                 <div key={frame.id}>
-                                    <input type="radio" name="marco" checked={selectFrame===frame.id?true:false} onChange={()=>{showModal('frame'); setSelectFrame(frame.id)}}/>
+                                    <input type="radio" name="marco" checked={selectFrame===frame.id?true:false} onChange={()=>{showModal('frame', frame.id)}}/>
                                     <label>{frame.name}</label>
                                 </div>
                                 )}
@@ -245,7 +175,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, clickWishItem, sizeInfo
                         </div>
                     </div>
                     <div className="showProductPurchase__icons">
-                        {!showLikeAPro&&<div onClick={()=>clickWishItem(selectSize, selectFrame, s)}>
+                        {!showLikeAPro&&<div onClick={()=>clickWishItem(selectSize, selectFrame, selectPacking, selectMaterial)}>
                             <img src={wishList} alt="wishlist"/>
                             <span>Wish List</span>
                         </div>}

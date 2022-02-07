@@ -19,7 +19,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= react_component("Header", {currentUser: current_user },)%>
+    <%= react_component("Header", {currentUser: current_user, count: current_user.wish_items.count },)%>
     <div class="App">
       <div class="App--HeaderPadding">
       <% if notice %>
