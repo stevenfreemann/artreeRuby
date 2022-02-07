@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import Left from '../assets/static/buttons/left-arrow.png'
 import Right from '../assets/static/buttons/right-arrow.png'
 
-const CarouselDownMarket = ({info,idSelected, listener}) => {
+const CarouselDownMarket = ({info, idSelected, listener}) => {
     const contentRef = useRef({})
     const leftRef = useRef({})
     const rightRef = useRef({})

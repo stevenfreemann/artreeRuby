@@ -92,7 +92,7 @@ import marco3 from '../../assets/static/images/marcos3.png'
 //     },
 // ]
 
-const ShowProductPurchase = ({exclusive, likeAPro, data, click, sizeInfo, materials, frames}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, data, clickWishItem, sizeInfo, materials, frames}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -104,20 +104,6 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click, sizeInfo, materi
     const modalDataRef = useRef({})
     const modalInfoRef = useRef({})
     const modalProductRef = useRef({})
-
-    const generateWishItem = async() => {
-        const response = await fetch('/wishItem', {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({    authenticity_token: authenticity_token}), //completar!
-        })
-        const respuesta = await response.json()
-        setResponse(respuesta)
-        console.log(respuesta)
-        setCheck("Payment")
-      }
 
     const navigate=(section)=>{
         if(showExclusive){
@@ -259,11 +245,11 @@ const ShowProductPurchase = ({exclusive, likeAPro, data, click, sizeInfo, materi
                         </div>
                     </div>
                     <div className="showProductPurchase__icons">
-                        {!showLikeAPro&&<div>
+                        {!showLikeAPro&&<div onClick={()=>clickWishItem(selectSize, selectFrame, s)}>
                             <img src={wishList} alt="wishlist"/>
                             <span>Wish List</span>
                         </div>}
-                        <div onClick={click} >
+                        <div onClick={()=>console.log("finalizar compra")} >
                             <img src={compra} alt="compra"/>
                             <span>Finalizar Compra</span>
                         </div>

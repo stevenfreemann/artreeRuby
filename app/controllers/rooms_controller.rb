@@ -10,5 +10,4 @@ class RoomsController < ApplicationController
   def set_room
     @room = Room.find(params[:id])
   end
-
 end

@@ -14,9 +14,10 @@ const infoPro = ({line, rooms}) => {
     const navigate=(id)=> {
         window.location = "/proMarket/" + id
     }
+    const titles= {1:"exclusive", 2:"pro"}
     return (
         <>
-            <Title title={'PRO'} alignLeft={true} listener={()=>navigate('home')}/>
+            <Title title={"Pro"} alignLeft={true} listener={()=>navigate('home')}/>
             <div className='infoPro' > 
                 <p className='infoPro__texto'>
                 {line.description}
