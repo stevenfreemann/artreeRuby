@@ -21,16 +21,13 @@ const WishItem = ({ product, clickWishItem, size, frame, material, photo }) => {
 
     return (
         <div className="wishItem">
-            <img className="wishItem__img" src={product.img} alt={product.name} />
+            <img className="wishItem__img" src={product.user} alt={product.id} />
             <div className="wishItem__infoAndPrice">
                 <div className="wishItem__info">
-                    <h3>{product.type}</h3>
-                    <h4>{product.name}, </h4>
-                    <span>{product.phrase}, </span>
-                    <span>{product.dimensions}, </span>
                     <span>{product.frame}, </span>
-                    <span>{product.material}</span>
-                    <h3>${product.price}</h3>
+                    <span>{product.size}, </span>
+                    <span>{product.sub_material}, </span>
+                    <span>{product.photo}</span>
                 </div>
             </div>
             <div className="wishItem__options">

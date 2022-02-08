@@ -183,6 +183,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                       <h3>{`${items.length} Productos`}</h3>
                       <hr />
                       {items.map((product) => (
+                        console.log(product),
                         <div key={product.id}>
                           <span>{product.name}</span>
                           <span>${product.price}</span>
