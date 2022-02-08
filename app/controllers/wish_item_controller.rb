@@ -4,8 +4,14 @@ class WishItemController < ApplicationController
 
   def index
     if current_user
-      @products = current_user.wish_items 
+      @products = []
+      all = current_user.wish_items 
+      all.each do |item| 
+        @products << item.serialize
+        puts "-------item----#{item.serialize}"
+      end
     else
+      puts "----------test--------"
       redirect_to new_user_session_path
     end
   end
@@ -13,12 +19,12 @@ class WishItemController < ApplicationController
   def create
     # @wish_item = WishItem.new(wish_item_params)
     @wish_item = WishItem.new
+    @wish_item.user = current_user
     @wish_item.frame = Frame.find(params[:frame])
     @wish_item.size = Size.find(params[:size])
     @wish_item.sub_material = SubMaterial.find(params[:material])
     @wish_item.photo = Photo.find(params[:photo])
     #@wish_item.package = Package.find(params[:packing])
-    @wish_item.user = current_user
     if @wish_item.save 
       flash.alert = "Agregado a wishlist"
     end
