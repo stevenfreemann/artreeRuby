@@ -8,26 +8,25 @@ import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
 
-const WishItem = ({ product, clickWishItem, size, frame, material, photo }) => {
+const WishItem = ({ product, click, k }) => {
     console.log(product)
-    console.log(size)
-    console.log(frame)
-    console.log(material)
-    console.log(photo)
-
     const editRef = useRef({})
     const deleteRef = useRef({})
     const cartRef = useRef({})
 
     return (
         <div className="wishItem">
-            <img className="wishItem__img" src={product.user} alt={product.id} />
+            <img className="wishItem__img" src={product.photo.file.url} alt={product.photo.id} />
             <div className="wishItem__infoAndPrice">
                 <div className="wishItem__info">
-                    <span>{product.frame}, </span>
-                    <span>{product.size}, </span>
-                    <span>{product.sub_material}, </span>
-                    <span>{product.photo}</span>
+                    {/* Aqui debes definir que vas a mostrar, el error que tenias anteriormente se generaba debido que estabas metiendo dentro de un <span> un objeto ya que frame, size y photo son objetos y eso no lo puede renderizar un span,
+                    agregue el iterador de sub material por si lo necesitas  */}
+                    <span>{product.frame.name} </span>
+                    <span>{product.size.name} </span>
+                    <span>{product.photo.name}</span>
+                    {product.sub_material.map((value) =>
+                        <span>{value.name}</span>
+                    )}
                 </div>
             </div>
             <div className="wishItem__options">
@@ -43,7 +42,7 @@ const WishItem = ({ product, clickWishItem, size, frame, material, photo }) => {
                     <span>Eliminar</span>
                 </div>
                 <div>
-                    <img src={Cart} alt="Wishlist" onClick={clickWishItem} onMouseOver={() => cartRef.current.src = CartActivo}
+                    <img src={Cart} alt="Wishlist" onClick={() => click} onMouseOver={() => cartRef.current.src = CartActivo}
                         onMouseLeave={() => cartRef.current.src = Cart} ref={cartRef} />
                     <span> Mover al Carrito</span>
 

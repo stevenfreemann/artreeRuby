@@ -12,7 +12,7 @@ class WishItem < ApplicationRecord
       user: user,
       frame: frame,
       size: size,
-      sub_material: sub_material,
+      sub_material: sub_materials,
       photo: photo,
     }
   end

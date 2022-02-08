@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_140446) do
+ActiveRecord::Schema.define(version: 2022_02_01_205308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 2022_02_04_140446) do
     t.bigint "wish_item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.json "images"
     t.index ["artist_id"], name: "index_photos_on_artist_id"
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"
@@ -197,10 +196,16 @@ ActiveRecord::Schema.define(version: 2022_02_04_140446) do
     t.index ["user_id"], name: "index_wish_items_on_user_id"
   end
 
+  add_foreign_key "frames", "wish_items"
+  add_foreign_key "packages", "wish_items"
   add_foreign_key "photos", "artists"
   add_foreign_key "photos", "lines"
+  add_foreign_key "photos", "rooms"
+  add_foreign_key "photos", "wish_items"
   add_foreign_key "rooms", "lines"
+  add_foreign_key "sizes", "wish_items"
   add_foreign_key "sub_materials", "materials"
+  add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"
   add_foreign_key "wish_items", "users"
 end
