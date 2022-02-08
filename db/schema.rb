@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 2022_02_08_155405) do
     t.bigint "wish_item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.json "images"
     t.index ["artist_id"], name: "index_photos_on_artist_id"
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"
@@ -188,9 +187,14 @@ ActiveRecord::Schema.define(version: 2022_02_08_155405) do
     t.index ["user_id"], name: "index_wish_items_on_user_id"
   end
 
+  add_foreign_key "frames", "wish_items"
+  add_foreign_key "packages", "wish_items"
   add_foreign_key "photos", "artists"
   add_foreign_key "photos", "lines"
+  add_foreign_key "photos", "rooms"
+  add_foreign_key "photos", "wish_items"
   add_foreign_key "rooms", "lines"
+  add_foreign_key "sizes", "wish_items"
   add_foreign_key "sub_materials", "materials"
   add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"

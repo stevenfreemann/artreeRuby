@@ -41,7 +41,7 @@ const SectionWishlist = ({ title, products }) => {
         return products
     }
     const showProducts = paginationWish(products)
-
+    console.log('showProducts', showProducts);
     return (
         <div>
             {title && <div className='sectionWishlist__title'>
@@ -49,7 +49,7 @@ const SectionWishlist = ({ title, products }) => {
             </div>}
             <div className='sectionWishlist__cont'>
                 {showProducts.map((product) =>
-                    <WishItem click={() => addItems(product)} product={product} key={product.id} />
+                    <WishItem click={() => addItems(product)} product={product} k={product.id} />
                 )}
             </div>
             <div className='sectionWishlist__next-prev'>
