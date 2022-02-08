@@ -5,6 +5,7 @@ class CreateSubMaterials < ActiveRecord::Migration[6.0]
       t.text "description"
       t.boolean "starred", default: false
       t.integer "price"
+      t.integer "stock"
       t.datetime "created_at", precision: 6, null: false
       t.datetime "updated_at", precision: 6, null: false
       t.references :material, null: false, foreign_key: true

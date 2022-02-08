@@ -12,53 +12,53 @@ import papelSec from '../../assets/static/images/papel-section.png'
 import retablosSec from '../../assets/static/images/retablos-section.png'
 import materialSec from '../../assets/static/images/material-section.png'
 
-const typeText = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus."
-const type = [
-    {
-        id: 1,
-        img: marcoSec,
-        type: 'marco',
-        text: typeText,
-    },
-    {
-        id: 2,
-        img: canvasSec,
-        type: 'canvas',
-        text: typeText,
-    },
-    {
-        id: 3,
-        img: acrilicoSec,
-        type: 'acrilico',
-        text: typeText,
-    },
-    {
-        id: 4,
-        img: papelSec,
-        type: 'papel',
-        text: typeText,
-    },
-    {
-        id: 5,
-        img: retablosSec,
-        type: 'retablos',
-        text: typeText,
-    },
-    {
-        id: 6,
-        img: materialSec,
-        type: 'material',
-        text: typeText,
-    }]
+//x`const typeText = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus."
+// const type = [
+//     {
+//         id: 1,
+//         img: marcoSec,
+//         type: 'marco',
+//         text: typeText,
+//     },
+//     {
+//         id: 2,
+//         img: canvasSec,
+//         type: 'canvas',
+//         text: typeText,
+//     },
+//     {
+//         id: 3,
+//         img: acrilicoSec,
+//         type: 'acrilico',
+//         text: typeText,
+//     },
+//     {
+//         id: 4,
+//         img: papelSec,
+//         type: 'papel',
+//         text: typeText,
+//     },
+//     {
+//         id: 5,
+//         img: retablosSec,
+//         type: 'retablos',
+//         text: typeText,
+//     },
+//     {
+//         id: 6,
+//         img: materialSec,
+//         type: 'material',
+//         text: typeText,
+//     }]
 
-const MainSectionMaterials = () => {
+const MainSectionMaterials = ({materials}) => {
+    console.log(materials)
     const navigate=(id)=>{
         const direction={
-            1:'/infoFrames',
-            2:'/infoCanvas',
-            4:'/infoPapers',
+            1:'/infoPapers',
+            2:'/infoFrames',
             3:'/infoAcrilics',
-            5:'/infoCanvas',
+            4:'/infoCanvas',
             'back':'/'
         }
         window.location=direction[id] ? direction[id] : '/'
@@ -89,8 +89,8 @@ const MainSectionMaterials = () => {
                 </div>
             </div>
             <div className="materials__cont">
-                {type.map(item =>
-                    <MaterialCard type={item.type} img={item.img} key={item.id} text={item.text} main={true} borderColor={'#D1D2D7'} listener={()=>navigate(item.id)} />  
+                {materials.map(material =>
+                    <MaterialCard type={material.name} img={material.file.url} key={material.id} main={true} borderColor={'#D1D2D7'} listener={()=>navigate(material.id)} />  
                 )}
             </div>   
         </div>

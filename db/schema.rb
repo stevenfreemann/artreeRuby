@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_140446) do
+ActiveRecord::Schema.define(version: 2022_02_08_155405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,16 +65,6 @@ ActiveRecord::Schema.define(version: 2022_02_04_140446) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "frames", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "wish_item_id"
-    t.index ["wish_item_id"], name: "index_frames_on_wish_item_id"
-  end
-
   create_table "lines", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -86,7 +76,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_140446) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "kind"
+    t.string "file"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -146,6 +136,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_140446) do
     t.text "description"
     t.boolean "starred", default: false
     t.integer "price"
+    t.integer "stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "material_id", null: false
@@ -201,6 +192,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_140446) do
   add_foreign_key "photos", "lines"
   add_foreign_key "rooms", "lines"
   add_foreign_key "sub_materials", "materials"
+  add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"
   add_foreign_key "wish_items", "users"
 end
