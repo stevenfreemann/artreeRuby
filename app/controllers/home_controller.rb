@@ -6,14 +6,16 @@ class HomeController < ApplicationController
         puts "HAY UN USUARIO"
     end  
   end
+  
   def contacto
   end
-  def infoMaterials
-  end
+
   def infoExclusive
   end
+
   def subInfoMaterial
   end
+
   def artist
     artist=Artist.all
     @artistas=[]

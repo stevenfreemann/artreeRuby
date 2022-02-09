@@ -1,3 +1,3 @@
-ActiveAdmin.register Material do
-  permit_params :name, :kind
+ActiveAdmin.register Material, as: "Materiales" do
+  permit_params :name, :file
 end

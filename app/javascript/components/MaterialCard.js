@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MaterialCard = ({main, id, type , img , text, listener, borderColor}) => {
+const MaterialCard = ({main, text, id, type , img , listener, borderColor}) => {
     //content[type,img,text], main:boolean only MainSection
     return (
         <>
@@ -9,8 +9,8 @@ const MaterialCard = ({main, id, type , img , text, listener, borderColor}) => {
                     {main && <span>{type}</span>}
                     <img style={{borderColor: `${borderColor}`}} src={img} alt={type} />
                 </div>
-                {text ? <div className={`material-card__info${main ? '--main' : ''}`}>
-                    <span className>{type}. </span>
+                {type ? <div className={`material-card__info${main ? '--main' : ''}`}>
+                    <span className>{type} </span>
                     <span>{text}</span>
                 </div>
                     : <></>}

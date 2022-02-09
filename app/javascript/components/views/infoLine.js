@@ -12,7 +12,7 @@ const infoExclusive = ({rooms, line}) => {
   }
   return (
       <>
-          <Title title={'EXCLUSIVE'} alignLeft={true} listener={()=>navigate('home')}/>
+          <Title title={line.name} alignLeft={true} listener={()=>navigate('home')}/>
           <div className='infoExclusive' > 
               <p className='infoExclusive__text'>
                 {line.description}

@@ -1,12 +1,12 @@
 import React from 'react'
 import Title from '../Title'
 
-
 import marcosComposicion from '../../assets/static/images/marcosComposicion.png'
 import papelComposicion from '../../assets/static/images/papelComposicion.png'
 import canvasSection from '../../assets/static/images/canvas-section.png'
 import espesorImg from '../../assets/static/images/lamina.png'
 import MaterialCards from '../MaterialCard'
+
 const marcos = { 
     title:'CANVAS',
     type:'Tips de composición',
@@ -29,19 +29,19 @@ const espesores = {
         {id:2,type:'Material2',img:espesorImg,text:espesoresText,},
     ]
 };
-const papelesText='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente.'
-const papeles = {
-    subtitle: 'Papeles',
-    tipos: [
-        {id:1,type:'Material1',img:papelComposicion,text:papelesText,},
-        {id:2,type:'Material2',img:papelComposicion,text:papelesText,},
-        {id:3,type:'Material3',img:papelComposicion,text:papelesText,},
-        {id:4,type:'Material4',img:papelComposicion,text:papelesText,},
+// const papelesText='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente.'
+// const papeles = {
+//     subtitle: 'Papeles',
+//     tipos: [
+//         {id:1,type:'Material1',img:papelComposicion,text:papelesText,},
+//         {id:2,type:'Material2',img:papelComposicion,text:papelesText,},
+//         {id:3,type:'Material3',img:papelComposicion,text:papelesText,},
+//         {id:4,type:'Material4',img:papelComposicion,text:papelesText,},
         
-    ]
-}; 
+//     ]
+// }; 
     
-const SectionCanvas = () => {
+const SectionCanvas = ({canvases}) => {
     const navigate=(dir)=>{
         const direction={
             'back':'/infoMaterials'
@@ -57,11 +57,11 @@ const SectionCanvas = () => {
                     <p>{marcos.text1}</p>
                     <img src={marcos.img1} alt='Marcos_Composicion'/>
                 </div>
-                <div className='sectionCanvas__second-intro'>
+                {/* <div className='sectionCanvas__second-intro'>
                     <h2>{marcos.subtitle}</h2>
                     <p>{marcos.text2}</p>
                     <img src={marcos.img2} alt={marcos.subtitle}/>
-                </div>
+                </div> */}
                 <div className='sectionCanvas__content'>
                     <h2>{retablos.subtitle}</h2>
                     <p>{retablos.text}</p>
@@ -76,10 +76,10 @@ const SectionCanvas = () => {
                         </div> 
                     </div>
                     <div>
-                        <h2>{papeles.subtitle}</h2>
+                        <h2>Tipos de Retablo </h2>
                         <div className='sectionCanvas__materials'>
-                            {papeles.tipos.map(paper=>
-                                 <MaterialCards id={paper.id} img={paper.img} text={paper.text} type={paper.type} borderColor={'#D6E1E6'}/>
+                            {canvases.map(canvas=>
+                                 <MaterialCards id={canvas.id} img={canvasSection} text={canvas.description} type={canvas.name} borderColor={'#D6E1E6'}/>
                             )}
                         </div>
                        
