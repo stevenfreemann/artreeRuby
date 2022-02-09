@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_155405) do
+ActiveRecord::Schema.define(version: 2022_02_09_184908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,11 +134,11 @@ ActiveRecord::Schema.define(version: 2022_02_08_155405) do
     t.text "description"
     t.boolean "starred", default: false
     t.integer "price"
-    t.integer "stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "material_id", null: false
     t.bigint "wish_item_id"
+    t.string "file"
     t.index ["material_id"], name: "index_sub_materials_on_material_id"
     t.index ["wish_item_id"], name: "index_sub_materials_on_wish_item_id"
   end
@@ -193,7 +193,6 @@ ActiveRecord::Schema.define(version: 2022_02_08_155405) do
     t.index ["user_id"], name: "index_wish_items_on_user_id"
   end
 
-  add_foreign_key "frames", "wish_items"
   add_foreign_key "packages", "wish_items"
   add_foreign_key "photos", "artists"
   add_foreign_key "photos", "lines"
@@ -201,7 +200,6 @@ ActiveRecord::Schema.define(version: 2022_02_08_155405) do
   add_foreign_key "photos", "wish_items"
   add_foreign_key "rooms", "lines"
   add_foreign_key "sizes", "wish_items"
-  add_foreign_key "sub_materials", "materials"
   add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"
   add_foreign_key "wish_items", "users"
