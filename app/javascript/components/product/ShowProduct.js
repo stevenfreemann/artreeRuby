@@ -33,7 +33,7 @@ const ShowProduct = ({photo,setScreen}) => {
     return (
         <div className="showProduct" >
             <div className="showProduct__info">
-                {sala==="picture"?
+                {photo&&sala==="picture"?
                     <div className="showProduct__picture"><img src={photo.file.url}/></div>
                 :sala==="spaces"&&
                 <div className="showProduct__spaces">
@@ -55,10 +55,12 @@ const ShowProduct = ({photo,setScreen}) => {
                     </div>
                 </div>
                 }
+                 {photo?
                 <div className="showProduct__text">
                     <span style={{fontWeight:"bold"}}>{photo.name}: </span>
                     <span>{photo.info}</span>
                 </div>
+                 :<span> <h3> Galeria vacia </h3> </span>}
             </div>
             <div className="showProduct__menu">
                 <div onClick={()=>setSala('picture')}>

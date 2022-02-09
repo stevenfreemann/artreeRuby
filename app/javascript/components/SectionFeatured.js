@@ -7,7 +7,7 @@ const imagesD = [
   { id:1,
     name:'EXCLUSIVE',
     img:exclusive}, 
-  { id:2,
+  { id:3,
     name:'PRO',
     img:pro},
   // { id:3,

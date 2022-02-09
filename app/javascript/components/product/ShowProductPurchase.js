@@ -22,7 +22,7 @@ import marco2 from '../../assets/static/images/marcos2.png'
 import marco3 from '../../assets/static/images/marcos3.png'
 
 
-const ShowProductPurchase = ({exclusive, likeAPro, photo, clickWishItem, sizeInfo, materials, frames}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, photo, clickWishItem, sizeInfo, materials, frames, packing}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -163,14 +163,14 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, clickWishItem, sizeInf
                         <div className="accordeon-info" style={accordionInfo!==4?{height:'0'}:{}}>
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-package">
-                                <div>
-                                    <input type="radio" name="marco" onChange={()=>setSelectPacking(1)}/>
-                                    <label>Normal</label>
+                            {packing.map((pack)=>
+                                <div key={pack.id}>
+                                    <input type="radio" name="pack" checked={selectPacking===pack.id?true:false} onChange={()=>{showModal('pack', pack.id)}}/>
+                                    <label>{pack.name}</label>
                                 </div>
-                                <div>
-                                    <input type="radio" name="marco" onChange={()=>setSelectPacking(2)}/>
-                                    <label>Regalo</label>
-                                </div>
+                                )}
+
+                               
                             </div>
                         </div>
                     </div>

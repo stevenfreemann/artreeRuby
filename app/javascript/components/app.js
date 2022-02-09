@@ -18,7 +18,7 @@ const info = [
   { title: 'MATERIALES', text: texto, textoBtn: 'Ver todos los materiales', img: infoMaterials }
 ]
 
-export default function app(props) {
+export default function app({contentCarousel}) {
   useEffect(() => {
     //api que obtiene los artistas
   }, [])
@@ -31,7 +31,7 @@ export default function app(props) {
   }
   return (
     <>
-      <Carousel />
+      <Carousel contentCarousel={contentCarousel}/>
       <SectionFeatures />
       <SectionInfo inverso={true} title={info[0].title} text={info[0].text} listener={() => navigate('artist')} img={info[0].img} textoBtn={info[0].textoBtn} />
       <SectionInfo title={info[1].title} text={info[1].text} img={info[1].img} textoBtn={info[1].textoBtn} listener={() => navigate('infoMaterials')} />

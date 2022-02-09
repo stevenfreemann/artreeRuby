@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    @banners = Banner.all
+    #puts "--------------#{@banners.to_json}"
     puts "entro al index"
     if current_user
         @current_user=current_user

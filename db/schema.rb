@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_184908) do
+ActiveRecord::Schema.define(version: 2022_02_09_201003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,9 @@ ActiveRecord::Schema.define(version: 2022_02_09_184908) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "wish_item_id"
+    t.string "file"
+    t.bigint "line_id"
+    t.index ["line_id"], name: "index_sizes_on_line_id"
     t.index ["wish_item_id"], name: "index_sizes_on_wish_item_id"
   end
 
@@ -199,6 +202,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_184908) do
   add_foreign_key "photos", "rooms"
   add_foreign_key "photos", "wish_items"
   add_foreign_key "rooms", "lines"
+  add_foreign_key "sizes", "lines"
   add_foreign_key "sizes", "wish_items"
   add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"

@@ -3,8 +3,9 @@ class LinesController < ApplicationController
   def index
     @lines = Line.all
   end
-
+  
   def show
+    @banners = Banner.all
     @line = Line.find(params[:id])
     @rooms = Room.where(line: @line)
 

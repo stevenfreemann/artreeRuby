@@ -1,3 +1,3 @@
 ActiveAdmin.register Banner do
-  permit_params :titulo, :texto, :pagina, :enlace, :enlace_texto, :activo
+  permit_params :title, :text, :page, :link, :text_link, :active
 end

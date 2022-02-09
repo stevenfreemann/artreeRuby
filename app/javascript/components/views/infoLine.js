@@ -6,7 +6,7 @@ import SectionRoom from '../SectionRoom'
 import Exclusive1 from '../../assets/static/images/EXCLUSIVE/EXCLUSIVE-.jpg'
 import Pro1 from '../../assets/static/images/PRO/COLECCION-PARA-TU-COCINA-5846.jpeg'
 
-const infoExclusive = ({rooms, line}) => {
+const infoExclusive = ({rooms, line, contentCarousel}) => {
   const navigate=(id)=> {
       window.location = "/room/" + id
   }
@@ -17,7 +17,7 @@ const infoExclusive = ({rooms, line}) => {
               <p className='infoExclusive__text'>
                 {line.description}
               </p>
-          <Carrousel />
+          <Carrousel contentCarousel={contentCarousel}/>
           </div>
           <Title title={'SALAS'}/>
           <div className='infoExclusive__rooms'/>
