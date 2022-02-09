@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 2022_02_01_205308) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
-    t.text "description"
     t.boolean "pinned", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -190,6 +189,13 @@ ActiveRecord::Schema.define(version: 2022_02_01_205308) do
   end
 
   create_table "wish_items", force: :cascade do |t|
+    t.string "name"
+    t.string "phrase"
+    t.string "dimensions"
+    t.string "frame"
+    t.string "material"
+    t.integer "price"
+    t.string "img"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
