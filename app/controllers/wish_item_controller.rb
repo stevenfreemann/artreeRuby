@@ -22,8 +22,8 @@ class WishItemController < ApplicationController
     @wish_item.user = current_user
     @wish_item.size = Size.find(params[:size])
 
-    arr = SubMaterial.where(id: [[params[:material], params[:frame]])
-    @wish_item.sub_materials.push(arr[0], arr[1]) 
+    #arr = SubMaterial.where(id: [[params[:material], params[:frame]])
+    #@wish_item.sub_materials.push(arr[0], arr[1]) 
 
     @wish_item.photo = Photo.find(params[:photo])
     #@wish_item.package = Package.find(params[:packing])
