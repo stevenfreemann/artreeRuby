@@ -20,9 +20,11 @@ class WishItemController < ApplicationController
     # @wish_item = WishItem.new(wish_item_params)
     @wish_item = WishItem.new
     @wish_item.user = current_user
-    @wish_item.frame = Frame.find(params[:frame])
     @wish_item.size = Size.find(params[:size])
-    @wish_item.sub_material = SubMaterial.find(params[:material])
+
+    arr = SubMaterial.where(id: [params[:material], params[:frame])
+    @wish_item.sub_materials.push(arr[0], arr[1]) 
+
     @wish_item.photo = Photo.find(params[:photo])
     #@wish_item.package = Package.find(params[:packing])
     if @wish_item.save 
@@ -41,7 +43,7 @@ class WishItemController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def wish_item_params
-    params.permit(:authenticity_token, :wish_item, :frame, :size, :material, :photo, :packing)
+    params.permit(:authenticity_token, :frame, :size, :material, :photo, :packing)
   end
 end
 
