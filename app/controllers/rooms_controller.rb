@@ -12,6 +12,8 @@ class RoomsController < ApplicationController
     @title = "#{@room.line.name} - #{@room.name}"
 
     @packing = Package.all
+
+    @sizes = Size.where(line_id: @room.line.id)
   end
 
   private
