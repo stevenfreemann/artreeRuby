@@ -19,6 +19,7 @@ const SectionWishlist = ({ title, products }) => {
     const pages = (Math.floor((products.length - 1) / elements) + 1)
     const addItems = (wishItem) => {
         const data = localStorage.getItem("items")
+        console.log("wishItem", wishItem)
         if (data) {
             let temp = JSON.parse(data)
             temp.push(wishItem)
@@ -49,7 +50,7 @@ const SectionWishlist = ({ title, products }) => {
             </div>}
             <div className='sectionWishlist__cont'>
                 {showProducts.map((product) =>
-                    <WishItem click={() => addItems(product)} product={product} k={product.id} />
+                    <WishItem clickAddToCart={() => addItems(product)} product={product} k={product.id} />
                 )}
             </div>
             <div className='sectionWishlist__next-prev'>

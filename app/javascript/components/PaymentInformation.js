@@ -248,7 +248,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                           <input name="shipping-address:phone-number" placeholder="telefono"/>
                           <input name="shipping-address:city" placeholder="ciudad"/>
                           <input name="shipping-address:region" placeholder="region"/>
-                          <button className="paymentInformation__paymentButton" type="submit" onClick={() => AddItems(WishItem)}>Pagar con Wompi</button>
+                          <button className="paymentInformation__paymentButton" type="submit" >Pagar con Wompi</button>
                         </form>
                       }
                     </>

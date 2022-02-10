@@ -8,7 +8,7 @@ import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
 
-const WishItem = ({ product, click, k }) => {
+const WishItem = ({ product, clickAddToCart, k }) => {
     console.log(product)
     const editRef = useRef({})
     const deleteRef = useRef({})
@@ -21,9 +21,11 @@ const WishItem = ({ product, click, k }) => {
                 <div className="wishItem__info">
                     {/* Aqui debes definir que vas a mostrar, el error que tenias anteriormente se generaba debido que estabas metiendo dentro de un <span> un objeto ya que frame, size y photo son objetos y eso no lo puede renderizar un span,
                     agregue el iterador de sub material por si lo necesitas  */}
-                    <span>{product.frame.name} </span>
-                    <span>{product.size.name} </span>
-                    <span>{product.photo.name}</span>
+
+                    <h5>{product.size.name} </h5>
+                    <h5>{product.photo.name}</h5>
+                    <h5>{product.package.name}</h5>
+
                     {product.sub_material.map((value) =>
                         <span>{value.name}</span>
                     )}
@@ -42,10 +44,9 @@ const WishItem = ({ product, click, k }) => {
                     <span>Eliminar</span>
                 </div>
                 <div>
-                    <img src={Cart} alt="Wishlist" onClick={() => click} onMouseOver={() => cartRef.current.src = CartActivo}
+                    <img src={Cart} alt="Wishlist" onClick={() => asdfg } onMouseOver={() => cartRef.current.src = CartActivo}
                         onMouseLeave={() => cartRef.current.src = Cart} ref={cartRef} />
                     <span> Mover al Carrito</span>
-
                 </div>
             </div>
         </div>

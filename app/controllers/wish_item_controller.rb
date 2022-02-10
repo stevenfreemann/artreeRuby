@@ -32,8 +32,9 @@ class WishItemController < ApplicationController
     end
   end
 
-  def shoppingCart   
+  def shoppingCart
   end
+  
 
   private
   # Use callbacks to share common setup or constraints between actions.

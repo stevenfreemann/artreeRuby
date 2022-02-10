@@ -10,10 +10,10 @@ class WishItem < ApplicationRecord
     { 
       id: id.to_s,
       user: user,
-      frame: frame,
       size: size,
       sub_material: sub_materials,
       photo: photo,
+      package: package,
     }
   end
 end

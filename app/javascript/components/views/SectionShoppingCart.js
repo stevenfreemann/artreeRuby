@@ -11,6 +11,7 @@ import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
 import AddAdressModal from '../AddAddresModal'
 
 const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
+    
     const [items, setItems] = useState([]);
     const [total_cost, setTotalCost] = useState(0);
     useEffect(() => {
