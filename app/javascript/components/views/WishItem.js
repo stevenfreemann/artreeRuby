@@ -24,10 +24,10 @@ const WishItem = ({ product, clickAddToCart, k }) => {
 
                     <h5>{product.size.name} </h5>
                     <h5>{product.photo.name}</h5>
-                    <h5>{product.package.name}</h5>
+                    <h5>Empaque {product.package.name}</h5>
 
-                    {product.sub_material.map((value) =>
-                        <span>{value.name}</span>
+                    {product.sub_materials.map((value) =>
+                        <span>- {value.name} </span>
                     )}
                 </div>
             </div>
@@ -44,7 +44,7 @@ const WishItem = ({ product, clickAddToCart, k }) => {
                     <span>Eliminar</span>
                 </div>
                 <div>
-                    <img src={Cart} alt="Wishlist" onClick={() => asdfg } onMouseOver={() => cartRef.current.src = CartActivo}
+                    <img src={Cart} alt="Wishlist" onClick={() => clickAddToCart(product) } onMouseOver={() => cartRef.current.src = CartActivo}
                         onMouseLeave={() => cartRef.current.src = Cart} ref={cartRef} />
                     <span> Mover al Carrito</span>
                 </div>

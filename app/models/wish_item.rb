@@ -11,7 +11,7 @@ class WishItem < ApplicationRecord
       id: id.to_s,
       user: user,
       size: size,
-      sub_material: sub_materials,
+      sub_materials: sub_materials,
       photo: photo,
       package: package,
     }

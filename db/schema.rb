@@ -111,11 +111,15 @@ ActiveRecord::Schema.define(version: 2022_02_10_201047) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
+    t.text "description"
+    t.float "top", default: 0.0
+    t.float "left", default: 0.0
+    t.string "file"
+    t.string "space"
     t.boolean "pinned", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "line_id", null: false
-    t.string "file"
     t.index ["line_id"], name: "index_rooms_on_line_id"
   end
 
@@ -192,7 +196,6 @@ ActiveRecord::Schema.define(version: 2022_02_10_201047) do
 
   add_foreign_key "photos", "artists"
   add_foreign_key "photos", "lines"
-  add_foreign_key "photos", "rooms"
   add_foreign_key "rooms", "lines"
   add_foreign_key "sizes", "lines"
   add_foreign_key "transactions", "users"

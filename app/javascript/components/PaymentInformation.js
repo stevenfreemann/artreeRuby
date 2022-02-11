@@ -13,7 +13,11 @@ const country = ["Colombia", "Ecuador", "Venezuela", "Estados Unidos"];
 const city = ["Bogotá", "Medellín", "Cali", "Barranquilla"];
 const ind = ["+57", "+58", "+59"];
 const fields = ["correo", ""]
+
+
+
 const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token }) => {
+  console.log("costo", total_cost)
   const [check, setCheck] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
   const [signIn, setSignIn] = useState(null);
@@ -180,13 +184,13 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                     </span>
                     <h3 style={{ alignSelf: "center" }}>LISTA DE ORDEN</h3>
                     <div className="paymentInformation__market">
-                      <h3>{`${items.length} Productos`}</h3>
+                      <h3>{`${items.length} Producto(s)`}</h3>
                       <hr />
                       {items.map((product) => (
                         console.log(product),
                         <div key={product.id}>
-                          <span>{product.name}</span>
-                          <span>${product.price}</span>
+                          <span>{product.photo.name}</span>
+                          <span>${product.photo.base_price}</span>
                         </div>
                       ))}
                       <div>
@@ -228,7 +232,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
                           <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
                           <input type="hidden" name="currency" value="COP" />
-                          <input type="hidden" name="amount-in-cents" value={20000000} />
+                          <input type="hidden" name="amount-in-cents" value={response.total_cost} />
                           <input type="hidden" name="reference" value={response.ref_number} />
                           <input type="hidden" xname="signature:integrity" value={response.signature} />
                           <input type="hidden" name="redirect-url" value="https://artree-shop.herokuapp.com/result" />

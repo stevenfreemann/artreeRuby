@@ -9,6 +9,7 @@ import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.p
 const cant = [1, 2, 3, 4, 5];
 
 const CartItem = ({ product, k }) => {
+  console.log("product", product)
   const quantity = useRef(null);
   const editRef = useRef({});
   const deleteRef = useRef({});
@@ -18,7 +19,7 @@ const CartItem = ({ product, k }) => {
     <div className="cardItem" key={k}>
       <div className="cardItem__product">
         <div className="cardItem__img">
-          <img src={product.img} alt={product.name} />
+          <img src={product.photo.file.url} alt={product.photo.name} />
         </div>
         <div className="cardItem__options">
           <div>
@@ -55,12 +56,12 @@ const CartItem = ({ product, k }) => {
       </div>
       <div className="cardItem__infoAndPrice">
         <div className="cardItem__info">
-          <h3>{product.type}</h3>
-          <h4>{product.name}, </h4>
-          <span>{product.phrase}, </span>
-          <span>{product.dimensions}, </span>
-          <span>{product.frame}, </span>
-          <span>{product.material}</span>
+          <h3>LINEA {product.size.line_id}</h3>
+          <h4>{product.photo.name}, </h4>
+          <span>{product.size.dimensions}, </span>
+          <span>empaque tipo {product.package.name}, </span>
+          <span>papel {product.sub_materials[0].name}, </span>
+          <span>marco {product.sub_materials[1].name}.</span>
         </div>
         <div className="cardItem__price">
           <select ref={quantity}>
@@ -68,7 +69,7 @@ const CartItem = ({ product, k }) => {
               <option value={cant}>{cant}</option>
             ))}
           </select>
-          <h3>${product.price}</h3>
+          <h3>${product.photo.base_price}</h3>
         </div>
       </div>
       <hr />

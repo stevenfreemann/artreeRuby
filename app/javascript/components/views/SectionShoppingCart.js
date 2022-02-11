@@ -17,13 +17,13 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
     useEffect(() => {
         const data = localStorage.getItem("items")
         const wish = JSON.parse(data)
-        console.log(wish)
         if (wish && wish.length>0){  setItems(wish)
         let acum = 0
         wish.map((w) => {
-                acum = acum + w.price
+                acum = acum + w.photo.base_price
             })
             setTotalCost(acum)
+            console.log("acum", acum)
         }
     }, [])
     console.log('items', items);
@@ -33,6 +33,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
             <div className="shoppingCard__cont">
                 <div className="shoppingCard__items">
                     {items && items.map((product, i) =>
+                    
                         <CartItem product={product} k={`ìtem${i}`} />
                     )}
                 </div>
