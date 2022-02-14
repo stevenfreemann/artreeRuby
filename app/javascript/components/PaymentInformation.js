@@ -17,14 +17,15 @@ const fields = ["correo", ""]
 
 
 const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token }) => {
-  console.log("costo", total_cost)
   const [check, setCheck] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
   const [signIn, setSignIn] = useState(null);
   const [formu, setform] = useState(null);
   const [forgot, setForgot] = useState(null);
   const [viewPayment, setViewPayment] = useState(1);
-  const [response, setResponse] = useState(null);
+  const [answer, setAnswer] = useState(null);
+ // const [available, setAvailable] = useState(null);
+
 
   useEffect(() => {
     let a = document.getElementById("registerLink")
@@ -40,21 +41,35 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
     }
   }, [signIn, cuenta, formu])
 
-  console.log('currentUser :>> ', currentUser);
 
-
-  const generateTransaction = async() => {
-    const response = await fetch('/transaction', {
-      method: 'POST', 
+  const checkStock = async() => {
+    const response = await fetch(`/stock/${items[0].size.id}`, {
+      method: 'GET', 
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
+      }
     })
-    const respuesta = await response.json()
-    setResponse(respuesta)
-    console.log(respuesta)
-    setCheck("Payment")
+    const result = await response.json()
+    const availableStock = result["result"]
+
+    //setAvailable(availableStock)
+    
+    if (availableStock === true) {
+      const answer = await fetch('/transaction', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
+      })
+      const respuesta = await answer.json()
+      setAnswer(respuesta)
+      console.log(respuesta)
+      setCheck("Payment")
+    }
+    else {
+      alert('No hay inventario para este tamaño')
+    } 
   }
 
   useEffect(() => {
@@ -215,13 +230,13 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                       <input type="text"></input>
                       <button type="button">Redimir</button>
                     </div>
-                    <button type="button" onClick={() =>  generateTransaction() }>
+                    <button type="button" onClick={() =>  checkStock() }>
                       Pagar
                     </button>
                   </div>
                 )
                   : (
-                    check === "Payment" && response &&
+                    check === "Payment" && answer &&
                     <>
                       {viewPayment === 1 ?
                         <div className="paymentInformation__payment" style={{ alignItems: "center" }}>
@@ -232,12 +247,12 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
                           <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
                           <input type="hidden" name="currency" value="COP" />
-                          <input type="hidden" name="amount-in-cents" value={response.total_cost} />
-                          <input type="hidden" name="reference" value={response.ref_number} />
-                          <input type="hidden" xname="signature:integrity" value={response.signature} />
+                          <input type="hidden" name="amount-in-cents" value={answer.total_cost} />
+                          <input type="hidden" name="reference" value={answer.ref_number} />
+                          <input type="hidden" xname="signature:integrity" value={answer.signature} />
                           <input type="hidden" name="redirect-url" value="https://artree-shop.herokuapp.com/result" />
-                          <input type="hidden" name="tax-in-cents:vat" value={response.iva_tax} />
-                          <input type="hidden" name="tax-in-cents:consumption" value={response.consumption_tax} />
+                          <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax} />
+                          <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax} />
                           <input type="hidden" name="customer-data:email" value={currentUser.email} />
                           <input type="hidden" name="customer-data:full-name" value={currentUser.name} />
                           <input type="hidden" name="customer-data:phone-number" value={currentUser.phone} />

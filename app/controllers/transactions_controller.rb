@@ -7,9 +7,26 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all
   end
   
-  
   def show
   end
+
+  def stock
+    size = Size.find(params[:id])
+    if size.stock > 0     
+      size.stock -= 1
+      size.save
+      render json: {result: true}
+    else
+      render json: {result: false}
+    end
+  end
+
+  def correct_stock
+    size = Size.find(params[:id])
+    size.stock += 1
+    size.save
+    console.log(size.stock) 
+ end
   
   def create
     @transaction = Transaction.new(transaction_params)

@@ -11,7 +11,8 @@ import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
 import AddAdressModal from '../AddAddresModal'
 
 const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
-    
+    // localStorage.removeItem('items');
+
     const [items, setItems] = useState([]);
     const [total_cost, setTotalCost] = useState(0);
     useEffect(() => {
@@ -23,7 +24,6 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
                 acum = acum + w.photo.base_price
             })
             setTotalCost(acum)
-            console.log("acum", acum)
         }
     }, [])
     console.log('items', items);
