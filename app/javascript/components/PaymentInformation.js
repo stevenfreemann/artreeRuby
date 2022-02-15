@@ -59,6 +59,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
     //   }
     // })
     api.verifyAvailable({ids:obj}, (response)=>{
+      
       console.log('response', response)
       if (response.success) {
         // const answer = await fetch('/transaction', {
@@ -74,7 +75,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
         // setCheck("Payment")
       }
       else {
-        alert('No hay inventario para este tamaño')
+        alert(response)     
       } 
     })
     // const result = await response.json()

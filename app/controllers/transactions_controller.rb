@@ -44,7 +44,7 @@ class TransactionsController < ApplicationController
         obj[item.name] = item.dimensions
         noStockName << obj
       end
-      flash.alert = "Tamaños sin inventario suficiente: #{noStockName}"
+      render json "Tamaños sin inventario suficiente: #{noStockName}"
     end
 
     # render json: {success: true, objs:res} if val

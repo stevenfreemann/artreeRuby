@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Title from '../Title'
 import WishItem from './WishItem'
 import leftButton from '../../assets/static/buttons/leftButton.png'
@@ -13,27 +13,50 @@ import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
 // const products=[
 //     {id:1,type:'LINEA EXCLUSIVE',name:'Nombre Fotografia 1',img: ShoppingCart1,phrase:'Frase Fotografia 1',dimensions: '120 * 140',frame:'Tipo de Marco 1',material:'Tipo de Material 1',price: 120000,},   
 //]
-const SectionWishlist = ({ title, products }) => {
+const SectionWishlist = ({ title, products }) => {   
     const [page, setPage] = useState(1)
+    const exist = useRef(false)
     const elements = title ? 12 : 6
     const pages = (Math.floor((products.length - 1) / elements) + 1)
     
     
     const addItems = (wishItem) => {
         const data = localStorage.getItem("items")
-        console.log("wishItem", wishItem)
-        if (data) {
-            let temp = JSON.parse(data)
-            temp.push(wishItem)
-            localStorage.setItem("items", JSON.stringify(temp))
-        } else {
-            let arr = []
-            arr.push(wishItem)
-            localStorage.setItem("items", JSON.stringify(arr))
-        }
-        alert("Elemento agregado")
+        let wishes = data ?  JSON.parse(data) : []
+        if(wishes.length > 0){
+            wishes.map((v)=>{
+                if(!exist.current) exist.current = repeat(v , wishItem)
+            })
+            if (!exist.current) wishes.push(wishItem)
+        }else wishes.push(wishItem)
+        localStorage.setItem("items", JSON.stringify(wishes))
+        exist.current = false
+        // if(repeated === true) {
+        // } else {
+        //     if (wishItem) {
+        //         console.log("wishItem", wishItem)
+        //         if (data) {
+        //             wishes.push(wishItem)
+        //             localStorage.setItem("items", JSON.stringify(wishes))
+        //         } else {
+        //             wishes.push(wishItem)
+        //             localStorage.setItem("items", JSON.stringify(wishes))
+        //         }
+        //         alert("Item agregado al carrito")
+        //     }
+        // }
+        
+        // wishes && wishes.map((item)=>{
+        //     alert("Este item ya esta en el carrito")
+        //     if(item.id === wishItem.id) {
+        //     }
+        // })
     }
-
+    const repeat = (obj1, obj2)=>{ 
+        console.log(obj1.id, obj2.id)
+        let value  = obj1.id === obj2.id ? true : false
+        return value
+    }
     const paginationWish = (products) => {
         if (products.length > elements) {
             let maxProduct = page * elements

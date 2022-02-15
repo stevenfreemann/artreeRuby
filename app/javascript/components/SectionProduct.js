@@ -13,6 +13,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, frames, packi
     
     const generateWishItem = async(size, frame, material, packing) => {
         // console.log(`size ${size}` , `frame ${frame}`,  `material ${material}`,  `packing ${packing}`,  `photo ${photo.id}`)
+         
         let response = await fetch('/wishItem', {
             method: 'POST', 
             headers: {
@@ -23,6 +24,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, frames, packi
         })
         response = await response.json()
         console.log('response', response);
+        end
     }
 
     return (
