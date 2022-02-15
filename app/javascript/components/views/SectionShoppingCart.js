@@ -33,7 +33,6 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
             <div className="shoppingCard__cont">
                 <div className="shoppingCard__items">
                     {items && items.map((product, i) =>
-                    
                         <CartItem product={product} k={`ìtem${i}`} />
                     )}
                 </div>

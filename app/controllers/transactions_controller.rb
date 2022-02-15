@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
   require "http"
+  
 
   def index
     @transactions = Transaction.all
@@ -11,14 +12,42 @@ class TransactionsController < ApplicationController
   end
 
   def stock
-    size = Size.find(params[:id])
-    if size.stock > 0     
-      size.stock -= 1
-      size.save
-      render json: {result: true}
-    else
-      render json: {result: false}
+    # puts "---------params-------#{params[:ids]}"
+    res = params[:ids]
+    itemStock = {}
+    obj = {}
+    # all_sizes = params[:ids].split(",")
+    res.each_pair do |id, amount|
+      s = Size.find(id)
+      obj[s] = amount
+      available = s.stock >= amount.to_i ? true : false
+      itemStock[id] = available
     end
+    
+    puts "---------itemStock----------#{itemStock}"
+
+    val = res.values.uniq == [true]
+    if val == true
+      obj.each_pair do |size, amount|
+        size.stock -= amount.to_i
+        size.save
+      end
+    else
+      noStock = []
+      noStockName = []
+      itemStock.each_pair do |item, available|
+        noStock << item if available == false
+      end
+      noStock.each do |id|
+        obj = {}
+        item = Size.find(id)
+        obj[item.name] = item.dimensions
+        noStockName << obj
+      end
+      flash.alert = "Tamaños sin inventario suficiente: #{noStockName}"
+    end
+
+    # render json: {success: true, objs:res} if val
   end
 
   def correct_stock
@@ -80,6 +109,6 @@ class TransactionsController < ApplicationController
     end
     
     def transaction_params
-      params.require(:transaction).permit(:products, :total_cost)
+      params.require(:transaction).permit(:products, :total_cost, ids: [])
     end
 end

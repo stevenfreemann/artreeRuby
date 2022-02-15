@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Edit from "../../assets/static/buttons/editar@2x.png";
 import EditActivo from "../../assets/static/buttons/editarwishlistactivo@2x.png";
 import Delete from "../../assets/static/buttons/eliminar@2x.png";
@@ -10,10 +10,21 @@ const cant = [1, 2, 3, 4, 5];
 
 const CartItem = ({ product, k }) => {
   console.log("product", product)
-  const quantity = useRef(null);
+  const [quantity, setQuantity ] = useState(1)
   const editRef = useRef({});
   const deleteRef = useRef({});
   const wishRef = useRef({});
+
+  useEffect(()=>{
+    const data = localStorage.getItem("items")
+    let wish = JSON.parse(data)
+    console.log(wish)
+    wish.map((v)=>{
+      if(v.id === product.id) v["quantity"] = parseInt(quantity)  
+      else v["quantity"] = v["quantity"] ? v["quantity"] : 1
+    })
+    localStorage.setItem("items",JSON.stringify(wish))
+  },[quantity])
 
   return (
     <div className="cardItem" key={k}>
@@ -64,7 +75,7 @@ const CartItem = ({ product, k }) => {
           <span>marco {product.sub_materials[1].name}.</span>
         </div>
         <div className="cardItem__price">
-          <select ref={quantity}>
+          <select value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
             {cant.map((cant) => (
               <option value={cant}>{cant}</option>
             ))}

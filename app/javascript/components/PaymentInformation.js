@@ -27,6 +27,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
  // const [available, setAvailable] = useState(null);
 
 
+
   useEffect(() => {
     let a = document.getElementById("registerLink")
     let b = document.getElementById("forgotPass")
@@ -43,33 +44,45 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
 
 
   const checkStock = async() => {
-    const response = await fetch(`/stock/${items[0].size.id}`, {
-      method: 'GET', 
-      headers: {
-        'Content-Type': 'application/json',
+    const obj = {}
+    {items.map((product) => (
+      console.log(product),
+      obj[product.size.id] = product.quantity
+      // arr.push(product.size.id)
+    ))}
+    // const response = await fetch(`/stock/${items[0].size.id}`, {
+    console.log("obj", obj)
+    // const response = await fetch(`/stock/${arr}`, {  
+    //   method: 'GET', 
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   }
+    // })
+    api.verifyAvailable({ids:obj}, (response)=>{
+      console.log('response', response)
+      if (response.success) {
+        // const answer = await fetch('/transaction', {
+        //   method: 'POST', 
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
+        // })
+        // const respuesta = await answer.json()
+        // setAnswer(respuesta)
+        // console.log(respuesta)
+        // setCheck("Payment")
       }
+      else {
+        alert('No hay inventario para este tamaño')
+      } 
     })
-    const result = await response.json()
-    const availableStock = result["result"]
+    // const result = await response.json()
+    // const availableStock = result["result"]
 
     //setAvailable(availableStock)
     
-    if (availableStock === true) {
-      const answer = await fetch('/transaction', {
-        method: 'POST', 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
-      })
-      const respuesta = await answer.json()
-      setAnswer(respuesta)
-      console.log(respuesta)
-      setCheck("Payment")
-    }
-    else {
-      alert('No hay inventario para este tamaño')
-    } 
+    
   }
 
   useEffect(() => {

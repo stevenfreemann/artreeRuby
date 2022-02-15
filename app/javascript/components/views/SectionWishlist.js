@@ -17,6 +17,8 @@ const SectionWishlist = ({ title, products }) => {
     const [page, setPage] = useState(1)
     const elements = title ? 12 : 6
     const pages = (Math.floor((products.length - 1) / elements) + 1)
+    
+    
     const addItems = (wishItem) => {
         const data = localStorage.getItem("items")
         console.log("wishItem", wishItem)

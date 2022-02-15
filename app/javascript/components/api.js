@@ -7,6 +7,7 @@ const api = {
 		const c = object.id ? { url: `${controller}/${object.id}`, method: "PUT" } : { url: controller, method: "POST" }
 		call(c.method, c.url, params, listener)
 	},
+	verifyAvailable: (data, listener) => call("GET",'/stock', data, listener)
 }
 
 const setParams = function (data, get) {
