@@ -62,21 +62,20 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
       
       console.log('response', response)
       if (response.success) {
-        // const answer = await fetch('/transaction', {
-        //   method: 'POST', 
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
-        // })
-        // const respuesta = await answer.json()
-        // setAnswer(respuesta)
-        // console.log(respuesta)
-        // setCheck("Payment")
+        const answer = await fetch('/transaction', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
+        })
+        const respuesta = await answer.json()
+        setAnswer(respuesta)
+        console.log(respuesta)
+        setCheck("Payment")
       }
       else {
-        alert(response)     
-      } 
+        alert('No hay inventario para este tamaño')      } 
     })
     // const result = await response.json()
     // const availableStock = result["result"]

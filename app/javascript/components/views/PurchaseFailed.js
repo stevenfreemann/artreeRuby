@@ -4,11 +4,12 @@ import atras from '../../assets/static/buttons/left-arrow.png'
 import pregunta from '../../assets/static/icon/pregunta.png'
 
 const PurchaseFailed = ({ info }) => {
-    const response = await fetch(`/correct_stock/${items[0].size.id}`, {
-        method: 'GET', 
+    const response = await fetch(`/correct_stock`, {
+        method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify({transaction: info}),
       })
       const result = await response.json()
       const availableStock = result["result"]

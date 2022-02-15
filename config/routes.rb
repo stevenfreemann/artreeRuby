@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   post 'wishItem' => 'wish_item#create'
   get 'upload' => 'like_pro#upload'
   get 'stock' => 'transactions#stock'
-  post 'correctStock/:id' => 'transactions#correct_stock'
+  post 'correctStock' => 'transactions#correct_stock'
   post 'transaction' => 'transactions#create'
   post 'response' => 'transactions#wompi_response'
   get 'result' => 'transactions#result'

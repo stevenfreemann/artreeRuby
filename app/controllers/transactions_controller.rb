@@ -44,17 +44,19 @@ class TransactionsController < ApplicationController
         obj[item.name] = item.dimensions
         noStockName << obj
       end
-      render json "Tamaños sin inventario suficiente: #{noStockName}"
+      render json: "Tamaños sin inventario suficiente: #{noStockName}"
     end
-
     # render json: {success: true, objs:res} if val
   end
 
   def correct_stock
-    size = Size.find(params[:id])
-    size.stock += 1
-    size.save
-    console.log(size.stock) 
+    transaction= params[:transaction]
+    transaction.products.each do |product|
+      size = product.size
+      size.stock += 1
+      size.save
+      console.log(size.stock) 
+    end
  end
   
   def create
