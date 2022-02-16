@@ -22,7 +22,7 @@ const infoExclusive = ({rooms, line, contentCarousel}) => {
           <Title title={'SALAS'}/>
           <div className='infoExclusive__rooms'/>
           {rooms.map(room =>
-              <SectionRoom key={room.id} inverso={rooms.indexOf(room) % 2 === 0 ? false : true } title={room.name} text={room.description} img={Exclusive1} listener={()=>navigate(room.id)}/>
+              <SectionRoom key={room.id} inverso={rooms.indexOf(room) % 2 === 0 ? false : true } title={room.name} photo = {room.file} text={room.description} img={Exclusive1} listener={()=>navigate(room.id)}/>
           )}
       </>
   )

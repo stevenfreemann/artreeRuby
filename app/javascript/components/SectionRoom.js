@@ -4,7 +4,8 @@ import SeeButton from './SeeButton'
 const listener = (dato) => {
     console.log(dato)
 }
-const SectionInfo = ({inverso, img, title, text, subtitle, color,listener}) => {
+const SectionInfo = ({inverso, img, title, photo, text, subtitle, color,listener}) => {
+ 
     const showInverso = () => {
         let inv = inverso ? "room_inverso" : ""
         return inv
@@ -23,7 +24,7 @@ const SectionInfo = ({inverso, img, title, text, subtitle, color,listener}) => {
                     {text}
                     </p>
                 </div>
-                <img className='sectionRoom__img' src={img} onClick={listener}/>
+                <img className='sectionRoom__img' src={photo.url} onClick={listener}/>
             </div>
         </section>
     )

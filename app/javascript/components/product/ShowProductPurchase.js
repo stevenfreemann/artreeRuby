@@ -22,7 +22,7 @@ import marco2 from '../../assets/static/images/marcos2.png'
 import marco3 from '../../assets/static/images/marcos3.png'
 
 
-const ShowProductPurchase = ({exclusive, likeAPro, photo, clickWishItem, sizeInfo, materials, frames, packing}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, photo, room, clickWishItem, sizeInfo, materials, frames, packing}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)

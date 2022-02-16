@@ -4,7 +4,7 @@ import ShowProduct from './product/ShowProduct'
 import ShowProductPurchase from './product/ShowProductPurchase'
 import CarrouselDown from './CarouselDownMarket'
 
-const SectionProduct = ({view, title, photos, sizeInfo, materials, frames, packing, authenticity_token}) => {
+const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames, packing, authenticity_token}) => {
     const [photo, setPhoto] = useState(photos[0])
     console.log("photo", photo)
     console.log("token", authenticity_token)
@@ -33,7 +33,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, frames, packi
                 <h1>{title}</h1>
             </div>
             <div className="sectionProduct__cont">
-                    {screen==="picture"?<ShowProduct photo={photo} setScreen={setScreen}/>
+                    {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
                     :screen==="purchase"&&
                     <ShowProductPurchase clickWishItem={generateWishItem} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false} photo={photo} sizeInfo={sizeInfo} materials={materials} frames={frames} packing={packing}/>}
                     {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
