@@ -11,6 +11,7 @@ class TransactionsController < ApplicationController
   def show
   end
 
+
   def stock
     # puts "---------params-------#{params[:ids]}"
     res = params[:ids]
@@ -18,19 +19,19 @@ class TransactionsController < ApplicationController
     obj = {}
     # all_sizes = params[:ids].split(",")
     res.each_pair do |id, amount|
-      s = Size.find(id)
-      obj[s] = amount
-      available = s.stock >= amount.to_i ? true : false
+      photo = Photo.find(id)
+      obj[photo] = amount
+      available = photo.stock >= amount.to_i ? true : false
       itemStock[id] = available
-    end
-    
+    end  
     puts "---------itemStock----------#{itemStock}"
 
-    val = res.values.uniq == [true]
+    val = itemStock.values.uniq == [true]
     if val == true
-      obj.each_pair do |size, amount|
-        size.stock -= amount.to_i
-        size.save
+
+      obj.each_pair do |photo, amount|
+        photo.stock -= amount.to_i
+        photo.save
       end
     else
       noStock = []
@@ -49,15 +50,16 @@ class TransactionsController < ApplicationController
     # render json: {success: true, objs:res} if val
   end
 
+
   def correct_stock
     transaction= params[:transaction]
     transaction.products.each do |product|
-      size = product.size
-      size.stock += 1
-      size.save
-      console.log(size.stock) 
+      photo = product.photo
+      photo.stock += 1
+      photo.save
+      console.log(photo.stock) 
     end
- end
+  end
   
   def create
     @transaction = Transaction.new(transaction_params)

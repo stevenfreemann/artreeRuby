@@ -47,7 +47,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
     const obj = {}
     {items.map((product) => (
       console.log(product),
-      obj[product.size.id] = product.quantity
+      obj[product.photo.id] = product.quantity
       // arr.push(product.size.id)
     ))}
     // const response = await fetch(`/stock/${items[0].size.id}`, {
@@ -62,17 +62,17 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
       
       console.log('response', response)
       if (response.success) {
-        const answer = await fetch('/transaction', {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
-        })
-        const respuesta = await answer.json()
-        setAnswer(respuesta)
-        console.log(respuesta)
-        setCheck("Payment")
+        // const answer = await fetch('/transaction', {
+        //   method: 'POST', 
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
+        // })
+        // const respuesta = await answer.json()
+        // setAnswer(respuesta)
+        // console.log(respuesta)
+        // setCheck("Payment")
       }
       else {
         alert('No hay inventario para este tamaño')      } 

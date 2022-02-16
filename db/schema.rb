@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_184252) do
+ActiveRecord::Schema.define(version: 2022_02_16_160316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,7 +133,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_184252) do
     t.bigint "wish_item_id"
     t.string "file"
     t.bigint "line_id"
-    t.integer "stock"
     t.index ["line_id"], name: "index_sizes_on_line_id"
     t.index ["wish_item_id"], name: "index_sizes_on_wish_item_id"
   end

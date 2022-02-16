@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
   #   endpoint:              'https://s3.example.com:8080' # optional, defaults to nil
    }
   config.fog_directory  = 'artree-new'                                      # required
-  config.fog_public     = false                                                 # optional, defaults to true
+  config.fog_public     = true                                                 # optional, defaults to true
   config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" } # optional, defaults to {}
   # For an application which utilizes multiple servers but does not need caches persisted across requests,
   # uncomment the line :file instead of the default :storage.  Otherwise, it will use AWS as the temp cache store.
