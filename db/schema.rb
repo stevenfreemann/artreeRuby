@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_16_200820) do
+ActiveRecord::Schema.define(version: 2022_02_16_160316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,7 @@ ActiveRecord::Schema.define(version: 2022_02_16_200820) do
     t.string "title"
     t.text "text"
     t.string "page"
-    t.string "link"
-    t.string "text_link"
+    t.string "file"
     t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -101,7 +100,8 @@ ActiveRecord::Schema.define(version: 2022_02_16_200820) do
     t.bigint "wish_item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "banner", default: "NO"
+    t.integer "priority"
+    t.boolean "starred"
     t.index ["artist_id"], name: "index_photos_on_artist_id"
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"
@@ -114,11 +114,11 @@ ActiveRecord::Schema.define(version: 2022_02_16_200820) do
     t.float "top", default: 0.0
     t.float "left", default: 0.0
     t.string "space_vertical"
-    t.string "space_horizontal"
     t.boolean "pinned", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "line_id", null: false
+    t.string "space_horizontal"
     t.index ["line_id"], name: "index_rooms_on_line_id"
   end
 

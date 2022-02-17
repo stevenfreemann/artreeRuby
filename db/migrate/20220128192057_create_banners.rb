@@ -4,8 +4,7 @@ class CreateBanners < ActiveRecord::Migration[6.0]
       t.string "title"
       t.text "text"
       t.string "page"
-      t.string "link"
-      t.string "text_link"
+      t.string "file"
       t.boolean "active", default: false
       t.datetime "created_at", precision: 6, null: false
       t.datetime "updated_at", precision: 6, null: false
