@@ -5,4 +5,7 @@ class Photo < ApplicationRecord
   belongs_to :line
   belongs_to :room
   belongs_to :wish_item, optional: true
+
+  validates :banner, :inclusion => { :in => ["NO", "SALA", "HOME"] }
+
 end

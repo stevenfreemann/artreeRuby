@@ -8,15 +8,7 @@ const papeles = {
     text:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.',
 }
 const papelTipoText= 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
-// const papelTipos = [
-//         {id:1,type:'Papel1',img:papelComposicion,text:papelTipoText,},
-//         {id:2,type:'Papel2',img:papelComposicion,text:papelTipoText,},
-//         {id:3,type:'Papel3',img:papelComposicion,text:papelTipoText,},
-//         {id:4,type:'Papel4',img:papelComposicion,text:papelTipoText,},
-//         {id:5,type:'Papel5',img:papelComposicion,text:papelTipoText,},
-//         {id:6,type:'Papel6',img:papelComposicion,text:papelTipoText,},
-//         {id:7,type:'Papel7',img:papelComposicion,text:papelTipoText,},
-//     ]
+
     
 const SectionPapers = ({papers}) => {
     const navigate=(dir)=>{

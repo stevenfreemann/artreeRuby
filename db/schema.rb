@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_16_160316) do
+ActiveRecord::Schema.define(version: 2022_02_16_200820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,9 +92,7 @@ ActiveRecord::Schema.define(version: 2022_02_16_160316) do
     t.string "name"
     t.text "description"
     t.integer "base_price"
-    t.integer "priority"
     t.boolean "active", default: false
-    t.boolean "starred", default: false
     t.string "file"
     t.integer "stock"
     t.bigint "line_id", null: false
@@ -103,6 +101,7 @@ ActiveRecord::Schema.define(version: 2022_02_16_160316) do
     t.bigint "wish_item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "banner", default: "NO"
     t.index ["artist_id"], name: "index_photos_on_artist_id"
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"
@@ -114,8 +113,8 @@ ActiveRecord::Schema.define(version: 2022_02_16_160316) do
     t.text "description"
     t.float "top", default: 0.0
     t.float "left", default: 0.0
-    t.string "file"
-    t.string "space"
+    t.string "space_vertical"
+    t.string "space_horizontal"
     t.boolean "pinned", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

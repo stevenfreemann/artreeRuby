@@ -1,7 +1,8 @@
 class ChangeStarredInPhotos < ActiveRecord::Migration[6.0]
   def change
-    change_column(:photos, :starred, :integer)
-    remove_column :sizes, :stock
+    remove_column :photos, :starred, :boolean
+    remove_column :photos, :priority, :integer
+    add_column :photos, :banner, :string, default: "NO"
 
   end
 end

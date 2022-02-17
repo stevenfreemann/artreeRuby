@@ -48,7 +48,7 @@ const ShowProduct = ({photo,setScreen, room}) => {
                     <div>
                         <h3>...a tus espacios</h3>
                         <div className="showProduct__spaces-spaceBg">
-                            <img src={room.space.url} alt="espacios"/>
+                            <img src={room.space_vertical.url} alt="espacios"/>
                             <img className="showProduct__spaces-spacePt" src={photo.file.url} alt="galeriaPt"/>
                             <a href="https://www.freepik.es/psd/maqueta">alexandercho</a>
                         </div>
