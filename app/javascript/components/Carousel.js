@@ -9,34 +9,7 @@ import Banner5 from '../assets/static/images/banner5.jpg'
 import Left from '../assets/static/buttons/left-arrow.png'
 import Right from '../assets/static/buttons/right-arrow.png'
 import ContentCarousel from './ContentCarousel'
-// import Indicators from './Indicators'
-// const contentCarousel = [
-//     {
-//         Title: null,
-//         text: null,
-//         img: Banner1
-//     },
-//     {
-//         Title: 'TÍTULO',
-//         text: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-//         img: Banner2
-//     },
-//     {
-//         Title: null,
-//         text: null,
-//         img: Banner3
-//     },
-//     {
-//         Title: 'TÍTULO',
-//         text: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-//         img: Banner4
-//     },
-//     {
-//         Title: 'TÍTULO',
-//         text: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-//         img: Banner5
-//     }
-// ]
+
 export default function Carrousel({contentCarousel}) {
     const [index, setIndex] = useState(0)
     const next = (dir) => {

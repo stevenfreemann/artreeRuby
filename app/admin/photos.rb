@@ -1,7 +1,7 @@
 ActiveAdmin.register Photo, as: "Fotos" do
   permit_params :reference, :artist_id, :name, :description,
 	:base_price, :active, :file,
-	:line_id, :stock, :room_id, :banner
+	:line_id, :stock, :room_id
 
 	# form do |f|
 	# 	f.input :reference

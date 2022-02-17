@@ -5,7 +5,7 @@ export default function ContentCarousel({ id, obj }) {
     if (!obj.Title) {
         return (
             <div className='carousel__img'>
-                <img style={{ height: '100%', width: '100%', objectFit:'cover' }} alt={id} src={obj.link} />
+                <img style={{ height: '100%', width: '100%', objectFit:'cover' }} alt={id} src={obj.file.url} />
             </div>
         )
     } else if (obj.text) {
