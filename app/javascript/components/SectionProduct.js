@@ -33,10 +33,10 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
                 <h1>{title}</h1>
             </div>
             <div className="sectionProduct__cont">
-                    {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
-                    :screen==="purchase"&&
-                    <ShowProductPurchase clickWishItem={generateWishItem} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false} photo={photo}  price={photo.base_price} sizeInfo={sizeInfo} materials={materials} frames={frames} packing={packing}/>}
-                    {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
+                {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
+                :screen==="purchase"&&
+                <ShowProductPurchase clickWishItem={generateWishItem} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false} photo={photo}  price={photo.base_price} sizeInfo={sizeInfo} materials={materials} frames={frames} packing={packing}/>}
+                {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
             </div>
         </div>
     )
