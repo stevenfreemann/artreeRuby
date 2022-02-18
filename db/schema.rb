@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.string "name"
     t.text "description"
     t.integer "base_price"
-    t.boolean "active", default: false
+    t.boolean "active", default: true
     t.string "file"
     t.integer "stock", default: 1000
     t.bigint "line_id", null: false
