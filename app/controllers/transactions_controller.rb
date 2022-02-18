@@ -32,7 +32,10 @@ class TransactionsController < ApplicationController
       obj.each_pair do |photo, amount|
         photo.stock -= amount.to_i
         photo.save
-      end
+       # puts "---------photo----#{photo.id}"
+      end    
+      render json: {success: true} 
+
     else
       noStock = []
       noStockName = []
@@ -40,14 +43,11 @@ class TransactionsController < ApplicationController
         noStock << item if available == false
       end
       noStock.each do |id|
-        obj = {}
-        item = Size.find(id)
-        obj[item.name] = item.dimensions
-        noStockName << obj
+        item = Photo.find(id)
+        noStockName << item.name
       end
-      render json: "Tamaños sin inventario suficiente: #{noStockName}"
+      render json: "Foto(s) sin inventario suficiente: #{noStockName}"
     end
-    # render json: {success: true, objs:res} if val
   end
 
 
@@ -62,11 +62,14 @@ class TransactionsController < ApplicationController
   end
   
   def create
-    @transaction = Transaction.new(transaction_params)
+    params.permit!
     cost = params[:total_cost]
     iva = cost * 0.19
     consumo = cost * 0.08
-    total_cost = cost + iva + consumo   
+    total_cost = cost + iva + consumo
+    # items = JSON.parse(params[:products])
+
+    puts "--------------#{params[:products]}"
     @transaction = Transaction.new(products: params[:products], total_cost: (total_cost * 100) , iva_tax: (iva  * 100), consumption_tax: (consumo * 100), user: current_user)
     @transaction.save
     @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
@@ -78,7 +81,7 @@ class TransactionsController < ApplicationController
     @transaction.signature = Digest::SHA2.hexdigest(chain)
     @transaction.save
     
-    render json: @transaction.to_json
+    render json: @transaction #enviar serializado con parseo e itereador
   end
   
 
@@ -113,6 +116,6 @@ class TransactionsController < ApplicationController
     end
     
     def transaction_params
-      params.require(:transaction).permit(:products, :total_cost, ids: [])
+      params.require(:transaction).permit(:products, :total_cost)
     end
 end

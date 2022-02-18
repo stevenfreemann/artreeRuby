@@ -43,46 +43,34 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
   }, [signIn, cuenta, formu])
 
 
-  const checkStock = async() => {
+  const checkStock = async () => {
     const obj = {}
     {items.map((product) => (
       console.log(product),
       obj[product.photo.id] = product.quantity
-      // arr.push(product.size.id)
     ))}
-    // const response = await fetch(`/stock/${items[0].size.id}`, {
     console.log("obj", obj)
-    // const response = await fetch(`/stock/${arr}`, {  
-    //   method: 'GET', 
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   }
-    // })
+
     api.verifyAvailable({ids:obj}, (response)=>{
       
       console.log('response', response)
       if (response.success) {
-        // const answer = await fetch('/transaction', {
-        //   method: 'POST', 
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
-        // })
-        // const respuesta = await answer.json()
-        // setAnswer(respuesta)
-        // console.log(respuesta)
-        // setCheck("Payment")
-      }
+        
+        fetch('/transaction', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
+        }).then(response => response.json())
+        .then(data => {
+          console.log(data)
+          setAnswer(data)
+          setCheck("Payment")
+      })}
       else {
-        alert('No hay inventario para este tamaño')      } 
+        alert('No hay inventario para este tamaño')} 
     })
-    // const result = await response.json()
-    // const availableStock = result["result"]
-
-    //setAvailable(availableStock)
-    
-    
   }
 
   useEffect(() => {

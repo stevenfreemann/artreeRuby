@@ -80,10 +80,10 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                     <div className='sectionProductModal__size-select1' ref={inputSizeRadioRef}>
                         {dataModal.map((size)=>
                         <label className='sectionProductModal__size-select1-item' key={size.id}>
-                            <input type="radio" name="size" value={size.id} defaultChecked={selectSize===size.id?true:false}></input>
+                            <input type="radio" name="size" value={"test"} defaultChecked={selectSize===size.id?true:false}></input>
                             <div onClick={()=>{setSelectSize(size.id)}} >
-                                <img src={size.img}/>
-                                <span>{size.width}x{size.height}</span>
+                                <img src={size.file.url}/>
+                                <span>{size.dimensions} - {size.name}</span>
                             </div>
                         </label>
                         )}
@@ -91,7 +91,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                     <select className='sectionProductModal__size-select2' ref={selectSizeRef} value={selectSize} onChange={()=>{checkedSize(selectSizeRef.current.value)}}>
                         {/* <option value='0' disabled></option> */}
                         {dataModal.map((size)=>
-                        <option key={size.id} value={size.id} >{size.width}x{size.height} ${size.price}</option>
+                        <option key={size.id} value={size.id} >{size.name} ${size.price}</option>
                         )}
                     </select>
                     <div className='sectionProductModal__size-button'>

@@ -131,7 +131,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, room, clickWishItem, s
                                 {sizeInfo.map((size)=>
                                 <div id={`size${size.id}`} key={size.id}>
                                     <img style={selectSize===size.id?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{showModal('size',size.id)}}/>
-                                    <span>{size.dimensions} cm</span>
+                                    <span>{size.dimensions}</span>
                                     <span>$ {size.price}</span>
                                 </div>
                                 )}
