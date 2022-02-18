@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_171253) do
+ActiveRecord::Schema.define(version: 2022_02_18_220209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_171253) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "wish_item_id"
+    t.integer "price", default: 0
     t.index ["wish_item_id"], name: "index_packages_on_wish_item_id"
   end
 
@@ -93,7 +94,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_171253) do
     t.integer "base_price"
     t.boolean "active", default: false
     t.string "file"
-    t.integer "stock"
+    t.integer "stock", default: 1000
     t.bigint "line_id", null: false
     t.bigint "room_id", null: false
     t.bigint "artist_id", null: false
@@ -102,7 +103,6 @@ ActiveRecord::Schema.define(version: 2022_02_17_171253) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "priority"
     t.boolean "starred"
-    t.string "align"
     t.index ["artist_id"], name: "index_photos_on_artist_id"
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"
