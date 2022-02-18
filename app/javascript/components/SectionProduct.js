@@ -6,11 +6,16 @@ import CarrouselDown from './CarouselDownMarket'
 
 const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames, packing, authenticity_token}) => {
     const [photo, setPhoto] = useState(photos[0])
-    console.log("photo", photo)
-    console.log("token", authenticity_token)
-
     const [screen, setScreen] = useState(view === 3 ? 'purchase':"picture")
-    
+
+    console.log("photo", photo)
+    // console.log("token", authenticity_token)
+    // console.log('sizeInfo :>> ', sizeInfo);
+    // console.log('materials :>> ', materials);
+    console.log('room :>> ', room);
+    console.log('frames :>> ', frames);
+    console.log('packing :>> ', packing);
+
     const generateWishItem = async(size, frame, material, packing) => {
         // console.log(`size ${size}` , `frame ${frame}`,  `material ${material}`,  `packing ${packing}`,  `photo ${photo.id}`)
          
