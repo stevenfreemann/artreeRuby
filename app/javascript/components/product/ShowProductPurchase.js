@@ -22,7 +22,8 @@ import marco2 from '../../assets/static/images/marcos2.png'
 import marco3 from '../../assets/static/images/marcos3.png'
 
 
-const ShowProductPurchase = ({exclusive, likeAPro, photo, room, clickWishItem, sizeInfo, materials, frames, packing}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWishItem, sizeInfo, materials, frames, packing}) => {
+    //console.log("price", price)
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -89,7 +90,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, room, clickWishItem, s
     }
       return (
           <div className="showProductPurchase">
-            {modal&&<SectionProductModal showModal={modal} info={modalInfoRef.current} dataModal={modalDataRef.current} selectSize={selectSize} setSelectSize={setSelectSize} selectMaterial={selectMaterial} setSelectMaterial={setSelectMaterial} selectFrame={selectFrame} setSelectFrame={setSelectFrame} listener={(showModal)=>{setModal(showModal)}}/>}
+            {modal&&<SectionProductModal showModal={modal} info={modalInfoRef.current} price={price} dataModal={modalDataRef.current} selectSize={selectSize} setSelectSize={setSelectSize} selectMaterial={selectMaterial} setSelectMaterial={setSelectMaterial} selectFrame={selectFrame} setSelectFrame={setSelectFrame} listener={(showModal)=>{setModal(showModal)}}/>}
             <div className="showProductPurchase__progress">
                 <hr></hr>
                 <div className="showProductPurchase__item">
@@ -132,7 +133,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, room, clickWishItem, s
                                 <div id={`size${size.id}`} key={size.id}>
                                     <img style={selectSize===size.id?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{showModal('size',size.id)}}/>
                                     <span>{size.dimensions}</span>
-                                    <span>$ {size.price}</span>
+                                    <span>$ {size.price} </span>
                                 </div>
                                 )}
                             </div>

@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import SeeButton from './SeeButton'
 import cerrar from '../assets/static/buttons/boton cerrar.png'
 
-const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,selectMaterial,setSelectMaterial,selectFrame,setSelectFrame,listener}) => {
+const SectionProductModal = ({showModal,info, price, dataModal,selectSize,setSelectSize,selectMaterial,setSelectMaterial,selectFrame,setSelectFrame,listener}) => {
+    const [selectPrice, setSelectPrice] = useState(price)
     const [showInfo] = useState(info)
     const modalRef = useRef({})
     const inputSizeRadioRef = useRef({})
@@ -10,6 +11,8 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
     const inputMaterialRadioRef = useRef({})
     const selectMaterialRef = useRef({})
     const selectFrameRef = useRef({})
+
+    // console.log("price", price)
 
     useEffect(() => {
         if (showModal) {
@@ -80,18 +83,18 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                     <div className='sectionProductModal__size-select1' ref={inputSizeRadioRef}>
                         {dataModal.map((size)=>
                         <label className='sectionProductModal__size-select1-item' key={size.id}>
-                            <input type="radio" name="size" value={"test"} defaultChecked={selectSize===size.id?true:false}></input>
-                            <div onClick={()=>{setSelectSize(size.id)}} >
+                            <input type="radio" name="size" value={size.id} defaultChecked={selectSize===size.id?true:false}></input>
+                            <div onClick={()=>{setSelectSize(size.id); setSelectPrice(current_price); console.log("current", current_price)}} >
                                 <img src={size.file.url}/>
                                 <span>{size.dimensions} - {size.name}</span>
                             </div>
                         </label>
                         )}
                     </div>
-                    <select className='sectionProductModal__size-select2' ref={selectSizeRef} value={selectSize} onChange={()=>{checkedSize(selectSizeRef.current.value)}}>
+                    <select className='sectionProductModal__size-select2' ref={selectSizeRef} value={selectSize} current_price={selectPrice} onChange={()=>{checkedSize(selectSizeRef.current.value)}}>
                         {/* <option value='0' disabled></option> */}
                         {dataModal.map((size)=>
-                        <option key={size.id} value={size.id} >{size.name} ${size.price}</option>
+                        <option key={size.id} value={size.id} current_price={size.price + price} >{size.name} ${size.price + price}</option>
                         )}
                     </select>
                     <div className='sectionProductModal__size-button'>
@@ -113,7 +116,7 @@ const SectionProductModal = ({showModal,info,dataModal,selectSize,setSelectSize,
                     <select className='sectionProductModal__material-select2' ref={selectMaterialRef} value={selectMaterial} onChange={()=>{checkedMaterial(parseInt(selectMaterialRef.current.value))}}>
                         {/* <option value='0' disabled></option> */}
                         {dataModal.map((material)=>
-                        <option key={material.id} value={material.id} >{material.type} ${material.price}</option>)}
+                        <option key={material.id} value={material.id} >{material.name} ${selectPrice}</option>)}
                     </select>
                     <SeeButton textBtn={'Añadir'} style={{border:'2px solid black', width:'12.8rem'}} listener={()=>{listener(!showModal);document.body.style.overflow='visible'}}/>
                 </div>}

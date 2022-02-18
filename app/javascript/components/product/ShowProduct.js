@@ -58,7 +58,7 @@ const ShowProduct = ({photo,setScreen, room}) => {
                  {photo?
                 <div className="showProduct__text">
                     <span style={{fontWeight:"bold"}}>{photo.name}: </span>
-                    <span>{photo.info}</span>
+                    <span>${photo.base_price} COP</span>
                 </div>
                  :<span> <h3> Galeria vacia </h3> </span>}
             </div>

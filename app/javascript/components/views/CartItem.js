@@ -6,10 +6,10 @@ import DeleteActivo from "../../assets/static/buttons/eliminarwishlistactivo@2x.
 import Wishlist from "../../assets/static/buttons/moverwishlistbtn@2x.png";
 import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.png";
 
-const cant = [1, 2, 3, 4, 5];
 
-const CartItem = ({ product, k }) => {
-  console.log("product", product)
+const CartItem = ({ product, k}) => {
+  const total = product.photo.stock
+  const cant = Array.from({length: total}, (_, i) => i + 1)
   const [quantity, setQuantity ] = useState(1)
   const editRef = useRef({});
   const deleteRef = useRef({});
@@ -76,8 +76,8 @@ const CartItem = ({ product, k }) => {
         </div>
         <div className="cardItem__price">
           <select value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
-            {cant.map((cant) => (
-              <option value={cant}>{cant}</option>
+            {cant.map((number) => (
+              <option value={number}>{number}</option>
             ))}
           </select>
           <h3>${product.photo.base_price}</h3>
