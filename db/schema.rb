@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_220209) do
+ActiveRecord::Schema.define(version: 2022_02_18_221540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_220209) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "wish_item_id"
     t.integer "price", default: 0
+    t.boolean "active", default: true
     t.index ["wish_item_id"], name: "index_packages_on_wish_item_id"
   end
 
@@ -134,6 +135,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_220209) do
     t.bigint "wish_item_id"
     t.string "file"
     t.bigint "line_id"
+    t.boolean "active", default: true
     t.index ["line_id"], name: "index_sizes_on_line_id"
     t.index ["wish_item_id"], name: "index_sizes_on_wish_item_id"
   end
@@ -148,6 +150,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_220209) do
     t.bigint "material_id", null: false
     t.bigint "wish_item_id"
     t.string "file"
+    t.boolean "active", default: true
     t.index ["material_id"], name: "index_sub_materials_on_material_id"
     t.index ["wish_item_id"], name: "index_sub_materials_on_wish_item_id"
   end
