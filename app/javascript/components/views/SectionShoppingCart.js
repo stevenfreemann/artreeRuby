@@ -12,20 +12,36 @@ import AddAdressModal from '../AddAddresModal'
 
 const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
     //localStorage.removeItem('items');
-
     const [items, setItems] = useState([]);
     const [total_cost, setTotalCost] = useState(0);
     useEffect(() => {
         const data = localStorage.getItem("items")
-        const wish = JSON.parse(data)
-        if (wish && wish.length>0){  setItems(wish)
-        let acum = 0
-        wish.map((w) => {
-                acum = acum + w.photo.base_price
-            })
+        let wish = JSON.parse(data)
+        wish.map((v) => { v["quantity"] = v["quantity"] ? v["quantity"] : 1 })
+        console.log('wish', wish)
+        localStorage.setItem("items", JSON.stringify(wish))
+        setItems(wish)
+
+    }, [])
+
+    useEffect(() => {
+        if (items.length > 0) {
+            let acum = 0
+            items.map((w) => acum = acum + (w.photo.base_price * w.quantity))
             setTotalCost(acum)
         }
-    }, [])
+    }, [items])
+
+    const updateItem = (obj) => {
+        let temp = [...items]
+        temp.map((v) => {
+            if (v.id === obj.id) {
+                v.quantity = obj.quantity
+            }
+        })
+        console.log('temp', temp)
+        setItems(temp)
+    }
     console.log('items', items);
     return (
         <div className="sectionShoppingCart">
@@ -33,8 +49,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
             <div className="shoppingCard__cont">
                 <div className="shoppingCard__items">
                     {items && items.map((product, i) =>
-
-                        <CartItem product={product} k={`ìtem${i}`} />
+                        <CartItem updateItem={updateItem} prod={product} k={`ìtem${i}`} />
                     )}
                 </div>
                 <div className="sectionShoppingCart__payment">
