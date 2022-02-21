@@ -9,7 +9,7 @@ const Transaction = ({ info }) => {
       {validateError.includes(info.status) ?
         <PurchaseFailed {...{ info }} />
         :
-        <PurchaseSuccess {...{ info }} />
+        <PurchaseSguccess {...{ info }} />
       }
     </div>
   )

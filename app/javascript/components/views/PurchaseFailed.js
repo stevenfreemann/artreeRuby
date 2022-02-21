@@ -3,9 +3,9 @@ import Title from '../Title'
 import atras from '../../assets/static/buttons/left-arrow.png'
 import pregunta from '../../assets/static/icon/pregunta.png'
 
-const PurchaseFailed = ({ info }) => {
+const PurchaseFailed = async ({ info }) => {
     console.log("test")
-    const response = fetch(`/correct_stock`, {
+    const response = await fetch(`/correct_stock`, {
         method: 'GET', 
         headers: {
           'Content-Type': 'application/json',
