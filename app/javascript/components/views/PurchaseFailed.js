@@ -5,7 +5,7 @@ import pregunta from '../../assets/static/icon/pregunta.png'
 
 const PurchaseFailed = ({ info }) => {
     console.log("test")
-    const response = await fetch(`/correct_stock`, {
+    const response = fetch(`/correct_stock`, {
         method: 'GET', 
         headers: {
           'Content-Type': 'application/json',
