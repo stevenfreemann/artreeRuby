@@ -24,7 +24,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
   const [forgot, setForgot] = useState(null);
   const [viewPayment, setViewPayment] = useState(1);
   const [answer, setAnswer] = useState(null);
- // const [available, setAvailable] = useState(null);
+  // const [available, setAvailable] = useState(null);
 
 
 
@@ -45,31 +45,34 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
 
   const checkStock = async () => {
     const obj = {}
-    {items.map((product) => (
-      console.log(product),
-      obj[product.photo.id] = product.quantity
-    ))}
+    {
+      items.map((product) => (
+        console.log(product),
+        obj[product.photo.id] = product.quantity
+      ))
+    }
     console.log("obj", obj)
 
-    api.verifyAvailable({ids:obj}, (response)=>{
-      
+    api.verifyAvailable({ ids: obj }, (response) => {
       console.log('response', response)
       if (response.success) {
-        
+
         fetch('/transaction', {
-          method: 'POST', 
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({total_cost: total_cost, products: items, authenticity_token: authenticity_token}),
+          body: JSON.stringify({ total_cost: total_cost, products: items, authenticity_token: authenticity_token }),
         }).then(response => response.json())
-        .then(data => {
-          console.log(data)
-          setAnswer(data)
-          setCheck("Payment")
-      })}
+          .then(data => {
+            console.log(data)
+            setAnswer(data)
+            setCheck("Payment")
+          })
+      }
       else {
-        alert('No hay inventario para este tamaño')} 
+        alert('No hay inventario para este tamaño')
+      }
     })
   }
 
@@ -202,11 +205,12 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                     <div className="paymentInformation__market">
                       <h3>{`${items.length} Producto(s)`}</h3>
                       <hr />
+
                       {items.map((product) => (
                         console.log(product),
                         <div key={product.id}>
                           <span>{product.photo.name}</span>
-                          <span>${product.photo.base_price}</span>
+                          <span>${product.photo.base_price * product.quantity}</span>
                         </div>
                       ))}
                       <div>
@@ -224,14 +228,14 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                     </div>
                     <div className="paymentInformation__total">
                       <span>Total</span>
-                      <span>${total_cost + (total_cost * 0.19) }</span>
+                      <span>${total_cost + (total_cost * 0.19)}</span>
                     </div>
                     <div className="paymentInformation__code">
                       <label>Código de Descuento</label>
                       <input type="text"></input>
                       <button type="button">Redimir</button>
                     </div>
-                    <button type="button" onClick={() =>  checkStock() }>
+                    <button type="button" onClick={() => checkStock()}>
                       Pagar
                     </button>
                   </div>
@@ -257,17 +261,17 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                           <input type="hidden" name="customer-data:email" value={currentUser.email} />
                           <input type="hidden" name="customer-data:full-name" value={currentUser.name} />
                           <input type="hidden" name="customer-data:phone-number" value={currentUser.phone} />
-                          <input type="hidden" name="shipping-address:country" value="CO"/>
+                          <input type="hidden" name="shipping-address:country" value="CO" />
                           {/* <input name="customer-data:legal-id-type" value="CC" /> */}
                           <select form="wompi">
                             <option value={"CE"}> CE </option>
                             <option value={"CC"}> CC </option>
                           </select>
                           <input name="customer-data:legal-id" placeholder="cedula" />
-                          <input name="shipping-address:address-line-1" placeholder="dirección"/>
-                          <input name="shipping-address:phone-number" placeholder="telefono"/>
-                          <input name="shipping-address:city" placeholder="ciudad"/>
-                          <input name="shipping-address:region" placeholder="region"/>
+                          <input name="shipping-address:address-line-1" placeholder="dirección" />
+                          <input name="shipping-address:phone-number" placeholder="telefono" />
+                          <input name="shipping-address:city" placeholder="ciudad" />
+                          <input name="shipping-address:region" placeholder="region" />
                           <button className="paymentInformation__paymentButton" type="submit" >Pagar con Wompi</button>
                         </form>
                       }
