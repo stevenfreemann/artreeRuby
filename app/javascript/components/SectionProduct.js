@@ -29,7 +29,6 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
         })
         response = await response.json()
         console.log('response', response);
-        end
     }
 
     return (
