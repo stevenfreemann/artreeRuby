@@ -4,7 +4,7 @@ import atras from '../../assets/static/buttons/left-arrow.png'
 import pregunta from '../../assets/static/icon/pregunta.png'
 
 const PurchaseFailed = ({ info }) => {
-    console.log(test)
+    console.log("test")
     let response = fetch(`/correct_stock`, {
         method: 'POST', 
         headers: {
@@ -12,8 +12,8 @@ const PurchaseFailed = ({ info }) => {
         },
         body: JSON.stringify({transaction: info}),
       }).then(response = response.json())
-       .then(data => {
-           console.log('response', response)
+        .then(data => {
+           console.log('response', data)
        })
        //   const availableStock = result["result"]
 
