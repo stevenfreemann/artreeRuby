@@ -52,13 +52,15 @@ class TransactionsController < ApplicationController
 
 
   def correct_stock
-    transaction= params[:transaction]
-    transaction.products.each do |product|
-      photo = product.photo
-      photo.stock += 1
-      photo.save
-      console.log(photo.stock) 
-    end
+    render json: { result: "transaction updated" }, status: 200
+
+    # transaction= params[:transaction]
+    # transaction.products.each do |product|
+    #   photo = product.photo
+    #   photo.stock += 1
+    #   photo.save
+    #   console.log(photo.stock) 
+    # end
   end
   
   def create
