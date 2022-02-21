@@ -5,7 +5,7 @@ import pregunta from '../../assets/static/icon/pregunta.png'
 
 const PurchaseFailed = ({ info }) => {
     console.log("test")
-    let response = fetch(`/correct_stock`, {
+    fetch(`/correct_stock`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
