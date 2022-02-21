@@ -3,16 +3,18 @@ import Title from '../Title'
 import atras from '../../assets/static/buttons/left-arrow.png'
 import pregunta from '../../assets/static/icon/pregunta.png'
 
-const PurchaseFailed = async({ info }) => {
-    let response = await fetch(`/correct_stock`, {
+const PurchaseFailed = ({ info }) => {
+    console.log(test)
+    let response = fetch(`/correct_stock`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({transaction: info}),
-      })     
-       response = await response.json()
-       console.log('response', response)
+      }).then(response = response.json())
+       .then(data => {
+           console.log('response', response)
+       })
        //   const availableStock = result["result"]
 
     return (
