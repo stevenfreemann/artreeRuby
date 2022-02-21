@@ -23,27 +23,22 @@ import marco3 from '../../assets/static/images/marcos3.png'
 
 const packing = [{id:1, name:"Normal"}]
 
-const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWishItem, sizeInfo, materials, frames, packing}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase}) => {
     //console.log("price", price)
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
-    const [selectSize, setSelectSize] = useState("")
-    const [selectMaterial, setSelectMaterial] = useState("")
-    const [selectFrame, setSelectFrame] = useState("")
-    const [selectPacking, setSelectPacking] = useState("")
+    const [selectedSize, setSelectedSize] = useState("")
+    const [selectedMaterial, setSelectedMaterial] = useState("")
+    const [selectedFrame, setSelectedFrame] = useState("")
+    const [selectedPacking, setSelectedPacking] = useState("")
     const [modal, setModal] = useState(false)
     const modalDataRef = useRef({})
     const modalInfoRef = useRef({})
 
-    console.log('selectSize :>> ', selectSize); 
-    console.log('selectMaterial :>> ', selectMaterial); 
-    console.log('selectFrame :>> ', selectFrame);
-    console.log('selectPacking :>> ', selectPacking);
-
     const navigate=(section)=>{
         if(showExclusive){
-            if (selectSize&&selectFrame&&selectPacking) {
+            if (selectedSize!==""&&selectedFrame!==""&&selectedPacking!=="") {
                 const redirect={
                     'cart':'/cart'
                 }
@@ -54,7 +49,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
             }
         }
         else{
-            if (selectSize&&selectMaterial&&selectFrame&&selectPacking) {
+            if (selectedSize!==""&&selectedMaterial!==""&&selectedFrame!==""&&selectedPacking!=="") {
                 const redirect={
                     'cart':'/cart'
                 }
@@ -66,6 +61,18 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
         }
     }
 
+    const setData = ( i, tag)=>{
+        let tempProductObj = {...productPurchase}
+        let dataTags = { size: sizeInfo, material: materials, frame: frames, packing: packing}
+
+        let selectedTag = dataTags[tag]
+        let selectedData = selectedTag[i]
+        if(selectedData){
+            tempProductObj[tag] = selectedData
+            setProductPurchase(tempProductObj)
+        }
+    }
+    
     useEffect(() => {
         let info = document.getElementsByClassName('accordeon-info')
         for (let i = 0; i < info.length; i++) {
@@ -94,7 +101,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
     }
       return (
           <div className="showProductPurchase">
-            {modal&&<SectionProductModal showModal={modal} info={modalInfoRef.current} price={price} dataModal={modalDataRef.current} selectSize={selectSize} setSelectSize={setSelectSize} selectMaterial={selectMaterial} setSelectMaterial={setSelectMaterial} selectFrame={selectFrame} setSelectFrame={setSelectFrame} listener={()=>{setModal(!modal);document.body.style.overflow='visible'}}/>}
+            {modal&&<SectionProductModal {...{setData, modal, setModal, selectedSize, setSelectedSize, selectedMaterial, setSelectedMaterial, selectedFrame, setSelectedFrame}} info={modalInfoRef.current} dataModal={modalDataRef.current}/>}
             <div className="showProductPurchase__progress">
                 <hr></hr>
                 <div className="showProductPurchase__item">
@@ -102,20 +109,20 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
                     <span>Foto</span>
                 </div>
                 <div className="showProductPurchase__item">
-                    <div className={selectSize!==0?"item-selected":""}></div>
+                    <div className={selectedSize!==""?"item-selected":""}></div>
                     <span>Tamaño</span>
                 </div>
                 {!showExclusive&&
                 <div className="showProductPurchase__item">
-                    <div className={selectMaterial!==0?"item-selected":""}></div>
+                    <div className={selectedMaterial!==""?"item-selected":""}></div>
                     <span>Materiales</span>
                 </div>}
                 <div className="showProductPurchase__item">
-                    <div className={selectFrame!==0?"item-selected":""}></div>
+                    <div className={selectedFrame!==""?"item-selected":""}></div>
                     <span>Marco</span>
                 </div>
                 <div className="showProductPurchase__item">
-                    <div className={selectPacking!==0?"item-selected":""}></div>
+                    <div className={selectedPacking!==""?"item-selected":""}></div>
                     <span>Empaque</span>
                 </div>
             </div>
@@ -123,7 +130,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
                 <div className="showProductPurchase__info">
                     <img src={photo.file.url} alt={photo.name}/>
                     <div>
-                        <span style={{fontWeight:"bold"}}>{photo.name}: </span>
+                        <span style={{fontWeight:"bold"}}>{photo.name}: $ {photo.base_price} </span>
                         <span>{photo.info}</span>
                     </div>
                 </div>
@@ -135,7 +142,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
                             <div className="accordeon-sizes">
                                 {sizeInfo?.map((size, i)=>
                                 <div id={`size${i}`} key={size.id}>
-                                    <img style={selectSize===i?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{showModal('size')}}/>
+                                    <img style={selectedSize===i?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{showModal('size')}}/>
                                     <span>{size.dimensions} cm</span>
                                     <span>$ {size.price}</span>
                                 </div>
@@ -148,7 +155,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-material">
                                 {materials?.map((material, i)=>
-                                    <img style={selectMaterial===i?{opacity:1, transform:'scale(1.2)'}:{opacity:0.3}} key={material.id} src={material.file.url} alt='material' onClick={()=>{showModal('material')}}/>
+                                    <img style={selectedMaterial===i?{opacity:1, transform:'scale(1.2)'}:{opacity:0.3}} key={material.id} src={material.file.url} alt='material' onClick={()=>{showModal('material')}}/>
                                 )}
                             </div>
                         </div>
@@ -156,9 +163,9 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
                         <div className="accordeon-info" style={accordionInfo!==3?{height:'0'}:{}}>
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
                             <div className="accordeon-frame">
-                                {frames?.map((frame)=>
-                                <div key={frame.id}>
-                                    <input type="radio" name="marco" checked={selectFrame===frame.id?true:false} onChange={()=>{showModal('frame')}}/>
+                                {frames?.map((frame, i)=>
+                                <div key={frame?.id}>
+                                    <input type="radio" name="marco" checked={selectedFrame===i?true:false} onChange={()=>{showModal('frame')}}/>
                                     <label>{frame.name}</label>
                                 </div>
                                 )}
@@ -170,7 +177,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
                             <div className="accordeon-package">
                             {packing.map((pack, i)=>
                                 <div key={pack.id}>
-                                    <input type="radio" name="pack" checked={selectPacking===pack.id?true:false} onChange={()=>{setSelectPacking(i+1)}}/>
+                                    <input type="radio" name="pack" checked={selectedPacking===i?true:false} onChange={()=>{setSelectedPacking(i);setData(i, "packing")}}/>
                                     <label>{pack.name}</label>
                                 </div>
                             )}
@@ -180,7 +187,11 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, price, room, clickWish
                         </div>
                     </div>
                     <div className="showProductPurchase__icons">
-                        {!showLikeAPro&&<div onClick={()=>clickWishItem(selectSize, selectFrame, selectPacking, selectMaterial)}>
+                        <div>
+                            <span>Total: $ {pricePurchase}</span>
+                        </div>
+                        {!showLikeAPro&&
+                            <div onClick={listenerWishList}>
                             <img src={wishList} alt="wishlist"/>
                             <span>Wish List</span>
                         </div>}

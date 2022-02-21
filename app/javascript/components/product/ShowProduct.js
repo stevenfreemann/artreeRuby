@@ -16,18 +16,18 @@ const ShowProduct = ({photo, setScreen , room}) => {
     const [horizontal, setHorizontal] = useState(false)
 
     useEffect(() => {
-        let picture1 = document.getElementsByClassName("showProduct__spacesGaleryPt")[0] || document.getElementsByClassName("showProduct__spacesGaleryPt--height")[0]
-        let picture2 = document.getElementsByClassName("showProduct__spacesSpacePt")[0] || document.getElementsByClassName("showProduct__spacesSpacePt--height")[0]
+        let picture1 = document.getElementsByClassName("showProduct__spacesGaleryPt")[0] || document.getElementsByClassName("showProduct__spacesGaleryPt--horizontal")[0]
+        let picture2 = document.getElementsByClassName("showProduct__spacesSpacePt")[0] || document.getElementsByClassName("showProduct__spacesSpacePt--horizontal")[0]
         if(picture2){
             let width = picture1.width
             let height = picture1.height
-            if(width/height<1){
-                picture1.classList.replace('showProduct__spacesGaleryPt','showProduct__spacesGaleryPt--height')
-                picture2.classList.replace('showProduct__spacesSpacePt','showProduct__spacesSpacePt--height')
+            if(width/height>1){
+                picture1.classList.replace('showProduct__spacesGaleryPt','showProduct__spacesGaleryPt--horizontal')
+                picture2.classList.replace('showProduct__spacesSpacePt','showProduct__spacesSpacePt--horizontal')
                 setHorizontal(true)
             }else{
-                picture1.classList.replace('showProduct__spacesGaleryPt--height','showProduct__spacesGaleryPt')
-                picture2.classList.replace('showProduct__spacesSpacePt--height','showProduct__spacesSpacePt')
+                picture1.classList.replace('showProduct__spacesGaleryPt--horizontal','showProduct__spacesGaleryPt')
+                picture2.classList.replace('showProduct__spacesSpacePt--horizontal','showProduct__spacesSpacePt')
                 setHorizontal(false)
             }
         }
@@ -42,7 +42,7 @@ const ShowProduct = ({photo, setScreen , room}) => {
                 <div className="showProduct__spaces">
                     <div>
                         <h3>De la galería...</h3>
-                        <div className="showProduct__spaces-galeryBg">
+                        <div className="showProduct__spacesGaleryBg">
                             <img src={imgGalery} alt="galeriaBg"/>
                             <img className="showProduct__spacesGaleryPt" src={photo.file.url} alt="galeriaPt"/>
                             <span>pikisuperstar</span>
@@ -50,9 +50,10 @@ const ShowProduct = ({photo, setScreen , room}) => {
                     </div>
                     <div>
                         <h3>...a tus espacios</h3>
-                        <div className="showProduct__spaces-spaceBg">
-                            <img src={room.space_vertical.url} alt="espacios"/>
-                            <img className="showProduct__spacesSpacePt" src={photo.file.url} alt="galeriaPt"/>
+                        <div className="showProduct__spacesSpaceBg">
+                            <img src={horizontal ? room?.space_horizontal?.url : room?.space_vertical?.url} alt="espacios"/>
+                            {/* Coordenadas TODO: agregar coordenadas para horizantal en el style de la image de abajo */}
+                            <img className="showProduct__spacesSpacePt" src={photo.file.url} alt="galeriaPt" style={horizontal ? {top:room?.top+"%" || 0, left: room?.left+"%" || 0}: {}}/>
                         </div>
                     </div>
                 </div>
