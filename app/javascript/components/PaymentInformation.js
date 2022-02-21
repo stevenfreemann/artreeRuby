@@ -255,7 +255,8 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                           <input type="hidden" name="amount-in-cents" value={answer.total_cost} />
                           <input type="hidden" name="reference" value={answer.ref_number} />
                           <input type="hidden" xname="signature:integrity" value={answer.signature} />
-                          <input type="hidden" name="redirect-url" value="https://artree-shop.herokuapp.com/result" />
+                          <input type="hidden" name="redirect-url" value="http://localhost:3000/result" />
+                          {/* <input type="hidden" name="redirect-url" value="https://artree-shop.herokuapp.com/result" /> */}
                           <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax} />
                           <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax} />
                           <input type="hidden" name="customer-data:email" value={currentUser.email} />

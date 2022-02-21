@@ -57,7 +57,7 @@ class TransactionsController < ApplicationController
     # transaction= params[:transaction]
     # transaction.products.each do |product|
     #   photo = product.photo
-    #   photo.stock += 1
+    #   photo.stock += product.quantity
     #   photo.save
     #   console.log(photo.stock) 
     # end

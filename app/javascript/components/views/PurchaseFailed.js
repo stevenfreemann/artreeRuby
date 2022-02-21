@@ -4,18 +4,22 @@ import atras from '../../assets/static/buttons/left-arrow.png'
 import pregunta from '../../assets/static/icon/pregunta.png'
 
 const PurchaseFailed = ({ info }) => {
-    console.log("test")
-    fetch(`/correct_stock`, {
-        method: 'POST', 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({transaction: info}),
-      }).then(response = response.json())
-        .then(data => {
-           console.log('response', data)
-       })
-       //   const availableStock = result["result"]
+    useEffect(() => {
+        const correctStock = async () => {
+            console.log("info", info)
+            // let response = await fetch(`/correct_stock`, {
+            //     method: 'POST', 
+            //     headers: {
+            //       'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({transaction: info}), 
+            //   })     
+            //    response = await response.json()
+            //    console.log('response', response)
+               //   const availableStock = result["result"]
+            }
+        correctStock()
+    }, [])
 
     return (
         <div className='purchaseFailed'>
