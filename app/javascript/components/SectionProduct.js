@@ -6,11 +6,16 @@ import CarrouselDown from './CarouselDownMarket'
 
 const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames, packing, authenticity_token}) => {
     const [photo, setPhoto] = useState(photos[0])
-    console.log("photo", photo)
-    console.log("token", authenticity_token)
-
     const [screen, setScreen] = useState(view === 3 ? 'purchase':"picture")
-    
+
+    console.log("photo", photo)
+    // console.log("token", authenticity_token)
+    // console.log('sizeInfo :>> ', sizeInfo);
+    // console.log('materials :>> ', materials);
+    console.log('room :>> ', room);
+    console.log('frames :>> ', frames);
+    console.log('packing :>> ', packing);
+
     const generateWishItem = async(size, frame, material, packing) => {
         // console.log(`size ${size}` , `frame ${frame}`,  `material ${material}`,  `packing ${packing}`,  `photo ${photo.id}`)
          
@@ -33,10 +38,10 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
                 <h1>{title}</h1>
             </div>
             <div className="sectionProduct__cont">
-                    {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
-                    :screen==="purchase"&&
-                    <ShowProductPurchase clickWishItem={generateWishItem} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false} photo={photo}  price={photo.base_price} sizeInfo={sizeInfo} materials={materials} frames={frames} packing={packing}/>}
-                    {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
+                {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
+                :screen==="purchase"&&
+                <ShowProductPurchase clickWishItem={generateWishItem} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false} photo={photo}  price={photo.base_price} sizeInfo={sizeInfo} materials={materials} frames={frames} packing={packing}/>}
+                {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
             </div>
         </div>
     )

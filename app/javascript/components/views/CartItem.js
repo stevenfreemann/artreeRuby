@@ -7,25 +7,20 @@ import Wishlist from "../../assets/static/buttons/moverwishlistbtn@2x.png";
 import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.png";
 
 
-const CartItem = ({ product, k}) => {
-  const total = product.photo.stock
-  const cant = Array.from({length: total}, (_, i) => i + 1)
-  const [quantity, setQuantity ] = useState(1)
+const CartItem = ({ updateItem, prod, k }) => {
+  const total = prod.photo.stock
+  const [product] = useState(prod);
+  const cant = Array.from({ length: total }, (_, i) => i + 1)
   const editRef = useRef({});
   const deleteRef = useRef({});
   const wishRef = useRef({});
 
-  useEffect(()=>{
-    const data = localStorage.getItem("items")
-    let wish = JSON.parse(data)
-    console.log(wish)
-    wish.map((v)=>{
-      if(v.id === product.id) v["quantity"] = parseInt(quantity)  
-      else v["quantity"] = v["quantity"] ? v["quantity"] : 1
-    })
-    localStorage.setItem("items",JSON.stringify(wish))
-  },[quantity])
-
+  const updateQuantity = (value) => {
+    let temp = { ...product }
+    temp.quantity = parseInt(value)
+    // temp?.quantity = value
+    updateItem(temp)
+  }
   return (
     <div className="cardItem" key={k}>
       <div className="cardItem__product">
@@ -75,12 +70,12 @@ const CartItem = ({ product, k}) => {
           <span>marco {product.sub_materials[1].name}.</span>
         </div>
         <div className="cardItem__price">
-          <select value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
+          <select value={product.quantity} onChange={(e) => updateQuantity(e.target.value,)}>
             {cant.map((number) => (
               <option value={number}>{number}</option>
             ))}
           </select>
-          <h3>${product.photo.base_price}</h3>
+          <h3>${product.photo.base_price * product.quantity}</h3>
         </div>
       </div>
       <hr />
