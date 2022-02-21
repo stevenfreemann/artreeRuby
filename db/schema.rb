@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.float "top", default: 0.0
-    t.float "left", default: 0.0
+    t.float "top_vertical", default: 0.0
+    t.float "left_vertical", default: 0.0
     t.string "space_vertical"
     t.boolean "pinned", default: false
     t.datetime "created_at", precision: 6, null: false
@@ -122,6 +122,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.bigint "line_id", null: false
     t.string "space_horizontal"
     t.string "file"
+    t.float "top_horizontal", default: 0.0
+    t.float "left_horizontal", default: 0.0
     t.index ["line_id"], name: "index_rooms_on_line_id"
   end
 

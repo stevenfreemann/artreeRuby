@@ -52,8 +52,7 @@ const ShowProduct = ({photo, setScreen , room}) => {
                         <h3>...a tus espacios</h3>
                         <div className="showProduct__spacesSpaceBg">
                             <img src={horizontal ? room?.space_horizontal?.url : room?.space_vertical?.url} alt="espacios"/>
-                            {/* Coordenadas TODO: agregar coordenadas para horizantal en el style de la image de abajo */}
-                            <img className="showProduct__spacesSpacePt" src={photo.file.url} alt="galeriaPt" style={horizontal ? {top:room?.top+"%" || 0, left: room?.left+"%" || 0}: {}}/>
+                            <img className="showProduct__spacesSpacePt" src={photo.file.url} alt="galeriaPt" style={horizontal ? {top:room?.top_horizontal+"%" || 0, left: room?.left_horizontal+"%" || 0} : {top:room?.top_vertical+"%" || 0, left: room?.left_vertical+"%" || 0}}/>
                         </div>
                     </div>
                 </div>
