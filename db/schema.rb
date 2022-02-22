@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string "reference"
     t.string "name"
     t.text "description"
     t.integer "base_price"
@@ -102,8 +101,6 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.bigint "wish_item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "priority"
-    t.boolean "starred"
     t.index ["artist_id"], name: "index_photos_on_artist_id"
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"

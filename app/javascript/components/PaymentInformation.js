@@ -71,7 +71,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
           })
       }
       else {
-        alert('No hay inventario para este tamaño')
+        alert(response.msg)
       }
     })
   }

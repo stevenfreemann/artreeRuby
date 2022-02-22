@@ -10,4 +10,11 @@ class ChangeStockInPhoto < ActiveRecord::Migration[6.0]
       change_column :photos, :active, :boolean
     end
   end
+
+  def change
+    remove_column :photos, :priority
+    remove_column :photos, :starred
+    remove_column :photos, :reference
+  end
+  
 end

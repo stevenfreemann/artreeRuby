@@ -3,7 +3,8 @@ import PurchaseFailed from './PurchaseFailed'
 import PurchaseSuccess from './PurchaseSuccess'
 
 const validateError = ["DECLINED", "ERROR"]
-const Transaction = (info) => {
+const Transaction = ({ info }) => {
+  console.log("info", info)
   return (
     <div>
       {validateError.includes(info.status) ?

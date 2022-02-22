@@ -5,7 +5,7 @@ ActiveAdmin.register Room, as: "Salas" do
     f.inputs "Details" do
       f.input :name
       f.input :pinned
-      f.input :line
+      f.input :line_id, as: :select, collection: Line.all
       f.input :description
       f.input :space_horizontal
       f.input :space_vertical

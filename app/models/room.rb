@@ -9,6 +9,7 @@ class Room < ApplicationRecord
   validates :top_vertical, :inclusion => { :in => 0..100 }
   validates :left_vertical, :inclusion => { :in => 0..100 }
 
+
   belongs_to :line
   has_many :photos
 end

@@ -46,21 +46,20 @@ class TransactionsController < ApplicationController
         item = Photo.find(id)
         noStockName << item.name
       end
-      render json: "Foto(s) sin inventario suficiente: #{noStockName}"
+      render json: {success:false, msg: "Foto(s) sin inventario suficiente: #{noStockName}"}
     end
   end
 
-
   def correct_stock
-    render json: { result: "transaction updated" }, status: 200
-
-    # transaction= params[:transaction]
-    # transaction.products.each do |product|
-    #   photo = product.photo
-    #   photo.stock += product.quantity
-    #   photo.save
-    #   console.log(photo.stock) 
-    # end
+    items = params[:products]
+    items.each do |product|
+      item = JSON.parse(product)
+      puts "-----item--------#{product.class}"
+      photo = product.photo
+      photo.stock += product.quantity
+      photo.save
+      puts "-----stock---------#{product.stock}"
+    end
   end
   
   def create
@@ -69,10 +68,13 @@ class TransactionsController < ApplicationController
     iva = cost * 0.19
     consumo = cost * 0.08
     total_cost = cost + iva + consumo
-    # items = JSON.parse(params[:products])
-
-    puts "--------------#{params[:products]}"
-    @transaction = Transaction.new(products: params[:products], total_cost: (total_cost * 100) , iva_tax: (iva  * 100), consumption_tax: (consumo * 100), user: current_user)
+    items = (params[:products])
+    items.each do |item|
+      puts "------item--------#{item}"
+      #JSON.parse(item)
+    end
+  
+    @transaction = Transaction.new(products: items, total_cost: (total_cost * 100) , iva_tax: (iva  * 100), consumption_tax: (consumo * 100), user: current_user)
     @transaction.save
     @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
     @transaction.save

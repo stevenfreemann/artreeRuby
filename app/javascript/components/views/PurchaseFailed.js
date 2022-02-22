@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import Title from '../Title'
 import atras from '../../assets/static/buttons/left-arrow.png'
 import pregunta from '../../assets/static/icon/pregunta.png'
@@ -7,16 +7,16 @@ const PurchaseFailed = ({ info }) => {
     useEffect(() => {
         const correctStock = async () => {
             console.log("info", info)
-            // let response = await fetch(`/correct_stock`, {
-            //     method: 'POST', 
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({transaction: info}), 
-            //   })     
-            //    response = await response.json()
-            //    console.log('response', response)
-               //   const availableStock = result["result"]
+            let response = await fetch(`/correct_stock`, {
+                method: 'POST', 
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({products: info.products}), 
+              })     
+               response = await response.json()
+               console.log('response', response)
+                 const availableStock = result["result"]
             }
         correctStock()
     }, [])
