@@ -3,7 +3,7 @@ import Title from '../Title'
 import atras from '../../assets/static/buttons/left-arrow.png'
 import pregunta from '../../assets/static/icon/pregunta.png'
 
-const PurchaseFailed = ({ info }) => {
+const PurchaseFailed = ({ info, status }) => {
     useEffect(() => {
         const correctStock = async () => {
             console.log("info", info)
@@ -12,11 +12,10 @@ const PurchaseFailed = ({ info }) => {
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({products: info.products}), 
+                body: JSON.stringify({products: info}), 
               })     
                response = await response.json()
-               console.log('response', response)
-                 const availableStock = result["result"]
+               console.log('response', response)                 
             }
         correctStock()
     }, [])
@@ -29,7 +28,7 @@ const PurchaseFailed = ({ info }) => {
                 <h3>
                     Compra Fallida
                 </h3>
-                <span >{info.status_message}</span>
+                <span >{status}</span>
                 <button onClick={() => window.location = "/cart"}>Volver al carrito</button>
             </div>
         </div>

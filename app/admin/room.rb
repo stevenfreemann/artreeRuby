@@ -1,5 +1,5 @@
 ActiveAdmin.register Room, as: "Salas" do
-  permit_params :name, :pinned, :line_id, :description, :file, :space_horizontal, :space_vertical, :top, :left
+  permit_params :name, :pinned, :line_id, :description, :file, :space_horizontal, :space_vertical, :top_horizontal, :left_horizontal, :top_vertical, :left_vertical
 
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Details" do
@@ -10,10 +10,10 @@ ActiveAdmin.register Room, as: "Salas" do
       f.input :space_horizontal
       f.input :space_vertical
       f.input :file
-      f.input :top
-      f.input :left
-
-
+      f.input :top_horizontal
+      f.input :left_horizontal
+      f.input :top_vertical
+      f.input :left_vertical
     end
     f.actions
   end

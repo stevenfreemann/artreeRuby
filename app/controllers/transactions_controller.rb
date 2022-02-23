@@ -3,15 +3,39 @@ class TransactionsController < ApplicationController
   skip_before_action :verify_authenticity_token
   require "http"
   
-
+  
   def index
     @transactions = Transaction.all
   end
   
   def show
   end
-
-
+  
+  def create
+    params.permit!
+    cost = params[:total_cost]
+    iva = cost * 0.19
+    consumo = cost * 0.08
+    total_cost = cost + iva + consumo
+    items = (params[:products])
+    items.each do |item|
+      #puts "------item--------#{item}"
+    end
+  
+    @transaction = Transaction.new(products: items, total_cost: (total_cost * 100) , iva_tax: (iva  * 100), consumption_tax: (consumo * 100), user: current_user)
+    @transaction.save
+    @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
+    @transaction.save
+    
+    price = total_cost.to_s + "00"
+    secret = "test_integrity_wi0bQa6UvC3a7trCM2uj7fgo1yBy5754"
+    chain = @transaction.ref_number.to_s + price + "COP" + secret
+    @transaction.signature = Digest::SHA2.hexdigest(chain)
+    @transaction.save
+    
+    render json: @transaction #enviar serializado con parseo e itereador
+  end
+  
   def stock
     # puts "---------params-------#{params[:ids]}"
     res = params[:ids]
@@ -45,6 +69,7 @@ class TransactionsController < ApplicationController
       noStock.each do |id|
         item = Photo.find(id)
         noStockName << item.name
+        AdminMailer.with( email: "msantamaria86@gmail.com" , id:item.id, name: item.name, room: item.room.name).send_stock.deliver_later
       end
       render json: {success:false, msg: "Foto(s) sin inventario suficiente: #{noStockName}"}
     end
@@ -52,41 +77,16 @@ class TransactionsController < ApplicationController
 
   def correct_stock
     items = params[:products]
+    puts "-----items---------#{items}"
     items.each do |product|
-      item = JSON.parse(product)
-      puts "-----item--------#{product.class}"
+      puts "-----product---------#{product}"
+      #item = JSON.parse(product)
       photo = product.photo
       photo.stock += product.quantity
       photo.save
-      puts "-----stock---------#{product.stock}"
     end
   end
   
-  def create
-    params.permit!
-    cost = params[:total_cost]
-    iva = cost * 0.19
-    consumo = cost * 0.08
-    total_cost = cost + iva + consumo
-    items = (params[:products])
-    items.each do |item|
-      puts "------item--------#{item}"
-      #JSON.parse(item)
-    end
-  
-    @transaction = Transaction.new(products: items, total_cost: (total_cost * 100) , iva_tax: (iva  * 100), consumption_tax: (consumo * 100), user: current_user)
-    @transaction.save
-    @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
-    @transaction.save
-    
-    price = total_cost.to_s + "00"
-    secret = "test_integrity_wi0bQa6UvC3a7trCM2uj7fgo1yBy5754"
-    chain = @transaction.ref_number.to_s + price + "COP" + secret
-    @transaction.signature = Digest::SHA2.hexdigest(chain)
-    @transaction.save
-    
-    render json: @transaction #enviar serializado con parseo e itereador
-  end
   
 
   def wompi_response
@@ -110,9 +110,26 @@ class TransactionsController < ApplicationController
   
   
   def result
-    @transaction = Transaction.find_by(transaction_id: "#{params[:id]}")
+    validate = ['DECLINED', 'ERROR']
+    @transaction = Transaction.find_by(transaction_id: params[:id])
+    #puts "--------transaction-----------#{@transaction}"
+    if validate.include?(@transaction.status)
+      redirect_to failure_path(transaction: @transaction.id)
+    else
+      redirect_to success_path(transaction: @transaction.id)
+    end
   end
 
+  def failure
+    transaction = Transaction.find(params[:transaction])
+    @products = transaction.products[0]
+    @status = transaction.status_message
+    puts "----------_#{@products}"
+  end
+
+  def success
+    @transaction = Transaction.find(params[:transaction])
+  end
 
   private
     def set_transaction

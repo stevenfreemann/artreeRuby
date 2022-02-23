@@ -1,14 +1,16 @@
 class AdminMailer < ApplicationMailer
-  def send_pass
+  def send_stock
     mail(to: params[:email],
-      subject: 'email subject',
+      subject: 'Foto sin inventario',
       body: 'email body',
       delivery_method_options: {
         api_key: ENV["SENDGRID"]
       },
-      template_id: 'd-d4e369637b2243078d3545b203c3b70a',
+      template_id: 'd-aa022c1aa937474298016317b991967e',
       dynamic_template_data:{
-        'pass': params[:pass]
+        'id': params[:id],
+        'name': params[:name],
+        'room': params[:room]
       }
     )
   end
