@@ -16,7 +16,7 @@ const fields = ["correo", ""]
 
 
 
-const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token }) => {
+const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token, cost }) => {
   const [check, setCheck] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
   const [signIn, setSignIn] = useState(null);
@@ -246,38 +246,31 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                       {viewPayment === 1 ?
                         <div className="paymentInformation__payment" style={{ alignItems: "center" }}>
                           <legend>Métodos de pago</legend>
-                          <SeeButton textBtn={"Pagar con Wompi"} listener={() => setViewPayment(2)} />
+                          <SeeButton textBtn={"Pagar con payU"} listener={() => setViewPayment(2)} />
                         </div>
                         :
-                        <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
-                          <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
-                          <input type="hidden" name="currency" value="COP" />
-                          <input type="hidden" name="amount-in-cents" value={answer.total_cost} />
-                          <input type="hidden" name="reference" value={answer.ref_number} />
-                          <input type="hidden" xname="signature:integrity" value={answer.signature} />
-                          <input type="hidden" name="redirect-url" value="http://localhost:3000/result" />
-                          {/* <input type="hidden" name="redirect-url" value="https://artree-shop.herokuapp.com/result" /> */}
-                          <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax} />
-                          <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax} />
-                          <input type="hidden" name="customer-data:email" value={currentUser.email} />
-                          <input type="hidden" name="customer-data:full-name" value={currentUser.name} />
-                          <input type="hidden" name="customer-data:phone-number" value={currentUser.phone} />
-                          <input type="hidden" name="shipping-address:country" value="CO" />
-                          {/* <input name="customer-data:legal-id-type" value="CC" /> */}
-                          <select form="wompi">
-                            <option value={"CE"}> CE </option>
-                            <option value={"CC"}> CC </option>
-                          </select>
-                          <input name="customer-data:legal-id" placeholder="cedula" />
-                          <input name="shipping-address:address-line-1" placeholder="dirección" />
-                          <input name="shipping-address:phone-number" placeholder="telefono" />
-                          <input name="shipping-address:city" placeholder="ciudad" />
-                          <input name="shipping-address:region" placeholder="region" />
-                          <button className="paymentInformation__paymentButton" type="submit" >Pagar con Wompi</button>
-                        </form>
+                        <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                        <input name="merchantId"      type="hidden"  value="508029"  />
+                        <input name="accountId"       type="hidden"  value="512321"/>
+                        <input name="description"     type="hidden"  value="TRUE" />
+                        <input name="referenceCode"   type="hidden"  value={240220220000114}/>
+                        <input name="amount"          type="hidden"  value={100000}  />
+                        <input name="tax"             type="hidden"  value={answer.iva_tax} />
+                        <input name="taxReturnBase"   type="hidden"  value={answer.total_cost - answer.iva_tax - answer.consumption_tax}/>
+                        <input name="currency"        type="hidden"  value="COP"/>
+                        <input name="signature"       type="hidden"  value="4794e19858d4a83ab79d660e689e597e" />
+                        <input name="test"            type="hidden"  value="1"/> 
+                        <input name="buyerEmail"      type="hidden"  value={currentUser.email}/>
+                        <input name="responseUrl"     type="hidden"  value="http://localhost:3000/result"/> 
+                        <input name="confirmationUrl" type="hidden"  value="https://webhook.site/bc318f8c-a945-443e-bd2a-258744b4c69a"/>
+                        <input name="shippingCountry" type="hidden"  value="CO" />
+                        <input name="shippingAddress" placeholder="Direccion"  />
+                        <input name="extra1"          placeholder="Cedula"  />
+                        <input name="shippingCity"    placeholder="Ciudad"/>
+                        <input name="Submit"          type="submit"  value="Pagar con payU"/>
+                      </form>
                       }
                     </>
-
                   )}
       </div>
     </div>

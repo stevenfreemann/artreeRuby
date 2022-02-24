@@ -28,9 +28,12 @@ class TransactionsController < ApplicationController
     @transaction.save
     
     price = total_cost.to_s + "00"
+    #payu_price = total_cost.to_s
     secret = "test_integrity_wi0bQa6UvC3a7trCM2uj7fgo1yBy5754"
     chain = @transaction.ref_number.to_s + price + "COP" + secret
+    #payu_chain = 4Vj8eK4rloUd272L48hsrarnUA.to_s + ~508029.to_s~ref_number.to_s~payu_price~"COP"
     @transaction.signature = Digest::SHA2.hexdigest(chain)
+    # @transaction.payu_sign =  Digest::SHA2.new(256).hexdigest(payu_chain) # => "ba7816bf8..."
     @transaction.save
     
     render json: @transaction #enviar serializado con parseo e itereador
@@ -87,7 +90,29 @@ class TransactionsController < ApplicationController
     end
   end
   
-  
+  def payu_response
+    full_string = request.raw_post
+    array = full_string.split("&")
+    json = {}
+    array.each do |item|
+      i = item.split("=")
+      json[i[0]]= i[1]
+    end
+    transaction = Transaction.find_by(ref_number: json["reference_sale"])
+    transaction.status = json["response_message_pol"]
+    transaction.last_4 = json["cc_number"]
+    transaction.transaction_id = json["transaction_id"]
+    transaction.payment_method = json["cardType"]
+    transaction.civil_id = json["extra1"]
+    transaction.save
+
+    if json["error_message_bank"] != nil
+      transaction.status_message = json["error_message_bank"]
+      transaction.save
+      
+      render json: { result: "transaction updated" }, status: 200
+    end  
+  end
 
   def wompi_response
     json = params[:data][:transaction]
