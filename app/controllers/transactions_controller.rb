@@ -104,7 +104,7 @@ class TransactionsController < ApplicationController
 
     transaction = Transaction.find_by(ref_number: json["reference_sale"])
     transaction.status = json["response_message_pol"]
-    transaction.last_4 = json["cc_number"]
+    transaction.last_4 = json["cc_number"][-4..-1]
     transaction.transaction_id = json["transaction_id"]
     transaction.payment_method = json["cardType"]
     transaction.civil_id = json["extra1"]

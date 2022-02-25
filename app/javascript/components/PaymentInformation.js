@@ -261,11 +261,11 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <input name="signature"       type="hidden"  value={answer.signature}/>
                         <input name="test"            type="hidden"  value="1"/> 
                         <input name="buyerEmail"      type="hidden"  value={currentUser.email}/>
-                        <input name="responseUrl"     type="hidden"  value="http://localhost:3000/result"/> 
+                        <input name="responseUrl"     type="hidden"  value="https://artree-shop.herokuapp.com/result"/> 
                         <input name="confirmationUrl" type="hidden"  value="https://artree-shop.herokuapp.com/payu_response"/>
-                        <input name="shippingCountry" type="hidden"  value="CO" />
-                        <input name="shippingAddress" placeholder="Direccion"  />
-                        <input name="extra1"          placeholder="Cedula"  />
+                        <input name="shippingCountry" type="hidden"  value="CO"/>
+                        <input name="shippingAddress" placeholder="Direccion"/>
+                        <input name="extra1"          placeholder="Cedula"/>
                         <input name="shippingCity"    placeholder="Ciudad"/>
                         <input name="Submit"          type="submit"  value="Pagar con payU"/>
                       </form>
