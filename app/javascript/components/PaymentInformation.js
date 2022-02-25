@@ -17,14 +17,14 @@ const fields = ["correo", ""]
 
 
 const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token, cost }) => {
-  const [check, setCheck] = useState("Acount");
+  const [tab, setTab] = useState("Acount");
   const [cuenta, setCuenta] = useState(1);
   const [signIn, setSignIn] = useState(null);
   const [formu, setform] = useState(null);
   const [forgot, setForgot] = useState(null);
   const [viewPayment, setViewPayment] = useState(1);
   const [answer, setAnswer] = useState(null);
-  // const [available, setAvailable] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
 
 
 
@@ -67,7 +67,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
           .then(data => {
             console.log(data)
             setAnswer(data)
-            setCheck("Payment")
+            setTab("Payment")
           })
       }
       else {
@@ -136,31 +136,31 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
       <div className="paymentInformation__tabs">
         <div
           className={
-            check === "Acount" ? "paymentInformation__tabs--selected" : ""
+            tab === "Acount" ? "paymentInformation__tabs--selected" : ""
           }
-          onClick={() => setCheck("Acount")}
+          onClick={() => setTab("Acount")}
         >
           Cuenta
         </div>
         <div
           className={
-            check === "Check" ? "paymentInformation__tabs--selected" : ""
+            tab === "Check" ? "paymentInformation__tabs--selected" : ""
           }
-          onClick={() => setCheck("Check")}
+          onClick={() => setTab("Check")}
         >
           Check Out
         </div>
         <div
           className={
-            check === "Payment" ? "paymentInformation__tabs--selected" : ""
+            tab === "Payment" ? "paymentInformation__tabs--selected" : ""
           }
-          onClick={() => setCheck("Payment")}
+          onClick={() => setTab("Payment")}
         >
           Pagos
         </div>
       </div>
       <div className="paymentInformation__acount">
-        {check === "Acount" && cuenta === 1 ? (
+        {tab === "Acount" && cuenta === 1 ? (
           <div>
             {!currentUser && <legend>Iniciar Sesión</legend>}
             <div className='paymentInformation__acount-login' dangerouslySetInnerHTML={{ __html: signIn }} />
@@ -170,32 +170,32 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
               </div>}
           </div>
         )
-          : check === "Acount" && cuenta === 2 ? (
+          : tab === "Acount" && cuenta === 2 ? (
             <div>
               <legend>Regístrate</legend>
               <div className='paymentInformation__acount-registration' dangerouslySetInnerHTML={{ __html: formu }} />
             </div>
           )
-            : check === "Acount" && cuenta === 3 ? (
+            : tab === "Acount" && cuenta === 3 ? (
               <div className="paymentInformation__welcome">
                 <div>
                   <span>¡Bienvenido(a)!</span>
                   <span>{usuario}</span>
                 </div>
-                <button type="button" onClick={() => setCheck("Check")}>
+                <button type="button" onClick={() => setTab("Check")}>
                   Continuar Compra
                 </button>
                 <button type="button">Agregar Domicilio</button>
               </div>
             )
-              : check === "Acount" && cuenta === 4 ? (
+              : tab === "Acount" && cuenta === 4 ? (
                 <div>
                   <legend>¿Olvidó su contraseña?</legend>
                   <div className='paymentInformation__acount-forgot' dangerouslySetInnerHTML={{ __html: forgot }} />
                   <div className='paymentInformation__acount-back'><a onClick={() => setCuenta(1)}>Atrás</a></div>
                 </div>
               )
-                : check === "Check" ? (
+                : tab === "Check" ? (
                   <div className="paymentInformation__check">
                     <legend>¡Gracias por tú compra!</legend>
                     <span style={{ alignSelf: "center", marginBottom: "10%" }}>
@@ -241,35 +241,69 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                   </div>
                 )
                   : (
-                    check === "Payment" && answer &&
+                    tab === "Payment" && answer &&
                     <>
-                      {viewPayment === 1 ?
+                      {viewPayment === 1 &&
                         <div className="paymentInformation__payment" style={{ alignItems: "center" }}>
                           <legend>Métodos de pago</legend>
-                          <SeeButton textBtn={"Pagar con payU"} listener={() => setViewPayment(2)} />
+                          <SeeButton textBtn={"Pagar con Wompi"} listener={() => {setViewPayment(2); setPaymentMethod(1)} }/>
+                          <SeeButton textBtn={"Pagar con payU"} listener={() => {setViewPayment(2); setPaymentMethod(2)} }/>
                         </div>
-                        :
+                      }
+                      {viewPayment === 2 && paymentMethod === 1 &&                     
+                       <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
+                       <SeeButton listener= {() => setViewPayment(1)} textBtn={"Regresar"} style={{alignSelf:"center"}}/>
+                       <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
+                       <input type="hidden" name="currency" value="COP" />
+                       <input type="hidden" name="amount-in-cents" value={answer.total_cost} />
+                       <input type="hidden" name="reference" value={answer.ref_number} />
+                       <input type="hidden" xname="signature:integrity" value={answer.signature} />
+                       <input type="hidden" name="redirect-url" value="http://localhost:3000/result" />
+                       <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax} />
+                       <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax} />
+                       <input type="hidden" name="customer-data:email" value={currentUser.email} />
+                       <input type="hidden" name="customer-data:full-name" value={currentUser.name} />
+                       <input type="hidden" name="customer-data:phone-number" value={currentUser.phone} />
+                       <input type="hidden" name="shipping-address:country" value="CO" />
+                       <select form="wompi">
+                         <option value={"CE"}> CE </option>
+                         <option value={"CC"}> CC </option>
+                       </select>
+                       <input name="customer-data:legal-id" placeholder="cedula" />
+                       <input name="shipping-address:address-line-1" placeholder="dirección" />
+                       <input name="shipping-address:phone-number" placeholder="telefono" />
+                       <input name="shipping-address:city" placeholder="ciudad" />
+                       <input name="shipping-address:region" placeholder="region" />
+                       <button className="paymentInformation__paymentButton" type="submit" >Pagar con Wompi</button>
+                     </form>          
+                      }
+                        
+                      {viewPayment === 2 && paymentMethod === 2 &&                     
                         <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                       <SeeButton listener= {() => setViewPayment(1)} textBtn={"Regresar"} style={{alignSelf:"center"}}/>
                         <input name="merchantId"      type="hidden"  value="508029"  />
                         <input name="accountId"       type="hidden"  value="512321"/>
                         <input name="description"     type="hidden"  value="TRUE" />
-                        <input name="referenceCode"   type="hidden"  value={answer.ref_number}/>
-                        <input name="amount"          type="hidden"  value={answer.total_cost}  />
+                        <input name="referenceCode"   type="hidden"  value={240220220000114}/>
+                        <input name="amount"          type="hidden"  value={100000}  />
                         <input name="tax"             type="hidden"  value={answer.iva_tax} />
-                        <input name="taxReturnBase"   type="hidden"  value={(answer.total_cost - answer.iva_tax - answer.consumption_tax) / 100}/>
+                        <input name="taxReturnBase"   type="hidden"  value={answer.total_cost - answer.iva_tax - answer.consumption_tax}/>
                         <input name="currency"        type="hidden"  value="COP"/>
-                        <input name="signature"       type="hidden"  value={answer.signature}/>
+                        <input name="signature"       type="hidden"  value="4794e19858d4a83ab79d660e689e597e" />
                         <input name="test"            type="hidden"  value="1"/> 
                         <input name="buyerEmail"      type="hidden"  value={currentUser.email}/>
-                        <input name="responseUrl"     type="hidden"  value="https://artree-shop.herokuapp.com/result"/> 
-                        <input name="confirmationUrl" type="hidden"  value="https://artree-shop.herokuapp.com/payu_response"/>
-                        <input name="shippingCountry" type="hidden"  value="CO"/>
-                        <input name="shippingAddress" placeholder="Direccion"/>
-                        <input name="extra1"          placeholder="Cedula"/>
+                        <input name="responseUrl"     type="hidden"  value="http://localhost:3000/result"/> 
+                        <input name="confirmationUrl" type="hidden"  value="https://webhook.site/bc318f8c-a945-443e-bd2a-258744b4c69a"/>
+                        <input name="shippingCountry" type="hidden"  value="CO" />
+                        <input name="shippingAddress" placeholder="Direccion"  />
+                        <select form="wompi">
+                         <option value={"CE"}> CE </option>
+                         <option value={"CC"}> CC </option>
+                       </select>
+                        <input name="extra1"          placeholder="Cedula"  />
                         <input name="shippingCity"    placeholder="Ciudad"/>
                         <input name="Submit"          type="submit"  value="Pagar con payU"/>
-                      </form>
-                      }
+                        </form>                      }
                     </>
                   )}
       </div>

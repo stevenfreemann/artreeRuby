@@ -49,7 +49,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
             <div className="shoppingCard__cont">
                 <div className="shoppingCard__items">
                     {items && items.map((product, i) =>
-                        <CartItem updateItem={updateItem} prod={product} k={`ìtem${i}`} />
+                        <CartItem updateItem={updateItem} prod={product} key={`ìtem${i}`} />
                     )}
                 </div>
                 <div className="sectionShoppingCart__payment">

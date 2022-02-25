@@ -29,39 +29,34 @@ class TransactionsController < ApplicationController
     
     price = total_cost.to_s + "00"
     secret = "test_integrity_wi0bQa6UvC3a7trCM2uj7fgo1yBy5754"
-    chain = @transaction.ref_number.to_s + price + "COP" + secret
+    wompi_chain = @transaction.ref_number.to_s + price + "COP" + secret
+    @transaction.wompi_sign = Digest::SHA2.hexdigest(wompi_chain)
+
     payu_chain = "4Vj8eK4rloUd272L48hsrarnUA~508029~#{@transaction.ref_number}~#{@transaction.total_cost}~COP"
-    #@transaction.signature = Digest::SHA2.hexdigest(chain)
-    @transaction.signature = Digest::MD5.hexdigest(payu_chain)
+    @transaction.payu_sign = Digest::MD5.hexdigest(payu_chain)
     @transaction.save
     
     render json: @transaction #enviar serializado con parseo e itereador
   end
   
   def stock
-    # puts "---------params-------#{params[:ids]}"
     res = params[:ids]
     itemStock = {}
     obj = {}
-    # all_sizes = params[:ids].split(",")
     res.each_pair do |id, amount|
       photo = Photo.find(id)
       obj[photo] = amount
       available = photo.stock >= amount.to_i ? true : false
       itemStock[id] = available
     end  
-    puts "---------itemStock----------#{itemStock}"
-
     val = itemStock.values.uniq == [true]
-    if val == true
 
+    if val == true
       obj.each_pair do |photo, amount|
         photo.stock -= amount.to_i
         photo.save
-       # puts "---------photo----#{photo.id}"
       end    
       render json: {success: true} 
-
     else
       noStock = []
       noStockName = []
@@ -97,21 +92,19 @@ class TransactionsController < ApplicationController
       i = item.split("=")
       json[i[0]]= i[1]
     end
-
     transaction = Transaction.find_by(ref_number: json["reference_sale"])
     transaction.status = json["response_message_pol"]
     transaction.last_4 = json["cc_number"][-4..-1]
-    transaction.transaction_id = json["transaction_id"]
+    transaction.payment_id = json["transaction_id"]
     transaction.payment_method = json["cardType"]
     transaction.civil_id = json["extra1"]
     transaction.save
 
     if json["error_message_bank"] != nil
       transaction.status_message = json["error_message_bank"]
-      transaction.save
-      
-      render json: { result: "transaction updated" }, status: 200
+      transaction.save   
     end  
+    render json: { result: "transaction updated" }, status: 200
   end
 
 
@@ -121,23 +114,22 @@ class TransactionsController < ApplicationController
     transaction = Transaction.find_by(ref_number: json["reference"])
     transaction.status = json["status"]
     transaction.last_4 = json["payment_method"]["extra"]["last_four"]
-    transaction.transaction_id = json["id"]
+    transaction.payment_id = json["id"]
     transaction.payment_method = json["payment_method"]["type"]
     transaction.civil_id = json["customer_data"]["legal_id"]
     transaction.save
     
     if json["status_message"] != nil
       transaction.status_message = json["status_message"]
-      transaction.save
-      
-      render json: { result: "transaction updated" }, status: 200
+      transaction.save   
     end   
+    render json: { result: "transaction updated" }, status: 200
   end
   
   
   def result
     validate = ['DECLINED', 'ERROR']
-    @transaction = Transaction.find_by(transaction_id: params[:transactionId])
+    @transaction = Transaction.find_by(payment_id: params[:transactionId])
     #puts "------transaction-result----------#{@transaction.id}"
     if validate.include?(@transaction.status)
       redirect_to failure_path(transaction: @transaction.id)

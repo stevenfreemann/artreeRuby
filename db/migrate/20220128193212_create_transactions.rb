@@ -8,12 +8,13 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.datetime "updated_at", precision: 6, null: false
       t.string "status"
       t.string "payment_method"
-      t.integer "last_4"
-      t.integer "transaction_id"
+      t.string "last_4"
+      t.integer "payment_id"
       t.float "iva_tax"
       t.float "consumption_tax"
       t.integer "civil_id"
-      t.string "signature"
+      t.string "payu_sign"
+      t.string "wompi_sign"
       t.string "status_message"
       t.references :user, null: false, foreign_key: true
     end

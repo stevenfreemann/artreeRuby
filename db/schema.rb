@@ -162,12 +162,13 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
     t.string "payment_method"
-    t.integer "last_4"
-    t.string "transaction_id"
+    t.string "last_4"
+    t.integer "payment_id"
     t.float "iva_tax"
     t.float "consumption_tax"
     t.integer "civil_id"
-    t.string "signature"
+    t.string "payu_sign"
+    t.string "wompi_sign"
     t.string "status_message"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_transactions_on_user_id"
