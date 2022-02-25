@@ -155,7 +155,7 @@ class TransactionsController < ApplicationController
 
   def success
     @transaction = Transaction.find(params[:transaction])
-    puts "------transaction-----------#{transaction.id}"
+    puts "------transaction-----------#{@transaction.id}"
 
   end
 
