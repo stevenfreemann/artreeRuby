@@ -92,12 +92,17 @@ class TransactionsController < ApplicationController
   
   def payu_response
     full_string = request.raw_post
+    "puts ------------full-----------------#{full_string}"
     array = full_string.split("&")
+    "puts ------------array-----------------#{array}"
     json = {}
     array.each do |item|
       i = item.split("=")
+      "puts ------------i-----------------#{i}"
       json[i[0]]= i[1]
     end
+    "puts ------------json-----------------#{json}"
+
     transaction = Transaction.find_by(ref_number: json["reference_sale"])
     transaction.status = json["response_message_pol"]
     transaction.last_4 = json["cc_number"]
