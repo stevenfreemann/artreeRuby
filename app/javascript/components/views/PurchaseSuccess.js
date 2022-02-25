@@ -18,7 +18,7 @@ const PurchaseSuccess = ({ info }) => {
                 <div className='purchaseSuccess__payment-info'>
                     <img src={check} alt='Estado de pago' />
                     <div>
-                        <span>{info.status} </span>
+                        <span>status: {info.status} </span>
                         <h3>Detalle de pago:</h3>
                         <span>Tarjeta terminada en <span style={{ fontWeight: 'bold' }}>{info.last_4}</span></span>
                         <span style={{ fontWeight: 'bold' }}>Referencia de pago: {info.ref_number}</span>
