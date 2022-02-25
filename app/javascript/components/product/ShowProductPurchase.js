@@ -24,7 +24,6 @@ import marco3 from '../../assets/static/images/marcos3.png'
 const packing = [{id:1, name:"Normal"}]
 
 const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase}) => {
-    //console.log("price", price)
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -99,6 +98,14 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, size
             setModal(true)
         }
     }
+
+    const imageSize = (size) => {
+        if (size === "Grande") return 100
+        if (size === "Mediano") return 75
+        if (size === "Pequeño") return 50
+        else return 0
+    }
+
       return (
           <div className="showProductPurchase">
             {modal&&<SectionProductModal {...{setData, modal, setModal, selectedSize, setSelectedSize, selectedMaterial, setSelectedMaterial, selectedFrame, setSelectedFrame}} info={modalInfoRef.current} dataModal={modalDataRef.current}/>}
@@ -141,8 +148,8 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, size
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
                             <div className="accordeon-sizes">
                                 {sizeInfo?.map((size, i)=>
-                                <div id={`size${i}`} key={size.id}>
-                                    <img style={selectedSize===i?{opacity:1}:{opacity:0.3}} src={sizeImg} alt={size.height} onClick={()=>{showModal('size')}}/>
+                                <div key={size.id}>
+                                    <img style={selectedSize===i?{opacity:1, width: `${imageSize(size?.name)}%`}:{opacity:0.3, width: `${imageSize(size?.name)}%`}} src={sizeImg} alt={"Size"} onClick={()=>{showModal('size')}}/>
                                     <span>{size.dimensions} cm</span>
                                     <span>$ {size.price}</span>
                                 </div>

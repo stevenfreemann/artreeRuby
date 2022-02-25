@@ -1,34 +1,45 @@
 .wishItem{
     width: 100%;
-    display: grid;
-    justify-items: center;
-    
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    max-height: 49rem;
 }
 
 .wishItem__img{
     width: 100%;
+    height: 100%;
+    max-height: 225px;
+    object-fit: cover;
     box-shadow: 3px 3px 6px #00000033;
 }
 
-.wishItem__infoAndPrice{
+.wishItem__info{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
 }
-
 .wishItem__info h3{
     font-weight: bold;
     font-size: 2.1rem;
-    margin: 2% 0;
+    margin: 5% 0;
 }
-
 .wishItem__info h4{
     display: inline;
     font-size: 1.7rem;
     font-weight: bold;
+    margin: 0;
 }
 
-.wishItem__info span{
+.wishItem__subMat{
+    display: flex;
+    flex-direction: column;
+    height: 4rem;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin: 3% 0;
+}
+.wishItem__subMat span{
     font-size: 1.7rem;
 }
 

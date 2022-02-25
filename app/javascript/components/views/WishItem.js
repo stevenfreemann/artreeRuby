@@ -17,17 +17,13 @@ const WishItem = ({ product, clickAddToCart, k }) => {
     return (
         <div className="wishItem">
             <img className="wishItem__img" src={product.photo.file.url} alt={product.photo.id} />
-            <div className="wishItem__infoAndPrice">
-                <div className="wishItem__info">
-                    {/* Aqui debes definir que vas a mostrar, el error que tenias anteriormente se generaba debido que estabas metiendo dentro de un <span> un objeto ya que frame, size y photo son objetos y eso no lo puede renderizar un span,
-                    agregue el iterador de sub material por si lo necesitas  */}
-
-                    <h5>{product.size.name} </h5>
-                    <h5>{product.photo.name}</h5>
-                    <h5>Empaque {product.package.name}</h5>
-
-                    {product.sub_materials.map((value) =>
-                        <span>- {value.name} </span>
+            <div className="wishItem__info">
+                <h3>{product.photo.name}</h3>
+                <h4>{product.size.name} </h4>
+                <h4>Empaque {product.package.name}</h4>
+                <div className="wishItem__subMat">
+                    {product.sub_materials.map((value, i) =>
+                        <span key={"submaterial"+ i}>- {value.name} </span>
                     )}
                 </div>
             </div>

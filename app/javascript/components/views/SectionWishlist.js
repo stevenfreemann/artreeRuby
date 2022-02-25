@@ -15,48 +15,23 @@ import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
 //]
 const SectionWishlist = ({ title, products }) => {   
     const [page, setPage] = useState(1)
-    const exist = useRef(false)
     const elements = title ? 12 : 6
     const pages = (Math.floor((products.length - 1) / elements) + 1)
     
-    
     const addItems = (wishItem) => {
-        const data = localStorage.getItem("items")
-        let wishes = data ?  JSON.parse(data) : []
-        if(wishes.length > 0){
-            wishes.map((v)=>{
-                if(!exist.current) exist.current = repeat(v , wishItem)
-            })
-            if (!exist.current) wishes.push(wishItem)
-        }else wishes.push(wishItem)
-        localStorage.setItem("items", JSON.stringify(wishes))
-        exist.current = false
-        // if(repeated === true) {
-        // } else {
-        //     if (wishItem) {
-        //         console.log("wishItem", wishItem)
-        //         if (data) {
-        //             wishes.push(wishItem)
-        //             localStorage.setItem("items", JSON.stringify(wishes))
-        //         } else {
-        //             wishes.push(wishItem)
-        //             localStorage.setItem("items", JSON.stringify(wishes))
-        //         }
-        //         alert("Item agregado al carrito")
-        //     }
-        // }
-        
-        // wishes && wishes.map((item)=>{
-        //     alert("Este item ya esta en el carrito")
-        //     if(item.id === wishItem.id) {
-        //     }
-        // })
+        const cart = localStorage.getItem("items")
+        let tempCart = JSON.parse(cart) || []
+        let exist = tempCart?.find((item)=>item?.id === wishItem.id)
+        if (exist) {
+            return alert("El item ya se encuentra en el carrito de compras")
+        }
+        else {
+            tempCart?.push(wishItem)
+            localStorage.setItem("items", JSON.stringify(tempCart))
+            alert("Item agregado al carrito")
+        }
     }
-    const repeat = (obj1, obj2)=>{ 
-        console.log(obj1.id, obj2.id)
-        let value  = obj1.id === obj2.id ? true : false
-        return value
-    }
+    
     const paginationWish = (products) => {
         if (products.length > elements) {
             let maxProduct = page * elements
@@ -74,8 +49,8 @@ const SectionWishlist = ({ title, products }) => {
                 <Title title='WISHLIST' />
             </div>}
             <div className='sectionWishlist__cont'>
-                {showProducts.map((product) =>
-                    <WishItem clickAddToCart={() => addItems(product)} product={product} k={product.id} />
+                {showProducts.map((product, i) =>
+                    <WishItem clickAddToCart={() => addItems(product)} product={product} key={product.id} />
                 )}
             </div>
             <div className='sectionWishlist__next-prev'>

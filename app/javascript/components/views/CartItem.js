@@ -7,10 +7,13 @@ import Wishlist from "../../assets/static/buttons/moverwishlistbtn@2x.png";
 import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.png";
 
 
-const CartItem = ({ updateItem, prod}) => {
-  const total = prod.photo.stock
+const CartItem = ({ updateItem, prod }) => {
+
+  const imagePro = prod?.line_id === 2 ? true : false
+  const stock = prod.photo.stock
+  const selectStock = imagePro && stock >= 100 ? 100 : stock
   const [product] = useState(prod);
-  const cant = Array.from({ length: total }, (_, i) => i + 1)
+  const cant = Array.from({ length: selectStock }, (_, i) => i + 1)
   const editRef = useRef({});
   const deleteRef = useRef({});
   const wishRef = useRef({});
@@ -71,7 +74,7 @@ const CartItem = ({ updateItem, prod}) => {
         <div className="cardItem__price">
           <select value={product.quantity} onChange={(e) => updateQuantity(e.target.value,)}>
             {cant.map((number, i) => (
-              <option key={"number" + i} value={number}>{number}</option>
+              <option value={number} key={"option"+i}>{number}</option>
             ))}
           </select>
           <h3>${product.photo.base_price * product.quantity}</h3>
