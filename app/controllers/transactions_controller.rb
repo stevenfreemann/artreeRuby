@@ -138,23 +138,25 @@ class TransactionsController < ApplicationController
   def result
     validate = ['DECLINED', 'ERROR']
     @transaction = Transaction.find_by(transaction_id: params[:transaction_id])
-    puts "------transaction-----------#{@transaction}"
+    puts "------transaction-----------#{@transaction.transaction_id}"
     if validate.include?(@transaction.status)
-      redirect_to failure_path(transaction: @transaction.id)
+      redirect_to failure_path(transaction: @transaction.transaction_id)
     else
-      redirect_to success_path(transaction: @transaction.id)
+      redirect_to success_path(transaction: @transaction.transaction_id)
     end
   end
 
   def failure
-    transaction = Transaction.find(params[:transaction])
+    transaction = Transaction.find_by(transaction_id: params[:transaction])
     @products = transaction.products[0]
     @status = transaction.status_message
     puts "----------_#{@products}"
   end
 
   def success
-    @transaction = Transaction.find(params[:transaction])
+    transaction = Transaction.find_by(transaction_id: params[:transaction])
+    puts "------transaction-----------#{transaction_id}"
+
   end
 
   private
