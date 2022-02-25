@@ -137,7 +137,7 @@ class TransactionsController < ApplicationController
   
   def result
     validate = ['DECLINED', 'ERROR']
-    @transaction = Transaction.find_by(transaction_id: params[:id])
+    @transaction = Transaction.find_by(transaction_id: params[:transaction_id])
     puts "------transaction-----------#{@transaction}"
     if validate.include?(@transaction.status)
       redirect_to failure_path(transaction: @transaction.id)
