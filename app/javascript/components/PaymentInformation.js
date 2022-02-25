@@ -255,12 +255,12 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                        <SeeButton listener= {() => setViewPayment(1)} textBtn={"Regresar"} style={{alignSelf:"center"}}/>
                        <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
                        <input type="hidden" name="currency" value="COP" />
-                       <input type="hidden" name="amount-in-cents" value={answer.total_cost} />
+                       <input type="hidden" name="amount-in-cents" value={answer.total_cost * 100} />
                        <input type="hidden" name="reference" value={answer.ref_number} />
                        <input type="hidden" xname="signature:integrity" value={answer.signature} />
                        <input type="hidden" name="redirect-url" value="http://localhost:3000/result" />
-                       <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax} />
-                       <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax} />
+                       <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax * 100} />
+                       <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax * 100} />
                        <input type="hidden" name="customer-data:email" value={currentUser.email} />
                        <input type="hidden" name="customer-data:full-name" value={currentUser.name} />
                        <input type="hidden" name="customer-data:phone-number" value={currentUser.phone} />
