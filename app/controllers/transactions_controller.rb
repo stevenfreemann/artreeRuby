@@ -91,16 +91,12 @@ class TransactionsController < ApplicationController
   
   def payu_response
     full_string = request.raw_post
-    "puts ------------full-----------------#{full_string}"
     array = full_string.split("&")
-    "puts ------------array-----------------#{array}"
     json = {}
     array.each do |item|
       i = item.split("=")
-      "puts ------------i-----------------#{i}"
       json[i[0]]= i[1]
     end
-    "puts ------------json-----------------#{json}"
 
     transaction = Transaction.find_by(ref_number: json["reference_sale"])
     transaction.status = json["response_message_pol"]
@@ -117,6 +113,7 @@ class TransactionsController < ApplicationController
       render json: { result: "transaction updated" }, status: 200
     end  
   end
+
 
   def wompi_response
     json = params[:data][:transaction]
@@ -141,7 +138,7 @@ class TransactionsController < ApplicationController
   def result
     validate = ['DECLINED', 'ERROR']
     @transaction = Transaction.find_by(transaction_id: params[:id])
-    #puts "--------transaction-----------#{@transaction}"
+    puts "------transaction-----------#{@transaction}"
     if validate.include?(@transaction.status)
       redirect_to failure_path(transaction: @transaction.id)
     else
