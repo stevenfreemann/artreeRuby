@@ -22,18 +22,17 @@ class TransactionsController < ApplicationController
       #puts "------item--------#{item}"
     end
   
-    @transaction = Transaction.new(products: items, total_cost: (total_cost * 100) , iva_tax: (iva  * 100), consumption_tax: (consumo * 100), user: current_user)
+    @transaction = Transaction.new(products: items, total_cost: (total_cost) , iva_tax: (iva), consumption_tax: (consumo), user: current_user)
     @transaction.save
     @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
     @transaction.save
     
     price = total_cost.to_s + "00"
-    #payu_price = total_cost.to_s
     secret = "test_integrity_wi0bQa6UvC3a7trCM2uj7fgo1yBy5754"
     chain = @transaction.ref_number.to_s + price + "COP" + secret
-    #payu_chain = 4Vj8eK4rloUd272L48hsrarnUA.to_s + ~508029.to_s~ref_number.to_s~payu_price~"COP"
-    @transaction.signature = Digest::SHA2.hexdigest(chain)
-    # @transaction.payu_sign =  Digest::SHA2.new(256).hexdigest(payu_chain) # => "ba7816bf8..."
+    payu_chain = "4Vj8eK4rloUd272L48hsrarnUA~508029~#{@transaction.ref_number}~#{@transaction.total_cost}~COP"
+    #@transaction.signature = Digest::SHA2.hexdigest(chain)
+    @transaction.signature = Digest::MD5.hexdigest(payu_chain)
     @transaction.save
     
     render json: @transaction #enviar serializado con parseo e itereador

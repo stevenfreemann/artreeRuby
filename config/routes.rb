@@ -32,7 +32,8 @@ Rails.application.routes.draw do
   get 'stock' => 'transactions#stock'
   post 'correct_stock' => 'transactions#correct_stock'
   post 'transaction' => 'transactions#create'
-  post 'response' => 'transactions#wompi_response'
+  post 'wompi_response' => 'transactions#wompi_response'
+  post 'payu_response' => 'transactions#payu_response'
   get 'result' => 'transactions#result'
 
   

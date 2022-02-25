@@ -253,16 +253,16 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <input name="merchantId"      type="hidden"  value="508029"  />
                         <input name="accountId"       type="hidden"  value="512321"/>
                         <input name="description"     type="hidden"  value="TRUE" />
-                        <input name="referenceCode"   type="hidden"  value={240220220000114}/>
-                        <input name="amount"          type="hidden"  value={100000}  />
+                        <input name="referenceCode"   type="hidden"  value={answer.ref_number}/>
+                        <input name="amount"          type="hidden"  value={answer.total_cost}  />
                         <input name="tax"             type="hidden"  value={answer.iva_tax} />
-                        <input name="taxReturnBase"   type="hidden"  value={answer.total_cost - answer.iva_tax - answer.consumption_tax}/>
+                        <input name="taxReturnBase"   type="hidden"  value={(answer.total_cost - answer.iva_tax - answer.consumption_tax) / 100}/>
                         <input name="currency"        type="hidden"  value="COP"/>
-                        <input name="signature"       type="hidden"  value="4794e19858d4a83ab79d660e689e597e" />
+                        <input name="signature"       type="hidden"  value={answer.signature}/>
                         <input name="test"            type="hidden"  value="1"/> 
                         <input name="buyerEmail"      type="hidden"  value={currentUser.email}/>
                         <input name="responseUrl"     type="hidden"  value="http://localhost:3000/result"/> 
-                        <input name="confirmationUrl" type="hidden"  value="https://webhook.site/bc318f8c-a945-443e-bd2a-258744b4c69a"/>
+                        <input name="confirmationUrl" type="hidden"  value="https://artree-shop.herokuapp.com/payu-response"/>
                         <input name="shippingCountry" type="hidden"  value="CO" />
                         <input name="shippingAddress" placeholder="Direccion"  />
                         <input name="extra1"          placeholder="Cedula"  />
