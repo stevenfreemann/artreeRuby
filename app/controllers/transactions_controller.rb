@@ -133,10 +133,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find_by(payment_id: params[:transactionId])
     :
     @transaction = Transaction.find_by(payment_id: params[:id])
-
-    puts "------transactionId----------#{params[:id]}"
-    puts "------transactionId----------#{params[:transactionId]}"
-    puts "------transaction-result----------#{@transaction.id}"
+    #puts "------transactionId----------#{params[:transactionId]}"
     if validate.include?(@transaction.status)
       redirect_to failure_path(transaction: @transaction.id)
     else

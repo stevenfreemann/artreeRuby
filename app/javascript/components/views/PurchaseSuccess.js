@@ -22,7 +22,7 @@ const PurchaseSuccess = ({ info }) => {
                         <h3>Detalle de pago:</h3>
                         <span>Tarjeta terminada en <span style={{ fontWeight: 'bold' }}>{info.last_4}</span></span>
                         <span style={{ fontWeight: 'bold' }}>Referencia de pago: {info.ref_number}</span>
-                        <span style={{ fontWeight: 'bold' }}>Código de transacción: {info.transaction_id}</span>
+                        <span style={{ fontWeight: 'bold' }}>Código de transacción: {info.payment_id}</span>
                         <span style={{ fontWeight: 'bold' }}>Tipo de pago: {info.payment_method}</span>
                     </div>
                 </div>
