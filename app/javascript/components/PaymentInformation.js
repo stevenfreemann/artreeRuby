@@ -46,7 +46,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
   const checkStock = async () => {
     const obj = {}
     {
-      items.map((product) => (
+      items?.map((product) => (
         console.log(product),
         obj[product.photo.id] = product.quantity
       ))
@@ -203,14 +203,14 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                     </span>
                     <h3 style={{ alignSelf: "center" }}>LISTA DE ORDEN</h3>
                     <div className="paymentInformation__market">
-                      <h3>{`${items.length} Producto(s)`}</h3>
+                      <h3>{`${items?.length} Producto(s)`}</h3>
                       <hr />
 
-                      {items.map((product) => (
+                      {items?.map((product) => (
                         console.log(product),
-                        <div key={product.id}>
-                          <span>{product.photo.name}</span>
-                          <span>${product.photo.base_price * product.quantity}</span>
+                        <div key={product?.id}>
+                          <span>{product?.photo.name}</span>
+                          <span>${product?.photo.base_price * product.quantity}</span>
                         </div>
                       ))}
                       <div>

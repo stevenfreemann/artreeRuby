@@ -109,22 +109,12 @@
 }
 
 .accordeon-sizes div {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .accordeon-sizes div img{
     cursor: pointer;
-}
-
-.accordeon-sizes div[id="size0"] img{
-    width: 50%;
-}
-
-.accordeon-sizes div[id="size1"] img{
-    width: 75%;
-}
-
-.accordeon-sizes div[id="size2"] img{
-    width: 100%;
 }
 
 .accordeon-sizes span{
@@ -148,7 +138,7 @@
 .accordeon-material img:hover{
     cursor: pointer;
     opacity: .5;
-    width: 20%;
+    transform: scale(1.1);
 }
 
 .accordeon-frame, .accordeon-package{

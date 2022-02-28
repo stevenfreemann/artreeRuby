@@ -14,10 +14,11 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
     //localStorage.removeItem('items');
     const [items, setItems] = useState([]);
     const [total_cost, setTotalCost] = useState(0);
+
     useEffect(() => {
         const data = localStorage.getItem("items")
         let wish = JSON.parse(data)
-        wish.map((v) => { v["quantity"] = v["quantity"] ? v["quantity"] : 1 })
+        wish?.map((v) => { v["quantity"] = v["quantity"] ? v["quantity"] : 1 })
         console.log('wish', wish)
         localStorage.setItem("items", JSON.stringify(wish))
         setItems(wish)
@@ -25,9 +26,9 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
     }, [])
 
     useEffect(() => {
-        if (items.length > 0) {
+        if (items?.length > 0) {
             let acum = 0
-            items.map((w) => acum = acum + (w.photo.base_price * w.quantity))
+            items?.map((w) => acum = acum + (w.photo.base_price * w.quantity))
             setTotalCost(acum)
         }
     }, [items])
@@ -47,11 +48,14 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
         <div className="sectionShoppingCart">
             <Title title="CARRITO" />
             <div className="shoppingCard__cont">
+                {!items?
+                <div>El carrito de Compras está vacio</div>
+                :
                 <div className="shoppingCard__items">
                     {items && items.map((product, i) =>
                         <CartItem updateItem={updateItem} prod={product} key={`ìtem${i}`} />
                     )}
-                </div>
+                </div>}
                 <div className="sectionShoppingCart__payment">
                     <PaymentInformation {...{ items, authenticity_token, currentUser, total_cost }} />
                 </div>
