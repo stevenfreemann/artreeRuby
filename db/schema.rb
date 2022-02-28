@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.string "status"
     t.string "payment_method"
     t.string "last_4"
-    t.integer "payment_id"
+    t.string "payment_id"
     t.float "iva_tax"
     t.float "consumption_tax"
     t.integer "civil_id"
