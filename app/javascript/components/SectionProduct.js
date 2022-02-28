@@ -26,7 +26,6 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
     const generateWishItem = async() => {
 
         console.log('productPurchase :>> ', productPurchase);
-        // console.log(`size ${size}` , `frame ${frame}`,  `material ${material}`,  `packing ${packing}`,  `photo ${photo.id}`)
          
         let response = await fetch('/wishItem', {
             method: 'POST', 
