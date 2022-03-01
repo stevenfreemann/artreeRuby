@@ -28,6 +28,7 @@ const PurchaseFailed = ({ info, status }) => {
                 <h3>
                     Compra Fallida
                 </h3>
+                <span >Id de transacción: {info.payment_id}</span>
                 <span >{status}</span>
                 <button onClick={() => window.location = "/cart"}>Volver al carrito</button>
             </div>

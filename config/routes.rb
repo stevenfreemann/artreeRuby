@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'success' => 'transactions#success'
   get 'wishlist' => 'wish_item#index'
   post 'wishItem' => 'wish_item#create'
+  get 'get_info' => 'wish_item#get_info'
   get 'upload' => 'like_pro#upload'
   get 'stock' => 'transactions#stock'
   post 'correct_stock' => 'transactions#correct_stock'

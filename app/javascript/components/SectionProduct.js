@@ -33,10 +33,26 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
             },
-            body: JSON.stringify({frame: frame, size: size, material: material, packing: packing, photo: photo.id}), 
+            body: JSON.stringify({frame: productPurchase?.frame.id, size: productPurchase?.size.id, material: productPurchase?.material.id, packing: productPurchase?.packing.id, photo: photo?.id}), 
         })
         response = await response.json()
         console.log('response', response);
+    }
+
+    const sendToCart = async() => {        
+        const cart = localStorage.getItem("items")
+        let obj = {
+            frame: productPurchase?.frame.id,
+            size: productPurchase?.size.id,
+            material: productPurchase?.material.id,
+            packing: productPurchase?.packing.id,
+            photo: photo?.id
+        }
+        let tempCart = JSON.parse(cart) || []
+            tempCart?.push(obj)
+            localStorage.setItem("items", JSON.stringify(tempCart))
+            console.log("obj", obj)
+            alert("Item agregado al carrito")
     }
 
     return (
@@ -47,7 +63,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
             <div className="sectionProduct__cont">
                 {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
                 :screen==="purchase"&&
-                <ShowProductPurchase {...{ photo, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase }} listenerWishList={()=>generateWishItem()} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false}/>}
+                <ShowProductPurchase {...{ photo, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase }} listenerWishList={()=>generateWishItem()} listenerSendToCart={()=>sendToCart()} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false}/>}
                 {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
             </div>
         </div>

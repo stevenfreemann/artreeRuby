@@ -9,8 +9,9 @@ import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.p
 
 const CartItem = ({ updateItem, prod }) => {
 
+  console.log("cartItem", prod)
   const imagePro = prod?.line_id === 2 ? true : false
-  const stock = prod.photo.stock
+  const stock = prod?.photo.stock
   const selectStock = imagePro && stock >= 100 ? 100 : stock
   const [product] = useState(prod);
   const cant = Array.from({ length: selectStock }, (_, i) => i + 1)
@@ -68,8 +69,8 @@ const CartItem = ({ updateItem, prod }) => {
           <h4>{product.photo.name}, </h4>
           <span>{product.size.dimensions}, </span>
           <span>empaque tipo {product.package.name}, </span>
-          <span>papel {product.sub_materials[0].name}, </span>
-          <span>marco {product.sub_materials[1].name}.</span>
+          <span>papel {product.material.name}, </span>
+          <span>marco {product.frame.name}.</span>
         </div>
         <div className="cardItem__price">
           <select value={product.quantity} onChange={(e) => updateQuantity(e.target.value,)}>

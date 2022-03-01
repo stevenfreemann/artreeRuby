@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
     @photos = Photo.where("stock > ?", 0).where(room: @room).to_a
     @title = "#{@room.line.name} - #{@room.name}"
 
-    @packing = Package.where(active: true)
+    @package = Package.where(active: true)
 
     @sizes = Size.where(line_id: @room.line.id)
   end

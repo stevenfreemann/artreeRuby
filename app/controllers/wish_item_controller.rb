@@ -16,17 +16,25 @@ class WishItemController < ApplicationController
     end
   end
 
+  def get_info
+      size = Size.find(params["size"])
+      photo = Photo.find(params["photo"])
+      package = Package.find(params["package"])
+      frame = SubMaterial.find(params["frame"])
+      material = SubMaterial.find(params["material"])
+    render json: {size: size, photo:photo, package: package, frame:frame, material:material}    
+  end
+
   def create
     # @wish_item = WishItem.new(wish_item_params)
     @wish_item = WishItem.new
     @wish_item.user = current_user
     @wish_item.size = Size.find(params[:size])
-
+    @wish_item.package = Package.find(params[:package])
     arr = SubMaterial.where(id: [params[:material], params[:frame]])
     @wish_item.sub_materials.push(arr[0], arr[1]) 
 
     @wish_item.photo = Photo.find(params[:photo])
-    #@wish_item.package = Package.find(params[:packing])
     if @wish_item.save 
       flash.alert = "Agregado a wishlist"
     end
@@ -44,7 +52,7 @@ class WishItemController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def wish_item_params
-    params.permit(:authenticity_token, :frame, :size, :material, :photo, :packing)
+    params.permit(:authenticity_token, :frame, :size, :material, :photo, :package)
   end
 end
 

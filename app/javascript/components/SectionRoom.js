@@ -5,7 +5,7 @@ const listener = (dato) => {
     console.log(dato)
 }
 const SectionInfo = ({inverso, img, title, photo, text, subtitle, color,listener}) => {
-    console.log(photo)
+    //console.log(photo)
 
     const showInverso = () => {
         let inv = inverso ? "room_inverso" : ""

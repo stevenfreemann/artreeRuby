@@ -23,7 +23,7 @@ import marco3 from '../../assets/static/images/marcos3.png'
 
 const packing = [{id:1, name:"Normal"}]
 
-const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase}) => {
+const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, listenerSendToCart, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase}) => {
     const [showExclusive] = useState(exclusive)
     const [showLikeAPro] = useState(likeAPro)
     const [accordionInfo, setAccordionInfo] = useState(0)
@@ -150,7 +150,7 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, size
                                 {sizeInfo?.map((size, i)=>
                                 <div key={size.id}>
                                     <img style={selectedSize===i?{opacity:1, width: `${imageSize(size?.name)}%`}:{opacity:0.3, width: `${imageSize(size?.name)}%`}} src={sizeImg} alt={"Size"} onClick={()=>{showModal('size')}}/>
-                                    <span>{size.dimensions} cm</span>
+                                    <span>{size.dimensions}</span>
                                     <span>$ {size.price}</span>
                                 </div>
                                 )}
@@ -202,9 +202,9 @@ const ShowProductPurchase = ({exclusive, likeAPro, photo, listenerWishList, size
                             <img src={wishList} alt="wishlist"/>
                             <span>Wish List</span>
                         </div>}
-                        <div onClick={()=>console.log("finalizar compra")} >
+                        <div onClick={listenerSendToCart}>
                             <img src={compra} alt="compra"/>
-                            <span>Finalizar Compra</span>
+                            <span>Mover Al Carrito</span>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
 const WishItem = ({ product, clickAddToCart, k }) => {
-    console.log(product)
+    console.log("product_wishItem",product)
     const editRef = useRef({})
     const deleteRef = useRef({})
     const cartRef = useRef({})

@@ -11,20 +11,35 @@ import ShoppingCart4 from '../../assets/static/images/ShoppingCart4.png'
 import AddAdressModal from '../AddAddresModal'
 
 const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
-    //localStorage.removeItem('items');
     const [items, setItems] = useState([]);
     const [total_cost, setTotalCost] = useState(0);
-
-    useEffect(() => {
-        const data = localStorage.getItem("items")
-        let wish = JSON.parse(data)
-        wish?.map((v) => { v["quantity"] = v["quantity"] ? v["quantity"] : 1 })
-        console.log('wish', wish)
-        localStorage.setItem("items", JSON.stringify(wish))
-        setItems(wish)
-
+    
+    const get_info = async (item) => {
+        let response = await fetch(`/get_info?size=${item.size}&package=${item.package}&material=${item.material}&frame=${item.frame}&photo=${item.photo}`, {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })  
+        response = await response.json()
+        console.log("respuesta", response)
+        setItems(items => items.concat(response))
+        // setItems(items => [...items, response])
+        console.log("items", items)   
+    }
+    
+    useEffect(() => {     
+        const info = async() => {
+            const data = localStorage.getItem("items")
+            let items = JSON.parse(data)
+            items?.map((item) => { item["quantity"] = item["quantity"] ? item["quantity"] : 1 
+                get_info(item)
+                })
+            }
+        info()
     }, [])
-
+    
+    //localStorage.removeItem('items');
     useEffect(() => {
         if (items?.length > 0) {
             let acum = 0
@@ -43,7 +58,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
         console.log('temp', temp)
         setItems(temp)
     }
-    console.log('items', items);
+    // console.log('items', items);
     return (
         <div className="sectionShoppingCart">
             <Title title="CARRITO" />
