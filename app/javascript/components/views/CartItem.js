@@ -7,7 +7,7 @@ import Wishlist from "../../assets/static/buttons/moverwishlistbtn@2x.png";
 import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.png";
 
 
-const CartItem = ({ updateItem, prod }) => {
+const CartItem = ({ updateItem, clickDelete, prod }) => {
 
   console.log("cartItem", prod)
   const imagePro = prod?.line_id === 2 ? true : false
@@ -33,18 +33,9 @@ const CartItem = ({ updateItem, prod }) => {
         <div className="cardItem__options">
           <div>
             <img
-              src={Edit}
-              alt="Editar"
-              onMouseOver={() => (editRef.current.src = EditActivo)}
-              onMouseLeave={() => (editRef.current.src = Edit)}
-              ref={editRef}
-            />
-            <span>Editar</span>
-          </div>
-          <div>
-            <img
               src={Delete}
               alt="Eliminar"
+              onClick={() => clickDelete(product)}
               onMouseOver={() => (deleteRef.current.src = DeleteActivo)}
               onMouseLeave={() => (deleteRef.current.src = Delete)}
               ref={deleteRef}
@@ -78,7 +69,8 @@ const CartItem = ({ updateItem, prod }) => {
               <option value={number} key={"option"+i}>{number}</option>
             ))}
           </select>
-          <h3>${product.photo.base_price * product.quantity}</h3>
+          <h3>${(product?.photo.base_price + product?.frame.price + product?.material.price + product?.package.price + product?.size.price) * 
+          product.quantity}</h3>
         </div>
       </div>
       <hr />

@@ -38,19 +38,19 @@ const SectionWishlist = ({ title, products }) => {
         }
     }
 
-
-    const addItems = (wishItem) => {
-        const cart = localStorage.getItem("items")
-        let tempCart = JSON.parse(cart) || []
-        let exist = tempCart?.find((item)=>item?.id === wishItem.id)
-        if (exist) {
-            return alert("El item ya se encuentra en el carrito de compras")
-        }
-        else {
-            tempCart?.push(wishItem)
-            localStorage.setItem("items", JSON.stringify(tempCart))
-            alert("Item agregado al carrito")
-        }
+    const deleteItem = async(wishItem) => {
+        fetch(`/wishItem/${wishItem.id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }).then(response => response.json())
+          .then(data => {
+                if (data.success) {
+                    alert(data.msg)
+                    location.reload()
+                } else alert(data.msg)            
+            })
     }
     
     const paginationWish = (products) => {
@@ -71,7 +71,7 @@ const SectionWishlist = ({ title, products }) => {
             </div>}
             <div className='sectionWishlist__cont'>
                 {showProducts.map((product, i) =>
-                    <WishItem clickSendToCart={()=> sendToCart(product)} product={product} key={product.id} />
+                    <WishItem clickSendToCart={()=> sendToCart(product)} clickDelete={()=> deleteItem(product)} product={product} key={product.id} />
                 )}
             </div>
             <div className='sectionWishlist__next-prev'>

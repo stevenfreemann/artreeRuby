@@ -210,7 +210,8 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         console.log(product),
                         <div key={product?.id}>
                           <span>{product?.photo.name}</span>
-                          <span>${product?.photo.base_price * product.quantity}</span>
+                          <span>${(product?.photo.base_price + product?.frame.price + product?.material.price + product?.package.price + product?.size.price) * 
+                          product.quantity}</span>
                         </div>
                       ))}
                       <div>

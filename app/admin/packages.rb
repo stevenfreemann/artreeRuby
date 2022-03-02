@@ -1,5 +1,5 @@
 ActiveAdmin.register Package, as: "Empaques" do
-  permit_params :name
+  permit_params :name, :price, :active
 
   index do
 		selectable_column

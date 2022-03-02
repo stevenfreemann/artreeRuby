@@ -8,7 +8,7 @@ import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
 
-const WishItem = ({ product, clickSendToCart, k }) => {
+const WishItem = ({ product, clickSendToCart, clickDelete, k }) => {
     console.log("product_wishItem",product)
     const editRef = useRef({})
     const deleteRef = useRef({})
@@ -29,12 +29,7 @@ const WishItem = ({ product, clickSendToCart, k }) => {
             </div>
             <div className="wishItem__options">
                 <div>
-                    <img src={Edit} alt="Editar" onMouseOver={() => editRef.current.src = EditActivo}
-                        onMouseLeave={() => editRef.current.src = Edit} ref={editRef} />
-                    <span>Editar</span>
-                </div>
-                <div>
-                    <img src={Delete} alt="Eliminar"
+                    <img src={Delete} alt="Eliminar" onClick={() => clickDelete(product) }
                         onMouseOver={() => deleteRef.current.src = DeleteActivo}
                         onMouseLeave={() => deleteRef.current.src = Delete} ref={deleteRef} />
                     <span>Eliminar</span>

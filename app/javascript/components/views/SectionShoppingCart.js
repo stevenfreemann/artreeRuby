@@ -13,19 +13,26 @@ import AddAdressModal from '../AddAddresModal'
 const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
     const [items, setItems] = useState([]);
     const [total_cost, setTotalCost] = useState(0);
+
+    const deleteItem = async(deleteItem) => {        
+        let data = localStorage.getItem("items") || []
+        let parsed_data = await JSON.parse(data)
+        let temp_data = await parsed_data.filter((cartItem) => cartItem.reference !== deleteItem.reference);    
+        localStorage.setItem("items", JSON.stringify(temp_data))
+        alert("Item borrado del carrito")
+        location.reload()
+    }
+    // console.log("items", items)   
     
     const get_info = async (item) => {
-        let response = await fetch(`/get_info?size=${item.size}&packing=${item.packing}&material=${item.material}&frame=${item.frame}&photo=${item.photo}`, {
+        let response = await fetch(`/get_info?size=${item.size}&packing=${item.packing}&material=${item.material}&frame=${item.frame}&photo=${item.photo}&reference=${item.reference}`, {
             method: 'GET', 
             headers: {
                 'Content-Type': 'application/json',
             },
-        })  
+        })
         response = await response.json()
-        console.log("respuesta", response)
         setItems(items => items.concat(response))
-        // setItems(items => [...items, response])
-        console.log("items", items)   
     }
     
     useEffect(() => {
@@ -69,7 +76,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
                 :
                 <div className="shoppingCard__items">
                     {items && items.map((product, i) =>
-                        <CartItem updateItem={updateItem} prod={product} key={`ìtem${i}`} />
+                        <CartItem clickDelete={()=> deleteItem(product)} updateItem={updateItem} prod={product} key={`ìtem${i}`} />
                     )}
                 </div>}
                 <div className="sectionShoppingCart__payment">

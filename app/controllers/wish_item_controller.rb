@@ -22,7 +22,8 @@ class WishItemController < ApplicationController
       package = Package.find(params["packing"])
       frame = SubMaterial.find(params["frame"])
       material = SubMaterial.find(params["material"])
-    render json: {size: size, photo:photo, package: package, frame:frame, material:material}    
+      reference = params["reference"]
+    render json: {size: size, photo:photo, package: package, frame:frame, material:material, reference: reference}    
   end
 
   def create
@@ -41,6 +42,15 @@ class WishItemController < ApplicationController
   end
 
   def shoppingCart
+  end
+
+  def destroy
+    @wish_item = WishItem.find(params[:id])
+    if @wish_item.destroy
+      render json: {success:true, msg: "Item borrado de wishlist"}
+    else
+      render json: {success:false, msg: "Falla borrando"}
+    end
   end
   
 
