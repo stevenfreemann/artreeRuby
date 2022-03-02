@@ -14,22 +14,25 @@ const SectionWishlist = ({ title, products }) => {
     const elements = title ? 12 : 6
     const pages = (Math.floor((products.length - 1) / elements) + 1)
     
-    const sendToCart = async(wishItem) => {  
+    const sendToCart = async(wishItem) => { 
         const cart = localStorage.getItem("items")
+        let tempCart = JSON.parse(cart) || []
+        //console.log("cart", cart)
+        //console.log("wishItem", wishItem)
         let obj = {
-            size: wishItem?.size.id,
+            size: wishItem?.sizes.id,
             material: wishItem?.sub_materials[0].id,
             frame: wishItem?.sub_materials[1].id,
-            packing: wishItem?.package.id,
-            photo: wishItem?.photo.id
+            packing: wishItem?.packages.id,
+            photo: wishItem?.photos.id,
         }
-        let tempCart = JSON.parse(cart) || []
-        let exist = tempCart?.find((item)=>item?.id === wishItem.id)
+        obj["reference"] = `${obj["size"]}${obj["material"]}${obj["frame"]}${obj["packing"]}${obj["photo"]}`
+        let exist = tempCart?.find((item)=>item?.reference === obj["reference"])
         if (exist) {
-            return alert("El item ya se encuentra en el carrito de compras")
+            return alert("Esta combinacion ya se encuentra en el carrito de compras")
         }
         else {
-            tempCart?.push(obj)
+        tempCart?.push(obj)
             localStorage.setItem("items", JSON.stringify(tempCart))
             alert("Item agregado al carrito")
         }

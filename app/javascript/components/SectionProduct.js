@@ -40,6 +40,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
 
     const sendToCart = async() => {        
         const cart = localStorage.getItem("items")
+        let tempCart = JSON.parse(cart) || []
         let obj = {
             frame: productPurchase?.frame.id,
             size: productPurchase?.size.id,
@@ -47,11 +48,16 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
             packing: productPurchase?.packing.id,
             photo: photo?.id
         }
-        let tempCart = JSON.parse(cart) || []
-            tempCart?.push(obj)
+        obj["reference"] = `${obj["size"]}${obj["material"]}${obj["frame"]}${obj["packing"]}${obj["photo"]}`
+        let exist = tempCart?.find((item)=>item?.reference === obj["reference"])
+        if (exist) {
+            return alert("Esta combinacion ya se encuentra en el carrito de compras")
+        }
+        else {
+        tempCart?.push(obj)
             localStorage.setItem("items", JSON.stringify(tempCart))
-            console.log("obj", obj)
             alert("Item agregado al carrito")
+        }
     }
 
     return (
