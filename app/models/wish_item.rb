@@ -1,19 +1,18 @@
 class WishItem < ApplicationRecord
-  has_many :sub_materials
-  has_one :photo
-  has_one :frame
-  has_one :size
-  has_one :package
+  has_and_belongs_to_many :sub_materials, optional: true
+  has_and_belongs_to_many :sizes, optional: true
+  has_and_belongs_to_many :packages, optional: true
+  has_and_belongs_to_many :photos, optional: true
   belongs_to :user
 
   def serialize
     { 
       id: id.to_s,
       user: user,
-      size: size,
+      sizes: sizes[0],
       sub_materials: sub_materials,
-      photo: photo,
-      package: package,
+      photos: photos[0],
+      packages: packages[0],
     }
   end
 end

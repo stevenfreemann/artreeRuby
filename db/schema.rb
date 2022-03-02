@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_221540) do
+ActiveRecord::Schema.define(version: 2022_03_02_154953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,11 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.index ["wish_item_id"], name: "index_packages_on_wish_item_id"
   end
 
+  create_table "packages_wish_items", id: false, force: :cascade do |t|
+    t.bigint "wish_item_id", null: false
+    t.bigint "package_id", null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -105,6 +110,11 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.index ["line_id"], name: "index_photos_on_line_id"
     t.index ["room_id"], name: "index_photos_on_room_id"
     t.index ["wish_item_id"], name: "index_photos_on_wish_item_id"
+  end
+
+  create_table "photos_wish_items", id: false, force: :cascade do |t|
+    t.bigint "wish_item_id", null: false
+    t.bigint "photo_id", null: false
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -139,6 +149,11 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.index ["wish_item_id"], name: "index_sizes_on_wish_item_id"
   end
 
+  create_table "sizes_wish_items", id: false, force: :cascade do |t|
+    t.bigint "wish_item_id", null: false
+    t.bigint "size_id", null: false
+  end
+
   create_table "sub_materials", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -152,6 +167,11 @@ ActiveRecord::Schema.define(version: 2022_02_18_221540) do
     t.boolean "active", default: true
     t.index ["material_id"], name: "index_sub_materials_on_material_id"
     t.index ["wish_item_id"], name: "index_sub_materials_on_wish_item_id"
+  end
+
+  create_table "sub_materials_wish_items", id: false, force: :cascade do |t|
+    t.bigint "wish_item_id", null: false
+    t.bigint "sub_material_id", null: false
   end
 
   create_table "transactions", force: :cascade do |t|

@@ -4,6 +4,6 @@ class Photo < ApplicationRecord
   belongs_to :artist
   belongs_to :line
   belongs_to :room
-  belongs_to :wish_item, optional: true
+  has_and_belongs_to_many :wish_item, optional: true
 
 end

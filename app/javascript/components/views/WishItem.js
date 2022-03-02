@@ -16,11 +16,11 @@ const WishItem = ({ product, clickSendToCart, k }) => {
 
     return (
         <div className="wishItem">
-            <img className="wishItem__img" src={product.photo.file.url} alt={product.photo.id} />
+            <img className="wishItem__img" src={product.photos.file.url} alt={product.photos.id} />
             <div className="wishItem__info">
-                <h3>{product.photo.name}</h3>
-                <h4>{product.size.name} </h4>
-                <h4>Empaque {product.package.name}</h4>
+                <h3>{product.photos.name}</h3>
+                <h4>{product.sizes.name} </h4>
+                <h4>Empaque {product.packages.name}</h4>
                 <div className="wishItem__subMat">
                     {product.sub_materials.map((value, i) =>
                         <span key={"submaterial"+ i}>- {value.name} </span>

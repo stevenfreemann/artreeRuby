@@ -29,12 +29,12 @@ class WishItemController < ApplicationController
     # @wish_item = WishItem.new(wish_item_params)
     @wish_item = WishItem.new
     @wish_item.user = current_user
-    @wish_item.size = Size.find(params[:size])
-    @wish_item.package = Package.find(params[:packing])
+    @wish_item.sizes.push(Size.find(params[:size]))
+    @wish_item.packages.push(Package.find(params[:packing]))
     arr = SubMaterial.where(id: [params[:material], params[:frame]])
     @wish_item.sub_materials.push(arr[0], arr[1]) 
 
-    @wish_item.photo = Photo.find(params[:photo])
+    @wish_item.photos.push(Photo.find(params[:photo]))
     if @wish_item.save 
       render json: {success:true, msg: "Agregado a wishlist"}    
     end
