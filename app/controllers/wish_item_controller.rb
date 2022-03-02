@@ -23,7 +23,7 @@ class WishItemController < ApplicationController
       frame = SubMaterial.find(params["frame"])
       material = SubMaterial.find(params["material"])
       reference = params["reference"]
-    render json: {size: size, photo:photo, package: package, frame:frame, material:material, reference: reference}    
+    render json: {size: size, photo:photo, package: package, frame:frame, material:material, reference: reference, quantity: 1}    
   end
 
   def create

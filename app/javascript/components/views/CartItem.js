@@ -42,16 +42,7 @@ const CartItem = ({ updateItem, clickDelete, prod }) => {
             />
             <span>Eliminar</span>
           </div>
-          <div>
-            <img
-              src={Wishlist}
-              alt="Wishlist"
-              onMouseOver={() => (wishRef.current.src = WishlistActivo)}
-              onMouseLeave={() => (wishRef.current.src = Wishlist)}
-              ref={wishRef}
-            />
-            <span>Wishlist</span>
-          </div>
+          
         </div>
       </div>
       <div className="cardItem__infoAndPrice">
