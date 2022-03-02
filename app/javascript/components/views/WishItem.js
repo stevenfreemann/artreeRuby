@@ -8,7 +8,7 @@ import CartActivo from '../../assets/static/buttons/moverwishlistactivo@2x.png'
 
 
 
-const WishItem = ({ product, clickAddToCart, k }) => {
+const WishItem = ({ product, clickSendToCart, k }) => {
     console.log("product_wishItem",product)
     const editRef = useRef({})
     const deleteRef = useRef({})
@@ -40,7 +40,7 @@ const WishItem = ({ product, clickAddToCart, k }) => {
                     <span>Eliminar</span>
                 </div>
                 <div>
-                    <img src={Cart} alt="Wishlist" onClick={() => clickAddToCart(product) } onMouseOver={() => cartRef.current.src = CartActivo}
+                    <img src={Cart} alt="Wishlist" onClick={() => clickSendToCart(product) } onMouseOver={() => cartRef.current.src = CartActivo}
                         onMouseLeave={() => cartRef.current.src = Cart} ref={cartRef} />
                     <span> Mover al Carrito</span>
                 </div>

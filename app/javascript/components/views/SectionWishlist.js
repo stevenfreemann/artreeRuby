@@ -14,6 +14,28 @@ const SectionWishlist = ({ title, products }) => {
     const elements = title ? 12 : 6
     const pages = (Math.floor((products.length - 1) / elements) + 1)
     
+    const sendToCart = async(wishItem) => {  
+        const cart = localStorage.getItem("items")
+        let obj = {
+            size: wishItem?.size.id,
+            material: wishItem?.sub_materials[0].id,
+            frame: wishItem?.sub_materials[1].id,
+            packing: wishItem?.package.id,
+            photo: wishItem?.photo.id
+        }
+        let tempCart = JSON.parse(cart) || []
+        let exist = tempCart?.find((item)=>item?.id === wishItem.id)
+        if (exist) {
+            return alert("El item ya se encuentra en el carrito de compras")
+        }
+        else {
+            tempCart?.push(obj)
+            localStorage.setItem("items", JSON.stringify(tempCart))
+            alert("Item agregado al carrito")
+        }
+    }
+
+
     const addItems = (wishItem) => {
         const cart = localStorage.getItem("items")
         let tempCart = JSON.parse(cart) || []
@@ -46,7 +68,7 @@ const SectionWishlist = ({ title, products }) => {
             </div>}
             <div className='sectionWishlist__cont'>
                 {showProducts.map((product, i) =>
-                    <WishItem clickAddToCart={() => addItems(product)} product={product} key={product.id} />
+                    <WishItem clickSendToCart={()=> sendToCart(product)} product={product} key={product.id} />
                 )}
             </div>
             <div className='sectionWishlist__next-prev'>

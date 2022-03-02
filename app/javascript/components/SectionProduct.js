@@ -24,9 +24,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
     }, [productPurchase, photo])
 
     const generateWishItem = async() => {
-
-        console.log('productPurchase :>> ', productPurchase);
-         
+        // console.log('productPurchase :>> ', productPurchase);        
         let response = await fetch('/wishItem', {
             method: 'POST', 
             headers: {
@@ -36,7 +34,8 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
             body: JSON.stringify({frame: productPurchase?.frame.id, size: productPurchase?.size.id, material: productPurchase?.material.id, packing: productPurchase?.packing.id, photo: photo?.id}), 
         })
         response = await response.json()
-        console.log('response', response);
+        alert(response.msg)
+        //console.log('response', response);
     }
 
     const sendToCart = async() => {        

@@ -77,7 +77,7 @@ const ShowProduct = ({photo, setScreen , room}) => {
                 </div>
                 <div onClick={sala === "spaces" ? ()=>setScreen('purchase') : ()=>{alert("Visita en tu espacio para continuar")}}>
                     <img src={sala === "spaces" ? compraActivo : compra}/>
-                    <span>Especificar materiales</span>
+                    <span>Especificar Diseño</span>
                 </div>
             </div>
         </div>

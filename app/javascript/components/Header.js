@@ -12,7 +12,7 @@ const Header = ({currentUser, count}) => {
     console.log('HEADER-->',currentUser)
     const [showMenu, setShowMenu] = useState(false)
     const [notificationWhish, setNotificationWhish] = useState(count)
-    const [notificationCart, setNotificationCart] = useState(10)
+    const [notificationCart, setNotificationCart] = useState(0)
     
     const firstName = currentUser?currentUser.name.split(" ", 1):""
     const menuName = firstName?`¡Hola ${firstName}!`:'¡Bienvenido!'
@@ -37,6 +37,12 @@ const Header = ({currentUser, count}) => {
     }
     
     useEffect(() => {
+        const cart_count = () => {
+            let items = JSON.parse(localStorage.getItem("items"))
+            items && setNotificationCart(items.length)
+        }
+        cart_count()
+        
         const clickEvent=()=>{
             setShowMenu(!showMenu)
         }

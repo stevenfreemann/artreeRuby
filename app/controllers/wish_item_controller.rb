@@ -19,7 +19,7 @@ class WishItemController < ApplicationController
   def get_info
       size = Size.find(params["size"])
       photo = Photo.find(params["photo"])
-      package = Package.find(params["package"])
+      package = Package.find(params["packing"])
       frame = SubMaterial.find(params["frame"])
       material = SubMaterial.find(params["material"])
     render json: {size: size, photo:photo, package: package, frame:frame, material:material}    
@@ -30,13 +30,13 @@ class WishItemController < ApplicationController
     @wish_item = WishItem.new
     @wish_item.user = current_user
     @wish_item.size = Size.find(params[:size])
-    @wish_item.package = Package.find(params[:package])
+    @wish_item.package = Package.find(params[:packing])
     arr = SubMaterial.where(id: [params[:material], params[:frame]])
     @wish_item.sub_materials.push(arr[0], arr[1]) 
 
     @wish_item.photo = Photo.find(params[:photo])
     if @wish_item.save 
-      flash.alert = "Agregado a wishlist"
+      render json: {success:true, msg: "Agregado a wishlist"}    
     end
   end
 

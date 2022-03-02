@@ -15,7 +15,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
     const [total_cost, setTotalCost] = useState(0);
     
     const get_info = async (item) => {
-        let response = await fetch(`/get_info?size=${item.size}&package=${item.package}&material=${item.material}&frame=${item.frame}&photo=${item.photo}`, {
+        let response = await fetch(`/get_info?size=${item.size}&packing=${item.packing}&material=${item.material}&frame=${item.frame}&photo=${item.photo}`, {
             method: 'GET', 
             headers: {
                 'Content-Type': 'application/json',
@@ -28,9 +28,10 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
         console.log("items", items)   
     }
     
-    useEffect(() => {     
+    useEffect(() => {
         const info = async() => {
             const data = localStorage.getItem("items")
+            // console.log("localStorage", data)
             let items = JSON.parse(data)
             items?.map((item) => { item["quantity"] = item["quantity"] ? item["quantity"] : 1 
                 get_info(item)
@@ -39,7 +40,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
         info()
     }, [])
     
-    //localStorage.removeItem('items');
+    // localStorage.removeItem('items');
     useEffect(() => {
         if (items?.length > 0) {
             let acum = 0
