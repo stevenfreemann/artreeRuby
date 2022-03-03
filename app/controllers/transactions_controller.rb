@@ -73,8 +73,8 @@ class TransactionsController < ApplicationController
   end
 
   def correct_stock
-    items = params[:products]
-    puts "-----items---------#{items}"
+    items = params[:info][:products]
+    puts "-----items---------#{params[:info][:products]}"
     items.each do |product|
       puts "-----product---------#{product}"
       #item = JSON.parse(product)
@@ -86,6 +86,7 @@ class TransactionsController < ApplicationController
   
   def payu_response
     full_string = request.raw_post
+    puts "------raw_post---------#{full_string}"
     array = full_string.split("&")
     json = {}
     array.each do |item|

@@ -304,7 +304,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <input name="shippingAddress" placeholder="Direccion"  />
                         <input name="shippingCity"    placeholder="Ciudad"/>
                         <input name="Submit"          type="submit"  value="Pagar con payU"/>
-                        </form>                      }
+                        </form>}
                     </>
                   )}
       </div>

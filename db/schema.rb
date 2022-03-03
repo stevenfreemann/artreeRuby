@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_154953) do
     t.integer "civil_id"
     t.string "payu_sign"
     t.string "wompi_sign"
-    t.string "status_message", default: "transaccion en proceso"
+    t.string "status_message"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end

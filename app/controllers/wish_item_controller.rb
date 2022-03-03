@@ -27,21 +27,25 @@ class WishItemController < ApplicationController
   end
 
   def create
-    # @wish_item = WishItem.new(wish_item_params)
-    @wish_item = WishItem.new
-    @wish_item.user = current_user
-    @wish_item.sizes.push(Size.find(params[:size]))
-    @wish_item.packages.push(Package.find(params[:packing]))
-    arr = SubMaterial.where(id: [params[:material], params[:frame]])
-    @wish_item.sub_materials.push(arr[0], arr[1]) 
+    if current_user
+      @wish_item = WishItem.new
+      @wish_item.user = current_user
+      @wish_item.sizes.push(Size.find(params[:size]))
+      @wish_item.packages.push(Package.find(params[:packing]))
+      arr = SubMaterial.where(id: [params[:material], params[:frame]])
+      @wish_item.sub_materials.push(arr[0], arr[1]) 
 
-    @wish_item.photos.push(Photo.find(params[:photo]))
-    if @wish_item.save 
-      render json: {success:true, msg: "Agregado a wishlist"}    
+      @wish_item.photos.push(Photo.find(params[:photo]))
+      if @wish_item.save 
+        render json: {success:true, msg: "Agregado a wishlist"}    
+      end
+    else
+      render json: {msg: "Debes ingresar a la pagina para agregar items al wishlist"}
     end
   end
 
   def shoppingCart
+   #render json: {msg: "Debes ingresar a la pagina para agregar items al wishlist"}
   end
 
   def destroy

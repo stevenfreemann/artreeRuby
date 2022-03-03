@@ -20,10 +20,10 @@ const PurchaseSuccess = ({ info }) => {
                     <div>
                         <span>status: {info.status} </span>
                         <h3>Detalle de pago:</h3>
-                        <span>Tarjeta terminada en <span style={{ fontWeight: 'bold' }}>{info.last_4}</span></span>
-                        <span style={{ fontWeight: 'bold' }}>Referencia de pago: {info.ref_number}</span>
-                        <span style={{ fontWeight: 'bold' }}>Código de transacción: {info.payment_id}</span>
                         <span style={{ fontWeight: 'bold' }}>Tipo de pago: {info.payment_method}</span>
+                        <span>Tarjeta terminada en <span style={{ fontWeight: 'bold' }}>{info.last_4}</span></span>
+                        <span style={{ fontWeight: 'bold' }}>Referencia de pago (artree): {info.ref_number}</span>
+                        <span style={{ fontWeight: 'bold' }}>Código de transacción (wompi): {info.payment_id}</span>
                     </div>
                 </div>
             </div>

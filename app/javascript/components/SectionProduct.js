@@ -25,8 +25,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
 
     const generateWishItem = async() => {
         console.log('productPurchase :>> ', productPurchase);
-        
-        //TODO: current_user &&?
+             
         let response = await fetch('/wishItem', {
             method: 'POST', 
             headers: {

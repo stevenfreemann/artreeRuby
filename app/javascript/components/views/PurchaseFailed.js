@@ -12,7 +12,7 @@ const PurchaseFailed = ({ info, status }) => {
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({products: info}), 
+                body: JSON.stringify({items: info}), 
               })     
                response = await response.json()
                console.log('response', response)                 

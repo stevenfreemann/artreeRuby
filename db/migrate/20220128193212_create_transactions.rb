@@ -15,7 +15,7 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.integer "civil_id"
       t.string "payu_sign"
       t.string "wompi_sign"
-      t.string "status_message", default: "transaccion en proceso"
+      t.string "status_message"
       t.references :user, null: false, foreign_key: true
     end
   end
