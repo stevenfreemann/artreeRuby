@@ -73,7 +73,7 @@ class TransactionsController < ApplicationController
   end
 
   def correct_stock
-    items = params[:info][:products]
+    items = params[:items][:products]
     puts "-----items---------#{params[:info][:products]}"
     items.each do |product|
       puts "-----product---------#{product}"
