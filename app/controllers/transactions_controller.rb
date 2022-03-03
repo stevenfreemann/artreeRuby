@@ -78,8 +78,9 @@ class TransactionsController < ApplicationController
     # puts "-----items---------#{params[:items][:products]}"
     items.each do |product|
       item = eval(product)
-      puts "-----item---------#{item}"
-      stock = item["photo"]["stock"]
+      # puts "-----item---------#{item}"
+      photo = item["photo"]
+      stock = photo["stock"]
       puts "--------pre-stock----------#{photo}"
       stock += product["quantity"]
       photo.save
