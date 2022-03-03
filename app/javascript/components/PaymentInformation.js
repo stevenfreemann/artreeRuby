@@ -42,20 +42,21 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
     }
   }, [signIn, cuenta, formu])
 
-
+  
   const checkStock = async () => {
     const obj = {}
     {
       items?.map((product) => (
-        console.log(product),
+        //console.log(product),
         obj[product.photo.id] = product.quantity
-      ))
-    }
-    console.log("obj", obj)
-
-    api.verifyAvailable({ ids: obj }, (response) => {
-      console.log('response', response)
-      if (response.success) {
+        ))
+      }
+      //console.log("obj", obj)
+      
+      api.verifyAvailable({ ids: obj }, (response) => {
+        //console.log('response', response)
+        if (response.success) {
+        console.log("itemsPay", items)
 
         fetch('/transaction', {
           method: 'POST',
@@ -207,7 +208,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                       <hr />
 
                       {items?.map((product) => (
-                        console.log(product),
+                        // console.log(product),
                         <div key={product?.id}>
                           <span>{product?.photo.name}</span>
                           <span>${(product?.photo.base_price + product?.frame.price + product?.material.price + product?.package.price + product?.size.price) * 

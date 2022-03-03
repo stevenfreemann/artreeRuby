@@ -9,7 +9,7 @@ import WishlistActivo from "../../assets/static/buttons/perfilwishactivobtn@2x.p
 
 const CartItem = ({ updateItem, clickDelete, prod }) => {
 
-  console.log("cartItem", prod)
+  // console.log("cartItem", prod)
   const imagePro = prod?.line_id === 2 ? true : false
   const stock = prod?.photo.stock
   const selectStock = imagePro && stock >= 100 ? 100 : stock

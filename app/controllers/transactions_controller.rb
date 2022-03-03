@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
   end
   
   def create
-    params.permit!
+    #params.permit!
     cost = params[:total_cost]
     iva = cost * 0.19
     consumo = cost * 0.08
@@ -23,6 +23,7 @@ class TransactionsController < ApplicationController
     end
   
     @transaction = Transaction.new(products: items, total_cost: (total_cost) , iva_tax: (iva), consumption_tax: (consumo), user: current_user)
+    
     @transaction.save
     @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
     @transaction.save
@@ -76,13 +77,13 @@ class TransactionsController < ApplicationController
     items = params[:items][:products]
     puts "-----items---------#{params[:items][:products]}"
     items.each do |product|
-      item = JSON.parse(product)
+      item = eval(product)
       puts "-----item---------#{item}"
-      photo = item.photo
-      puts "--------pre-stock----------#{[photo.stock]}"
-      photo.stock += product.quantity
+      photo = item["photo"]
+      puts "--------pre-stock----------#{photo["stock"]}"
+      photo["stock"] += product["quantity"]
       photo.save
-      puts "--------pos-stock----------#{[photo.stock]}"
+      puts "--------pos-stock----------#{photo["stock"]}"
     end
   end
   
@@ -138,9 +139,9 @@ class TransactionsController < ApplicationController
     :
     @transaction = Transaction.find_by(payment_id: params[:id])
     
-    # if !current_user || @transaction.user != current_user
-    #   redirect_to "/", notice: "solo el usuario creador de esta transaccion puede acceder"
-    # end
+    if !current_user || @transaction.user != current_user
+      redirect_to "/", notice: "solo el usuario creador de esta transaccion puede acceder"
+    end
   end
 
   private
