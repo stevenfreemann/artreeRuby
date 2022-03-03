@@ -79,13 +79,12 @@ class TransactionsController < ApplicationController
     items.each do |product|
       item = eval(product)
       # puts "-----item---------#{item}"
-      photo = item["photo"]
-      stock = photo["stock"]
+      photo = Photo.find(item["photo"]["id"])
       puts "--------class----------#{product["quantity"]}"
-      puts "--------pre-stock----------#{stock}"
-      stock += product["quantity"].to_i
+      puts "--------pre-stock----------#{photo.stock}"
+      photo.stock += product["quantity"].to_i
       photo.save
-      puts "--------pos-stock----------#{photo}"
+      puts "--------pos-stock----------#{photo.stock}"
     end
   end
   
@@ -116,7 +115,7 @@ class TransactionsController < ApplicationController
 
   def wompi_response
     origin = request.headers
-    puts "------origin-------#{origin}"
+    # puts "------origin-------#{origin}"
     json = params[:data][:transaction]
 
     transaction = Transaction.find_by(ref_number: json["reference"])
