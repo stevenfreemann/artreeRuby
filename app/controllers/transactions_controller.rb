@@ -138,9 +138,9 @@ class TransactionsController < ApplicationController
     :
     @transaction = Transaction.find_by(payment_id: params[:id])
     
-    if !current_user || @transaction.user != current_user
-      redirect_to "/", notice: "solo el usuario creador de esta transaccion puede acceder"
-    end
+    # if !current_user || @transaction.user != current_user
+    #   redirect_to "/", notice: "solo el usuario creador de esta transaccion puede acceder"
+    # end
   end
 
   private
