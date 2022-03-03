@@ -76,9 +76,9 @@ class TransactionsController < ApplicationController
     items = params[:items][:products]
     puts "-----items---------#{params[:items][:products]}"
     items.each do |product|
-      puts "-----product---------#{product}"
-      #item = JSON.parse(product)
-      photo = product.photo
+      item = JSON.parse(product)
+      puts "-----item---------#{item}"
+      photo = item.photo
       puts "--------pre-stock----------#{[photo.stock]}"
       photo.stock += product.quantity
       photo.save
