@@ -31,7 +31,7 @@ const SectionShoppingCart = ({ authenticity_token, currentUser }) => {
 
         if (items?.length === parsed_data?.length) {
             let acum = 0
-            items?.map((w) => acum = acum + (w.photo.base_price * w.quantity))
+            items?.map((w) => acum = acum + ((w.photo.base_price + w.frame.price + w.material.price + w.package.price + w.size.price) * w.quantity))
             setTotalCost(acum)
         }
     }, [items])
