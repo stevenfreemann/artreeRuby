@@ -81,8 +81,9 @@ class TransactionsController < ApplicationController
       # puts "-----item---------#{item}"
       photo = item["photo"]
       stock = photo["stock"]
-      puts "--------pre-stock----------#{photo}"
-      stock += product["quantity"]
+      puts "--------class----------#{product["quantity"]}"
+      puts "--------pre-stock----------#{stock}"
+      stock += product["quantity"].to_i
       photo.save
       puts "--------pos-stock----------#{photo}"
     end
