@@ -79,8 +79,10 @@ class TransactionsController < ApplicationController
       puts "-----product---------#{product}"
       #item = JSON.parse(product)
       photo = product.photo
+      puts "--------pre-stock----------#{[photo.stock]}"
       photo.stock += product.quantity
       photo.save
+      puts "--------pos-stock----------#{[photo.stock]}"
     end
   end
   
@@ -110,7 +112,7 @@ class TransactionsController < ApplicationController
 
 
   def wompi_response
-    origin = request.headers['origin']
+    origin = request.headers
     puts "------origin-------#{origin}"
     json = params[:data][:transaction]
 
