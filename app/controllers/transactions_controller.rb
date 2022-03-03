@@ -80,9 +80,9 @@ class TransactionsController < ApplicationController
       item = eval(product)
       # puts "-----item---------#{item}"
       photo = Photo.find(item["photo"]["id"])
-      puts "--------class----------#{product["quantity"]}"
+      puts "--------class----------#{item["quantity"]}"
       puts "--------pre-stock----------#{photo.stock}"
-      photo.stock += product["quantity"].to_i
+      photo.stock += item["quantity"].to_i
       photo.save
       puts "--------pos-stock----------#{photo.stock}"
     end
