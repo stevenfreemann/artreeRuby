@@ -74,7 +74,7 @@ class TransactionsController < ApplicationController
 
   def correct_stock
     items = params[:items][:products]
-    puts "-----items---------#{params[:info][:products]}"
+    puts "-----items---------#{params[:items][:products]}"
     items.each do |product|
       puts "-----product---------#{product}"
       #item = JSON.parse(product)
