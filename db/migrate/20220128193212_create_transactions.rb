@@ -6,16 +6,16 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.text "products", default: [], array: true
       t.datetime "created_at", precision: 6, null: false
       t.datetime "updated_at", precision: 6, null: false
-      t.string "status"
-      t.string "payment_method"
-      t.string "last_4"
-      t.string "payment_id"
+      t.string "status", default: "transaccion en proceso"
+      t.string "payment_method", default: "transaccion en proceso"
+      t.string "last_4", default: "transaccion en proceso"
+      t.string "payment_id", default: "transaccion en proceso"
       t.float "iva_tax"
       t.float "consumption_tax"
       t.integer "civil_id"
       t.string "payu_sign"
       t.string "wompi_sign"
-      t.string "status_message"
+      t.string "status_message", default: "transaccion en proceso"
       t.references :user, null: false, foreign_key: true
     end
   end

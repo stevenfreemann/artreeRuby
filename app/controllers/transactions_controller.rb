@@ -39,50 +39,7 @@ class TransactionsController < ApplicationController
     render json: @transaction #enviar serializado con parseo e itereador
   end
   
-  def stock
-    res = params[:ids]
-    itemStock = {}
-    obj = {}
-    res.each_pair do |id, amount|
-      photo = Photo.find(id)
-      obj[photo] = amount
-      available = photo.stock >= amount.to_i ? true : false
-      itemStock[id] = available
-    end  
-    val = itemStock.values.uniq == [true]
-
-    if val == true
-      obj.each_pair do |photo, amount|
-        photo.stock -= amount.to_i
-        photo.save
-      end    
-      render json: {success: true} 
-    else
-      noStock = []
-      noStockName = []
-      itemStock.each_pair do |item, available|
-        noStock << item if available == false
-      end
-      noStock.each do |id|
-        item = Photo.find(id)
-        noStockName << item.name
-        AdminMailer.with( email: "msantamaria86@gmail.com" , id:item.id, name: item.name, room: item.room.name).send_stock.deliver_later
-      end
-      render json: {success:false, msg: "Foto(s) sin inventario suficiente: #{noStockName}"}
-    end
-  end
-
-  def correct_stock
-    items = params[:products]
-    puts "-----items---------#{items}"
-    items.each do |product|
-      puts "-----product---------#{product}"
-      #item = JSON.parse(product)
-      photo = product.photo
-      photo.stock += product.quantity
-      photo.save
-    end
-  end
+  
   
   def payu_response
     full_string = request.raw_post
@@ -109,6 +66,9 @@ class TransactionsController < ApplicationController
 
 
   def wompi_response
+    origin = request.headers['origin']
+    puts "------origin-------#{origin}"
+
     json = params[:data][:transaction]
 
     transaction = Transaction.find_by(ref_number: json["reference"])
@@ -128,31 +88,15 @@ class TransactionsController < ApplicationController
   
   
   def result
-    validate = ['DECLINED', 'ERROR']
     params[:transactionId]?   
     @transaction = Transaction.find_by(payment_id: params[:transactionId])
     :
     @transaction = Transaction.find_by(payment_id: params[:id])
-    #puts "------transactionId----------#{params[:transactionId]}"
     
-    # if validate.include?(@transaction.status)
-    #   redirect_to failure_path(transaction: @transaction.id)
-    # else
-    #   redirect_to success_path(transaction: @transaction.id)
-    # end
+    if !current_user || @transaction.user != current_user
+      redirect_to "/", notice: "solo el usuario creador de esta transaccion puede acceder"
+    end
   end
-
-  # def failure
-  #   transaction = Transaction.find(params[:transaction])
-  #   @products = transaction.products[0]
-  #   @status = transaction.status_message
-  #   puts "----------_#{@products}"
-  # end
-
-  # def success
-  #   @transaction = Transaction.find(params[:transaction])
-  #   puts "------transaction-----------#{@transaction.id}"
-  # end
 
   private
     def set_transaction
