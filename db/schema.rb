@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_154953) do
+ActiveRecord::Schema.define(version: 2022_03_04_165719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 2022_03_02_154953) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.string "name"
-    t.text "bio"
-    t.string "file"
+    t.string "name", null: false
+    t.text "bio", null: false
+    t.string "file", null: false
     t.string "facebook"
     t.string "instagram"
     t.string "pinterest"
@@ -55,17 +55,17 @@ ActiveRecord::Schema.define(version: 2022_03_02_154953) do
   end
 
   create_table "banners", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
+    t.string "title", null: false
+    t.text "text", null: false
     t.string "page", default: "None"
-    t.string "file"
+    t.string "file", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "lines", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.string "name", null: false
+    t.text "description", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,12 +73,12 @@ ActiveRecord::Schema.define(version: 2022_03_02_154953) do
   create_table "materials", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "file"
+    t.string "name", null: false
+    t.string "file", null: false
   end
 
   create_table "packages", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "wish_item_id"
@@ -93,11 +93,11 @@ ActiveRecord::Schema.define(version: 2022_03_02_154953) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "base_price"
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "base_price", null: false
     t.boolean "active", default: true
-    t.string "file"
+    t.string "file", null: false
     t.integer "stock", default: 1000
     t.bigint "line_id", null: false
     t.bigint "room_id", null: false
@@ -117,32 +117,32 @@ ActiveRecord::Schema.define(version: 2022_03_02_154953) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.string "name", null: false
+    t.text "description", null: false
     t.float "top_vertical", default: 0.0
     t.float "left_vertical", default: 0.0
-    t.string "space_vertical"
+    t.string "space_vertical", null: false
     t.boolean "pinned", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "line_id", null: false
-    t.string "space_horizontal"
-    t.string "file"
+    t.string "space_horizontal", null: false
+    t.string "file", null: false
     t.float "top_horizontal", default: 0.0
     t.float "left_horizontal", default: 0.0
     t.index ["line_id"], name: "index_rooms_on_line_id"
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string "name"
-    t.string "dimensions"
-    t.text "description"
-    t.integer "price"
+    t.string "name", null: false
+    t.string "dimensions", null: false
+    t.text "description", null: false
+    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "wish_item_id"
     t.string "file"
-    t.bigint "line_id"
+    t.bigint "line_id", null: false
     t.boolean "active", default: true
     t.index ["line_id"], name: "index_sizes_on_line_id"
     t.index ["wish_item_id"], name: "index_sizes_on_wish_item_id"
@@ -154,15 +154,15 @@ ActiveRecord::Schema.define(version: 2022_03_02_154953) do
   end
 
   create_table "sub_materials", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.string "name", null: false
+    t.text "description", null: false
     t.boolean "starred", default: false
-    t.integer "price"
+    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "material_id", null: false
     t.bigint "wish_item_id"
-    t.string "file"
+    t.string "file", null: false
     t.boolean "active", default: true
     t.index ["material_id"], name: "index_sub_materials_on_material_id"
     t.index ["wish_item_id"], name: "index_sub_materials_on_wish_item_id"

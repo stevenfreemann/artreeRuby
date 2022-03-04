@@ -10,7 +10,7 @@
 puts "-----migrating"
 if !Artist.first
 	20.times do |i|
-		Artist.create(name: "nombre_#{i}", bio: "Description #{i}", facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", starred:false)
+		Artist.create(name: "nombre_#{i}", bio: "Description #{i}", file: artist2.png , facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", starred:false)
 	end
 end
 
