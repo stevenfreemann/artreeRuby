@@ -109,9 +109,25 @@ class TransactionsController < ApplicationController
 
 
   def wompi_response
-    origin = request.headers["HTTP_ORIGIN"]    
+    origin = request.headers["HTTP_ORIGIN"]
     puts "------origin-------#{origin}"
-    
+    origin1 = request.headers["ORIGIN"]    
+    puts "------origin1-------#{origin1}"
+    origin2 = request.headers["origin"]   
+    puts "------origin2-------#{origin2}"
+    origin3 = request.headers["Origin"]    
+    puts "------origin2-------#{origin3}"
+
+    head = request.headers
+    puts "------head-------#{head}"
+    puts "------head1-------#{head.to_json}"
+    puts "------head2-------#{head.as_json}"
+
+
+ 
+
+
+
     json = params[:data][:transaction]
 
     transaction = Transaction.find_by(ref_number: json["reference"])
