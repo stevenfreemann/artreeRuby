@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @banners = Banner.all
+    @banners = Banner.where(page: "Home")
+    @rooms = Room.where(line: @line)
     #puts "--------------#{@banners.to_json}"
     puts "entro al index"
     if current_user

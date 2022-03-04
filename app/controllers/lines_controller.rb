@@ -5,30 +5,13 @@ class LinesController < ApplicationController
   end
   
   def show
-    @banners = Banner.all
     @line = Line.find(params[:id])
     @rooms = Room.where(line: @line)
 
-    # case line.name
-    #   when "exclusive"
-    #     redirect_to infoExclusive_path(line: line)
-    #   when "pro"
-    #     redirect_to infoPro_path(line: line)
-    #   else
-    #     redirect_to infoLikePro_path(line: line)
-    # end
+    @line.name == "pro" ?       
+    @banners = Banner.where(page: "Line Pro")
+    :
+    @banners = Banner.where(page: "Line Exclusive")
+
   end
-
-
-  # def infoExclusive
-  # end
-  
-  # def infoPro
-  # end
-
-  # def infoLikePro
-  # end
-
-  
-
 end
