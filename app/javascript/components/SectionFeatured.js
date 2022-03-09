@@ -2,7 +2,6 @@ import React from 'react'
 
 import exclusive from '../assets/static/images/exclusive.png'
 import pro from '../assets/static/images/pro.png'
-// import likeAPro from '../assets/static/images/likeapro.png'
 const imagesD = [
   { id:1,
     name:'EXCLUSIVE',
@@ -15,26 +14,19 @@ const imagesD = [
   //   img:likeAPro},
 ]
 
-const title = "DESTACADOS"
-const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum erat, consequat fermentum sollicitudin vel, porttitor eu nisi. Vivamus scelerisque ac sapien eu ornare. Sed placerat sed nunc nec ultricies. Curabitur lacinia lorem leo, nec venenatis eros egestas at."
 
-const SectionFeatures = () => {
+const SectionFeatures = ({texts, lines}) => {
+  console.log("texts", texts)
+  const text = texts.find(text => text.id === 1)
+
   const navigate=(id)=> {
     window.location = "/line/" + id
 }
-  // const navigate=(section)=>{
-  //   const redirect={
-  //       'EXCLUSIVE':'/infoExclusive',
-  //       'PRO':'/infoPro',
-  //       'LIKE A PRO':'/infoLikepro',
-  //   }
-  //   window.location = redirect[section] ? redirect[section]: '/'
-  // }
     return (
       <>
         <div className="featured">
-          <h1 className="featured__title" >{title}</h1>
-          <p>{text}</p>
+          <h1 className="featured__title" >{text.name}</h1>
+          <p>{text.content}</p>
             <div className='featured__content'>
               {imagesD.map((line) =>
                   <div key={line.id}className='featured__content-img' onClick={()=>navigate(line.id)}>

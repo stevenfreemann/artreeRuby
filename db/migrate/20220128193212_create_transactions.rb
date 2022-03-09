@@ -3,7 +3,7 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
     create_table "transactions", force: :cascade do |t|
       t.bigint "ref_number", default: 1
       t.integer "total_cost"
-      t.text "products", default: [], array: true
+      t.text "products"
       t.datetime "created_at", precision: 6, null: false
       t.datetime "updated_at", precision: 6, null: false
       t.string "status", default: "transaccion en proceso"

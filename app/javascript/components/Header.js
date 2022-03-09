@@ -6,7 +6,7 @@ import Search from '../assets/static/buttons/buscar@2x.png'
 import Menu from '../assets/static/buttons/menu.png'
 import Logo from '../assets/static/graphics/logoartree.png'
 
-const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'LIKE A PRO', 'MATERIALES', 'Artistas', 'Wishlist', 'Carrito','Contáctenos']
+const menu = ['¿Quienes somos?', 'EXCLUSIVE', 'PRO', 'Materiales', 'Artistas', 'Wishlist', 'Carrito','Contáctenos']
 
 const Header = ({currentUser, count}) => {
     console.log('HEADER-->',currentUser)
@@ -22,9 +22,8 @@ const Header = ({currentUser, count}) => {
         const redirect = {
             '¿Quienes somos?': '/about',
             'EXCLUSIVE': '/line/1',
-            'PRO': '/line/2',
-            'LIKE A PRO': '/line/3',
-            'MATERIALES': '/infoMaterials',
+            'PRO': '/line/3',
+            'Materiales': '/infoMaterials',
             'Artistas': '/artist',
             'Register': '/users/sign_in',
             'Wishlist': '/wishlist',

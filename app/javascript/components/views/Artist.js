@@ -3,22 +3,17 @@ import Title from '../Title'
 import left from '../../assets/static/buttons/leftButton.png'
 import right from '../../assets/static/buttons/rightButton.png'
 import facebook from '../../assets/static/icon/facebookartistas@2x.png'
-import whatsapp from '../../assets/static/icon/whatsartistas@2x.png'
-import twiter from '../../assets/static/icon/twitterartistas@2x.png'
+import pinterest from '../../assets/static/icon/pinterestfooter.png'
+import linkedin from '../../assets/static/icon/linkedinlogo.png'
 import instagram from '../../assets/static/icon/instaartistas@2x.png'
-const facebookpage = "https://www.facebook.com/"
-const whatspage = "https://wa.me/573103122081"
-const twiterpage = "https://twitter.com/"
-const instapage = "https://www.instagram.com/"
-const DescriptionArtist = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis vel provident amet necessitatibus.'
 
 
-const Artist = ({artistas,foto}) => {
+
+const Artist = ({artists,foto}) => {
     
-    console.log(artistas)
     const [page, setPage] = useState(1)
     const elements = 16
-    const pages = (Math.floor((artistas.length-1)/elements)+1)
+    const pages = (Math.floor((artists.length-1)/elements)+1)
 
     const paginationArtist = (artistList)=> {
         if (artistList.length>elements) {
@@ -30,7 +25,7 @@ const Artist = ({artistas,foto}) => {
         return artistList
     }
 
-    const showArtist = paginationArtist(artistas)
+    const showArtist = paginationArtist(artists)
 
     const navigate = (section) => {
         const redirect = {
@@ -41,21 +36,21 @@ const Artist = ({artistas,foto}) => {
 
     return (
         <>
-            <Title title="ARTISTAS" alignLeft={false}/>
+            <Title title="ARTISTAS"alignLeft={false}/>
             <div className='artist__cont'>
-                {showArtist.map((artist)=>
+                {artists.map((artist)=>
                     <div key={artist.id} className={`artist__card${((showArtist.indexOf(artist) % 2) == 0)?'':'--invertido'}`}>
-                        <img className='artist__card-img' src={artist.img} alt={artist.name}/>
+                        <img className='artist__card-img' src={artist.file.url} alt={artist.name}/>
                         <div className='artist__info-cont'>
                             <div className='artist__info'>
                                 <span style={{fontWeight:'bold'}}>{artist.name}: </span>
                                 <span>{artist.bio}</span>
                             </div>
                             <div className='artist__card-social' >
-                                <a href={facebookpage} target="_blank"><img src={facebook} alt='Facebook'/></a>
-                                <a href={whatspage} target="_blank"><img src={whatsapp} alt='Whatsapp'/></a>
-                                <a href={twiterpage} target="_blank"><img src={twiter} alt='Twiter'/></a>
-                                <a href={instapage} target="_blank"><img src={instagram} alt='Instagram'/></a>
+                                <a href={artist.facebook} target="_blank"><img src={facebook} alt='Facebook'/></a>
+                                <a href={artist.linkedin} target="_blank"><img src={linkedin} alt='linkedin'/></a>
+                                <a href={artist.pinterest} target="_blank"><img src={pinterest} alt='pinterest'/></a>
+                                <a href={artist.instagram} target="_blank"><img src={instagram} alt='Instagram'/></a>
                             </div>
                         </div>
                     </div>
@@ -67,8 +62,8 @@ const Artist = ({artistas,foto}) => {
                     <span>{`Página ${page} de ${pages}`}</span>
                     <img src={right} alt='Sigiente' style={{visibility:`${page<pages&&page!==pages?'visible':'hidden'}`}} onClick={()=>{setPage(page+1);document.documentElement.scrollTop = 0}}></img>
                 </div>
-                <h2>¿Quieres ser uno de nuestros artistas?</h2>
-                <button type="button" onClick={()=>navigate('infoArtist')}>Click aquí</button>
+                {/* <h2>¿Quieres ser uno de nuestros artistas?/h2>
+                <button type="button" onClick={()=>navigate('infoArtist')}>Click aquí</button> */}
             </div>
         </>
     )

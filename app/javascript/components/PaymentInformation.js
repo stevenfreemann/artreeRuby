@@ -42,12 +42,12 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
     }
   }, [signIn, cuenta, formu])
 
+  console.log("items" ,items)
   
   const checkStock = async () => {
     const obj = {}
     {
       items?.map((product) => (
-        //console.log(product),
         obj[product.photo.id] = product.quantity
         ))
       }
@@ -259,7 +259,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                        <input type="hidden" name="currency" value="COP" />
                        <input type="hidden" name="amount-in-cents" value={answer.total_cost * 100} />
                        <input type="hidden" name="reference" value={answer.ref_number} />
-                       <input type="hidden" xname="signature:integrity" value={answer.signature} />
+                       <input type="hidden" xname="signature:integrity" value={answer.wompi_sign} />
                        <input type="hidden" name="redirect-url" value="https://artree-shop.herokuapp.com/result" />
                        <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax * 100} />
                        <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax * 100} />
@@ -291,7 +291,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <input name="tax"             type="hidden"  value={answer.iva_tax} />
                         <input name="taxReturnBase"   type="hidden"  value={answer.total_cost - answer.iva_tax - answer.consumption_tax}/>
                         <input name="currency"        type="hidden"  value="COP"/>
-                        <input name="signature"       type="hidden"  value={answer.signature} />
+                        <input name="signature"       type="hidden"  value={answer.payu_sign} />
                         <input name="test"            type="hidden"  value="1"/> 
                         <input name="buyerEmail"      type="hidden"  value={currentUser.email}/>
                         <input name="responseUrl"     type="hidden"  value="https://artree-shop.herokuapp.com/result"/> 

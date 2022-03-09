@@ -1,16 +1,17 @@
 class HomeController < ApplicationController
   def index
+    @texts = Text.all
     @banners = Banner.where(page: "Home")
-    @rooms = Room.where(line: @line)
-    #puts "--------------#{@banners.to_json}"
-    puts "entro al index"
-    if current_user
-        @current_user=current_user
-        puts "HAY UN USUARIO"
-    end  
+    @lines = Line.all
+    @artists = Artist.all   
   end
   
   def contacto
+    @text1 = Text.find(8)
+  end
+
+  def aboutUs
+    @text1 = Text.find(8)
   end
 
   def infoExclusive
@@ -20,12 +21,6 @@ class HomeController < ApplicationController
   end
 
   def artist
-    artist=Artist.all
-    @artistas=[]
-    artist.each { |x|
-      obj=x.attributes
-      obj["img"]= Artist.file
-      @artistas << obj
-    }
+    @artists = Artist.all
   end
 end

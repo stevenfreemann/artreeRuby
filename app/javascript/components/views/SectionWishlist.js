@@ -21,8 +21,8 @@ const SectionWishlist = ({ title, products }) => {
         //console.log("wishItem", wishItem)
         let obj = {
             size: wishItem?.sizes.id,
-            material: wishItem?.sub_materials[0].id,
-            frame: wishItem?.sub_materials[1].id,
+            frame: wishItem?.sub_materials[0].id,
+            material: wishItem?.sub_materials[1].id,
             packing: wishItem?.packages.id,
             photo: wishItem?.photos.id,
         }

@@ -7,19 +7,6 @@ import canvasSection from '../../assets/static/images/canvas-section.png'
 import espesorImg from '../../assets/static/images/lamina.png'
 import MaterialCards from '../MaterialCard'
 
-const marcos = { 
-    title:'CANVAS',
-    type:'Tips de composición',
-    text1:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus,dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus',
-    img1: marcosComposicion,
-    subtitle: 'Tipos de Canvas',
-    text2: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.',
-    img2: canvasSection,
-}
-const retablos= {
-    subtitle: 'Retablos',
-    text:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente, architecto, temporibus.'
-}
 
 const espesoresText='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente.'
 const espesores = {
@@ -29,19 +16,9 @@ const espesores = {
         {id:2,type:'Material2',img:espesorImg,text:espesoresText,},
     ]
 };
-// const papelesText='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis unde cum sapiente.'
-// const papeles = {
-//     subtitle: 'Papeles',
-//     tipos: [
-//         {id:1,type:'Material1',img:papelComposicion,text:papelesText,},
-//         {id:2,type:'Material2',img:papelComposicion,text:papelesText,},
-//         {id:3,type:'Material3',img:papelComposicion,text:papelesText,},
-//         {id:4,type:'Material4',img:papelComposicion,text:papelesText,},
-        
-//     ]
-// }; 
+
     
-const SectionCanvas = ({canvases}) => {
+const SectionCanvas = ({canvases, text1, text2}) => {
     const navigate=(dir)=>{
         const direction={
             'back':'/infoMaterials'
@@ -50,12 +27,12 @@ const SectionCanvas = ({canvases}) => {
     }
     return (
         <>
-            <Title title={marcos.title} backTitle={true} listener={()=>navigate('back')}/>
+            <Title title={"Canvas"} backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionCanvas'>
                 <div className='sectionCanvas__first-intro'>
-                    <h2>{marcos.type}</h2>
-                    <p>{marcos.text1}</p>
-                    <img src={marcos.img1} alt='Marcos_Composicion'/>
+                    <h2>{text1.name}</h2>
+                    <p>{text1.content}</p>
+                    <img src={marcosComposicion} alt='Marcos_Composicion'/>
                 </div>
                 {/* <div className='sectionCanvas__second-intro'>
                     <h2>{marcos.subtitle}</h2>
@@ -63,8 +40,8 @@ const SectionCanvas = ({canvases}) => {
                     <img src={marcos.img2} alt={marcos.subtitle}/>
                 </div> */}
                 <div className='sectionCanvas__content'>
-                    <h2>{retablos.subtitle}</h2>
-                    <p>{retablos.text}</p>
+                    <h2>{text2.name}</h2>
+                    <p>{text2.content}</p>
                 </div>
                 <div className='sectionCanvas__subContent'>
                     <div>

@@ -4,8 +4,4 @@ class Artist < ApplicationRecord
 
 	validates_presence_of :name, :bio, :file
 
-
-	def self.file
-		"/images/default_image.png"
-	end
 end

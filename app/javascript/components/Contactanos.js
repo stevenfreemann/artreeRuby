@@ -12,7 +12,7 @@ const icons = [
 ]
 const country = ['COLOMBIA','ARGENTINA','VENEZUELA','BRAZIL',]
 const city = ['BOGOTÁ','CALI','MEDELLÍN',]
-export default function Contactanos() {
+export default function Contactanos({text1}) {
     return (
         <div>
             <Title title={'CONTÁCTANOS'} />

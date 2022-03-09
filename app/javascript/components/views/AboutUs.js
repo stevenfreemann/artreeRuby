@@ -32,7 +32,8 @@ const clients =[
     {id:5,img:client,ubication:'Ubicacion1', name:'Nombre fotografo1', photoName:'Nombre fotografia', phrase:phrase},
 ]
 
-const AboutUs = () => {
+const AboutUs = ({text1}) => {
+    console.log("text1",text1)
 
     const navigate=(id)=>{
         const direction={
@@ -58,8 +59,8 @@ const AboutUs = () => {
         <div className='aboutUs'>
             <div className='aboutUs__hero'>
                 <div className='aboutUs__hero-cont'>
-                    <h1>Somos una empresa</h1>
-                    <span>Lorem ipsum dolor sit, harum laudantium nihil error soluta odio ea quod amet consectetur adipisicing elit. Fugiat mollitia vel dignissimos corrupti quasi tenetur.</span>
+                    <h1>{text1.name}</h1>
+                    <span>{text1.content}</span>
                 </div>
             </div>
             <div className='aboutUs__distintion'>
@@ -96,7 +97,7 @@ const AboutUs = () => {
                     {whats&&<a href={whats} target="_blank"><img src={logoWhats} alt='Social'/></a>}
                     {pinte&&<a href={pinte} target="_blank"><img src={logoPinterest} alt='Social'/></a>}
                 </div>
-                <div className='aboutUs__info-other'>
+                {/* <div className='aboutUs__info-other'>
                     <div>
                         <img src={artist} alt='Artista' onClick={()=>navigate('artist')}/>
                         <h2>Si quieres ser un artista</h2>
@@ -109,7 +110,7 @@ const AboutUs = () => {
                         <img src={print} alt='Imprimir' onClick={()=>navigate('print')}/>
                         <h2>Si quieres imprimir tus fotos</h2>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

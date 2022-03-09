@@ -12,18 +12,13 @@ class TransactionsController < ApplicationController
   end
   
   def create
-    #params.permit!
     cost = params[:total_cost]
     iva = cost * 0.19
     consumo = cost * 0.08
     total_cost = cost + iva + consumo
     items = (params[:products])
-    items.each do |item|
-      #puts "------item--------#{item}"
-    end
-  
-    @transaction = Transaction.new(products: items, total_cost: (total_cost) , iva_tax: (iva), consumption_tax: (consumo), user: current_user)
-    
+
+    @transaction = Transaction.new(products: items, total_cost: (total_cost) , iva_tax: (iva), consumption_tax: (consumo), user: current_user)  
     @transaction.save
     @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
     @transaction.save
@@ -37,7 +32,7 @@ class TransactionsController < ApplicationController
     @transaction.payu_sign = Digest::MD5.hexdigest(payu_chain)
     @transaction.save
     
-    render json: @transaction #enviar serializado con parseo e itereador
+    render json: @transaction
   end
   
   def stock
@@ -75,6 +70,7 @@ class TransactionsController < ApplicationController
 
   def correct_stock
     items = params[:items][:products]
+    puts "---------------------------------------#{items}"
     items.each do |product|
       item = eval(product)
       photo = Photo.find(item["photo"]["id"])

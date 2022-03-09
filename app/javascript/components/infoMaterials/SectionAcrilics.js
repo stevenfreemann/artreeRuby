@@ -22,7 +22,7 @@ const aluminioTipoText = 'Lorem ipsum, dolor sit amet consectetur adipisicing el
 // };
 
 
-const SectionAcrilicsAluminium = ({acrylics}) => {
+const SectionAcrilicsAluminium = ({acrylics, text1}) => {
     const navigate=(dir)=>{
         const direction={
             'back':'/infoMaterials'
@@ -31,9 +31,10 @@ const SectionAcrilicsAluminium = ({acrylics}) => {
     }
     return (
         <>
-            <Title title="Tipos de Acrilico" backTitle={true} listener={()=>navigate('back')}/>
+            <Title title="ACRILICOS" backTitle={true} listener={()=>navigate('back')}/>
             <div className='sectionAcrilicsAluminium'>
-                <p>{acrilicoTipoText}</p>
+                <h2>{text1.name}</h2>
+                <p>{text1.content}</p>
                 <div className="sectionAcrilicsAluminium__cont">
                     {acrylics.map(acrylic =>
                         <MaterialCards id={acrylic.id} type={acrylic.name} img={acrilicoSection} borderColor={'#D1D2D7'} />
