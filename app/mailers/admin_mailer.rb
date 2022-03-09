@@ -14,4 +14,20 @@ class AdminMailer < ApplicationMailer
       }
     )
   end
+
+  def confirmation_mail
+    mail(to: params[:email],
+      subject: 'ARTREE: compra exitosa',
+      body: 'email body',
+      delivery_method_options: {
+        api_key: ENV["SENDGRID"]
+      },
+      template_id: 'd-aa022c1aa937474298016317b991967e',
+      dynamic_template_data:{
+        'id': params[:id],
+        'cost': params[:cost]
+      }
+    )
+  end
+
 end
