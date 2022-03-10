@@ -15,13 +15,10 @@ module Artree
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000'
+        origins '*'
         resource '*', headers: :any, methods: [:get, :post, :patch, :put, :options]
       end
-      allow do
-        origins 'http://www.example.com'
-        resource '*', headers: :any, methods: [:get, :post, :patch, :put, :options]
-      end
+
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
