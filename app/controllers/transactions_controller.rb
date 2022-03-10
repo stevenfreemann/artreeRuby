@@ -78,6 +78,7 @@ class TransactionsController < ApplicationController
   end
   
   def payu_response
+    puts "--------test-----------"
     full_string = request.raw_post
     puts "------raw_post---------#{full_string}"
     array = full_string.split("&")
