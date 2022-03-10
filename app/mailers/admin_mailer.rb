@@ -22,7 +22,7 @@ class AdminMailer < ApplicationMailer
       delivery_method_options: {
         api_key: ENV["SENDGRID"]
       },
-      template_id: 'd-aa022c1aa937474298016317b991967e',
+      template_id: 'd-1021a16ff60649299c77e0f7ec39c818',
       dynamic_template_data:{
         'id': params[:id],
         'cost': params[:cost]
