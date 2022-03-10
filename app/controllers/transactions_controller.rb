@@ -90,7 +90,7 @@ class TransactionsController < ApplicationController
     transaction = Transaction.find_by(ref_number: json["reference_sale"])
     transaction.status = json["response_message_pol"]
     if transaction.status == "APPROVED"
-      AdminMailer.with( email: current_user.email , id:transaction.payment_id, cost: transaction.total_cost).confirmation_mail.deliver_later
+      AdminMailer.with( email: json["email_buyer"] , id:transaction.payment_id, cost: transaction.total_cost).confirmation_mail.deliver_later
     end
     transaction.last_4 = json["cc_number"][-4..-1]
     transaction.payment_id = json["transaction_id"]
