@@ -14,6 +14,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
     console.log('productPurchase :>> ', productPurchase);
 
     useEffect(() => {
+        if (photo) {
         let photoPrice = photo.base_price
         let totalPrice = photoPrice
         for (let property in productPurchase){
@@ -21,7 +22,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
             totalPrice += itemPrice
         }
         setPricePurchase(totalPrice);
-    }, [productPurchase, photo])
+    }}, [productPurchase, photo])
 
     const generateWishItem = async() => {
         console.log('productPurchase :>> ', productPurchase);
@@ -66,12 +67,16 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
             <div className="sectionProduct__title">
                 <h1>{title}</h1>
             </div>
-            <div className="sectionProduct__cont">
-                {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
-                :screen==="purchase"&&
-                <ShowProductPurchase {...{ photo, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase }} listenerWishList={()=>generateWishItem()} listenerSendToCart={()=>sendToCart()} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false}/>}
-                {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
-            </div>
+            {photo? 
+                <div className="sectionProduct__cont">
+                    {screen==="picture"?<ShowProduct photo={photo} room={room} setScreen={setScreen}/>
+                    :screen==="purchase"&&
+                    <ShowProductPurchase {...{ photo, sizeInfo, materials, frames, packing, productPurchase, setProductPurchase, pricePurchase }} listenerWishList={()=>generateWishItem()} listenerSendToCart={()=>sendToCart()} exclusive={view===1 ? true : false} likeAPro={view===3 ? true : false}/>}
+                    {photo&&view!==3&&<CarrouselDown idSelected={photo.id} info={photos} listener={(photo)=> setPhoto(photo)}/>}
+                </div>          
+            :
+                <span> <h3> Galeria vacia </h3> </span>
+            }
         </div>
     )
 }

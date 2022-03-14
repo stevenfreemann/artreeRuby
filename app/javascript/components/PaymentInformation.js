@@ -49,7 +49,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-      },
+      }
     })
   }
   
