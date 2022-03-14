@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post 'wompi_response' => 'transactions#wompi_response'
   post 'payu_response' => 'transactions#payu_response'
   get 'result' => 'transactions#result'
+  get 'test_mail' => 'transactions#test_mail'
 
   
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations'}

@@ -43,6 +43,15 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
   }, [signIn, cuenta, formu])
 
   console.log("items" ,items)
+
+  const testMail = async () => {
+    fetch('/test_mail', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  }
   
   const checkStock = async () => {
     const obj = {}
@@ -239,6 +248,9 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                     </div>
                     <button type="button" onClick={() => checkStock()}>
                       Pagar
+                    </button>
+                    <button type="button" onClick={() => testMail()}>
+                      test mail
                     </button>
                   </div>
                 )

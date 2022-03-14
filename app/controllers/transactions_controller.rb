@@ -53,7 +53,7 @@ class TransactionsController < ApplicationController
         photo.save
       end    
       render json: {success: true} 
-    else
+    else  
       noStock = []
       noStockName = []
       itemStock.each_pair do |item, available|
@@ -75,6 +75,10 @@ class TransactionsController < ApplicationController
       photo.stock +=product["quantity"]
       photo.save
     end
+  end
+
+  def test_mail
+    AdminMailer.with( email:"msantamaria86@gmail.com" , id:1, cost: 10000).confirmation_mail.deliver_later
   end
   
   def payu_response
