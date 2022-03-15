@@ -1,3 +1,4 @@
+require Rails.root.join("config/smtp")
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -59,13 +60,10 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "artree_production"
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "https://artree-shop.herokuapp.com" }
-  config.action_mailer.sendgrid_actionmailer_settings = {
-    api_key: ENV["SENDGRID"],
-    raise_delivery_errors: true
-  }
 
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = SMTP_SETTINGS
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
