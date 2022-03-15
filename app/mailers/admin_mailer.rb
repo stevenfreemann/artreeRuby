@@ -19,9 +19,6 @@ class AdminMailer < ApplicationMailer
     mail(to: params[:email],
       subject: 'ARTREE: compra exitosa',
       body: 'email body',
-      delivery_method_options: {
-        api_key: ENV["SENDGRID"]
-      },
       template_id: 'd-1021a16ff60649299c77e0f7ec39c818',
       dynamic_template_data:{
         'id': params[:id],
