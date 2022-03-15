@@ -4,7 +4,7 @@ class AdminMailer < ApplicationMailer
       subject: 'Foto sin inventario',
       body: 'email body',
       delivery_method_options: {
-        api_key: ENV["SENDGRID"]
+        api_key: ENV["SENDGRID_API"]
       },
       template_id: 'd-aa022c1aa937474298016317b991967e',
       dynamic_template_data:{
@@ -19,6 +19,9 @@ class AdminMailer < ApplicationMailer
     mail(to: params[:email],
       subject: 'ARTREE: compra exitosa',
       body: 'email body',
+      delivery_method_options: {
+        api_key: ENV["SENDGRID_API"]
+      },
       template_id: 'd-1021a16ff60649299c77e0f7ec39c818',
       dynamic_template_data:{
         'id': params[:id],
