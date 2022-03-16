@@ -8,9 +8,6 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all
   end
   
-  def show
-  end
-  
   def create
     cost = params[:total_cost]
     iva = cost * 0.19
@@ -20,22 +17,52 @@ class TransactionsController < ApplicationController
 
     @transaction = Transaction.new(products: items, total_cost: (total_cost) , iva_tax: (iva), consumption_tax: (consumo), user: current_user)  
     @transaction.save
-    @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id))
+    @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id)) #numero de referencia interno de Artree
     @transaction.save
     
-    price = total_cost.to_s + "00"
-    secret = "test_integrity_wi0bQa6UvC3a7trCM2uj7fgo1yBy5754"
+    #como la transaccion se genera al hacer click en "pagar", aun no se sabe que metodo va a escojer el usuario, se generan ambas firmas por lo tanto.
+    if Rails.env.development?
+      secret = ENV["WOMPI_INTEGRITY_SECRET_TEST"]
+      public_key = ENV["WOMPI_TEST_PUBLIC_KEY"]
+    else
+      secret = ENV["WOMPI_INTEGRITY_SECRET_PROD"]
+      public_key = ENV["WOMPI_PROD_PUBLIC_KEY"]
+    end
+    price = total_cost.to_s + "00" #wompi requiere centavos, y sin agregar el punto, 9500 = 9500000
     wompi_chain = @transaction.ref_number.to_s + price + "COP" + secret
     @transaction.wompi_sign = Digest::SHA2.hexdigest(wompi_chain)
-
-    payu_chain = "4Vj8eK4rloUd272L48hsrarnUA~508029~#{@transaction.ref_number}~#{@transaction.total_cost}~COP"
+    
+    if Rails.env.development?
+      merchantID = ENV["PAYU_MERCHANT_ID_TEST"]
+      api_key = ENV["PAYU_TEST_APIKEY"]
+      payu_url = ENV["PAYU_TEST_URL"]
+    else
+      merchantID = ENV["PAYU_MERCHANT_ID_PROD"]
+      api_key = ENV["PAYU_PROD_APIKEY"]
+      payu_url = ENV["PAYU_PROD_URL"]
+    end
+    payu_chain = "#{api_key}~#{merchantID}~#{@transaction.ref_number}~#{@transaction.total_cost}~COP"
     @transaction.payu_sign = Digest::MD5.hexdigest(payu_chain)
     @transaction.save
     
-    render json: @transaction
+    #objeto con todas las variables ambientales segun enviroment, para formularios de pago
+    obj = { 
+      public_key: public_key,
+      wompi_redirect: ENV["WOMPI_REDIRECT"],
+      payu_api_key: api_key, 
+      payu_url: payu_url,
+      merchantID: merchantID,
+      account_id: ENV["PAYU_ACCOUNT_ID"],
+      payu_response:ENV["PAYU_RESPONSE"],
+      payu_confirmation:ENV["PAYU_CONFIRMATION"],
+    }
+
+    render json: {transaction: @transaction, env: obj}
   end
   
   def stock
+
+    #calculo de si todos los productos en el carrito tienen stock suficiente
     res = params[:ids]
     itemStock = {}
     obj = {}
@@ -47,6 +74,8 @@ class TransactionsController < ApplicationController
     end  
     val = itemStock.values.uniq == [true]
 
+    #si hay inventario suficiente se crea la transaccion, de lo contrario se le avisa al usuario que item(s) no tienen suficiente
+    #stock y se envia email a artree notificando la falta de stock de la foto.
     if val == true
       obj.each_pair do |photo, amount|
         photo.stock -= amount.to_i
@@ -69,6 +98,7 @@ class TransactionsController < ApplicationController
   end
 
   def correct_stock
+    #API llamado en caso de que la transaccion falle y se necesite correjir el stock.
     items = params[:items][:products]  
     items.each do |product|
       photo = Photo.find(product["photo"]["id"])
@@ -82,6 +112,7 @@ class TransactionsController < ApplicationController
   end
   
   def payu_response
+    #API tipo POST que utiliza payU para enviar resultados de la transaccion.
     full_string = request.raw_post
     puts "------raw_post---------#{full_string}"
     array = full_string.split("&")
@@ -98,12 +129,13 @@ class TransactionsController < ApplicationController
     transaction.civil_id = json["extra1"]
     transaction.save
     
+    # API (aun en prueba) para enviarle correo al usuario en caso de compra exitosa, aun no implementado en WOMPI.
     if transaction.status == "APPROVED"
       email = json["email_buyer"].gsub("%40","@")
       puts "---------email----------#{email}"
       AdminMailer.with( email:email , id:transaction.payment_id, cost: transaction.total_cost).confirmation_mail.deliver_later
     end
-
+    
     if json["error_message_bank"] != nil
       transaction.status_message = json["error_message_bank"]
       transaction.save   
@@ -112,8 +144,9 @@ class TransactionsController < ApplicationController
     render json: { result: "transaction updated" }, status: 200
   end
 
-
+  
   def wompi_response
+    #API tipo POST que utiliza WOMPI para enviar resultados de la transaccion.
     json = params[:data][:transaction]
 
     transaction = Transaction.find_by(ref_number: json["reference"])
@@ -133,6 +166,7 @@ class TransactionsController < ApplicationController
   
   
   def result
+    #pagina a la que redirigen payU y WOMPI tras regresar al website despues del pago.
     params[:transactionId]?   
     @transaction = Transaction.find_by(payment_id: params[:transactionId])
     :

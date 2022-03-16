@@ -30,11 +30,4 @@ class MaterialsController < ApplicationController
     @papers = SubMaterial.where(material: @paper)
     @text = Text.find(5)
   end
-
-  # def show
-  #   @material = Material.find(params[:id])
-  #   @sub_materials = SubMaterial.where(material: @material)
-  # end
-
-  
 end

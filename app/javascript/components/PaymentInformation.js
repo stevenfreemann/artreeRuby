@@ -267,14 +267,14 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                       {viewPayment === 2 && paymentMethod === 1 &&                     
                        <form action="https://checkout.wompi.co/p/" method="GET" id="wompi">
                        <SeeButton listener= {() => setViewPayment(1)} textBtn={"Regresar"} style={{alignSelf:"center"}}/>
-                       <input type="hidden" name="public-key" value="pub_test_XoT8TA41lZdIxMoT01XJUTD9MGzj7rWD" />
+                       <input type="hidden" name="public-key" value={answer.env.public_key} />
                        <input type="hidden" name="currency" value="COP" />
-                       <input type="hidden" name="amount-in-cents" value={answer.total_cost * 100} />
-                       <input type="hidden" name="reference" value={answer.ref_number} />
-                       <input type="hidden" xname="signature:integrity" value={answer.wompi_sign} />
-                       <input type="hidden" name="redirect-url" value="https://artree-shop.herokuapp.com/result" />
-                       <input type="hidden" name="tax-in-cents:vat" value={answer.iva_tax * 100} />
-                       <input type="hidden" name="tax-in-cents:consumption" value={answer.consumption_tax * 100} />
+                       <input type="hidden" name="amount-in-cents" value={answer.transaction.total_cost * 100} />
+                       <input type="hidden" name="reference" value={answer.transaction.ref_number} />
+                       <input type="hidden" xname="signature:integrity" value={answer.transaction.wompi_sign} />
+                       <input type="hidden" name="redirect-url" value={answer.env.wompi_redirect} />
+                       <input type="hidden" name="tax-in-cents:vat" value={answer.transaction.iva_tax * 100} />
+                       <input type="hidden" name="tax-in-cents:consumption" value={answer.transaction.consumption_tax * 100} />
                        <input type="hidden" name="customer-data:email" value={currentUser.email} />
                        <input type="hidden" name="customer-data:full-name" value={currentUser.name} />
                        <input type="hidden" name="customer-data:phone-number" value={currentUser.phone} />
@@ -293,21 +293,21 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                       }
                         
                       {viewPayment === 2 && paymentMethod === 2 &&                     
-                        <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                        <form method="post" action={answer.env.payu_url}>
                        <SeeButton listener= {() => setViewPayment(1)} textBtn={"Regresar"} style={{alignSelf:"center"}}/>
-                        <input name="merchantId"      type="hidden"  value="508029"  />
-                        <input name="accountId"       type="hidden"  value="512321"/>
+                        <input name="merchantId"      type="hidden"  value={answer.env.merchantID}  />
+                        <input name="accountId"       type="hidden"  value={answer.env.account_id}/>
                         <input name="description"     type="hidden"  value="TRUE" />
-                        <input name="referenceCode"   type="hidden"  value={answer.ref_number}/>
-                        <input name="amount"          type="hidden"  value={answer.total_cost}  />
-                        <input name="tax"             type="hidden"  value={answer.iva_tax} />
-                        <input name="taxReturnBase"   type="hidden"  value={answer.total_cost - answer.iva_tax - answer.consumption_tax}/>
+                        <input name="referenceCode"   type="hidden"  value={answer.transaction.ref_number}/>
+                        <input name="amount"          type="hidden"  value={answer.transaction.total_cost}  />
+                        <input name="tax"             type="hidden"  value={answer.transaction.iva_tax} />
+                        <input name="taxReturnBase"   type="hidden"  value={answer.transaction.total_cost - answer.transaction.iva_tax - answer.transaction.consumption_tax}/>
                         <input name="currency"        type="hidden"  value="COP"/>
-                        <input name="signature"       type="hidden"  value={answer.payu_sign} />
+                        <input name="signature"       type="hidden"  value={answer.transaction.payu_sign} />
                         <input name="test"            type="hidden"  value="1"/> 
                         <input name="buyerEmail"      type="hidden"  value={currentUser.email}/>
-                        <input name="responseUrl"     type="hidden"  value="https://artree-shop.herokuapp.com/result"/> 
-                        <input name="confirmationUrl" type="hidden"  value="https://artree-shop.herokuapp.com/payu_response"/>
+                        <input name="responseUrl"     type="hidden"  value={answer.env.payu_response}/> 
+                        <input name="confirmationUrl" type="hidden"  value={answer.env.payu_confirmation}/>
                         <input name="shippingCountry" type="hidden"  value="CO" />
                         <select form="wompi">
                          <option value={"CE"}> CE </option>

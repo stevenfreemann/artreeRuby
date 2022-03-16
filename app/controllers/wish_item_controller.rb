@@ -17,6 +17,9 @@ class WishItemController < ApplicationController
   end
 
   def get_info
+    #para evitar informacion importante en el localstorage, se envian solo ids, este API completa la informacion de cada dato.
+    #se llama directamente desde el carro de compras.
+    
       size = Size.find(params["size"])
       photo = Photo.find(params["photo"])
       package = Package.find(params["packing"])
