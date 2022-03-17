@@ -249,9 +249,9 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                     <button type="button" onClick={() => checkStock()}>
                       Pagar
                     </button>
-                    <button type="button" onClick={() => testMail()}>
+                    {/* <button type="button" onClick={() => testMail()}>
                       test mail
-                    </button>
+                    </button> */}
                   </div>
                 )
                   : (
@@ -304,7 +304,7 @@ const PaymentInformation = ({ items, currentUser, total_cost, authenticity_token
                         <input name="taxReturnBase"   type="hidden"  value={answer.transaction.total_cost - answer.transaction.iva_tax - answer.transaction.consumption_tax}/>
                         <input name="currency"        type="hidden"  value="COP"/>
                         <input name="signature"       type="hidden"  value={answer.transaction.payu_sign} />
-                        <input name="test"            type="hidden"  value="1"/> 
+                        <input name="test"            type="hidden"  value={answer.env.test}/> 
                         <input name="buyerEmail"      type="hidden"  value={currentUser.email}/>
                         <input name="responseUrl"     type="hidden"  value={answer.env.payu_response}/> 
                         <input name="confirmationUrl" type="hidden"  value={answer.env.payu_confirmation}/>

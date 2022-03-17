@@ -19,8 +19,6 @@ class TransactionsController < ApplicationController
     @transaction.save
     @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id)) #numero de referencia interno de Artree
     @transaction.save
-
-    puts "------------env------------#{Rails.env}"
     
     #como la transaccion se genera al hacer click en "pagar", aun no se sabe que metodo va a escojer el usuario, se generan ambas firmas por lo tanto.
     if Rails.env.development?
@@ -38,10 +36,14 @@ class TransactionsController < ApplicationController
       merchantID = ENV["PAYU_MERCHANT_ID_TEST"]
       api_key = ENV["PAYU_TEST_APIKEY"]
       payu_url = ENV["PAYU_TEST_URL"]
+      account_id = ENV["PAYU_TEST_ACCOUNT_ID"]
+      test = 1
     else
       merchantID = ENV["PAYU_MERCHANT_ID_PROD"]
       api_key = ENV["PAYU_PROD_APIKEY"]
       payu_url = ENV["PAYU_PROD_URL"]
+      account_id = ENV["PAYU_PROD_ACCOUNT_ID"]
+      test = 0
     end
     payu_chain = "#{api_key}~#{merchantID}~#{@transaction.ref_number}~#{@transaction.total_cost}~COP"
     @transaction.payu_sign = Digest::MD5.hexdigest(payu_chain)
@@ -54,9 +56,10 @@ class TransactionsController < ApplicationController
       payu_api_key: api_key, 
       payu_url: payu_url,
       merchantID: merchantID,
-      account_id: ENV["PAYU_ACCOUNT_ID"],
+      account_id: account_id,
       payu_response:ENV["PAYU_RESPONSE"],
       payu_confirmation:ENV["PAYU_CONFIRMATION"],
+      test: test
     }
 
     render json: {transaction: @transaction, env: obj}
