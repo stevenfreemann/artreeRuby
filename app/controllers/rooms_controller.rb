@@ -13,7 +13,6 @@ class RoomsController < ApplicationController
 
     @packing = Package.where(active: true)
 
-    @sizes = Size.where(line_id: @room.line.id)
   end
 
   private

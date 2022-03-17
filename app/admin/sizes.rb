@@ -8,7 +8,6 @@ ActiveAdmin.register Size, as: "Dimensiones" do
       f.input :dimensions
       f.input :description
       f.input :price
-			f.input :file
       f.input :active
     end
     f.actions
@@ -21,7 +20,6 @@ ActiveAdmin.register Size, as: "Dimensiones" do
     column :dimensions
 		column :description
     column :price
-    column :file
 		column :line_id do |i|
       i.line.name
 		end

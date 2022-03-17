@@ -19,6 +19,8 @@ class TransactionsController < ApplicationController
     @transaction.save
     @transaction.ref_number = (DateTime.now.strftime("%d%m%Y")+(sprintf "%07d", @transaction.id)) #numero de referencia interno de Artree
     @transaction.save
+
+    puts "------------env------------#{Rails.env}"
     
     #como la transaccion se genera al hacer click en "pagar", aun no se sabe que metodo va a escojer el usuario, se generan ambas firmas por lo tanto.
     if Rails.env.development?

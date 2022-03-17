@@ -10,6 +10,7 @@ const SectionProduct = ({view, title, photos, sizeInfo, materials, room, frames,
     const [productPurchase, setProductPurchase] = useState({})
     const [pricePurchase, setPricePurchase] = useState()
 
+    console.log("sizeinfo", sizeInfo)
     console.log("photo", photo)
     console.log('productPurchase :>> ', productPurchase);
 
