@@ -3,9 +3,8 @@ import Home1 from '../assets/static/images/home1.png'
 import Home2 from '../assets/static/images/home2.png'
 import Left from '../assets/static/buttons/left-arrow.png'
 import Right from '../assets/static/buttons/right-arrow.png'
-import ContentCarousel from './ContentCarousel'
 
-export default function Carrousel({contentCarousel}) {
+export default function Carrousel({ contentCarousel }) {
     const [index, setIndex] = useState(0)
     const next = (dir) => {
         // 0 is right
@@ -25,27 +24,28 @@ export default function Carrousel({contentCarousel}) {
     }
     return (
         <div className='carousel'>
-            <div className='carousel__leftButton' onClick={() => next(1)}>
-                <img src={Left} />
-            </div>
-            <ContentCarousel id={index} obj={contentCarousel[index]} />
-            <div className='carousel__rigthButton' onClick={() => next(0)}>
-                <img src={Right} />
-            </div>
-            <div className='carousel__slideInd'>
-                {
-                    Array(contentCarousel.length).fill().map(
-                        (_, i) => {
+            <img style={{ height: '100%', width: '100%', objectFit:'cover' }} alt={"banner"+index} src={contentCarousel[index].file.url} />
+            <div className="carousel__cont">
+                <div className='carousel__leftButton' onClick={() => next(1)}>
+                    <img src={Left} />
+                </div>
+                {contentCarousel[index].title &&
+                <div className='container-content-carousel'>
+                    <h1>{contentCarousel[index].title}</h1>
+                    {contentCarousel[index].text && <p>{contentCarousel[index].text}</p>}
+                </div>}
+                <div className='carousel__rigthButton' onClick={() => next(0)}>
+                    <img src={Right} />
+                </div>
+                <div className='carousel__slideInd'>
+                    {contentCarousel.map((_, i) => {
                             return (
-                                <div
-                                    className={`carousel__indicator${i === index ? '--selected' : ''}`}
-                                    key={`indicator${i}`}
-                                    id={`indicator${i}`}>
+                                <div className={`carousel__indicator${i === index ? '--selected' : ''}`} key={`indicator${i}`} id={`indicator${i}`}>
                                 </div>
                             )
                         }
-                    )
-                }
+                    )}
+                </div>
             </div>
         </div>
     )

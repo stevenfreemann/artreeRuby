@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-puts "-----migrating"
-if !Artist.first
-	20.times do |i|
-		Artist.create(name: "nombre_#{i}", bio: "Description #{i}", file: artist2.png , facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", starred:false)
-	end
-end
-
-# if !AdminUser.first
-# 	AdminUser.create!(email: 'stevenfreemann8@gmail.com', password: '123456', password_confirmation: '123456')
+# puts "-----migrating"
+# if !Artist.first
+# 	20.times do |i|
+# 		Artist.create(name: "nombre_#{i}", bio: "Description #{i}", file: "artist2.png" , facebook: "http://facebook.com",instagram: "http://instagram.com",pinterest: "http://pinterest.com",linkedin:"http://linkedin.com", starred:false)
+# 	end
 # end
+
+if !AdminUser.first
+	AdminUser.create!(email: 'artree@artree.com.co', password: '123456', password_confirmation: '123456')
+end
 
 # if !User.first
 # 	User.create!(email: 'prueba1@gmail.com', password: '123456', password_confirmation: '123456', name: 'Test', last_name: 'test', mobile_phone: 3002111111, mobile_phone2: 3001111111)

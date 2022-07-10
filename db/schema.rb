@@ -13,7 +13,28 @@
 ActiveRecord::Schema.define(version: 2022_03_04_204449) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "btree_gin"
+  enable_extension "btree_gist"
+  enable_extension "citext"
+  enable_extension "cube"
+  enable_extension "dblink"
+  enable_extension "dict_int"
+  enable_extension "dict_xsyn"
+  enable_extension "earthdistance"
+  enable_extension "fuzzystrmatch"
+  enable_extension "hstore"
+  enable_extension "intarray"
+  enable_extension "ltree"
+  enable_extension "pg_stat_statements"
+  enable_extension "pg_trgm"
+  enable_extension "pgcrypto"
+  enable_extension "pgrowlocks"
+  enable_extension "pgstattuple"
   enable_extension "plpgsql"
+  enable_extension "tablefunc"
+  enable_extension "unaccent"
+  enable_extension "uuid-ossp"
+  enable_extension "xml2"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -121,13 +142,13 @@ ActiveRecord::Schema.define(version: 2022_03_04_204449) do
     t.text "description", null: false
     t.float "top_vertical", default: 0.0
     t.float "left_vertical", default: 0.0
+    t.string "file", null: false
     t.string "space_vertical", null: false
     t.boolean "pinned", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "line_id", null: false
     t.string "space_horizontal", null: false
-    t.string "file", null: false
     t.float "top_horizontal", default: 0.0
     t.float "left_horizontal", default: 0.0
     t.index ["line_id"], name: "index_rooms_on_line_id"
@@ -158,6 +179,7 @@ ActiveRecord::Schema.define(version: 2022_03_04_204449) do
     t.text "description", null: false
     t.boolean "starred", default: false
     t.integer "price", null: false
+    t.integer "stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "material_id", null: false
@@ -224,10 +246,16 @@ ActiveRecord::Schema.define(version: 2022_03_04_204449) do
     t.index ["user_id"], name: "index_wish_items_on_user_id"
   end
 
+  add_foreign_key "packages", "wish_items"
   add_foreign_key "photos", "artists"
   add_foreign_key "photos", "lines"
+  add_foreign_key "photos", "rooms"
+  add_foreign_key "photos", "wish_items"
   add_foreign_key "rooms", "lines"
   add_foreign_key "sizes", "lines"
+  add_foreign_key "sizes", "wish_items"
+  add_foreign_key "sub_materials", "materials"
+  add_foreign_key "sub_materials", "wish_items"
   add_foreign_key "transactions", "users"
   add_foreign_key "wish_items", "users"
 end

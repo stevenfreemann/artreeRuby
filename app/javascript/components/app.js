@@ -13,6 +13,8 @@ import img from '../assets/static/images/javier-vanegas.png'
 const content = ({contentCarousel, texts, lines, artists}) => {
   const randomArtist = artists[Math.floor(Math.random() * artists.length)]
   console.log("artist", randomArtist)
+
+  console.log('contentCarousel :>> ', contentCarousel);
   
   const navigate = (section) => {
     const redirect = {
@@ -21,6 +23,7 @@ const content = ({contentCarousel, texts, lines, artists}) => {
     }
     window.location = redirect[section] ? redirect[section] : '/'
   }
+  
   return (
     <>
       <Carousel contentCarousel={contentCarousel}/>

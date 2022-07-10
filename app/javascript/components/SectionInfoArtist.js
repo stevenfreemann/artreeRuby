@@ -16,16 +16,16 @@ const SectionInfoArtist = ({inverso, listener, artist}) => {
             <div className='sectionInfo__cont'>
                 <div className={`sectionInfo__info ${showInverso()}`}>
                     <h2 className="sectionInfo__title">
-                        {artist.name}
+                        {artist?.name}
                     </h2>
                     <p className='sectionInfo__text'>
-                        {artist.bio}
+                        {artist?.bio}
                     </p>
                     <div className='sectionInfo__button'>
                         <SeeButton textBtn="Ver todos los artistas" listener={listener} /> 
                     </div>
                 </div>
-                <img className='sectionInfo__img' src={artist.file.url} />
+                <img className='sectionInfo__img' src={artist?.file.url} />
             </div>
         </section>
     )

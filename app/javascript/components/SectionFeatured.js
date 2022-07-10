@@ -25,14 +25,14 @@ const SectionFeatures = ({texts, lines}) => {
     return (
       <>
         <div className="featured">
-          <h1 className="featured__title" >{text.name}</h1>
-          <p>{text.content}</p>
+          <h1 className="featured__title" >{text?.name}</h1>
+          <p>{text?.content}</p>
             <div className='featured__content'>
               {imagesD.map((line) =>
-                  <div key={line.id}className='featured__content-img' onClick={()=>navigate(line.id)}>
-                      <img src={line.img}/>
+                  <div key={line?.id}className='featured__content-img' onClick={()=>navigate(line?.id)}>
+                      <img src={line?.img}/>
                       <h2 className="label">
-                        {line.name}
+                        {line?.name}
                       </h2>
                   </div>
               )}

@@ -6,7 +6,7 @@ const listener = (dato) => {
     console.log(dato)
 }
 const SectionInfoMaterials = ({inverso, listener, artist, texts}) => {
-    const text = texts.find(text => text.id === 2)
+    const text = texts.find(text => text?.id === 2)
     console.log("test", artist)
     const showInverso = () => {
         let inv = inverso ? "inverso" : ""
@@ -18,10 +18,10 @@ const SectionInfoMaterials = ({inverso, listener, artist, texts}) => {
             <div className='sectionInfo__cont'>
                 <div className={`sectionInfo__info ${showInverso()}`}>
                     <h2 className="sectionInfo__title">
-                        {text.name}
+                        {text?.name}
                     </h2>
                     <p className='sectionInfo__text'>
-                        {text.content}
+                        {text?.content}
                     </p>
                     <div className='sectionInfo__button'>
                         <SeeButton textBtn="Ver todos los materiales" listener={listener} /> 

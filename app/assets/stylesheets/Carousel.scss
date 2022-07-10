@@ -1,21 +1,32 @@
 .carousel{
     display: flex;
+    justify-content: center;
     position: relative;
     height: 506px;
 }
 
-.carousel__leftButton, .carousel__rigthButton{
+.carousel__cont{
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.carousel__leftButton, 
+.carousel__rigthButton{
     width: 20%;
     height: 100%;
-    position: absolute;
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.carousel__leftButton img, .carousel__rigthButton img{
-    width: 12%;
+.carousel__leftButton img, 
+.carousel__rigthButton img{
+    width: 20%;
+    cursor: pointer;
 }
 
 .carousel__leftButton{
@@ -44,13 +55,19 @@
 }
 .container-content-carousel{
     display: flex;
+    flex-direction: column;
     width: 100%;
+    background-color: #ffffff40;
+    padding: 2%;
 }
 .container-content-carousel h1{
     font-size: 48px;
+    color: #000000;
 }
 .container-content-carousel p{
     font-size: 26px;
+    color: #000000;
+    font-family: var(--Montserrat);
 }
 
 .container-text-carousel{
