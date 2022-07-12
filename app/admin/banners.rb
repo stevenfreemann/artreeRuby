@@ -6,8 +6,8 @@ ActiveAdmin.register Banner do
     column :title
     column :page
     column :text
-    column :file do |ad|
-      image_tag ad.file.url, height:100
+    column :file do |im|
+      image_tag im.file.url (:thumb) if im.file.url
     end
     actions 
   end
@@ -15,9 +15,9 @@ ActiveAdmin.register Banner do
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Details" do
       f.input :title
-      f.input :page, as: :select, collection: ["Home", "Line Pro", "Line Exclusive", "None"]
+      f.input :page, as: :select, collection: ["Home", "Line Pro", "Line Exclusive"]
       f.input :text
-			f.input :file
+			f.input :file, input_html: {accept: ".jpg, .jpeg, .gif, .png"}, hint: "Se recomienda imágenes con resolución de 1920px de ancho y con peso no mayor a 5Mb"
     end
     f.actions
   end

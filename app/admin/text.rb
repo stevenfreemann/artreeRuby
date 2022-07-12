@@ -1,9 +1,10 @@
 ActiveAdmin.register Text, as: "Textos" do
-  permit_params :name, :content
+  permit_params :name, :content, :scope
 
   index do
 		selectable_column
     id_column
+		column :scope
 		column :name
     column :content
 		column :created_at

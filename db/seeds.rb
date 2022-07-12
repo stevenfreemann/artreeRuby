@@ -18,19 +18,20 @@ if !AdminUser.first
 	AdminUser.create!(email: 'artree@artree.com.co', password: '123456', password_confirmation: '123456')
 end
 
-# if !User.first
-# 	User.create!(email: 'prueba1@gmail.com', password: '123456', password_confirmation: '123456', name: 'Test', last_name: 'test', mobile_phone: 3002111111, mobile_phone2: 3001111111)
-# end
+if !Text.first
+	Text.create!(scope: "Home", name:"Destacados", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.")
+end
 
-# if !Line.first
-# 	Line.create!(name: 'exclusive', description: 'Linea exclusiva')
-# end
+if !Line.first
+	Line.create!(name: 'Exclusive', description: 'Linea Exclusiva')
+	Line.create!(name: 'Pro', description: 'Linea Pro')
+end
 
-# if !Room.first
-# 	3.times do |i|
-# 		Room.create!(name: "Sala #{i}", line: Line.first)
-# 	end
-# end
+if !Room.first
+	3.times do |i|
+		Room.create!(name: "Sala #{i}", line: Line.first)
+	end
+end
 
 # if !Package.first
 # 	Package.create!(name: 'regalo')

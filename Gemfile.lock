@@ -410,6 +410,7 @@ DEPENDENCIES
   http
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  mini_magick
   paperclip
   pg
   puma (~> 4.1)

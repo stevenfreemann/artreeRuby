@@ -6,16 +6,62 @@
 }
 
 .carousel__cont{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel__item{
     position: absolute;
-    width: 60%;
+    width: 100%;
+    height: 100%;
+}
+.carousel__item{
+    visibility: hidden;
+    opacity: 0;
+    transition: all 2s;
+}
+.selectedBanner{
+    visibility: visible;
+    opacity: 1;
+    transition: all 2s;
+}
+.carousel__info{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 760px;
+    width: 70%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: #ffffff40;
+    padding: 2%;
+    transform: translate(-50%, -50%);
+}
+.carousel__info h1{
+    margin: 0;
+    font-size: 48px;
+    color: #000000;
+}
+.carousel__info p{
+    font-size: 26px;
+    color: #000000;
+    font-family: var(--Montserrat);
+}
+
+.carousel__controls{
+    position: absolute;
+    width: 100%;
+    max-width: 1200px;
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-
 .carousel__leftButton, 
 .carousel__rigthButton{
-    width: 20%;
+    width: 15%;
     height: 100%;
     z-index: 2;
     display: flex;
@@ -25,16 +71,8 @@
 
 .carousel__leftButton img, 
 .carousel__rigthButton img{
-    width: 20%;
+    width: 12%;
     cursor: pointer;
-}
-
-.carousel__leftButton{
-    left: 0;
-}
-
-.carousel__rigthButton{
-    right: 0;
 }
 
 .carousel__leftButton img:hover{
@@ -45,42 +83,8 @@
     filter: drop-shadow(2px 4px 6px rgb(255, 255, 255));
     transition: 0.3s;
 }
-.carousel__img{
-    width: 100%;
-}
 
-.carousel__img-with-text{
-    width: 100%;
-    height: 100%;
-}
-.container-content-carousel{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: #ffffff40;
-    padding: 2%;
-}
-.container-content-carousel h1{
-    font-size: 48px;
-    color: #000000;
-}
-.container-content-carousel p{
-    font-size: 26px;
-    color: #000000;
-    font-family: var(--Montserrat);
-}
-
-.container-text-carousel{
-    position:absolute;
-    display:flex;
-    flex-direction:column;
-    width:37%;
-    margin-left:25%;
-    margin-top:6%; 
-    margin-right: 5%;
-}
-
-.carousel__slideInd{
+.carousel__bannerInd{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -89,50 +93,48 @@
     bottom: 6%
 }
 
-.carousel--slide{
-	opacity: 0;
-	transition: opacity 0.5s;
-}
-.carousel--show{
-	opacity: 1;
-	transition: opacity 0.5s;
-}
 
-.carousel__indicator, .carousel__indicator--selected{
+.carousel__indicator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 5px;
-    background-color:var(--beige);
     border-radius: 50%;
-    border: 1px solid var(--beige);
-    height: 28px;
-    width: 28px; 
+    border: 2px solid var(--beige);
+    height: 20px;
+    width: 20px; 
+    cursor: pointer;
+}
+.carousel__indicatorFilling{
+    width: 0%;
+    height: 0%;
+    border-radius: 50%;
+    transition: all 1s;
+    background-color: var(--beige);
+}
+.indicatorFilled{
+    width: 80%;
+    height: 80%;
+    transition: all 1s;
 }
 
-.carousel__indicator--selected{
-    background-color: black;
-}
 @media (max-width: 1366px) {
     .carousel{
         height: 354px;
     }
     .carousel__indicator, .carousel__indicator--selected{
-        height: 16px;
-        width: 16px; 
+        height: 14px;
+        width: 14px; 
     }
 }
 
 @media (max-width: 1300px) {
-    .container-text-carousel{
-        width: 58%;
-    }
-    .container-content-carousel p{
+    .carousel__info p{
         font-size: 21px;
     }
 }
 @media (max-width: 768px){
-    .container-text-carousel{
-        width: 58%;
-    }
-    .container-content-carousel p{
+    .carousel__info p{
         font-size: 21px;
     }
 }
@@ -141,17 +143,13 @@
         height: 243px;
     }
     .carousel__indicator, .carousel__indicator--selected{
-        height: 14px;
-        width: 14px; 
+        height: 12px;
+        width: 12px; 
     }
-    .container-text-carousel{
-        width:61%;
-        margin-left:22%;
-    }
-    .container-text-carousel h1{
+    .carousel__info h1{
         font-size: 24px;
     }
-    .container-text-carousel p{
+    .carousel__info p{
         font-size: 13px;
     }
 }

@@ -19,6 +19,8 @@ gem 'puma', '~> 4.1'
 #para subir fotos a s3
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
+# Escalamiento de imagenes
+gem 'mini_magick'
 # Use SCSS for stylesheets
 #gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

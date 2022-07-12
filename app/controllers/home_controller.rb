@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @texts = Text.all
+    @texts = Text.where(scope: "Home")
     @banners = Banner.where(page: "Home")
     @lines = Line.all
     @artists = Artist.all   

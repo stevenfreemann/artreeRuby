@@ -16,29 +16,29 @@ const imagesD = [
 
 
 const SectionFeatures = ({texts, lines}) => {
+
+  console.log('lines', lines)
   console.log("texts", texts)
-  const text = texts.find(text => text.id === 1)
+  const text = texts[0]
 
   const navigate=(id)=> {
     window.location = "/line/" + id
-}
+  }
     return (
-      <>
-        <div className="featured">
-          <h1 className="featured__title" >{text?.name}</h1>
-          <p>{text?.content}</p>
-            <div className='featured__content'>
-              {imagesD.map((line) =>
-                  <div key={line?.id}className='featured__content-img' onClick={()=>navigate(line?.id)}>
-                      <img src={line?.img}/>
-                      <h2 className="label">
-                        {line?.name}
-                      </h2>
-                  </div>
-              )}
-            </div>
-        </div>
-      </>
+      <div className="featured">
+        <h1 className="featured__title" >{text?.name}</h1>
+        <p>{text?.content}</p>
+          <div className='featured__content'>
+            {lines.map((line) =>
+                <div className='featured__content-img' onClick={()=>navigate(line?.id)} key={"line"+line?.id}>
+                    <img src={line?.image_index?.url} alt={line?.name}/>
+                    <h2 className="label">
+                      {line?.name}
+                    </h2>
+                </div>
+            )}
+          </div>
+      </div>
     )
 }
 

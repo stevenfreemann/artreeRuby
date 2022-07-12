@@ -1,46 +1,56 @@
-import React, { useEffect, useState } from 'react'
-import Home1 from '../assets/static/images/home1.png'
-import Home2 from '../assets/static/images/home2.png'
+import React, { useEffect, useRef, useState } from 'react'
 import Left from '../assets/static/buttons/left-arrow.png'
 import Right from '../assets/static/buttons/right-arrow.png'
 
 export default function Carrousel({ contentCarousel }) {
     const [index, setIndex] = useState(0)
+    const timerChangeBanner = useRef()
+
+    
+    useEffect(() => {
+        timerChangeBanner.current = setTimeout(() => {
+            next(1)
+        }, 5000);
+        return () => clearTimeout(timerChangeBanner.current)
+    }, [])
+
     const next = (dir) => {
-        // 0 is right
-        // 1 is left
-        let slides = document.getElementsByClassName('carousel')[0]
-        if ((dir === 1 && index > 0) || (dir === 0 && index < contentCarousel.length - 1) || (index===contentCarousel.length-1)) {
-            slides.classList.add('carousel--slide')
-        }
-        setTimeout(() => {
-            if (dir === 1 && index > 0) { setIndex(index - 1); slides.classList.replace('carousel--slide', 'carousel--show') }
-            else if (dir === 0 && index < contentCarousel.length - 1) { setIndex(index + 1); slides.classList.replace('carousel--slide', 'carousel--show') }
-            else if(dir === 0 && index===contentCarousel.length-1) setIndex(0); slides.classList.replace('carousel--slide', 'carousel--show')
-            setTimeout(() => {
-                slides.classList.remove('carousel--show')
-            }, 300)
-        }, 300)
+        // 0 is left
+        // 1 is right
+        const direction = [-1, 1]
+        let currentBanner = index
+        let nextBanner = (currentBanner + direction[dir]) % contentCarousel.length;
+        nextBanner = nextBanner < 0 ? (contentCarousel.length - 1) : nextBanner
+        console.log('nextBanner :>> ', nextBanner);
+        setIndex(nextBanner)
     }
+
     return (
         <div className='carousel'>
-            <img style={{ height: '100%', width: '100%', objectFit:'cover' }} alt={"banner"+index} src={contentCarousel[index].file.url} />
             <div className="carousel__cont">
-                <div className='carousel__leftButton' onClick={() => next(1)}>
-                    <img src={Left} />
+                {contentCarousel.map((item, i)=>
+                    <div className={`carousel__item${index===i?" selectedBanner":""}`} key={"carousel"+i}>
+                        <img style={{ height: '100%', width: '100%', objectFit:'cover' }} alt={"banner"+index} src={item?.file.url} />
+                        {item?.title &&
+                        <div className='carousel__info'>
+                            {item?.title && <h1>{item?.title}</h1>}
+                            {item?.text && <p>{item?.text}</p>}
+                        </div>}
+                    </div>
+                )}
+            </div>
+            <div className="carousel__controls">
+                <div className='carousel__leftButton' onClick={() => {clearTimeout(timerChangeBanner.current);next(0)}}>
+                    <img src={Left} alt="left"/>
                 </div>
-                {contentCarousel[index].title &&
-                <div className='container-content-carousel'>
-                    <h1>{contentCarousel[index].title}</h1>
-                    {contentCarousel[index].text && <p>{contentCarousel[index].text}</p>}
-                </div>}
-                <div className='carousel__rigthButton' onClick={() => next(0)}>
-                    <img src={Right} />
+                <div className='carousel__rigthButton' onClick={() => {next(1); clearTimeout(timerChangeBanner.current)}}>
+                    <img src={Right} alt="right"/>
                 </div>
-                <div className='carousel__slideInd'>
+                <div className='carousel__bannerInd'>
                     {contentCarousel.map((_, i) => {
                             return (
-                                <div className={`carousel__indicator${i === index ? '--selected' : ''}`} key={`indicator${i}`} id={`indicator${i}`}>
+                                <div className={`carousel__indicator`} key={`indicator${i}`} id={`indicator${i}`} onClick={()=>{setIndex(i); clearTimeout(timerChangeBanner.current)}}>
+                                    <div className={`carousel__indicatorFilling${i === index ? ' indicatorFilled' : ''}`}></div>
                                 </div>
                             )
                         }
